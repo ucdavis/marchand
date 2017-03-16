@@ -1,0 +1,234 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*--------------------------------------------------*\
+-------------------Body Styles------------------------
+\*--------------------------------------------------*/
+
+body {
+	background-color: #273675;
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5 {
+	margin: 0px;
+	font-family: Berkley, "Times New Roman", Times, Serif;
+}
+h1 {
+	font-size: 17px;
+	color: #232F5E;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-bottom: 3px;
+}
+h2 {
+	font-size: 12px;
+	color: black;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+h3 {
+	font-family:"Helvetica Light", Helvetica, Arial,  sans-serif;
+	color: #333333;
+	font-size: 12px;
+	background-color: #ECDBA7;
+	padding: 1px 0;
+	margin: 3px 0;
+}
+h4 {
+	font-family:"Helvetica Light", Helvetica, Arial,  sans-serif;
+	font-size: 12px;
+	color: #232F5E;
+	margin: 3px 0;
+}
+#sideCol h4 {
+	margin: 7px 0;
+}
+h4 a {
+	color: #232F5E;
+}
+h4.byline {
+	font-style:italic;
+}
+h5 {
+	font-family:"Helvetica Light", Helvetica, Arial,  sans-serif;
+	font-size: 11px;
+	color:black;
+	margin: 3px 0;
+}
+
+a {
+	color: #333333;
+	text-decoration:none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a img {
+	border:none;
+}
+p a, li a{
+	color: #232F5E;
+}
+
+hr {
+	height: 0;
+	border:none;
+	border-top: 1px solid #D8C383;
+	margin: 15px 0;
+}
+
+p, td, ul {
+	font-family:"Helvetica Light", Helvetica, Arial,  sans-serif;
+	color: #333333;
+	font-size: 11px;
+	line-height: 14px;
+	margin-top: 0px;
+}
+
+ul {
+	margin-left: 0;
+	padding-left: 15px;
+}
+
+table {
+	margin: 0px;
+	padding: 0px;
+	border-collapse:collapse;
+}
+
+/*--------------------------------------------------*\
+-------------------Main Navigation--------------------
+\*--------------------------------------------------*/
+#MainNav {
+	display:none;
+}
+#header1 {
+	display: none;
+}
+
+#header1 h2, #header1 p {
+	border-left: 1px solid black;
+	padding-left: 5px; }
+#header1 img { margin: 0px 0px 3px -2px; }
+#header1 p { margin: 0 0 -1px 0; line-height: 14px; }
+
+#logo { width:320px; height:140px;}
+#logo img { margin: 0px 0px 15px 10px; }
+#logo h2 { border-left: none; margin-left: 15px;}
+
+#programs {	width:150px; }
+
+#resources { width:155px; }
+
+#staff {	width:160px; }
+
+#contact { width: 115px; }
+
+#header2{ width: 100%; border-top: 1px solid black; text-align: right; }
+#header2 h2, #header2 p { margin: 0 5px; }
+#header2 img {	padding: 5px 5px 0px 5px; }
+#header2 p { line-height: 14px; }
+
+#calendar { width: 455px; }
+#calendar img { padding-top: 19px; }
+
+#grants { width: 160px; }
+#grants img {padding-top: 10px;}
+
+#blank { width: 85px; }
+#blankHome {width: 100px; }
+
+#news { text-align: left; }
+#news h2, #news p { margin-left: 5px; }
+#news img { padding: 7px 0px 3px 5px; }
+
+.rightBorder { margin-top: -1px; border-right: 1px solid black; }
+.leftBorder { margin-top: -1px; border-left: 1px solid black; }
+
+/*--------------------------------------------------*\
+---------------------ID Styles-----------------------
+\*--------------------------------------------------*/
+
+#content, #contentHome {
+	float: left;
+	width:550px;
+	padding: 0 70px 50px 60px;
+}
+#contentHome {
+	/*margin-top: -30px;*/
+}
+#content img {
+	border: 1px solid #232F5E;
+	float: left;
+	margin: 0px 10px 10px 0px;
+}
+
+#footer {
+	clear: both;
+	border-top: 1px solid #D8C383;
+	background-color: white;
+	padding: 10px 30px;
+}
+#footer p {
+	color: #333333;
+	margin: 2px 0;
+}
+#footer p.sitemapAdmin{
+	float: right;
+}	
+
+#sideColHome {
+	padding: 3px 20px 50px 712px;
+}
+#sideCol {
+	display:none;
+	margin: 0px 0 0 707px;
+	padding: 0px 20px 50px 10px;
+}
+
+#wrapper {
+	padding: 0px;
+	width: 901px;
+	margin: 0 auto;
+	background-color: white;
+}
+#innerWrapper {
+	background-image:url(../images/rightcol.gif);
+	background-position: top right;
+	background-repeat:repeat-y;
+}
+#innerWrapper2 {
+	margin: 20px 0 0 0;
+	background-image:url(../images/gradient.jpg);
+	background-position: top right;
+	background-repeat:no-repeat;
+}
+
+
+
+.madLib p {
+	text-transform:uppercase;
+}
+.madLib p em {
+	text-transform:none;
+	font-style:normal;
+	color: #232F5E;
+	letter-spacing: .05em;
+}
+p.title {
+	line-height: 14px;
+	color: #232F5E;
+}
+p.title a { 
+	color: #232F5E;
+}
+p.byline {
+	font-style: italic;
+	margin-bottom: 0;
+}
+p.years, p.months{ line-height: 18px;}
+p.months { padding-left: 10px; color: #232F5E}
+p.months a{ color: #232F5E; }
+li.first { margin-top: -12px; }
