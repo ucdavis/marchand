@@ -3,8 +3,8 @@
 
 	if(isset($_POST['id'])) {
 		// Remove from database
-		$db = mysql_connect("localhost", $connect["username"], $connect["password"]);
-		mysql_select_db("image_archive", $db);
+		$db = mysqli_connect("localhost", $connect["username"], $connect["password"]);
+		mysqli_select_db($db,"image_archive");
 
-		$result = mysql_query("delete from region_assignments where sid='".mysql_real_escape_string($_POST['id'])."' and rid='".mysql_real_escape_string($_POST['region_id'])."' limit 1", $db);
+		$result = mysqli_query($db,"delete from region_assignments where sid='".mysqli_real_escape_string($db,$_POST['id'])."' and rid='".mysqli_real_escape_string($db,$_POST['region_id'])."' limit 1");
 	}

@@ -13,9 +13,9 @@
 	if(isset($_GET['what'])) $what = $_GET['what'];
 	$id = $_GET['id'];
 
-	$db = mysql_connect("localhost", $connect["username"], $connect["password"]);
-	mysql_select_db("image_archive", $db);
-	mysql_query("SET NAMES 'utf8'", $db);
+	$db = mysqli_connect("localhost", $connect["username"], $connect["password"]);
+	mysqli_select_db($db, "image_archive");
+	mysqli_query($db, "SET NAMES 'utf8'");
 
 	if(isset($redirect)) $redirect = str_replace("\\", "", $redirect);
 
@@ -38,10 +38,10 @@
 		if($_POST['featured'] == "off") $_POST['featured'] = 0;
 		else $_POST['featured'] = 1;
 
-		$result = mysql_query("insert into images (title, card, citation, collection, public, notes, featured, id) values('".mysql_real_escape_string($_POST['title'])."', '".mysql_real_escape_string($_POST['card_text'])."', '".mysql_real_escape_string($_POST['citation'])."', '".mysql_real_escape_string($_POST['collection'])."', '".mysql_real_escape_string($_POST['public'])."', '".mysql_real_escape_string($_POST['notes'])."', '".mysql_real_escape_string($_POST['featured'])."' , '".mysql_real_escape_string($id)."') on duplicate key update title='".mysql_real_escape_string($_POST['title'])."', card='".mysql_real_escape_string($_POST['card_text'])."', citation='".mysql_real_escape_string($_POST['citation'])."', collection='".mysql_real_escape_string($_POST['collection'])."', public='".mysql_real_escape_string($_POST['public'])."', notes='".mysql_real_escape_string($_POST['notes'])."', featured='".mysql_real_escape_string($_POST['featured'])."'", $db);
+		$result = mysqli_query($db, "insert into images (title, card, citation, collection, public, notes, featured, id) values('".mysqli_real_escape_string($db, $_POST['title'])."', '".mysqli_real_escape_string($db, $_POST['card_text'])."', '".mysqli_real_escape_string($db, $_POST['citation'])."', '".mysqli_real_escape_string($db, $_POST['collection'])."', '".mysqli_real_escape_string($db, $_POST['public'])."', '".mysqli_real_escape_string($db, $_POST['notes'])."', '".mysqli_real_escape_string($db, $_POST['featured'])."' , '".mysqli_real_escape_string($db,$id)."') on duplicate key update title='".mysqli_real_escape_string($db, $_POST['title'])."', card='".mysqli_real_escape_string($db, $_POST['card_text'])."', citation='".mysqli_real_escape_string($db, $_POST['citation'])."', collection='".mysqli_real_escape_string($db, $_POST['collection'])."', public='".mysqli_real_escape_string($db, $_POST['public'])."', notes='".mysqli_real_escape_string($db, $_POST['notes'])."', featured='".mysqli_real_escape_string($db, $_POST['featured'])."'");
 
 		if($result == false) {
-			echo "<b>There was an error saving the data. Please copy this text and give it to the system administrator.</b><br />Error: ".mysql_error($db);
+			echo "<b>There was an error saving the data. Please copy this text and give it to the system administrator.</b><br />Error: ".mysqli_error($db);
 			die;
 		}
 
@@ -49,9 +49,9 @@
 		$keywords = split_keyword_string($_POST['keywords']);
 		foreach($keywords as $keyword) {
 			// No room for errors here ... (FIXME)
-			$result = mysql_query("insert into keywords (title) values('".mysql_real_escape_string($keyword)."') on duplicate key update title = '".mysql_real_escape_string($keyword)."'");
-			$keyword_id = mysql_insert_id();
-			$result = mysql_query("insert into keyword_assignments (sid, kid) values('".mysql_real_escape_string($id)."', '".mysql_real_escape_string($keyword_id)."') on duplicate key update sid = '".mysql_real_escape_string($id)."'");
+			$result = mysqli_query($db, "insert into keywords (title) values('".mysqli_real_escape_string($db, $keyword)."') on duplicate key update title = '".mysqli_real_escape_string($db, $keyword)."'");
+			$keyword_id = mysqil_insert_id();
+			$result = mysqli_query($db, "insert into keyword_assignments (sid, kid) values('".mysqli_real_escape_string($db, $id)."', '".mysqli_real_escape_string($db,$keyword_id)."') on duplicate key update sid = '".mysqli_real_escape_string($db,$id)."'");
 		}
 
 		// did they include any files
@@ -62,9 +62,9 @@
 			$name = $id.'.'.$ext;
 
 			// delete the old file first
-			$result = mysql_query("select file, thumbnail from images where id='".mysql_real_escape_string($id)."' limit 1", $db);
-			$row = mysql_fetch_assoc($result);
-			assert(mysql_num_rows($result) > 0);
+			$result = mysqli_query($db,"select file, thumbnail from images where id='".mysqli_real_escape_string($id)."' limit 1");
+			$row = mysqli_fetch_assoc($result);
+			assert(mysqli_num_rows($result) > 0);
 			unlink("/var/www/html/historyproject.ucdavis.edu/marchandslides.bak/".$row['file']);
 			unlink("/var/www/html/historyproject.ucdavis.edu/marchandslides.bak/".$row['thumbnail']);
 
@@ -75,7 +75,7 @@
 			exec("/usr/bin/convert /var/www/html/historyproject.ucdavis.edu/marchandslides.bak/".$name." -thumbnail 225x /var/www/html/historyproject.ucdavis.edu/marchandslides.bak/thumbnails/".$name);
 
 			// update the database with the new filename
-			$result = mysql_query("update images set file='".mysql_real_escape_string($name)."', thumbnail='".mysql_real_escape_string("thumbnails/".$name)."' where id='".mysql_real_escape_string($id)."' limit 1", $db);
+			$result = mysqli_query($db, "update images set file='".mysqli_real_escape_string($db,$name)."', thumbnail='".mysqli_real_escape_string($db,"thumbnails/".$name)."' where id='".mysqli_real_escape_string($db,$id)."' limit 1");
 		}
 
 		// Redirect to where they came from
@@ -87,11 +87,11 @@
 
 	if(isset($redirect)) $redirect = str_replace("\'", "'", $redirect);
 
-	$result = mysql_query("select * from images where id = '$id'", $db);
+	$result = mysqli_query($db, "select * from images where id = '$id'");
 
-	$image = mysql_fetch_assoc($result);
+	$image = mysqli_fetch_assoc($result);
 
-	if(mysql_num_rows($result) == 0) {
+	if(mysqli_num_rows($result) == 0) {
 		// possibly creating a new image
 		$image = array();
 		$image['id'] = $id;
@@ -176,9 +176,9 @@
 						<table style="margin-left: 1.5em;">
 						<?php
 							// Get the assigned regions
-							$regions = mysql_query("select regions.title as title, regions.id as rid from region_assignments, regions where region_assignments.rid = regions.id and region_assignments.sid = '".mysql_real_escape_string($id)."'", $db);
+							$regions = mysqli_query($db,"select regions.title as title, regions.id as rid from region_assignments, regions where region_assignments.rid = regions.id and region_assignments.sid = '".mysqli_real_escape_string($db,$id)."'");
 							$count = 0;
-							while($region = mysql_fetch_assoc($regions)) {
+							while($region = mysqli_fetch_assoc($regions)) {
 								echo "<tr><td>".$region['title']."</td><td><input type=\"button\" value=\"Remove\" onClick=\"javascript:remove_region('".$id."', '".$region['rid']."');\" /></td></tr>";
 								$count++;
 							}
@@ -192,8 +192,8 @@
 						<select name="additional_region">
 						<?php
 							// Get the regions
-							$regions = mysql_query("select * from regions order by title asc", $db);
-							while($region = mysql_fetch_assoc($regions)) {
+							$regions = mysqli_query($db,"select * from regions order by title asc");
+							while($region = mysqli_fetch_assoc($regions)) {
 								if($region['id'] == -1) continue;
 								echo "<option value=\"".$region['id']."\">".$region['title']."</option>";
 							}
@@ -214,10 +214,10 @@
 						<?php
 							// Determine the image's topic/theme
 
-							$result = mysql_query("select topic_assignments.tid as tid, topics.title as title from topics, topic_assignments where topic_assignments.sid='".$image['id']."' and topic_assignments.tid = topics.id", $db);
+							$result = mysqli_query($db,"select topic_assignments.tid as tid, topics.title as title from topics, topic_assignments where topic_assignments.sid='".$image['id']."' and topic_assignments.tid = topics.id");
 
 							$count = 0;
-							while($row = mysql_fetch_assoc($result)) {
+							while($row = mysqli_fetch_assoc($result)) {
 								echo "<tr><td>".$row['title']."</td><td><input type=\"button\" value=\"Remove\" onClick=\"javascript:remove_topic('".$id."', '".$row['tid']."');\" /></td></tr>";
 								$count++;
 							}
@@ -233,8 +233,8 @@
 
 							<?php
 								// Get the topics
-								$topics = mysql_query("select * from topics group by title order by title", $db);
-								while($topic = mysql_fetch_assoc($topics)) {
+								$topics = mysqli_query($db,"select * from topics group by title order by title");
+								while($topic = mysqli_fetch_assoc($topics)) {
 									$selected = "";
 
 									if($topic_id == $topic['id']) $selected = "selected";
@@ -262,7 +262,7 @@
 					<br />
 
 					<?php
-						$keywords = fetch_keywords_by_sid($image['id']);
+						$keywords = fetch_keywords_by_sid($db, $image['id']);
 
 						$keyword_str = "";
 
@@ -284,10 +284,10 @@
 						<table>
 						<?php
 						// List the standards currently applied
-						$standards = mysql_query("select standards_data.id as id, standards_cal.grade_id as grade_id, standards_cal.standard_id as standard_id, standards_cal.description as description from standards_cal, standards_data where image_id = '$id' and standards_data.sid = standards_cal.id and standards_data.stype = 0", $db);
+						$standards = mysqli_query($db,"select standards_data.id as id, standards_cal.grade_id as grade_id, standards_cal.standard_id as standard_id, standards_cal.description as description from standards_cal, standards_data where image_id = '$id' and standards_data.sid = standards_cal.id and standards_data.stype = 0");
 
 						$count = 0;
-						while($standard = mysql_fetch_assoc($standards)) {
+						while($standard = mysqli_fetch_assoc($standards)) {
 							$count++;
 							if($standard['grade_id'] == "0") $standard['grade_id'] = "K";
 							print "<tr><td><p>".$standard['grade_id'].".".$standard['standard_id']." - ".$standard['description']."</p></td><td><input type=\"button\" value=\"Remove\" onClick=\"javascript:remove_standard('".$id."', '".$standard['id']."', 0);\" /></td></tr>";
@@ -300,9 +300,9 @@
 						<select name="additional_cal_standard" style="width: 500px;">
 							<option>Assign Additional California Standard</option>
 							<?php
-								$result_standards = mysql_query("select id, grade_id, standard_id, description from standards_cal order by grade_id, standard_id", $db);
+								$result_standards = mysqli_query($db, "select id, grade_id, standard_id, description from standards_cal order by grade_id, standard_id");
 
-								while($myrow_standards = mysql_fetch_assoc($result_standards)) {
+								while($myrow_standards = mysqli_fetch_assoc($result_standards)) {
 									$stand = substr($myrow_standards['description'], 0, 80);
 									if($myrow_standards['grade_id'] == "0") $myrow_standards['grade_id'] = "K";
 									print "<option value=\"".$myrow_standards['id']."\" $s>".$myrow_standards['grade_id'].".".$myrow_standards['standard_id']." - $stand...</option>\n";
@@ -353,8 +353,8 @@
 
 						<?php
 							// Get the collections
-							$collections = mysql_query("select id, name, code from collections order by name asc", $db);
-							while($collection = mysql_fetch_assoc($collections)) {
+							$collections = mysqli_query($db,"select id, name, code from collections order by name asc");
+							while($collection = mysqli_fetch_assoc($collections)) {
 								$selected = "";
 
 								if($image['collection'] == $collection['id']) $selected = "selected";

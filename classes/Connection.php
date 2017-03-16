@@ -15,6 +15,13 @@ class Connection {
 		mysqli_query($this->con, "SET NAMES 'utf8'");
 	}
 
+	function __construct($db) {
+		require $this->connect_file;// <-----Folder with db credentials is above web accesible level for security
+		$this->setConnection( $db );
+		mysqli_select_db($this->con, $connect['database'] );
+		mysqli_query($this->con, "SET NAMES 'utf8'");
+	}
+
 	function setConnection($connection) {
 		$this->con = $connection;
 	}

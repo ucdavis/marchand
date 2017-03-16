@@ -2,15 +2,15 @@
 	require_once '/html/connect.inc';
 
 	if(isset($_POST['id']) && isset($_POST['action']) && isset($_POST['stype'])) {
-		$db = mysql_connect("localhost", $connect["username"], $connect["password"]);
-		mysql_select_db("lessons", $db);
+		$db = mysqli_connect("localhost", $connect["username"], $connect["password"]);
+		mysqli_select_db($db, "lessons");
 
 		if($_POST['action'] == "assign") {
 			// Add to database
-			$result = mysql_query("insert into standards_data (lesson_id, sid, stype) values('".mysql_real_escape_string($_POST['id'])."', '".mysql_real_escape_string($_POST['standard_id'])."', '".mysql_real_escape_string($_POST['stype'])."')", $db);
+			$result = mysqli_query($db, "insert into standards_data (lesson_id, sid, stype) values('".mysqli_real_escape_string($db, $_POST['id'])."', '".mysqli_real_escape_string($db, $_POST['standard_id'])."', '".mysqli_real_escape_string($db,$_POST['stype'])."')");
 		} else if($_POST['action'] == "remove") {
 			// Remove from database
-			$query = "delete from standards_data where lesson_id='".mysql_real_escape_string($_POST['id'])."' and id='".mysql_real_escape_string($_POST['standard_id'])."' and stype='".mysql_real_escape_string($_POST['stype'])."' limit 1";
-			$result = mysql_query($query, $db);
+			$query = "delete from standards_data where lesson_id='".mysqli_real_escape_string($db,$_POST['id'])."' and id='".mysqli_real_escape_string($db,$_POST['standard_id'])."' and stype='".mysqli_real_escape_string($db,$_POST['stype'])."' limit 1";
+			$result = mysqli_query($db,$query);
 		}
 	}

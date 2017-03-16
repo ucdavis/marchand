@@ -3,8 +3,8 @@
 
 	if(isset($_POST['id'])) {
 		// Add to database
-		$db = mysql_connect("localhost", $connect["username"], $connect["password"]);
-		mysql_select_db("image_archive", $db);
+		$db = mysqli_connect("localhost", $connect["username"], $connect["password"]);
+		mysqli_select_db($db,"image_archive");
 
-		$result = mysql_query("insert into region_assignments (sid, rid) values('".mysql_real_escape_string($_POST['id'])."', '".mysql_real_escape_string($_POST['region_id'])."')", $db);
+		$result = mysqli_query($db,"insert into region_assignments (sid, rid) values('".mysqli_real_escape_string($db,$_POST['id'])."', '".mysqli_real_escape_string($db,$_POST['region_id'])."')");
 	}

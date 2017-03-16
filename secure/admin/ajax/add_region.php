@@ -3,10 +3,10 @@
 
 	if(isset($_POST['title'])) {
 		// Add to database
-		$db = mysql_connect("localhost", $connect["username"], $connect["password"]);
-		mysql_select_db("image_archive", $db);
+		$db = mysqli_connect("localhost", $connect["username"], $connect["password"]);
+		mysqli_select_db($db,"image_archive");
 
-		$result = mysql_query("insert into regions (title) values('".mysql_real_escape_string($_POST['title'])."')", $db);
+		$result = mysqli_query($db,"insert into regions (title) values('".mysqli_real_escape_string($db,$_POST['title'])."')");
 
-		echo mysql_insert_id($db);
+		echo mysqli_insert_id($db);
 	}

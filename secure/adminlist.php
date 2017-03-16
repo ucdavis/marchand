@@ -100,7 +100,7 @@ foreach($classes as $row) {
 <table width="100%" >
 <?php
 $count = 1;
-while( $row = mysql_fetch_assoc( $articles )){
+while( $row = mysqli_fetch_assoc( $articles )){
 	echo ($count % 2) ? '<tr class="listLineOdd">' : '<tr class="listLine">';
 	echo '<td><p>' . $row['title'] . '</p></td>';
 ?>

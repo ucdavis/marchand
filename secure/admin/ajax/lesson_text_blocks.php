@@ -2,14 +2,14 @@
 	require_once '/html/connect.inc';
 
 	if(isset($_POST['lid']) && isset($_POST['action'])) {
-		$db = mysql_connect("localhost", $connect["username"], $connect["password"]);
-		mysql_select_db("lessons", $db);
+		$db = mysqli_connect("localhost", $connect["username"], $connect["password"]);
+		mysqli_select_db($db, "lessons");
 
 		if($_POST['action'] == "delete") {
 			// Delete text block from database, reordering in the process
-			$result = mysql_query("delete from text_blocks where text_block_num='".mysql_real_escape_string($_POST['tbid'])."' and lesson_id='".mysql_real_escape_string($_POST['lid'])."' limit 1", $db);
+			$result = mysqli_query($db, "delete from text_blocks where text_block_num='".mysqli_real_escape_string($db,$_POST['tbid'])."' and lesson_id='".mysqli_real_escape_string($db,$_POST['lid'])."' limit 1");
 
 			// Now reorder the database
-			$result = mysql_query("update text_blocks set text_block_num = text_block_num - 1 where text_block_num > '".mysql_real_escape_string($_POST['tbid'])."' and lesson_id='".mysql_real_escape_string($_POST['lid'])."'", $db);
+			$result = mysqli_query($db,"update text_blocks set text_block_num = text_block_num - 1 where text_block_num > '".mysqli_real_escape_string($db,$_POST['tbid'])."' and lesson_id='".mysqli_real_escape_string($db,$_POST['lid'])."'");
 		}
 	}

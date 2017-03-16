@@ -16,9 +16,9 @@
 
 	$lesson = array();
 
-	$db = mysql_connect("localhost", $connect["username"], $connect["password"]);
-	mysql_select_db("lessons", $db);
-	mysql_query("SET NAMES 'utf8'");
+	$db = mysqli_connect("localhost", $connect["username"], $connect["password"]);
+	mysqli_select_db($db,"lessons");
+	mysqli_query("SET NAMES 'utf8'");
 
 	if(isset($redirect)) $redirect = str_replace("\\", "", $redirect);
 
@@ -43,9 +43,9 @@
 		}
 
 		// Save the data
-		$result = mysql_query("replace into lessons ($ext1 title, creator, is_university, is_middle_school, is_high_school, is_elementary) values($ext2 '".mysql_real_escape_string($title)."', '".mysql_real_escape_string($creator)."', '".mysql_real_escape_string($is_university)."', '".mysql_real_escape_string($is_middle_school)."', '".mysql_real_escape_string($is_high_school)."', '".mysql_real_escape_string($is_elementary)."')", $db);
+		$result = mysqli_query($db,"replace into lessons ($ext1 title, creator, is_university, is_middle_school, is_high_school, is_elementary) values($ext2 '".mysqli_real_escape_string($db,$title)."', '".mysqli_real_escape_string($db,$creator)."', '".mysqli_real_escape_string($db,$is_university)."', '".mysqli_real_escape_string($db,$is_middle_school)."', '".mysqli_real_escape_string($db,$is_high_school)."', '".mysqli_real_escape_string($db,$is_elementary)."')");
 
-		$id = mysql_insert_id($db);
+		$id = mysqli_insert_id($db);
 
 		// Determine any text boxes submitted
 		for($i = 1; ; $i++) {
@@ -56,7 +56,7 @@
 				$text_block_num = $i;
 
 				if($title == 'Title') break;
-				$result = mysql_query("replace into text_blocks (title, body, lesson_id, text_block_num) values('".mysql_real_escape_string($title)."', '".mysql_real_escape_string($body)."', '".mysql_real_escape_string($lesson_id)."', '".mysql_real_escape_string($text_block_num)."')");
+				$result = mysqli_query($db,"replace into text_blocks (title, body, lesson_id, text_block_num) values('".mysqli_real_escape_string($db, $title)."', '".mysqli_real_escape_string($db, $body)."', '".mysqli_real_escape_string($db,$lesson_id)."', '".mysqli_real_escape_string($db,$text_block_num)."')");
 			} else {
 				break;
 			}
@@ -75,7 +75,7 @@
 					// They entered no text
 					$body = "";
 				}
-				$result = mysql_query("replace into documents (body, sid, caption_override, document_num, lesson_id) values('".mysql_real_escape_string($body)."', '".mysql_real_escape_string($sid)."', '".mysql_real_escape_string($caption_override)."', '".mysql_real_escape_string($document_num)."', '".mysql_real_escape_string($lesson_id)."')");
+				$result = mysqli_query($db,"replace into documents (body, sid, caption_override, document_num, lesson_id) values('".mysqli_real_escape_string($db,$body)."', '".mysqli_real_escape_string($db,$sid)."', '".mysqli_real_escape_string($db,$caption_override)."', '".mysqli_real_escape_string($db,$document_num)."', '".mysqli_real_escape_string($db,$lesson_id)."')");
 			} else {
 				break;
 			}
@@ -88,9 +88,9 @@
 
 	// Look up lesson if available
 	if($id != -1) {
-		$result = mysql_query("select * from lessons where id='".mysql_real_escape_string($id)."'", $db);
+		$result = mysqli_query($db,"select * from lessons where id='".mysqli_real_escape_string($db,$id)."'");
 
-		$lesson = mysql_fetch_assoc($result);
+		$lesson = mysqli_fetch_assoc($db,$result);
 	}
 
 	include '/snippets/header.htm';
@@ -172,9 +172,9 @@
 
 							if($id > 0) {
 								// Get the assigned regions
-								$regions = mysql_query("select image_archive.regions.title as title, image_archive.regions.id as rid from region_assignments, image_archive.regions where region_assignments.rid = regions.id and region_assignments.lid = '".mysql_real_escape_string($id)."'", $db);
+								$regions = mysqli_query($db,"select image_archive.regions.title as title, image_archive.regions.id as rid from region_assignments, image_archive.regions where region_assignments.rid = regions.id and region_assignments.lid = '".mysqli_real_escape_string($db,$id)."'");
 
-								while($region = mysql_fetch_assoc($regions)) {
+								while($region = mysqli_fetch_assoc($regions)) {
 									echo "<tr><td>".$region['title']."</td><td><input type=\"button\" value=\"Remove\" onClick=\"javascript:lesson_remove_region('".$id."', '".$region['rid']."');\" /></td></tr>";
 									$count++;
 								}
@@ -189,8 +189,8 @@
 						<select name="additional_region">
 						<?php
 							// Get the regions
-							$regions = mysql_query("select * from image_archive.regions order by title asc", $db);
-							while($region = mysql_fetch_assoc($regions)) {
+							$regions = mysqli_query($db,"select * from image_archive.regions order by title asc");
+							while($region = mysqli_fetch_assoc($regions)) {
 								if($region['id'] == -1) continue;
 								echo "<option value=\"".$region['id']."\">".$region['title']."</option>";
 							}
@@ -213,9 +213,9 @@
 							$count = 0;
 
 							if($id > 0) {
-								$result = mysql_query("select topic_assignments.tid as tid, image_archive.topics.title as title from image_archive.topics, topic_assignments where topic_assignments.lid='".mysql_real_escape_string($id)."' and topic_assignments.tid = topics.id", $db);
+								$result = mysqli_query($db, "select topic_assignments.tid as tid, image_archive.topics.title as title from image_archive.topics, topic_assignments where topic_assignments.lid='".mysqli_real_escape_string($db,$id)."' and topic_assignments.tid = topics.id");
 
-								while($row = mysql_fetch_assoc($result)) {
+								while($row = mysqli_fetch_assoc($result)) {
 									echo "<tr><td>".$row['title']."</td><td><input type=\"button\" value=\"Remove\" onClick=\"javascript:lesson_remove_topic('".$id."', '".$row['tid']."');\" /></td></tr>";
 									$count++;
 								}
@@ -232,8 +232,8 @@
 
 							<?php
 								// Get the topics
-								$topics = mysql_query("select * from image_archive.topics group by title order by title", $db);
-								while($topic = mysql_fetch_assoc($topics)) {
+								$topics = mysqli_query($db,"select * from image_archive.topics group by title order by title");
+								while($topic = mysqli_fetch_assoc($topics)) {
 									print "<option value=\"".$topic['id']."\">".$topic['title']."</option>".chr(10);
 								}
 							?>
@@ -258,9 +258,9 @@
 
 						if($id > 0) {
 							// List the standards currently applied
-							$standards = mysql_query("select standards_data.id as id, image_archive.standards_cal.grade_id as grade_id, image_archive.standards_cal.standard_id as standard_id, image_archive.standards_cal.description as description from image_archive.standards_cal, standards_data where lesson_id = '".mysql_real_escape_string($id)."' and standards_data.sid = image_archive.standards_cal.id and standards_data.stype = 0", $db);
+							$standards = mysqli_query($db,"select standards_data.id as id, image_archive.standards_cal.grade_id as grade_id, image_archive.standards_cal.standard_id as standard_id, image_archive.standards_cal.description as description from image_archive.standards_cal, standards_data where lesson_id = '".mysqli_real_escape_string($db, $id)."' and standards_data.sid = image_archive.standards_cal.id and standards_data.stype = 0");
 
-							while($standard = mysql_fetch_assoc($standards)) {
+							while($standard = mysqli_fetch_assoc($standards)) {
 								$count++;
 								if($standard['grade_id'] == "0") $standard['grade_id'] = "K";
 								print "<tr><td><p>".$standard['grade_id'].".".$standard['standard_id']." - ".$standard['description']."</p></td><td><input type=\"button\" value=\"Remove\" onClick=\"javascript:lesson_remove_standard('".$id."', '".$standard['id']."', 0);\" /></td></tr>";
@@ -274,9 +274,9 @@
 						<select name="additional_cal_standard" style="width: 500px;">
 							<option>Assign Additional California Standard</option>
 							<?php
-								$result_standards = mysql_query("select id, grade_id, standard_id, description from image_archive.standards_cal order by grade_id, standard_id", $db);
+								$result_standards = mysqli_query($db,"select id, grade_id, standard_id, description from image_archive.standards_cal order by grade_id, standard_id");
 
-								while($myrow_standards = mysql_fetch_assoc($result_standards)) {
+								while($myrow_standards = mysqli_fetch_assoc($result_standards)) {
 									$stand = substr($myrow_standards['description'], 0, 80);
 									if($myrow_standards['grade_id'] == "0") $myrow_standards['grade_id'] = "K";
 									print "<option value=\"".$myrow_standards['id']."\" $s>".$myrow_standards['grade_id'].".".$myrow_standards['standard_id']." - $stand...</option>\n";
@@ -337,13 +337,13 @@
 						$new_num = 1;
 
 						// Look for exisiting text blocks
-						mysql_select_db("lessons", $db);
-						mysql_query("SET NAMES 'utf8'", $db);
-						$result = mysql_query("select * from text_blocks where lesson_id = '".mysql_real_escape_string($id)."' order by text_block_num asc", $db);
+						mysqli_select_db($db,"lessons");
+						mysqli_query($db,"SET NAMES 'utf8'");
+						$result = mysqli_query($db,"select * from text_blocks where lesson_id = '".mysqli_real_escape_string($db, $id)."' order by text_block_num asc");
 
-						if(mysql_num_rows($result) > 0) {
+						if(mysqli_num_rows($result) > 0) {
 
-							while($row = mysql_fetch_assoc($result)) {
+							while($row = mysqli_fetch_assoc($result)) {
 
 								echo "<tr>
 									<td>
@@ -385,12 +385,12 @@
 
 						// Look for exisiting documents
 
-						mysql_select_db("lessons", $db);
-						$result = mysql_query("select * from documents where lesson_id = '".mysql_real_escape_string($id)."' order by document_num asc", $db);
+						mysqli_select_db($db,"lessons");
+						$result = mysqli_query($db,"select * from documents where lesson_id = '".mysqli_real_escape_string($db,$id)."' order by document_num asc");
 
-						if(mysql_num_rows($result) > 0) {
+						if(mysqli_num_rows($result) > 0) {
 
-							while($row = mysql_fetch_assoc($result)) {
+							while($row = mysqli_fetch_assoc($result)) {
 
 								echo "<tr>
 										<td>

@@ -3,8 +3,8 @@
 
 	if(isset($_POST['id']) && isset($_POST['stype'])) {
 		// Add to database
-		$db = mysql_connect("localhost", $connect["username"], $connect["password"]);
-		mysql_select_db("image_archive", $db);
+		$db = mysqli_connect("localhost", $connect["username"], $connect["password"]);
+		mysqli_select_db($db,"image_archive");
 
-		$result = mysql_query("insert into standards_data (image_id, sid, stype) values('".mysql_real_escape_string($_POST['id'])."', '".mysql_real_escape_string($_POST['standard_id'])."', '".mysql_real_escape_string($_POST['stype'])."')", $db);
+		$result = mysqli_query($db,"insert into standards_data (image_id, sid, stype) values('".mysqli_real_escape_string($db,$_POST['id'])."', '".mysqli_real_escape_string($db,$_POST['standard_id'])."', '".mysqli_real_escape_string($db,$_POST['stype'])."')");
 	}

@@ -3,9 +3,9 @@
 
 	if(isset($_POST['id']) && isset($_POST['stype'])) {
 		// Add to database
-		$db = mysql_connect("localhost", $connect["username"], $connect["password"]);
-		mysql_select_db("image_archive", $db);
+		$db = mysqli_connect("localhost", $connect["username"], $connect["password"]);
+		mysqli_select_db($db,"image_archive");
 
-		$query = "delete from standards_data where image_id='".mysql_real_escape_string($_POST['id'])."' and id='".mysql_real_escape_string($_POST['standard_id'])."' and stype='".mysql_real_escape_string($_POST['stype'])."' limit 1";
-		$result = mysql_query($query, $db);
+		$query = "delete from standards_data where image_id='".mysqli_real_escape_string($db,$_POST['id'])."' and id='".mysqli_real_escape_string($db,$_POST['standard_id'])."' and stype='".mysqli_real_escape_string($db,$_POST['stype'])."' limit 1";
+		$result = mysqli_query($db, $query);
 	}

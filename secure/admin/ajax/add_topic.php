@@ -3,12 +3,12 @@
 
 	if(isset($_POST['title'])) {
 		// Add to database
-		$db = mysql_connect("localhost", $connect["username"], $connect["password"]);
-		mysql_select_db("image_archive", $db);
+		$db = mysqli_connect("localhost", $connect["username"], $connect["password"]);
+		mysqli_select_db($db,"image_archive");
 
-		$query = "insert into topics (title, code, collection) values('".mysql_real_escape_string($_POST['title'])."', 'NA', 'US')";
+		$query = "insert into topics (title, code, collection) values('".mysqli_real_escape_string($db,$_POST['title'])."', 'NA', 'US')";
 
-		$result = mysql_query($query, $db);
+		$result = mysqli_query($db,$query);
 
-		echo mysql_insert_id($db);
+		echo mysqli_insert_id($db);
 	}
