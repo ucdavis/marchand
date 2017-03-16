@@ -66,7 +66,7 @@ function fetch_image($db, $id) {
 
 	limit 1");
 	if($result == false) {
-		echo "There was a database error:".mysqli_error()."<br />";
+		echo "There was a database error:".mysqli_error($db)."<br />";
 		return null;
 	}
 
@@ -84,7 +84,7 @@ function fetch_image_topics($db, $id) {
 	and topic_assignments.tid = topics.id");
 
 	if($result == false) {
-		echo "There was a database error:".mysqli_error()."<br />";
+		echo "There was a database error:".mysqli_error($db)."<br />";
 		return null;
 	}
 
@@ -104,7 +104,7 @@ function fetch_image_regions($db, $id) {
 	and region_assignments.rid = regions.id");
 
 	if($result == false) {
-		echo "There was a database error:".mysqli_error()."<br />";
+		echo "There was a database error:".mysqli_error($db)."<br />";
 		return null;
 	}
 

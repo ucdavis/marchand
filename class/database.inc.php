@@ -10,7 +10,7 @@ class database {
 
 		$result = mysqli_query(database::$handle, $sql);
 		if($result == false) {
-			echo "An error occurred while executing the statement: ".mysqli_error()."<br />";
+			echo "An error occurred while executing the statement: ".mysqli_error(database::$handle)."<br />";
 			return(false);
 		}
 
@@ -30,13 +30,13 @@ class database {
 		database::$handle = mysqli_connect("localhost", "hc", "admin");
 
 		if(database::$handle == false) {
-			echo "Could not connect to database: ".mysqli_error()."<br />";
+			echo "Could not connect to database: ".mysqli_error(database::$handle)."<br />";
 			return;
 		}
 
 		$err = mysqli_select_db(database::$handle, "calaggie");
 		if($err == false) {
-			echo "Connected but could not select database: ".mysqli_error()."<br />";
+			echo "Connected but could not select database: ".mysqli_error(database::$handle)."<br />";
 			return;
 		}
 

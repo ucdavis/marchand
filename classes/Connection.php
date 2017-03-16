@@ -96,7 +96,7 @@ class Connection {
 					LIMIT 1";
 		$result = mysqli_query($this->con, $query);
 		if($result == false) {
-			echo "Error in updating news: ".mysqli_error()."<br />";
+			echo "Error in updating news: ".mysqli_error($this->con)."<br />";
 			die;
 		}
 
@@ -335,7 +335,7 @@ class Connection {
 
 				$query = "UPDATE hp_calendar SET pdf_link = '/pdfs/$upload_file' WHERE classid = $classid";
 
-				mysqli_query($this->con, $query) or die(mysqli_error());
+				mysqli_query($this->con, $query) or die(mysqli_error($this->con));
 
 				return true;
 			}
