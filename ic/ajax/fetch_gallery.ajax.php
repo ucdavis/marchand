@@ -15,8 +15,8 @@
 
 	session_start();
 
-	$db = mysql_connect("localhost", $connect["username"], $connect["password"]);
-	mysql_select_db("image_archive", $db);
+	$db = mysqli_connect("localhost", $connect["username"], $connect["password"]);
+	mysqli_select_db($db, "image_archive");
 
 	$and = false; // flag used to indicate if we need to specify an AND in the query string
 
@@ -34,7 +34,7 @@
 
 	// Build the query string
 	if($_POST['collection'] != -1) {
-		$collection_str = "images.collection='".mysql_real_escape_string((int)$_POST['collection'])."'";
+		$collection_str = "images.collection='".mysqli_real_escape_string($db, (int)$_POST['collection'])."'";
 		$and = true;
 	} else {
 		$collection_str = "";
@@ -44,7 +44,7 @@
 		if($and) {
 			$region_str = "and ";
 		}
-		$region_str .= "region_assignments.rid='".mysql_real_escape_string((int)$_POST['region'])."' and region_assignments.sid = images.id";
+		$region_str .= "region_assignments.rid='".mysqli_real_escape_string($db, (int)$_POST['region'])."' and region_assignments.sid = images.id";
 		$region_table_str = ", region_assignments";
 		$and = true;
 	} else {
@@ -56,7 +56,7 @@
 		if($and) {
 			$topic_str = "and ";
 		}
-		$topic_str .= "topic_assignments.sid = images.id and topic_assignments.tid='".mysql_real_escape_string((int)$_POST['topic'])."'";
+		$topic_str .= "topic_assignments.sid = images.id and topic_assignments.tid='".mysqli_real_escape_string($db, (int)$_POST['topic'])."'";
 		$topic_table_str = ", topic_assignments";
 		$and = true;
 	} else {
@@ -68,32 +68,32 @@
 		if($and) {
 			$standard_cal_str = "and ";
 		}
-		$standard_cal_str .= "standards_data.image_id = images.id and standards_data.sid = '".mysql_real_escape_string($_POST['standard_cal'])."'";
+		$standard_cal_str .= "standards_data.image_id = images.id and standards_data.sid = '".mysqli_real_escape_string($db,$_POST['standard_cal'])."'";
 		$and = true;
 	} else {
 		$standard_cal_str = "";
 	}
-	
+
 	if($_POST['standard_cal'] != -1) {
 		$standard_table_str = ", standards_data";
 	} else {
 		$standard_table_str = "";
 	}
-	
+
 	$query_term_str = "";
 	if(strlen($_POST['query']) > 0) {
 		if($and) {
 			$query_term_str = "and ";
 		}
-		$query_term_str .= "match(title, card, citation, notes) against ('".mysql_real_escape_string($_POST['query'])."')";
+		$query_term_str .= "match(title, card, citation, notes) against ('".mysqli_real_escape_string($db, $_POST['query'])."')";
 		$and = true;
 	} else {
 		$query_term_str = "";
 	}
-	
+
 	$data = array();
 	$standard_str = "";
-	
+
 	if((strlen($collection_str) == 0) && (strlen($region_str) == 0) && (strlen($standard_str) == 0) && (strlen($topic_str) == 0) && (strlen($standard_cal_str) == 0) && (strlen($query_term_str) == 0))
 		$where_str = "where id = -1"; // abort, there should be nothing
 	else {
@@ -103,50 +103,49 @@
 			$where_str = "where public = 1 and ";
 		}
 	}
-	
+
 	$start = $_POST['index'];
 	$limit = $_POST['per_page'];
-	
+
 	// Query for the images
 	if(!isset($standard_str)) $standard_str = "";
 	$query = "select images.id, images.thumbnail, images.title, images.card, images.citation from images $standard_table_str $topic_table_str $region_table_str $where_str $collection_str $region_str $standard_str $topic_str $standard_cal_str $query_term_str limit $start, $limit";
 
 	$data['query'] = $query;
-	$result = mysql_query($query, $db);
+	$result = mysqli_query($db, $query);
 	if($result == false) {
-		echo "Query error:".mysql_error($db).chr(10).chr(10);
+		echo "Query error:".mysqli_error($db).chr(10).chr(10);
 		echo "Query was:".$query.chr(10).chr(10);
 		die;
 	}
-	
+
 	$images = array();
-	while($row = mysql_fetch_assoc($result)) {
+	while($row = mysqli_fetch_assoc($result)) {
 		// do a little sanitizing
 		$row['title'] = utf8_encode($row['title']);
 		$row['card'] = utf8_encode(stripslashes($row['card']));
 		$row['citation'] = utf8_encode(stripslashes($row['citation']));
-	
+
 		$row['card'] = str_replace("\\\"", "\"", $row['card']);
 		$row['citation'] = str_replace("\\\"", "\"", $row['citation']);
-	
+
 		$images[] = $row;
 	}
-	
+
 	// Query for the total
 	$query = "select count(images.id) from images $standard_table_str $topic_table_str $region_table_str $where_str $collection_str $region_str $standard_str $topic_str $standard_cal_str $query_term_str";
 	//$data['query2'] = $query;
-	$result = mysql_query($query, $db);
+	$result = mysqli_query($db, $query);
 	if($result == false) {
-		echo "Query2 error:".mysql_error($db)."<br />";
+		echo "Query2 error:".mysqli_error($db)."<br />";
 		echo "Query2 was:".$query."<br />";
 		die;
 	}
-	
-	$total = mysql_fetch_assoc($result);
+
+	$total = mysqli_fetch_assoc($result);
 	$total = $total['count(images.id)'];
-	
+
 	$data['total'] = $total;
 	$data['images'] = $images;
-	
+
 	echo json_encode($data);
-	
