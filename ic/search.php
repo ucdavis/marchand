@@ -13,9 +13,9 @@
 	include "../snippets/header.htm";
 	include "../snippets/navigation.php";
 
+	$Connection = new Connection();
 	$db = mysqli_connect("localhost", $connect["username"], $connect["password"]);
 	mysqli_select_db($db, "image_archive");
-	$Connection = new Connection($db);
 
 	$quote = $Connection->GetRandomQuote();
 ?>
