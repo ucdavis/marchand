@@ -308,7 +308,7 @@
 						<select name="additional_nat_standard" style="width: 500px;">
 							<option>Assign Additional National/World Standard</option>
 							<?php
-								$standards = dsp_fetch_standards_nat();
+								$standards = dsp_fetch_standards_nat($db);
 
 								foreach($standards as $standard) {
 									print "<option value=\"".$standard['id']."\">".$standard['label'];
