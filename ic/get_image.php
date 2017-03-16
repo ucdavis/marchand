@@ -17,12 +17,12 @@
 		$public = true;
 	} else {
 		// Get the image information from the database
-		$db = mysql_connect("localhost", $connect["username"], $connect["password"]);
-		mysql_select_db("image_archive", $db);
+		$db = mysqli_connect("localhost", $connect["username"], $connect["password"]);
+		mysqli_select_db($db, "image_archive");
 
-		$result = mysql_query("select file, thumbnail, public from images where id = '".mysql_real_escape_string($id)."'", $db);
+		$result = mysqli_query($db, "select file, thumbnail, public from images where id = '".mysqli_real_escape_string($db, $id)."'");
 
-		$image = mysql_fetch_assoc($result);
+		$image = mysqli_fetch_assoc($result);
 
 		if($thumb) {
 			$src = "/var/www/html/historyproject.ucdavis.edu/marchandslides.bak/".$image['thumbnail'];

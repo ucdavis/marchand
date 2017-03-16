@@ -30,8 +30,8 @@
 		$editor = 0;
 	}
 
-	$db = mysql_connect("localhost", "hc", "admin");
-	mysql_select_db("image_archive", $db);
+	$db = mysqli_connect("localhost", "hc", "admin");
+	mysqli_select_db($db, "image_archive");
 
 	## Get titles and codes of stuff
 	$sub_s = rtrim($sub_s,"/");
@@ -73,8 +73,8 @@
 			## Show Collections
 			#print "Standard
 			print "<TABLE WIDTH=100%><TR BGCOLOR=557799><TD>Standard</TD><TD>Images</TD><TD>Description</TD></TR>";
-			$result = mysql_query("select * from standards_cal  where grade_id = '$s' order by grade_id, standard_id, sub_standard_num", $db);
-			while ($myrow = mysql_fetch_row($result)) {
+			$result = mysqli_query($db, "select * from standards_cal  where grade_id = '$s' order by grade_id, standard_id, sub_standard_num");
+			while ($myrow = mysqli_fetch_row($result)) {
 				#$count=$sub_standard_count[$myrow[0]];
 				#print "UPDATE Standards_Cal SET CurrentCount = '$count' WHERE ID = '$myrow[0]' LIMIT 1;<BR>";
 				$count=$myrow[5];
@@ -89,17 +89,17 @@
 
 			print "<table border=\"0\">";
 			// Get standard ID from standard
-			$result = mysql_query("select * from standards_cal where standard_id = '$s_id' and sub_standard_num = '$sub_s'", $db);
+			$result = mysqli_query($db, "select * from standards_cal where standard_id = '$s_id' and sub_standard_num = '$sub_s'");
 
-			while($myrow = mysql_fetch_assoc($result)) {
+			while($myrow = mysqli_fetch_assoc($result)) {
 				$sid = $myrow['id'];
 			}
 
-			$result = mysql_query("select * from standards_data where sid ='$sid'", $db);
-			while ($myrow = mysql_fetch_assoc($result)) {
+			$result = mysqli_query($db, "select * from standards_data where sid ='$sid'");
+			while ($myrow = mysqli_fetch_assoc($result)) {
 
-				$result_details = mysql_query("select * from images where id = '".$myrow['image_id']."' and (public = '1' $edit) limit 1",$db);
-				while ($myrow_details = mysql_fetch_assoc($result_details)) {
+				$result_details = mysqli_query($db, "select * from images where id = '".$myrow['image_id']."' and (public = '1' $edit) limit 1");
+				while ($myrow_details = mysqli_fetch_assoc($result_details)) {
 
 					$short_desc = substr($myrow_details['title'], 0, 100)."...";
 					$img = $s_id."_".$sub_s."/$myrow_details[0].html";
@@ -134,8 +134,8 @@
 		## Updated 04/16/2008 - DONE
 		if(!$major_title_url && !$minor_title_url) {
 			print "<DIV ID=navcontainer><UL ID=navlist>";
-			$result = mysql_query("select images.id, topic_assignment.topic from images, topic_assignment where images.id = topic_assignment.pid and images.collection = '$collection_id' group by topic", $db);
-			while ($myrow = mysql_fetch_row($result)) {
+			$result = mysqli_query($db, "select images.id, topic_assignment.topic from images, topic_assignment where images.id = topic_assignment.pid and images.collection = '$collection_id' group by topic");
+			while ($myrow = mysqli_fetch_row($result)) {
 				list($major_id, $major_title, $major_code) = split("\|", major_info_by_code($db, $myrow[1]));
 				$major_title_url = str_replace(" ", "_", $major_title);
 				print "<li><a href='/ic/collection/$c/$major_title_url/'>$major_title";
@@ -150,8 +150,8 @@
 			print "<DIV ID=navcontainer><UL ID=navlist>";
 
 			// Get subtopic IDs
-			$result_minor_id = mysql_query("select subtopic from topic_assignment where topic = '$major_id' group by subtopic", $db);
-			while ($myrow_minor_id = mysql_fetch_row($result_minor_id)) {
+			$result_minor_id = mysqli_query($db, "select subtopic from topic_assignment where topic = '$major_id' group by subtopic");
+			while ($myrow_minor_id = mysqli_fetch_row($result_minor_id)) {
 				## Get Minors Title
 				list($minor_id,$minor_title,$minor_code)=split("\|",minor_info_by_code($db,$myrow_minor_id[0]));
 				$minor_title_url=str_replace(" ","_", $minor_title);
@@ -171,12 +171,12 @@
 
 			// Get Minors Title
 			$query = "select pid from topic_assignment where topic = '$major_id' and subtopic = '$minor_id'";
-			$result_major_title = mysql_query($query, $db);
-			while ($myrow_major_title = mysql_fetch_row($result_major_title)) {
+			$result_major_title = mysqli_query($db, $query);
+			while ($myrow_major_title = mysqli_fetch_row($result_major_title)) {
 
-				$result = mysql_query("select * from images where id = '$myrow_major_title[0]' and collection = '$collection_id' and (public = '1' $edit) limit 1", $db);
+				$result = mysqli_query($db, "select * from images where id = '$myrow_major_title[0]' and collection = '$collection_id' and (public = '1' $edit) limit 1");
 
-				while($myrow = mysql_fetch_assoc($result)) {
+				while($myrow = mysqli_fetch_assoc($result)) {
 					$short_desc = $myrow['title'];
 					$img = $myrow['id'].".html";
 					//$old_num = $myrow[8];
@@ -214,13 +214,13 @@
 		print "<hr />Collection";
 		print "<div id=\"navcontainer\">";
 		print "<ul id=\"navlist\">";
-		$result = mysql_query("select * from collections order by name", $db);
-		while ($myrow = mysql_fetch_assoc($result)) {
+		$result = mysqli_query($db, "select * from collections order by name");
+		while ($myrow = mysqli_fetch_assoc($result)) {
 			$count = 0;
 
 			// Get image count
-			$result_count = mysql_query("select count(*) from images where collection = '".$myrow['id']."' and (public = '1' $edit)", $db);
-			while($myrow_count = mysql_fetch_row($result_count)) {
+			$result_count = mysqli_query($db, "select count(*) from images where collection = '".$myrow['id']."' and (public = '1' $edit)");
+			while($myrow_count = mysqli_fetch_row($result_count)) {
 				$count = $myrow_count[0];
 			}
 
@@ -234,12 +234,12 @@
 		print "<hr />State Standard";
 		print "<div id=\"navcontainer\">";
 		print "<ul id=navlist>";
-		$result = mysql_query("select * from standards_cal group by grade_id order by grade_id, standard_id, sub_standard_num", $db);
-		while ($myrow = mysql_fetch_row($result)) {
+		$result = mysqli_query($db, "select * from standards_cal group by grade_id order by grade_id, standard_id, sub_standard_num");
+		while ($myrow = mysqli_fetch_row($result)) {
 			$c = 0;
 			## Get current count
-			$result_count = mysql_query("SELECT current_count from standards_cal where grade_id = '$myrow[1]'",$db);
-			while($myrow_count = mysql_fetch_row($result_count)) {
+			$result_count = mysqli_query($db, "SELECT current_count from standards_cal where grade_id = '$myrow[1]'");
+			while($myrow_count = mysqli_fetch_row($result_count)) {
 				$c = $myrow_count[0] + $c;
 			}
 

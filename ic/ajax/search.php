@@ -1,8 +1,7 @@
 <?php
 	if(!isset($_POST['query'])) die; // need valid input
-	
-	$db = mysql_connect("localhost", "hc", "admin");
-	mysql_select_db("image_archive", $db);
-	
-	$result = mysql_query("select id, thumbnail from images where match(title, card, citation, notes) against ('".mysql_real_escape_string($_POST['query'])."')", $db);
-	
+
+	$db = mysqli_connect("localhost", "hc", "admin");
+	mysqli_select_db($db, "image_archive");
+
+	$result = mysqli_query($db, "select id, thumbnail from images where match(title, card, citation, notes) against ('".mysqli_real_escape_string($db, $_POST['query'])."')");

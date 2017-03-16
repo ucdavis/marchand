@@ -9,15 +9,15 @@
 	require_once "../classes/Connection.php";
 	require_once '../app/ic.inc.php';
 	require_once '../html/connect.inc';
-	$Connection = new Connection();
-
-	$quote = $Connection->GetRandomQuote();
 
 	include "../snippets/header.htm";
 	include "../snippets/navigation.php";
 
-	$db = mysql_connect("localhost", $connect["username"], $connect["password"]);
-	mysql_select_db("image_archive", $db);
+	$db = mysqli_connect("localhost", $connect["username"], $connect["password"]);
+	mysqli_select_db($db, "image_archive");
+	$Connection = new Connection($db);
+
+	$quote = $Connection->GetRandomQuote();
 ?>
 
 <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
