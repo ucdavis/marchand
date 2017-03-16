@@ -29,22 +29,22 @@ function fetch_standards_ca($db, $id = -1) {
 }
 
 // if $id is passed, we look up the standards of that particular image id, else we return all national standards
-function fetch_standards_nat($id = -1) {
+function fetch_standards_nat($db, $id = -1) {
 	$standards = array();
 
 	if($id == -1) {
-		$result = mysql_query("select id, era, us_world, title from standards_nat order by us_world, era asc");
+		$result = mysqli_query($db, "select id, era, us_world, title from standards_nat order by us_world, era asc");
 
-		while($standard = mysql_fetch_assoc($result)) {
+		while($standard = mysqli_fetch_assoc($result)) {
 			if($standard['us_world'] == 0) $label = "US"; else $label = "World";
 			$standard['label'] = $label.' Era '.$standard['era'].' - '.$standard['title'];
 
 			$standards[] = $standard;
 		}
 	} else {
-		$result = mysql_query("select standards_data.id as id, standards_nat.era as era, standards_nat.us_world as us_world, standards_nat.title as title from standards_nat, standards_data where standards_nat.id = standards_data.sid and standards_data.stype = 1 and standards_data.image_id = '".mysql_real_escape_string($id)."'");
+		$result = mysqli_query($db, "select standards_data.id as id, standards_nat.era as era, standards_nat.us_world as us_world, standards_nat.title as title from standards_nat, standards_data where standards_nat.id = standards_data.sid and standards_data.stype = 1 and standards_data.image_id = '".mysqli_real_escape_string($db, $id)."'");
 
-		while($standard = mysql_fetch_assoc($result)) {
+		while($standard = mysqli_fetch_assoc($result)) {
 			if($standard['us_world'] == 0) $label = "US"; else $label = "World";
 			$standard['label'] = $label.' Era '.$standard['era'].' - '.$standard['title'];
 
@@ -56,111 +56,111 @@ function fetch_standards_nat($id = -1) {
 }
 
 // Retrieve information about a single slide
-function fetch_image($id) {
-	$result = mysql_query("select images.id, images.file, images.citation, images.thumbnail, images.title, images.card, collections.name as collection
+function fetch_image($db, $id) {
+	$result = mysqli_query($db, "select images.id, images.file, images.citation, images.thumbnail, images.title, images.card, collections.name as collection
 
 	from images, collections
 
-	where images.id = '".mysql_real_escape_string((int)$id)."'
+	where images.id = '".mysqli_real_escape_string($db, (int)$id)."'
 	and images.collection = collections.id
 
 	limit 1");
 	if($result == false) {
-		echo "There was a database error:".mysql_error()."<br />";
+		echo "There was a database error:".mysqli_error()."<br />";
 		return null;
 	}
 
-	$image = mysql_fetch_assoc($result);
+	$image = mysqli_fetch_assoc($result);
 
 	return $image;
 }
 
-function fetch_image_topics($id) {
-	$result = mysql_query("select topics.id as tid, topics.title as title
+function fetch_image_topics($db, $id) {
+	$result = mysqli_query($db, "select topics.id as tid, topics.title as title
 
 	from topics, topic_assignments
 
-	where topic_assignments.sid = '".mysql_real_escape_string((int)$id)."'
+	where topic_assignments.sid = '".mysqli_real_escape_string($db, (int)$id)."'
 	and topic_assignments.tid = topics.id");
 
 	if($result == false) {
-		echo "There was a database error:".mysql_error()."<br />";
+		echo "There was a database error:".mysqli_error()."<br />";
 		return null;
 	}
 
 	$topics = array();
 
-	while($row = mysql_fetch_assoc($result)) $topics[] = $row;
+	while($row = mysqli_fetch_assoc($result)) $topics[] = $row;
 
 	return $topics;
 }
 
-function fetch_image_regions($id) {
-	$result = mysql_query("select regions.id as rid, regions.title as title
+function fetch_image_regions($db, $id) {
+	$result = mysqli_query($db, "select regions.id as rid, regions.title as title
 
 	from regions, region_assignments
 
-	where region_assignments.sid = '".mysql_real_escape_string((int)$id)."'
+	where region_assignments.sid = '".mysqli_real_escape_string($db, (int)$id)."'
 	and region_assignments.rid = regions.id");
 
 	if($result == false) {
-		echo "There was a database error:".mysql_error()."<br />";
+		echo "There was a database error:".mysqli_error()."<br />";
 		return null;
 	}
 
 	$regions = array();
 
-	while($row = mysql_fetch_assoc($result)) $regions[] = $row;
+	while($row = mysqli_fetch_assoc($result)) $regions[] = $row;
 
 	return $regions;
 }
 
 function minor_title($db, $mid) {
-	$result = mysql_query("select id, title, code from subtopics where title = '$mid'", $db);
-	while ($myrow = mysql_fetch_assoc($result)) {
+	$result = mysqli_query($db, "select id, title, code from subtopics where title = '$mid'", $db);
+	while ($myrow = mysqli_fetch_assoc($result)) {
 		return $myrow['id'] . "|" . $myrow['title'] . "|" . $myrow['code'];
 	}
 }
 
 function major_title($db, $mid) {
-	$result = mysql_query("select id, title, code from topics where title = '$mid'", $db);
-	while ($myrow = mysql_fetch_assoc($result)) {
+	$result = mysqli_query($db, "select id, title, code from topics where title = '$mid'", $db);
+	while ($myrow = mysqli_fetch_assoc($result)) {
 		return $myrow['id'] . "|" . $myrow['title'] . "|" . $myrow['code'];
 	}
 }
 
 function major_info_by_code($db, $mid) {
-	$result = mysql_query("select id, title, code from topics where id = '$mid'", $db);
-	while($myrow = mysql_fetch_assoc($result)) {
+	$result = mysqli_query($db, "select id, title, code from topics where id = '$mid'", $db);
+	while($myrow = mysqli_fetch_assoc($result)) {
 		return $myrow['id']."|".$myrow['title']."|".$myrow['code'];
 	}
 }
 
 function minor_info_by_code($db, $mid) {
-	$result = mysql_query("select id, title, code from subtopics where id = '$mid'", $db);
-	while ($myrow = mysql_fetch_assoc($result)) {
+	$result = mysqli_query($db, "select id, title, code from subtopics where id = '$mid'", $db);
+	while ($myrow = mysqli_fetch_assoc($result)) {
 		return $myrow['id'] . "|" . $myrow['title'] . "|" . $myrow['code'];
 	}
 }
 
 function collection_title($db,$cid) {
-	$result = mysql_query("select id, name from collections where code = '$cid'", $db);
-	while($myrow = mysql_fetch_assoc($result)) {
+	$result = mysqli_query($db, "select id, name from collections where code = '$cid'", $db);
+	while($myrow = mysqli_fetch_assoc($result)) {
 		return $myrow['id']."|".$myrow['name'];
 	}
 }
 
 function collection_info($db, $cid) {
-	$result = mysql_query("select * from collections where code = '$cid'", $db);
-	while ($myrow = mysql_fetch_assoc($result)) {
+	$result = mysqli_query($db, "select * from collections where code = '$cid'", $db);
+	while ($myrow = mysqli_fetch_assoc($result)) {
 		return $myrow['id']."|".$myrow['name']."|".$myrow['code'];
 	}
 }
 
 // Get the major and minor for an image ID
 function major_minor_by_id($db,$pid) {
-	$result = mysql_query("select topic, subtopic from topic_assignment where pid = '$pid' limit 1", $db);
-	while ($myrow = mysql_fetch_row($result)) {
+	$result = mysqli_query($db, "select topic, subtopic from topic_assignment where pid = '$pid' limit 1", $db);
+	while ($myrow = mysqli_fetch_row($result)) {
 		list($mid, $major_title) = split("\|", major_info_by_code($db, $myrow[0]));
 		list($mid, $minor_title) = split("\|", minor_info_by_code($db, $myrow[1]));
 		return $major_title . "|" . $minor_title;
@@ -197,21 +197,21 @@ function search($db, $search_words, $standard) {
 	// If a standard is needed, find the ID of it, put in $sid
 	if($standard != 'any') {
 		list($s_id,$sub_s)=split("_",$standard);
-		$result = mysql_query("SELECT ID FROM Standards_Cal WHERE StandardID = '$s_id' AND SubStandardNum = '$sub_s' LIMIT 1",$db);
-		while ($myrow = mysql_fetch_row($result)) { $sid=$myrow[0]; }
+		$result = mysqli_query($db, "SELECT ID FROM Standards_Cal WHERE StandardID = '$s_id' AND SubStandardNum = '$sub_s' LIMIT 1",$db);
+		while ($myrow = mysqli_fetch_row($result)) { $sid=$myrow[0]; }
 		}
 
 	print "<table width=\"100%\">";
 
 	## Find matching words from image text
-	$result = mysql_query("SELECT * FROM images WHERE CardText LIKE '%$search_words%' AND Current = '1'",$db);
-	while ($myrow = mysql_fetch_row($result)) {
+	$result = mysqli_query($db, "SELECT * FROM images WHERE CardText LIKE '%$search_words%' AND Current = '1'",$db);
+	while ($myrow = mysqli_fetch_row($result)) {
 
 		## Get the standard for this one, if not found, don't show the image
 		$s="";
-		if($standard != 'any') { $result_s = mysql_query("SELECT * FROM Standards_Data WHERE ImgID ='$myrow[0]' && SID = '$sid'",$db); }
-		else { $result_s = mysql_query("SELECT * FROM Standards_Data WHERE ImgID ='$myrow[0]'",$db); }
-		while ($myrow_s = mysql_fetch_row($result_s)) { $s="$myrow_s[3]"; }
+		if($standard != 'any') { $result_s = mysqli_query($db, "SELECT * FROM Standards_Data WHERE ImgID ='$myrow[0]' && SID = '$sid'",$db); }
+		else { $result_s = mysqli_query($db, "SELECT * FROM Standards_Data WHERE ImgID ='$myrow[0]'",$db); }
+		while ($myrow_s = mysqli_fetch_row($result_s)) { $s="$myrow_s[3]"; }
 
 		if($s) {
 			list($major_title,$minor_title)=split("\|",major_minor_by_id($db,$myrow[0]));
@@ -219,8 +219,8 @@ function search($db, $search_words, $standard) {
 			$major_title_url=str_replace(" ","_", $major_title);
 
 			## Get the collection
-			$result_collection = mysql_query("SELECT Code FROM Collections WHERE ID = '$myrow[5]'",$db);
-			while ($myrow_collection = mysql_fetch_row($result_collection)) { $c=$myrow_collection[0]; }
+			$result_collection = mysqli_query($db, "SELECT Code FROM Collections WHERE ID = '$myrow[5]'",$db);
+			while ($myrow_collection = mysqli_fetch_row($result_collection)) { $c=$myrow_collection[0]; }
 
 			$short_desc=$myrow[3];
 			if($myrow[2] != 'IMG0000.jpg') {
@@ -236,19 +236,19 @@ function search($db, $search_words, $standard) {
 function standard_count($db,$what) {
 	global $edit;
 
-	$result = mysql_query("select * from standards_cal group by grade_id", $db);
+	$result = mysqli_query($db, "select * from standards_cal group by grade_id", $db);
 
-	while($myrow = mysql_fetch_row($result)) {
+	while($myrow = mysqli_fetch_row($result)) {
 		$subs = "";
 
 		// Then get all the sub standards
-		$result_sub = mysql_query("SELECT * FROM Standards_Cal WHERE GradeID='$myrow[1]'",$db);
-		while ($myrow_sub = mysql_fetch_row($result_sub)) {
+		$result_sub = mysqli_query($db, "SELECT * FROM Standards_Cal WHERE GradeID='$myrow[1]'",$db);
+		while ($myrow_sub = mysqli_fetch_row($result_sub)) {
 			$subs=$subs . " OR SID = '$myrow_sub[0]'";
 
 			// Get the count for this sub_standard
-			$result_sub_s = mysql_query("SELECT COUNT(*) FROM Standards_Data, Images WHERE Images.ImageId = Standards_Data.ImgID AND (Current = '1' $edit) AND SID = '$myrow_sub[0]'", $db);
-			while($myrow_sub_s = mysql_fetch_row($result_sub_s)) {
+			$result_sub_s = mysqli_query($db, "SELECT COUNT(*) FROM Standards_Data, Images WHERE Images.ImageId = Standards_Data.ImgID AND (Current = '1' $edit) AND SID = '$myrow_sub[0]'", $db);
+			while($myrow_sub_s = mysqli_fetch_row($result_sub_s)) {
 				$sub_standard_count[$myrow_sub[0]] = $myrow_sub_s[0];
 				$total = $total + $myrow_sub_s[0];
 			}

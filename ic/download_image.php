@@ -4,10 +4,10 @@
 
 	if(!isset($_GET['id'])) die;
 
-	$db = mysql_connect("localhost", $connect["username"], $connect["password"]);
-	mysql_select_db("image_archive", $db);
+	$db = mysqli_connect("localhost", $connect["username"], $connect["password"]);
+	mysqli_select_db("image_archive", $db);
 
-	$image = fetch_image($_GET['id']);
+	$image = fetch_image($db, $_GET['id']);
 
 	$filename = explode("/", $image['file']);
 

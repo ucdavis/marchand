@@ -6,10 +6,10 @@
 		}
 	}
 
-	include_once('CAS/CAS.php');
+	include_once('../vendor/CAS-1.3.4/CAS.php');
 
 	phpCAS::client(CAS_VERSION_2_0, "cas.ucdavis.edu", 443, "cas");
-	phpCAS::setCasServerCACert("/etc/pki/tls/cert.pem");
+	// phpCAS::setCasServerCACert("/etc/pki/tls/cert.pem");
 	//$cas_in = phpCAS::checkAuthentication(); // gateway / passive
 
 	require_once "../classes/Connection.php";
@@ -19,8 +19,8 @@
 	include "../snippets/header.htm";
 	include "../snippets/navigation.php";
 
-	$db = mysql_connect("localhost", $connect["username"], $connect["password"]);
-	mysql_select_db("image_archive", $db);
+	$db = mysqli_connect("localhost", $connect["username"], $connect["password"]);
+	mysqli_select_db($db, "image_archive");
 
 	$Connection = new Connection($db);
 	$quote = $Connection->GetRandomQuote();
@@ -50,7 +50,7 @@
 			<h1><a href="http://historyproject.ucdavis.edu/ic/">Image Archive</a> > <a href="javascript:history.go(-1);">Search Results</a> > Image Detail</h1>
 
 			<?php
-				$image = fetch_image($_GET['id']);
+				$image = fetch_image($db, $_GET['id']);
 			?>
 
 			<div style="float: left; width: 135px;">
@@ -70,7 +70,7 @@
 				<p><em>Topic(s):</em><br /></p>
 				<ul style="margin-left: 1em;">
 				<?php
-					$topics = fetch_image_topics($image['id']);
+					$topics = fetch_image_topics($db, $image['id']);
 
 					foreach($topics as $topic) {
 						echo "<li>".$topic['title']."</li>";
@@ -82,7 +82,7 @@
 				<p><em>Regions(s):</em><br /></p>
 				<ul style="margin-left: 1em;">
 				<?php
-					$regions = fetch_image_regions($image['id']);
+					$regions = fetch_image_regions($db, $image['id']);
 
 					foreach($regions as $region) {
 						echo "<li>".$region['title']."</li>";
@@ -106,7 +106,7 @@
 				<p><em>National Standard(s):</em><br /></p>
 				<ul style="margin-left: 1em;">
 				<?php
-					$standards = fetch_standards_nat($image['id']);
+					$standards = fetch_standards_nat($db, $image['id']);
 
 					foreach($standards as $standard) {
 						echo "<li>".$standard['label']."</li>";

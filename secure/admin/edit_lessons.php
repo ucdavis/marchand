@@ -294,7 +294,7 @@
 
 						if($id > 0) {
 							// List the standards currently applied
-							$standards = dsp_fetch_standards_nat($id);
+							$standards = dsp_fetch_standards_nat($db, $id);
 
 							foreach($standards as $standard) {
 								print "<tr><td><p>".$standard['label']."</p></td><td><input type=\"button\" value=\"Remove\" onClick=\"javascript:lesson_remove_standard('".$id."', '".$standard['id']."', 1);\" /></td></tr>";
