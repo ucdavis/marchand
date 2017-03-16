@@ -1,6 +1,7 @@
 <?php
 
-require_once '../html/secure.inc.php';
+define('__ROOT__', dirname(dirname(__FILE__)));
+require_once(__ROOT__.'/html/secure.inc.php');
 
 function fetch_standards_ca($db, $id = -1) {
 	$standards = array();

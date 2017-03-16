@@ -1,7 +1,8 @@
 <?php
-	include '../../app/ic.inc.php';
-	require_once '/var/www/html/secure.inc.php';
-	require_once '/var/www/html/connect.inc';
+	define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+	include (__ROOT__.'/app/ic.inc.php');
+	require_once(__ROOT__.'/html/secure.inc.php');
+	require_once(__ROOT__.'/html/connect.inc');
 
 	//include_once('CAS/CAS.php');
 
