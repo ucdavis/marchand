@@ -112,17 +112,17 @@ The Marchand Image Collection comprises more than 8600 images, many of which hav
 							// display a specific featured gallery
 
 							// get the name of this topic
-							$result = mysql_query("select title from topics where id='".mysql_real_escape_string($_GET['bestof'])."' limit 1");
-							$row = mysql_fetch_assoc($result);
+							$result = mysqli_query($db, "select title from topics where id='".mysqli_real_escape_string($db, $_GET['bestof'])."' limit 1");
+							$row = mysqli_fetch_assoc($result);
 							echo "<h1>Best of ".$row['title']."</h1><br />";
 
 							echo "<table><tr style=\"vertical-align: top;\">";
 							$row_count = 0;
 
-							$result = mysql_query("select images.id as id, images.thumbnail as thumbnail, images.title as title, images.card as card, images.citation as citation from images, topic_assignments where images.id = topic_assignments.sid and topic_assignments.tid = ".mysql_real_escape_string($_GET['bestof'])." and images.featured=1 and images.public=1 order by rand() limit 24");
+							$result = mysqli_query($db, "select images.id as id, images.thumbnail as thumbnail, images.title as title, images.card as card, images.citation as citation from images, topic_assignments where images.id = topic_assignments.sid and topic_assignments.tid = ".mysqli_real_escape_string($db, $_GET['bestof'])." and images.featured=1 and images.public=1 order by rand() limit 24");
 
-							if(mysql_num_rows($result) > 0) {
-								while($row = mysql_fetch_assoc($result)) {
+							if(mysqli_num_rows($result) > 0) {
+								while($row = mysqli_fetch_assoc($result)) {
 									echo "<td style=\"text-align: center;\"><div id=\"".$row['id']."\" style=\"background-color: #fff; width: 125px; height: 125px; text-align: center;\"><a name=\"".$row['id']."\"></a><a href=\"/ic/image_details.php?id=".$row['id']."\"><img class=\"gallery-thumbnail\" src=\"http://historyproject.ucdavis.edu/ic/get_image.php?id=".$row['id']."&thumb\" style=\"float: none; margin: 0;\" /></a></div><div style=\"width: 125px; clear: both; overflow: hidden;\">".$row['title']."</div>";
 
 									echo "</td><td width=\"25\">&nbsp;&nbsp;</td>";
