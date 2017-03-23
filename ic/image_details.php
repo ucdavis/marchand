@@ -6,7 +6,7 @@
 		}
 	}
 
-	include_once('../vendor/CAS-1.3.4/CAS.php');
+	require '../vendor/autoload.php';
 
 	phpCAS::client(CAS_VERSION_2_0, "cas.ucdavis.edu", 443, "cas");
 	// phpCAS::setCasServerCACert("/etc/pki/tls/cert.pem");
