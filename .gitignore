@@ -1,2 +1,2 @@
 # Ignore dependencies
-./vendor/*
+vendor/*
