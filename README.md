@@ -1,2 +1,2 @@
 # Setting up the project
-1. Install composer
+1. Run `bin/composer install` to install dependencies
