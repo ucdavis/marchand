@@ -1,3 +1,212 @@
 // Place all the styles related to the site controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+body {
+    font: 14px/20px 'Arimo', sans-serif;
+    color: #494949;
+    float: left;
+    width: 100%;
+}
+
+.top-header {
+    background: #002855;
+}
+
+.top-header .navbar-form {
+    margin: 8px 0px 6px 0px;
+}
+
+.universal-search {
+    margin-left: 140px; 
+    width: 124px;
+}
+
+.navbar {
+    border-radius: 0px;
+    min-height: 40px;
+}
+
+.navbar-form input {
+    font: 14px/20px 'Arimo', sans-serif;
+    letter-spacing: normal;
+    -moz-appearance: searchfield;
+}
+
+.nav li a:hover {
+    background-color:unset !important;
+    color: #CCD4E1 !important;
+}
+
+
+.nav-pages {
+    background-color: #C99700;
+    height: 66px;
+    text-align: center;
+}
+
+.nav-pages .nav {
+    display: inline-block;
+    padding-top: 26px;
+}
+
+.nav-pages .nav li{
+    float: left;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.nav-pages .nav li a{
+    padding: 0px !important;
+    display: inline-block;
+    color: white;
+    font: 18px/16px 'Arimo', sans-serif;
+}
+
+.nav-pages .nav li a:hover {
+    color:#002855 !important;
+}
+
+.cas-login {
+    padding: 10px 15px 10px 15px;
+    margin-right: 140px;
+    color: white;
+}
+
+/* ---- search and advanced search section -----*/
+
+.caret {
+    margin-left: 5px !important;
+}
+
+.search-section {
+    padding: 35px;
+    background-color: #F4F4F4;
+    border-bottom: 1px solid #CCCCCC;
+}
+.search-icon {
+    background: white !important;
+}
+
+.search-section input {
+    font: 14px/20px 'Arimo', sans-serif;
+    letter-spacing: normal;
+    display: block;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+}
+
+.search-section input:focus {
+    border: 1px solid #5A5A5A;
+}
+
+.keyword-search {
+    width: 40%;
+    margin: 0 auto;
+}
+
+.keyword-search .form-control {
+    border-right: 0 !important;
+    box-shadow: 0 0 0 !important;
+    border-color: #ccc !important;
+}
+
+.advanced-search-section {
+    width: 484px;
+    margin: 0 auto;
+}
+
+.dropdown-half-width {
+    width: 49.5%;
+    margin-top: 20px;
+}
+
+.dropdown-half-width .dropdown-toggle {
+    width: 100%;
+}
+
+.dropdown-full-width {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.dropdown-full-width .dropdown-toggle {
+    width: 100%;
+}
+
+input[type=search] {
+    width: 40%;
+    margin: 0 auto;
+    padding: 5px;
+    position: relative;
+    top: 0;
+}
+
+input[type=submit] {
+  position: absolute;
+  right: 0.75em;
+  top: 0.5em;
+  bottom: 0.5em;
+  z-index: 1;
+  width: 6em;
+  padding: 0;
+  cursor: pointer;
+}
+
+.advanced-search {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    color: #494949;
+}
+
+.advanced-search:hover {
+    color: #002855;
+    text-decoration: underline;
+}
+
+.dropdown-menu input {
+    margin-bottom: 5px;
+    width: 100%;
+    display: block;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+}
+
+.dropdown-menu li:last-child {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+/* ------ */
+
+
+
+img {
+  width: 100% !important;
+}
+
+.image-card {
+    background-color: #FCFCFC;
+    border: 1px solid #CCCCCC;
+    padding: 25px 25px 0px 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.image-card:hover {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.image-card-group {
+    margin: 25px auto;
+}
