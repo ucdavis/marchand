@@ -1,6 +1,3 @@
-# Ignore dependencies
-vendor/*
-
 # Ignore swp failes
 *.swp
 
