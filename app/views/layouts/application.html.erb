@@ -9,12 +9,96 @@
   </head>
 
   <body>
-	<span>Yes in application.html.erb</span>
-	<div class="container">
+    <header>
+      <nav>
+          <div class="container-fluid"> 
+              <div class="row top-header">
+                  <form class="navbar-form navbar-left">
+                      <div class="form-group">
+                          <input class="universal-search" name="SearchableText" size="18" title="Search Site" placeholder="Search Site" accesskey="4" class="searchField" id="searchGadget" autocomplete="off" type="text">
+                      </div>
+                  </form>
+              <ul class="nav pull-right">
+                  <li><a href="#" class="cas-login">CAS Login</a></li>
+              </ul>
+              </div>
+              <div class="row nav-pages">
+                  <ul class="nav">
+                      <li><a href="#">Home</a></li>
+                      <li><a href="#">Programs</a></li>
+                      <li><a href="#">Resources</a></li>
+                      <li><a href="#">Event</a></li>
+                      <li><a href="#">About Us</a></li>
+                  </ul>
+              </div>
+              <div class="row">
+                  <div class="search-section">
+                      <form action="#">    
+                          <div class="input-group keyword-search">
+                              <input class="form-control" placeholder="Search" type="text">
+                              <span class="input-group-addon">
+                              <button type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                              </button>  
+                      </span>
+                  </div>
+                      </form>
+                  <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                      <span class="advanced-search">Advanced Search Option</span>
+                  </a>
+                  <div class="collapse" id="collapseExample">
+                      <div class="advanced-search-section">
+                      <div class="btn-group dropdown-half-width">
+                          <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Region<span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu">
+                              <li><a href="#">Action</a></li>
+                              <li><a href="#">Another action</a></li>
+                              <li><a href="#">The scene inside the Monastery of Aghia</a></li>
+                              <li role="separator" class="divider"></li>
+                              <li><input placeholder="Search keywords"></li>
+                          </ul>
+                      </div>
+                      <div class="btn-group dropdown-half-width">
+                          <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Collection<span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu">
+                              <li><a href="#">Action</a></li>
+                              <li><a href="#">Another action</a></li>
+                              <li><a href="#">The scene inside the Monastery of Aghia</a></li>
+                              <li role="separator" class="divider"></li>
+                              <li><input placeholder="Search keywords"></li>
+                          </ul>
+                      </div>
+                      <div class="btn-group dropdown-full-width">
+                          <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Topic/Theme<span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu">
+                              <li><a href="#">Action</a></li>
+                              <li><a href="#">Another action</a></li>
+                              <li><a href="#">The scene inside the Monastery of Aghia</a></li>
+                              <li role="separator" class="divider"></li>
+                              <li><input placeholder="Search keywords"></li>
+                          </ul>
+                      </div>
+                      <div class="btn-group dropdown-full-width">
+                          <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">California standard<span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu">
+                              <li><a href="#">Action</a></li>
+                              <li><a href="#">Another action</a></li>
+                              <li><a href="#">The scene inside the Monastery of Aghia</a></li>
+                              <li role="separator" class="divider"></li>
+                              <li><input placeholder="Search keywords"></li>
+                          </ul>
+                      </div>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+          </div>
+      </nav>
+  </header>
     	<%= yield %>
-		<div class="row">
-			<a class="btn btn-default col-md-6">Hi it works</a>
-		</div>
-	</div>
   </body>
 </html>

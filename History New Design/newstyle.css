@@ -1,13 +1,9 @@
-// Place all the styles related to the site controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 
 body {
     font: 14px/20px 'Arimo', sans-serif;
     color: #494949;
-    float: left;
     width: 100%;
+    float: unset !important;
 }
 
 .top-header {
@@ -77,7 +73,7 @@ body {
 /* ---- search and advanced search section -----*/
 
 .caret {
-    //margin-left: 5px !important;
+    margin-left: 5px !important;
 }
 
 .search-section {
@@ -97,16 +93,13 @@ body {
     border-radius: 3px;
 }
 
+.search-section input:focus {
+    border: 1px solid #5A5A5A;
+}
+
 .keyword-search {
     width: 40%;
     margin: 0 auto;
-
-    span {
-        background-color: white !important;
-    }
-    button {
-        border: 0;background: transparent;
-    }
 }
 
 .keyword-search .form-control {
@@ -188,70 +181,3 @@ input[type=submit] {
 
 
 /* ------ */
-
-
-
-img {
-  width: 100% !important;
-}
-
-.image-card {
-    background-color: #FCFCFC;
-    border: 1px solid #CCCCCC;
-    padding: 25px 25px 0px 25px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.image-card:hover {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-}
-
-.image-card-group {
-    margin: 25px auto;
-}
-
-.form-control:hover {
-    box-shadow: unset !important;
-}
-
-
-.panel {
-    padding: 20px !important;
-}
-
-
-.permission-check-box {
-    padding-left: 0px;
-}
-
-.permission-check-box li {
-    margin-top: 15px;
-    display: inline-block;
-    list-style: none;
-}
-
-.permission-check-box li:first-child {
-    margin-right: 20px;
-}
-
-
-
-.edit-image {
-    padding-left:35px;
-    padding-right:35px;
-
-    h5 {
-        font-weight: bold;
-    }
-
-
-    .btn-assign {
-    background: #F5F5F5;
-    border: 1px solid #D8D8D8;
-    border-radius: 3px;
-    }
-}

@@ -14,3 +14,12 @@
  *= require_tree .
  *= require_self
  */
+
+
+
+body {
+    font: 14px/20px 'Arimo', sans-serif;
+    color: #494949;
+    width: 100%;
+    float: unset !important;
+}
