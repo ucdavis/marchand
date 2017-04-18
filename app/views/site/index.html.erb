@@ -1,80 +1,17 @@
 <div class="container image-card-group">
-  <div class="row">
-    <div class="col-xs-3">
+  <% cols = 4 %>
+  <% rows = @cards.size / cols %>
+  <% for i in 0...rows %>
+    <div class="row">
+      <% for j in 0...cols %>
+        <% card = @cards[(cols * i) + j]%>
+        <div class="col-xs-3">
             <div class="image-card">
-                <img src="goodguide.png" alt="bg">
-                <h5 class="text-center">Religion</h5>
+              <img src="<%= card.image.s3 %>" alt="bg">
+              <h5 class="text-center"><%= card.topic.title %></h5>
+            </div>
         </div>
+      <% end %>
     </div>
-    <div class="col-xs-3">
-            <div class="image-card">
-                <img src="goodguide.png" alt="bg">
-                <h5 class="text-center">Agriculture</h5>
-        </div>
-    </div>
-    <div class="col-xs-3">
-            <div class="image-card">
-                <img src="goodguide.png" alt="bg">
-                <h5 class="text-center">Revolution</h5>
-        </div>
-    </div>
-    <div class="col-xs-3">
-            <div class="image-card">
-                <img src="goodguide.png" alt="bg">
-                <h5 class="text-center">Revolution</h5>
-        </div>
-    </div>
-  </div>
- <div class="row">
-    <div class="col-xs-3">
-            <div class="image-card">
-                <img src="goodguide.png" alt="bg">
-                <h5 class="text-center">Religion</h5>
-        </div>
-    </div>
-    <div class="col-xs-3">
-            <div class="image-card">
-                <img src="goodguide.png" alt="bg">
-                <h5 class="text-center">Agriculture</h5>
-        </div>
-    </div>
-    <div class="col-xs-3">
-            <div class="image-card">
-                <img src="goodguide.png" alt="bg">
-                <h5 class="text-center">Revolution</h5>
-        </div>
-    </div>
-    <div class="col-xs-3">
-            <div class="image-card">
-                <img src="goodguide.png" alt="bg">
-                <h5 class="text-center">Revolution</h5>
-        </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-3">
-            <div class="image-card">
-                <img src="goodguide.png" alt="bg">
-                <h5 class="text-center">Religion</h5>
-        </div>
-    </div>
-    <div class="col-xs-3">
-            <div class="image-card">
-                <img src="goodguide.png" alt="bg">
-                <h5 class="text-center">Agriculture</h5>
-        </div>
-    </div>
-    <div class="col-xs-3">
-            <div class="image-card">
-                <img src="goodguide.png" alt="bg">
-                <h5 class="text-center">Revolution</h5>
-        </div>
-    </div>
-    <div class="col-xs-3">
-            <div class="image-card">
-                <img src="goodguide.png" alt="bg">
-                <h5 class="text-center">Revolution</h5>
-        </div>
-    </div>
-  </div>
+  <% end %>
 </div> <!--Container-->
