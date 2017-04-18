@@ -5,10 +5,18 @@
     <div class="row">
       <% for j in 0...cols %>
         <% card = @cards[(cols * i) + j]%>
+        <% if @search %>
+          <% title = card.image.title %>
+          <% link = "/?bestof=#{card.topic_id}" %>
+        <% else %>
+          <% title = card.topic.title %>
+          <% link = "/?bestof=#{card.topic_id}" %>
+        <% end %>
+
         <div class="col-xs-3">
             <div class="image-card">
-              <img src="<%= card.image.s3 %>" alt="bg">
-              <h5 class="text-center"><%= card.topic.title %></h5>
+              <a href="<%= link %>"> <img src="<%= card.image.s3 %>" alt="bg"></a>
+              <h5 class="text-center"><%= title %></h5>
             </div>
         </div>
       <% end %>
