@@ -77,7 +77,7 @@ body {
 /* ---- search and advanced search section -----*/
 
 .caret {
-    margin-left: 5px !important;
+    //margin-left: 5px !important;
 }
 
 .search-section {
@@ -97,13 +97,16 @@ body {
     border-radius: 3px;
 }
 
-.search-section input:focus {
-    border: 1px solid #5A5A5A;
-}
-
 .keyword-search {
     width: 40%;
     margin: 0 auto;
+
+    span {
+        background-color: white !important;
+    }
+    button {
+        border: 0;background: transparent;
+    }
 }
 
 .keyword-search .form-control {
@@ -209,4 +212,46 @@ img {
 
 .image-card-group {
     margin: 25px auto;
+}
+
+.form-control:hover {
+    box-shadow: unset !important;
+}
+
+
+.panel {
+    padding: 20px !important;
+}
+
+
+.permission-check-box {
+    padding-left: 0px;
+}
+
+.permission-check-box li {
+    margin-top: 15px;
+    display: inline-block;
+    list-style: none;
+}
+
+.permission-check-box li:first-child {
+    margin-right: 20px;
+}
+
+
+
+.edit-image {
+    padding-left:35px;
+    padding-right:35px;
+
+    h5 {
+        font-weight: bold;
+    }
+
+
+    .btn-assign {
+    background: #F5F5F5;
+    border: 1px solid #D8D8D8;
+    border-radius: 3px;
+    }
 }

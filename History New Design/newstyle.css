@@ -2,8 +2,8 @@
 body {
     font: 14px/20px 'Arimo', sans-serif;
     color: #494949;
-    float: left;
     width: 100%;
+    float: unset !important;
 }
 
 .top-header {
