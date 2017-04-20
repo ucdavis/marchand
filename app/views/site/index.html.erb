@@ -2,7 +2,7 @@
   <% cols = 4 %>
   <% rows = @cards.size / cols %>
   <% for i in 0...rows %>
-    <div class="row">
+    <div class="row" type="button" data-toggle="modal" data-target="#myModal">
       <% for j in 0...cols %>
         <% card = @cards[(cols * i) + j]%>
         <div class="col-xs-3">
@@ -15,3 +15,7 @@
     </div>
   <% end %>
 </div> <!--Container-->
+
+<%= render 'site/modal_horizontal_image' %>
+
+
