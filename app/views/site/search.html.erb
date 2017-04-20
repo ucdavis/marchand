@@ -1,17 +1,23 @@
 <div class="container image-card-group">
-  <% cols = 4 %>
-  <% rows = @cards.size / cols %>
-  <% for i in 0...rows %>
-    <div class="row">
-      <% for j in 0...cols %>
-        <% card = @cards[(cols * i) + j]%>
-        <div class="col-xs-3">
-            <div class="image-card">
-				<%= link_to image_tag(card.image.s3), search_url, :bestof => true, :topic_id => card.topic_id %>
-              <h5 class="text-center"><%= card.image.title %></h5>
-            </div>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+	<% if @cards.nil? %>
+		<div class="row">
+			<h5 class="col-xs-12">No Images</h5>
+		</div>
+	<% else %>
+		<% cols = 4 %>
+		<% rows = @cards.size / cols %>
+		<% for i in 0...rows %>
+		<div class="row">
+			<% for j in 0...cols %>
+			<% card = @cards[(cols * i) + j]%>
+			<div class="col-xs-3">
+				<div class="image-card">
+					<%= link_to image_tag(card.image.s3), search_url, :bestof => true, :topic_id => card.topic_id %>
+					<h5 class="text-center"><%= card.image.title %></h5>
+				</div>
+			</div>
+			<% end %>
+		</div>
+		<% end %>
+	<% end %>
 </div> <!--Container-->
