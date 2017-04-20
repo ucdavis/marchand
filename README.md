@@ -8,6 +8,8 @@ Things you may want to cover:
 * Ruby version
 
 * System dependencies
+`brew install imagemagick@6 && brew link imagemagick@6 --force`
+`bundle install`
 
 * Configuration
 
