@@ -7,8 +7,8 @@
         <% card = @cards[(cols * i) + j]%>
         <div class="col-xs-3">
             <div class="image-card">
-				<%= link_to image_tag(card.image.s3), search_url(:bestof => true, :topic_id => card.topic_id) %>
-              <h5 class="text-center"><%= card.topic.title %></h5>
+				<%= link_to image_tag(card.image.s3), search_url, :bestof => true, :topic_id => card.topic_id %>
+              <h5 class="text-center"><%= card.image.title %></h5>
             </div>
         </div>
       <% end %>
