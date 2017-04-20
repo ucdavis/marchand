@@ -5,13 +5,6 @@
   <% for i in 0...rows %>
     <div class="row" type="button" data-toggle="modal" data-target="#myModal">
       <% for j in 0...cols %>
-=======
-    <% cols = 4 %>
-    <% rows = @cards.size / cols %>
-    <% for i in 0...rows %>
-    <div class="row">
-        <% for j in 0...cols %>
->>>>>>> 9cd87e7a0258dd492d75b843e098b7c0b86a78fb
         <% card = @cards[(cols * i) + j]%>
         <!-- <% thumb = card.image.thumbnail.present? ? card.image.thumbnail : convert_to_thumbnail(card.image.s3) %> -->
         <% thumb = card.image.s3 %>
