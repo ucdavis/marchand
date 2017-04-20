@@ -11,7 +11,7 @@
   <body>
     <header>
       <nav>
-          <div class="container-fluid"> 
+          <div class="container-fluid">
               <div class="row top-header">
                   <form class="navbar-form navbar-left">
                       <div class="form-group">
@@ -24,7 +24,7 @@
               </div>
               <div class="row nav-pages">
                   <ul class="nav">
-                      <li><a href="#">Home</a></li>
+                      <li><a href="<%= root_url %>">Home</a></li>
                       <li><a href="#">Programs</a></li>
                       <li><a href="#">Resources</a></li>
                       <li><a href="#">Event</a></li>
@@ -33,13 +33,13 @@
               </div>
               <div class="row">
                   <div class="search-section">
-                      <form action="#">    
+                      <form action="#">
                           <div class="input-group keyword-search">
                               <input class="form-control" placeholder="Search" type="text">
                               <span class="input-group-addon">
                               <button type="submit">
                                 <span class="glyphicon glyphicon-search"></span>
-                              </button>  
+                              </button>
                       </span>
                   </div>
                       </form>
@@ -52,44 +52,44 @@
                           <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Region<span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu">
-                              <li><a href="#">Action</a></li>
-                              <li><a href="#">Another action</a></li>
-                              <li><a href="#">The scene inside the Monastery of Aghia</a></li>
-                              <li role="separator" class="divider"></li>
-                              <li><input placeholder="Search keywords"></li>
+                            <% @regions.each do |region| %>
+                              <li><a href="#"><%= region.title %></a></li>
+                            <% end %>
+                            <li role="separator" class="divider"></li>
+                            <li><input placeholder="Search keywords"></li>
                           </ul>
                       </div>
                       <div class="btn-group dropdown-half-width">
                           <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Collection<span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu">
-                              <li><a href="#">Action</a></li>
-                              <li><a href="#">Another action</a></li>
-                              <li><a href="#">The scene inside the Monastery of Aghia</a></li>
-                              <li role="separator" class="divider"></li>
-                              <li><input placeholder="Search keywords"></li>
+                            <% @collections.each do |collection| %>
+                              <li><a href="#"><%= collection.name %></a></li>
+                            <% end %>
+                            <li role="separator" class="divider"></li>
+                            <li><input placeholder="Search keywords"></li>
                           </ul>
                       </div>
                       <div class="btn-group dropdown-full-width">
                           <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Topic/Theme<span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu">
-                              <li><a href="#">Action</a></li>
-                              <li><a href="#">Another action</a></li>
-                              <li><a href="#">The scene inside the Monastery of Aghia</a></li>
-                              <li role="separator" class="divider"></li>
-                              <li><input placeholder="Search keywords"></li>
+                            <% @topics.each do |topic| %>
+                              <li><a href="#"><%= topic.title %></a></li>
+                            <% end %>
+                            <li role="separator" class="divider"></li>
+                            <li><input placeholder="Search keywords"></li>
                           </ul>
                       </div>
                       <div class="btn-group dropdown-full-width">
                           <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">California standard<span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu">
-                              <li><a href="#">Action</a></li>
-                              <li><a href="#">Another action</a></li>
-                              <li><a href="#">The scene inside the Monastery of Aghia</a></li>
-                              <li role="separator" class="divider"></li>
-                              <li><input placeholder="Search keywords"></li>
+                            <% @ca_standards.each do |standard| %>
+                              <li><a href="#"><%= standard.label %></a></li>
+                            <% end %>
+                            <li role="separator" class="divider"></li>
+                            <li><input placeholder="Search keywords"></li>
                           </ul>
                       </div>
                       </div>
