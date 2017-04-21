@@ -1,6 +1,5 @@
 class SiteController < ApplicationController
-	# IMAGE_LIMIT = 24
-    IMAGE_LIMIT = 4
+	IMAGE_LIMIT = 24
 
 	def index
 		# Retrieve featured topics and images available to the public
