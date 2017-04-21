@@ -5,8 +5,7 @@
     <div class="row">
         <% for j in 0...cols %>
         <% card = @cards[(cols * i) + j]%>
-        <!-- <% thumb = card.image.thumbnail.present? ? card.image.thumbnail : convert_to_thumbnail(card.image.s3) %> -->
-        <% thumb = card.image.s3 %>
+        <% thumb = get_thumbnail(card.image) %>
         <div class="col-xs-3">
             <div class="image-card">
                 <%= link_to image_tag(thumb), search_url(:bestof => true, :topic_id => card.topic_id) %>

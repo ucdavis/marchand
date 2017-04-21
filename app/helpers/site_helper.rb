@@ -1,10 +1,20 @@
 require 'rmagick'
 
 module SiteHelper
-    def convert_to_thumbnail(image_path)
-        image = Magick::Image.read(image_path).first
+    include AwsHelper
 
-        # Using 1.45 ratio to build thumbnail
-        image.resize_to_fill(275, 190)
+    # Return a thumbnail of the image provided
+    # @param image - An object of the local Image class
+    # TODO: Once errrors are caught, just return the s3 link on error
+    #
+    # @return string url path to thumbnail image
+    def get_thumbnail(image)
+        return image.thumbnail if image.thumbnail.present?
+
+        # Create, upload, and save link to
+        thumbnail = upload_new_thumbnail(image.s3)
+        image.update( {:thumbnail => thumbnail } )
+
+        return thumbnail
     end
 end
