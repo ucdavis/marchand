@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418220212) do
+ActiveRecord::Schema.define(version: 20170421234520) do
 
   create_table "cal_standards", force: :cascade do |t|
     t.integer "grade_id",               default: 0,  null: false
@@ -49,6 +49,12 @@ ActiveRecord::Schema.define(version: 20170418220212) do
     t.index ["title"], name: "sqlite_autoindex_keywords_1", unique: true
   end
 
+  create_table "nat_standards", force: :cascade do |t|
+    t.integer "era",      default: 0, null: false
+    t.integer "us_world", default: 0, null: false
+    t.text    "title",                null: false
+  end
+
   create_table "region_assignments", force: :cascade do |t|
     t.integer "sid", default: 0, null: false
     t.integer "rid", default: 0, null: false
@@ -62,12 +68,6 @@ ActiveRecord::Schema.define(version: 20170418220212) do
     t.integer "image_id", default: 0, null: false
     t.integer "sid",      default: 0, null: false
     t.integer "stype",    default: 0, null: false
-  end
-
-  create_table "standards_nat", force: :cascade do |t|
-    t.integer "era",      default: 0, null: false
-    t.integer "us_world", default: 0, null: false
-    t.text    "title",                null: false
   end
 
   create_table "topic_assignments", force: :cascade do |t|
