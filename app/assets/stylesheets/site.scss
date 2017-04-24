@@ -119,6 +119,11 @@ body {
 .advanced-search-section {
     width: 484px;
     margin: 0 auto;
+     .dropdown-full-width, .dropdown-half-width {
+        .dropdown-toggle {
+            width: unset !important;
+        }
+    }
 }
 
 .dropdown-half-width {
@@ -254,5 +259,77 @@ img {
     background: #F5F5F5;
     border: 1px solid #D8D8D8;
     border-radius: 3px;
+    }
+}
+
+
+
+/* filter search */
+
+.filter-panel {
+    background-color: #FCFCFC;
+    border: 1px solid #CCCCCC;
+    height: 400px;
+    margin: 20px;
+    border-radius: 5px;
+    position: fixed;
+    margin-top: 35px;
+}
+
+.search-result-page {
+    margin: 40px 0px 0px 0px !important;
+}
+
+.filter-panel-title {
+    padding: 5px 0px 5px 0px !important;
+    h5 {
+        color: black;
+    }
+}
+
+.filter-panel-content {
+    padding: 5px 0px 5px 0px !important;
+    .btn-filter {
+        width: 48% !important;
+        margin-bottom: 15px;
+        margin-top: 15px;
+    }
+    .btn-filter:hover {
+        border-color: black;
+        background: white;
+    }
+    .btn-group {
+        width: 100%;
+        margin:15px 0px 15px 0px;
+        font-style: italic;
+        button {
+            color: #B6B4B4;
+            text-align: left;
+        }
+    }
+}
+
+.filter-label-group {
+    margin-top: 25px;
+    .filter-label {
+        background-color:#E5E9EF;
+        color: #494949;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 15px;
+        padding-right: 15px;;
+        margin-right: 10px;
+        font-weight:unset;
+        font-size: 13px;
+        display: inline-block;
+        margin-top: 10px;
+    }
+    i {
+        font-size: 10px;
+        margin-left: 8px;
+    }
+    i:hover {
+        cursor:pointer;
+        color:black;
     }
 }

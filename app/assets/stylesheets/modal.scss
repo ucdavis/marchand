@@ -3,11 +3,21 @@
         .close {
             margin: 5px !important;
             margin-right: 10px !important;
+            span {
+                color: black !important
+            }
         }
         .button-group {
-            margin-left: 5px;
+            margin-left: 20px;
+            margin-right: 20px;
             button {
                 margin: 10px 0px 10px 5px !important;
+            i {
+                margin-right:5px; 
+            }
+                .glyphicon {
+                    top: 2px !important;
+                }
             }
         }
     }
@@ -15,6 +25,8 @@
         padding: 0px !important;
     }
     .modal-body {
+        margin-left: 20px;
+        margin-right: 20px;
         .image-title {
             margin: 5px 0px 30px 0px;
         }
