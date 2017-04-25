@@ -3,4 +3,5 @@ class Image < ActiveRecord::Base
     include Elasticsearch::Model::Callbacks
 
     has_many :topic_assignments, dependent: :destroy
+    belongs_to :collection
 end
