@@ -105,9 +105,9 @@
 			<% image = @images[(cols * i) + j]%>
 			<% thumb = get_thumbnail(image) %>
 			<div class="col-xs-3">
-				<div class="image-card">
+				<div class="image-card" data-src="<%= image.s3 %>" data-collection="<%= image.collection.name %>" data-card="<%= image.card %>" data-topics="<%= image.topics %>" data-regions="<%= image.regions %>" data-cal-standards="<%= image.cal_standards %>" data-nat-standards="<%= image.nat_standards %>" data-citations="<%= image.citations %>">
 					<img src="<%= thumb %>">
-					<h5 class="text-center"><%= image.title %></h5>
+					<h5 class="text-center title"><%= image.title %></h5>
 				</div>
 			</div>
 			<% end %>
