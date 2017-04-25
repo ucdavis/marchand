@@ -1,22 +1,24 @@
 <div class="container image-card-group">
-  <% cols = 4 %>
-  <% rows = @cards.size / cols %>
-  <% for i in 0...rows %>
-    <div class="row" type="button" data-toggle="modal" data-target="#myModal">
-      <% for j in 0...cols %>
-        <% card = @cards[(cols * i) + j]%>
-        <!-- <% thumb = card.image.thumbnail.present? ? card.image.thumbnail : convert_to_thumbnail(card.image.s3) %> -->
-        <% thumb = card.image.s3 %>
-        <div class="col-xs-3">
-            <div class="image-card">
-                <%= link_to image_tag(thumb), search_url(:bestof => true, :topic_id => card.topic_id) %>
-                <h5 class="text-center"><%= card.topic.title %></h5>
-            </div>
-        </div>
-        <% end %>
-    </div>
-    <% end %>
+	<% cols = 4 %>
+	<% rows = @cards.size / cols %>
+	<% for i in 0...rows %>
+	<div class="row" >
+		<% for j in 0...cols %>
+		<% card = @cards[(cols * i) + j]%>
+		<% thumb = get_thumbnail(card.image) %>
+		<div class="col-xs-3">
+			<div class="image-card">
+				<%= link_to image_tag(thumb), search_url(:bestof => true, :topic_id => card.topic_id) %>
+				<h5 class="text-center"><%= card.topic.title %></h5>
+			</div>
+		</div>
+		<% end %>
+	</div>
+	<% end %>
 </div> <!--Container-->
+<<<<<<< HEAD
 
 <%= render 'site/modal_horizontal_image' %>
 
+=======
+>>>>>>> dcfcb346fe73d340733b4bfa08ddebccd99ca81f
