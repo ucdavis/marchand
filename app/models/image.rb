@@ -41,9 +41,4 @@ class Image < ActiveRecord::Base
 
         nat_standards.join("@delim@")
     end
-
-    def citations
-        citations = ["TO", "DO"]
-        citations.join("@delim@")
-    end
 end

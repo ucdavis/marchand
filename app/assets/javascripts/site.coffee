@@ -13,11 +13,11 @@ fillModal = (el) ->
 	imgTitle = $(".title", $(el)).html()
 	imgCollection = "From #{$(el).data("collection")} collection"
 	imgCard = $(el).data("card")
+	imgCitation = $(el).data("citation")
 	imgTopics = $(el).data("topics").split(delim)
 	imgRegions = $(el).data("regions").split(delim)
 	imgCalStandards = $(el).data("cal-standards").split(delim)
 	imgNatStandards = $(el).data("nat-standards").split(delim)
-	imgCitations = $(el).data("citations").split(delim)
 
 	$("img", $("#myModal .modal-header")).attr("src", imgSrc)
 	$(".title", $("#myModal .image-title")).html(imgTitle)
@@ -40,6 +40,4 @@ fillModal = (el) ->
 	imgNatStandards.forEach (natStandard) ->
 		$(".nat-standards", $("#myModal .list-section")).append("<li>#{natStandard}</li>")
 
-	$(".citations", $("#myModal .list-section")).html("")
-	imgCitations.forEach (citation) ->
-		$(".citations", $("#myModal .list-section")).append("<li>#{citation}</li>")
+	$(".citation", $("#myModal .list-section")).html(imgCitation)
