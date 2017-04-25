@@ -92,22 +92,22 @@
 	</div>
 
 	<div class="container image-card-group col-xs-7 col-md-8" style="margin-left:384px;">
-		<% if @cards.nil? %>
+		<% if @images.nil? %>
 		<div class="row">
 			<h5 class="col-xs-12">No Images</h5>
 		</div>
 		<% else %>
 		<% cols = 4 %>
-		<% rows = @cards.size / cols %>
+		<% rows = @images.size / cols %>
 		<% for i in 0...rows %>
 		<div class="row" type="button" data-toggle="modal" data-target="#myModal">
 			<% for j in 0...cols %>
-			<% card = @cards[(cols * i) + j]%>
-			<% thumb = get_thumbnail(card.image) %>
+			<% image = @images[(cols * i) + j]%>
+			<% thumb = get_thumbnail(image) %>
 			<div class="col-xs-3">
 				<div class="image-card">
 					<img src="<%= thumb %>">
-					<h5 class="text-center"><%= card.image.title %></h5>
+					<h5 class="text-center"><%= image.title %></h5>
 				</div>
 			</div>
 			<% end %>

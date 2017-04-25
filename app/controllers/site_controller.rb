@@ -8,7 +8,7 @@ class SiteController < ApplicationController
 
     def search
         query = params[:q].present? ? params[:q] : "*"
-        @cards = Image.search(query).records
+        @images = Image.search(query).records
         # if params[:query].present?
         #     @cards = Image.search(params[:query]).records
         # else
