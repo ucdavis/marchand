@@ -4,6 +4,8 @@ class Image < ActiveRecord::Base
 
     has_many :topic_assignments, dependent: :destroy
     has_many :region_assignments
+    has_many :data_cal_standards
+    has_many :data_nat_standards
     belongs_to :collection
 
     def topics

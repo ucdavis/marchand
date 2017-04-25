@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425224726) do
+ActiveRecord::Schema.define(version: 20170425231011) do
 
   create_table "cal_standards", force: :cascade do |t|
     t.integer "grade_id",               default: 0,  null: false
@@ -23,10 +23,18 @@ ActiveRecord::Schema.define(version: 20170425224726) do
     t.string "code", limit: 50,  default: "", null: false
   end
 
-  create_table "data_standards", force: :cascade do |t|
-    t.integer "image_id", default: 0, null: false
-    t.integer "sid",      default: 0, null: false
-    t.integer "stype",    default: 0, null: false
+  create_table "data_cal_standards", force: :cascade do |t|
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "image_id"
+    t.integer  "cal_standard_id"
+  end
+
+  create_table "data_nat_standards", force: :cascade do |t|
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "image_id"
+    t.integer  "nat_standard_id"
   end
 
   create_table "images", force: :cascade do |t|
