@@ -1,9 +1,9 @@
 <div class="container image-card-group">
-    <% cols = 4 %>
-    <% rows = @cards.size / cols %>
-    <% for i in 0...rows %>
-    <div class="row">
-        <% for j in 0...cols %>
+  <% cols = 4 %>
+  <% rows = @cards.size / cols %>
+  <% for i in 0...rows %>
+    <div class="row" type="button" data-toggle="modal" data-target="#myModal">
+      <% for j in 0...cols %>
         <% card = @cards[(cols * i) + j]%>
         <% thumb = get_thumbnail(card.image) %>
         <div class="col-xs-3">
@@ -16,3 +16,7 @@
     </div>
     <% end %>
 </div> <!--Container-->
+
+<%= render 'site/modal_horizontal_image' %>
+
+
