@@ -8,15 +8,16 @@ $(document).ready ->
 
 
 fillModal = (el) ->
+	delim = "@delim@"
 	imgSrc = $(el).data("src")
 	imgTitle = $(".title", $(el)).html()
 	imgCollection = "From #{$(el).data("collection")} collection"
 	imgCard = $(el).data("card")
-	imgTopics = $(el).data("topics").split(",")
-	imgRegions = $(el).data("regions").split(",")
-	imgCalStandards = $(el).data("cal-standards").split(",")
-	imgNatStandards = $(el).data("nat-standards").split(",")
-	imgCitations = $(el).data("citations").split(",")
+	imgTopics = $(el).data("topics").split(delim)
+	imgRegions = $(el).data("regions").split(delim)
+	imgCalStandards = $(el).data("cal-standards").split(delim)
+	imgNatStandards = $(el).data("nat-standards").split(delim)
+	imgCitations = $(el).data("citations").split(delim)
 
 	$("img", $("#myModal .modal-header")).attr("src", imgSrc)
 	$(".title", $("#myModal .image-title")).html(imgTitle)
