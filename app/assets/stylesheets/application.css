@@ -23,16 +23,3 @@ body {
     width: 100%;
     float: unset !important;
 }
-
-
-
-
-  .sticky-content{
-}
-
-.sticky-content.fixed{
-  position: fixed;
-  top: 5px;
-  left: 0;
-  right: 0;
-}

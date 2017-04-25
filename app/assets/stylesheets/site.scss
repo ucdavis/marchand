@@ -338,12 +338,9 @@ img {
     }
 }
 
-
-  .fix-search {
-    position: fixed !important;
-    background-color: pink;
-    top: 10px;
-    input {
-      width: 250px;
-    }
-  }
+.sticky-content.fixed{
+  position: fixed;
+  top: 5px;
+  left: 0;
+  right: 0;
+}
