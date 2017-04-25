@@ -11,7 +11,7 @@ class Image < ActiveRecord::Base
     def topics
         topics = []
         self.topic_assignments.each do |topic_assignment|
-            topics << topic_assignment.topic.title
+            topics << topic_assignment.topic.title if topic_assignment.topic.title.present?
         end
         topics.join("@delim@")
     end
@@ -19,7 +19,7 @@ class Image < ActiveRecord::Base
     def regions
         regions = []
         self.region_assignments.each do |region_assignment|
-            regions << region_assignment.region.title
+            regions << region_assignment.region.title if region_assignment.region.title.present?
         end
         regions.join("@delim@")
     end
@@ -27,7 +27,7 @@ class Image < ActiveRecord::Base
     def cal_standards
         cal_standards = []
         self.data_cal_standards.each do |data|
-            cal_standards << data.cal_standard.label
+            cal_standards << data.cal_standard.label if data.cal_standard.label.present?
         end
 
         cal_standards.join("@delim@")
@@ -36,7 +36,7 @@ class Image < ActiveRecord::Base
     def nat_standards
         nat_standards = []
         self.data_nat_standards.each do |data|
-            nat_standards << data.nat_standard.label
+            nat_standards << data.nat_standard.label if data.nat_standard.label.present?
         end
 
         nat_standards.join("@delim@")
