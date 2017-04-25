@@ -5,6 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Elastic Search
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+
 # Creating thumbnails
 gem 'rmagick'
 
