@@ -24,6 +24,9 @@ body {
     float: unset !important;
 }
 
+.input-group-addon {
+    font-size: 13px !important;
+}
 
 .dropdown-search {
     background: #f3f3f3 !important;
