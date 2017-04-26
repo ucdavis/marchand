@@ -125,7 +125,7 @@ body {
      }
      .dropdown-full-width, .dropdown-half-width {
         .dropdown-toggle {
-            width: unset !important;
+            width: 45px !important;
         }
     }
 }
@@ -133,6 +133,9 @@ body {
 .dropdown-half-width {
     width: 49.5%;
     margin-top: 20px;
+    .dropdown-menu {
+        width: 240px !important;
+    }
     li a {
         width: 250px;
         white-space: nowrap;
@@ -140,7 +143,7 @@ body {
         text-overflow: ellipsis
     }
     li a:hover {
-        width: 250px;
+        width: 100%;
         white-space: unset;
         overflow: visible;
         background: #F8F8F8;
