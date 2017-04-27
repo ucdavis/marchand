@@ -20,12 +20,12 @@
 						<span class="sr-only">Toggle Dropdown</span>
 					</button>
 					<div class="dropdown-menu">
-                    	<div class="select2-search" style="padding: 12px 15px;">
-                        	<span class="glyphicon glyphicon-search input-search-icon"></span>
-                            <input class="dropdown-search" type="text">
+						<div class="select2-search" style="padding: 12px 15px;">
+							<span class="glyphicon glyphicon-search input-search-icon"></span>
+							<input class="dropdown-search" type="text">
 						</div>
 						<ul class="dropdown-list">
-                        	<li><a href="#">Action</a></li>
+							<li><a href="#">Action</a></li>
 							<li><a href="#">Another action</a></li>
 							<li><a href="#">Something else here</a></li>
 							<li><a href="#">Action</a></li>
@@ -42,13 +42,13 @@
 						<span class="sr-only">Toggle Dropdown</span>
 					</button>
 					<div class="dropdown-menu">
-<!-- test -->
-                    	<div class="select2-search" style="padding: 12px 15px;">
-                        	<span class="glyphicon glyphicon-search input-search-icon"></span>
-                            <input class="dropdown-search" type="text">
+						<!-- test -->
+						<div class="select2-search" style="padding: 12px 15px;">
+							<span class="glyphicon glyphicon-search input-search-icon"></span>
+							<input class="dropdown-search" type="text">
 						</div>
 						<ul class="dropdown-list">
-                        	<li><a href="#">Action</a></li>
+							<li><a href="#">Action</a></li>
 							<li><a href="#">Another action</a></li>
 							<li><a href="#">Something else here</a></li>
 							<li><a href="#">Action</a></li>
@@ -65,12 +65,12 @@
 						<span class="sr-only">Toggle Dropdown</span>
 					</button>
 					<div class="dropdown-menu">
-                    	<div class="select2-search" style="padding: 12px 15px;">
-                        	<span class="glyphicon glyphicon-search input-search-icon"></span>
-                            <input class="dropdown-search" type="text">
+						<div class="select2-search" style="padding: 12px 15px;">
+							<span class="glyphicon glyphicon-search input-search-icon"></span>
+							<input class="dropdown-search" type="text">
 						</div>
 						<ul class="dropdown-list">
-                        	<li><a href="#">Action</a></li>
+							<li><a href="#">Action</a></li>
 							<li><a href="#">Another action</a></li>
 							<li><a href="#">Something else here</a></li>
 							<li><a href="#">Action</a></li>
@@ -87,12 +87,12 @@
 						<span class="sr-only">Toggle Dropdown</span>
 					</button>
 					<div class="dropdown-menu">
-                    	<div class="select2-search" style="padding: 12px 15px;">
-                        	<span class="glyphicon glyphicon-search input-search-icon"></span>
-                            <input class="dropdown-search" type="text">
+						<div class="select2-search" style="padding: 12px 15px;">
+							<span class="glyphicon glyphicon-search input-search-icon"></span>
+							<input class="dropdown-search" type="text">
 						</div>
 						<ul class="dropdown-list">
-                        	<li><a href="#">Action</a></li>
+							<li><a href="#">Action</a></li>
 							<li><a href="#">Another action</a></li>
 							<li><a href="#">Something else here</a></li>
 							<li><a href="#">Action</a></li>
@@ -109,12 +109,12 @@
 						<span class="sr-only">Toggle Dropdown</span>
 					</button>
 					<div class="dropdown-menu">
-                    	<div class="select2-search" style="padding: 12px 15px;">
-                        	<span class="glyphicon glyphicon-search input-search-icon"></span>
-                            <input class="dropdown-search" type="text">
+						<div class="select2-search" style="padding: 12px 15px;">
+							<span class="glyphicon glyphicon-search input-search-icon"></span>
+							<input class="dropdown-search" type="text">
 						</div>
 						<ul class="dropdown-list">
-                        	<li><a href="#">Action</a></li>
+							<li><a href="#">Action</a></li>
 							<li><a href="#">Another action</a></li>
 							<li><a href="#">Something else here</a></li>
 							<li><a href="#">Action</a></li>
@@ -140,8 +140,9 @@
 			<% for j in 0...cols %>
 			<% image = @images[(cols * i) + j]%>
 			<% thumb = get_thumbnail(image) %>
+
 			<div class="col-xs-3">
-				<div class="image-card" data-src="<%= image.s3 %>" data-collection="<%= image.collection.name %>" data-card="<%= image.card %>" data-topics="<%= image.topics %>" data-regions="<%= image.regions %>" data-cal-standards="<%= image.cal_standards %>" data-nat-standards="<%= image.nat_standards %>" data-citation="<%= image.citation %>">
+				<div class="image-card" data-src="<%= image.s3 %>" data-collection="<%= image.collection.present? ? image.collection.name : "" %>" data-card="<%= image.card %>" data-topics="<%= image.topics %>" data-regions="<%= image.regions %>" data-cal-standards="<%= image.cal_standards %>" data-nat-standards="<%= image.nat_standards %>" data-citation="<%= image.citation %>">
 					<img src="<%= thumb %>">
 					<h5 class="text-center title"><%= image.title %></h5>
 				</div>
