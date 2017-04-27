@@ -5,6 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Elastic Search
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+
 # Creating thumbnails
 gem 'rmagick'
 
@@ -39,11 +43,6 @@ gem 'jbuilder', '~> 2.5'
 
 # For managing data in S3 bucket
 gem 'aws-sdk', '~> 2'
-
-# For database
-group :production do
-  gem 'mysql2'
-end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

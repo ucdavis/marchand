@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170421234520) do
+ActiveRecord::Schema.define(version: 20170425231011) do
 
   create_table "cal_standards", force: :cascade do |t|
     t.integer "grade_id",               default: 0,  null: false
@@ -23,17 +23,31 @@ ActiveRecord::Schema.define(version: 20170421234520) do
     t.string "code", limit: 50,  default: "", null: false
   end
 
+  create_table "data_cal_standards", force: :cascade do |t|
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "image_id"
+    t.integer  "cal_standard_id"
+  end
+
+  create_table "data_nat_standards", force: :cascade do |t|
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "image_id"
+    t.integer  "nat_standard_id"
+  end
+
   create_table "images", force: :cascade do |t|
-    t.string  "file",       limit: 96,  default: "", null: false
-    t.string  "thumbnail",  limit: 128, default: "", null: false
-    t.string  "title",      limit: 255, default: "", null: false
-    t.text    "card",                                null: false
-    t.text    "citation",                            null: false
-    t.integer "collection",             default: 0,  null: false
-    t.integer "public",                 default: 0,  null: false
-    t.integer "views",                  default: 0,  null: false
-    t.integer "featured",               default: 0,  null: false
-    t.text    "notes",                               null: false
+    t.string  "file",          limit: 96,  default: "", null: false
+    t.string  "thumbnail",     limit: 128, default: "", null: false
+    t.string  "title",         limit: 255, default: "", null: false
+    t.text    "card",                                   null: false
+    t.text    "citation",                               null: false
+    t.integer "collection_id",             default: 0,  null: false
+    t.integer "public",                    default: 0,  null: false
+    t.integer "views",                     default: 0,  null: false
+    t.integer "featured",                  default: 0,  null: false
+    t.text    "notes",                                  null: false
     t.text    "s3"
     t.index ["title", "card", "citation", "notes"], name: "idx_images_searchable"
   end
@@ -56,18 +70,12 @@ ActiveRecord::Schema.define(version: 20170421234520) do
   end
 
   create_table "region_assignments", force: :cascade do |t|
-    t.integer "sid", default: 0, null: false
-    t.integer "rid", default: 0, null: false
+    t.integer "image_id",  default: 0, null: false
+    t.integer "region_id", default: 0, null: false
   end
 
   create_table "regions", force: :cascade do |t|
     t.string "title", limit: 64, default: "", null: false
-  end
-
-  create_table "standards_data", force: :cascade do |t|
-    t.integer "image_id", default: 0, null: false
-    t.integer "sid",      default: 0, null: false
-    t.integer "stype",    default: 0, null: false
   end
 
   create_table "topic_assignments", force: :cascade do |t|

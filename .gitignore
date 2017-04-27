@@ -3,6 +3,10 @@
 
 # Ignore secrets.yml
 config/secrets.yml
+config/local_env.yml
+
+# Ignore images
+marchandslides.bak/*
 
 # See https://help.github.com/articles/ignoring-files for more about ignoring files.
 #

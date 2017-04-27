@@ -12,6 +12,7 @@ Things you may want to cover:
 `bundle install`
 
 * Configuration
+1. Set up the ELASTICSEARCH_URL environment variable
 
 * Database creation
 

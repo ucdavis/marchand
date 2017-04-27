@@ -1,169 +1,169 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Marchand Image Collection</title>
-    <%= csrf_meta_tags %>
+<head>
+	<title>Marchand Image Collection</title>
+	<%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <header>
-      <nav>
-          <div class="container-fluid">
-              <div class="row top-header">
-                  <form class="navbar-form navbar-left">
-                      <div class="form-group">
-						  <input class="universal-search" name="SearchableText" size="18" title="Search Site" placeholder="Search Site" accesskey="4" class="searchField" id="searchGadget" autocomplete="off" type="text">
-                      </div>
-                  </form>
-              <ul class="nav pull-right">
-                  <li><a href="#" class="cas-login">CAS Login</a></li>
-              </ul>
-              </div>
-              <div class="row nav-pages">
-                  <ul class="nav">
-                      <li><a href="<%= root_url %>">Home</a></li>
-                      <li><a href="#">Programs</a></li>
-                      <li><a href="#">Resources</a></li>
-                      <li><a href="#">Event</a></li>
-                      <li><a href="#">About Us</a></li>
-                  </ul>
-              </div>
-              <div class="row">
-                  <div class="search-section">
-                      <form action="#">
-                          <div class="input-group keyword-search">
-                              <input class="form-control" placeholder="Search" type="text">
-                              <span class="input-group-addon">
-                              <button type="submit">
-                                <span class="glyphicon glyphicon-search"></span>
-                              </button>
-                      </span>
-                  </div>
-                      </form>
-                  <a data-toggle="collapse" href="#collapseExample" class="advanced-search-collapse" aria-expanded="false" aria-controls="collapseExample">
-                      <span class="advanced-search">Advanced Search Option <i class="glyphicon glyphicon-chevron-down"></i></span>
-                  </a>
-                  <div class="collapse" id="collapseExample">
-                      <div class="advanced-search-section">
-                      <div class="btn-group dropdown-half-width">
-                          <button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Region</button>
-			                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-			                </button>
-                          <div class="dropdown-menu">
-                              <div class="select2-search" style="padding: 12px 15px;">
-                                <span class="glyphicon glyphicon-search input-search-icon"></span>
-                                <input class="dropdown-search" type="text">
-                            </div>
-                            <ul class="dropdown-list">
-                                <% @regions.each do |region| %>
-                              <li><a href="#"><%= region.title %></a></li>
-                                <% end %>
-                            </ul>
-                          </div>
-                      </div>
-                      <div class="btn-group dropdown-half-width">
-                          <button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Collection</button>
-			                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-			                </button>
-                          <div class="dropdown-menu">
-                            <div class="select2-search" style="padding: 12px 15px;">
-                                <span class="glyphicon glyphicon-search input-search-icon"></span>
-                                <input class="dropdown-search" type="text">
-                            </div>
-                            <ul class="dropdown-list">
-                                <% @collections.each do |collection| %>
-                                <li><a href="#"><%= collection.name %></a></li>
-                                <% end %>
-                          </ul>
-                          </div>
-                      </div>
-                      <div class="btn-group dropdown-full-width">
-                          <button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Topic/Theme</button>
-			                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-			                </button>
-                          <div class="dropdown-menu">
-<!-- test -->
-                              <div class="select2-search" style="padding: 12px 15px;">
-                                  <span class="glyphicon glyphicon-search input-search-icon"></span>
-                                  <input class="dropdown-search" type="text">
-                              </div>
-                              <ul class="dropdown-list">
-                                <% @topics.each do |topic| %>
-                                <li><a href="#"><%= topic.title %></a></li>
-                                <% end %>
-                              </ul>
-                          </div>
-                      </div>
-                      <div class="btn-group dropdown-full-width">
-                          <button type="button" class="btn btn-default" style="width: calc(100% - 45px);">California Standard</button>
-			                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-			                </button>
-                          <div class="dropdown-menu">
-                               <div class="select2-search">
-                                   <span class="glyphicon glyphicon-search input-search-icon"></span>
-                                    <input class="dropdown-search" type="text">
-                              </div>
-                              <ul class="dropdown-list">
-                                <% @ca_standards.each do |standard| %>
-                                <li><a href="#"><%= standard.label %></a></li>
-                                <% end %>
-                            </ul>
-                          </div>
-                      </div>
-                      <div class="btn-group dropdown-half-width">
-                          <button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Grade Level</button>
-			                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-			                </button>
-                          <div class="dropdown-menu">
-                            <div class="select2-search" style="padding: 12px 15px;">
-                                <span class="glyphicon glyphicon-search input-search-icon"></span>
-                                <input class="dropdown-search" type="text">
-                            </div>
-                            <ul class="dropdown-list">
-                                <% @regions.each do |region| %>
-                                <li><a href="#"><%= region.title %></a></li>
-                                <% end %>
-                            </ul>
-                          </div>
-                      </div>
-                      <div class="btn-group dropdown-half-width">
-                          <button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Year</button>
-			                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-			                </button>
-                         <div class="dropdown-menu">
-                            <div class="select2-search" style="padding: 12px 15px;">
-                                <span class="glyphicon glyphicon-search input-search-icon"></span>
-                                <input class="dropdown-search" type="text">
-                            </div>
-                            <ul class="dropdown-list">
-                                <% @collections.each do |collection| %>
-                                <li><a href="#"><%= collection.name %></a></li>
-                                <% end %>
-                            </ul>
-                         </div>
-                      </div>
-                      </div>
-                  </div>
-                  </div>
-              </div>
-          </div>
-      </nav>
-  </header>
-    	<%= yield %>
-  </body>
+<body>
+	<header>
+		<nav>
+			<div class="container-fluid">
+				<div class="row top-header">
+					<form class="navbar-form navbar-left">
+						<div class="form-group">
+							<input class="universal-search" name="SearchableText" size="18" title="Search Site" placeholder="Search Site" accesskey="4" class="searchField" id="searchGadget" autocomplete="off" type="text">
+						</div>
+					</form>
+					<ul class="nav pull-right">
+						<li><a href="#" class="cas-login">CAS Login</a></li>
+					</ul>
+				</div>
+				<div class="row nav-pages">
+					<ul class="nav">
+						<li><a href="<%= root_url %>">Home</a></li>
+						<li><a href="#">Programs</a></li>
+						<li><a href="#">Resources</a></li>
+						<li><a href="#">Event</a></li>
+						<li><a href="#">About Us</a></li>
+					</ul>
+				</div>
+				<div class="row">
+					<div class="search-section">
+						<form action="/search">
+							<div class="input-group keyword-search">
+								<input name="q" class="form-control" placeholder="Search" type="text">
+								<span class="input-group-addon">
+									<button type="submit">
+										<span class="glyphicon glyphicon-search"></span>
+									</button>
+								</span>
+							</div>
+						</form>
+						<a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+							<span class="advanced-search">Advanced Search Option</span>
+						</a>
+						<div class="collapse" id="collapseExample">
+							<div class="advanced-search-section">
+								<div class="btn-group dropdown-half-width">
+									<button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Region</button>
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="caret"></span>
+										<span class="sr-only">Toggle Dropdown</span>
+									</button>
+									<div class="dropdown-menu">
+										<div class="select2-search" style="padding: 12px 15px;">
+											<span class="glyphicon glyphicon-search input-search-icon"></span>
+											<input class="dropdown-search" type="text">
+										</div>
+										<ul class="dropdown-list">
+											<% @regions.each do |region| %>
+											<li><a href="#"><%= region.title %></a></li>
+											<% end %>
+										</ul>
+									</div>
+								</div>
+								<div class="btn-group dropdown-half-width">
+									<button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Collection</button>
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="caret"></span>
+										<span class="sr-only">Toggle Dropdown</span>
+									</button>
+									<div class="dropdown-menu">
+										<div class="select2-search" style="padding: 12px 15px;">
+											<span class="glyphicon glyphicon-search input-search-icon"></span>
+											<input class="dropdown-search" type="text">
+										</div>
+										<ul class="dropdown-list">
+											<% @collections.each do |collection| %>
+											<li><a href="#"><%= collection.name %></a></li>
+											<% end %>
+										</ul>
+									</div>
+								</div>
+								<div class="btn-group dropdown-full-width">
+									<button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Topic/Theme</button>
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="caret"></span>
+										<span class="sr-only">Toggle Dropdown</span>
+									</button>
+									<div class="dropdown-menu">
+										<!-- test -->
+										<div class="select2-search" style="padding: 12px 15px;">
+											<span class="glyphicon glyphicon-search input-search-icon"></span>
+											<input class="dropdown-search" type="text">
+										</div>
+										<ul class="dropdown-list">
+											<% @topics.each do |topic| %>
+											<li><a href="#"><%= topic.title %></a></li>
+											<% end %>
+										</ul>
+									</div>
+								</div>
+								<div class="btn-group dropdown-full-width">
+									<button type="button" class="btn btn-default" style="width: calc(100% - 45px);">California Standard</button>
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="caret"></span>
+										<span class="sr-only">Toggle Dropdown</span>
+									</button>
+									<div class="dropdown-menu">
+										<div class="select2-search">
+											<span class="glyphicon glyphicon-search input-search-icon"></span>
+											<input class="dropdown-search" type="text">
+										</div>
+										<ul class="dropdown-list">
+											<% @ca_standards.each do |standard| %>
+											<li><a href="#"><%= standard.label %></a></li>
+											<% end %>
+										</ul>
+									</div>
+								</div>
+								<div class="btn-group dropdown-half-width">
+									<button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Grade Level</button>
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="caret"></span>
+										<span class="sr-only">Toggle Dropdown</span>
+									</button>
+									<div class="dropdown-menu">
+										<div class="select2-search" style="padding: 12px 15px;">
+											<span class="glyphicon glyphicon-search input-search-icon"></span>
+											<input class="dropdown-search" type="text">
+										</div>
+										<ul class="dropdown-list">
+											<% @regions.each do |region| %>
+											<li><a href="#"><%= region.title %></a></li>
+											<% end %>
+										</ul>
+									</div>
+								</div>
+								<div class="btn-group dropdown-half-width">
+									<button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Year</button>
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="caret"></span>
+										<span class="sr-only">Toggle Dropdown</span>
+									</button>
+									<div class="dropdown-menu">
+										<div class="select2-search" style="padding: 12px 15px;">
+											<span class="glyphicon glyphicon-search input-search-icon"></span>
+											<input class="dropdown-search" type="text">
+										</div>
+										<ul class="dropdown-list">
+											<% @collections.each do |collection| %>
+											<li><a href="#"><%= collection.name %></a></li>
+											<% end %>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<%= yield %>
+</body>
 </html>
