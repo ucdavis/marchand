@@ -140,6 +140,7 @@
 			<% for j in 0...cols %>
 			<% image = @images[(cols * i) + j]%>
 			<% thumb = get_thumbnail(image) %>
+			<% thumb = "https://s3-us-west-1.amazonaws.com/marchand/thumb_IMG0000.jpg" unless thumb%>
 
 			<div class="col-xs-3">
 				<div class="image-card" data-src="<%= image.s3 %>" data-collection="<%= image.collection.present? ? image.collection.name : "" %>" data-card="<%= image.card %>" data-topics="<%= image.topics %>" data-regions="<%= image.regions %>" data-cal-standards="<%= image.cal_standards %>" data-nat-standards="<%= image.nat_standards %>" data-citation="<%= image.citation %>">

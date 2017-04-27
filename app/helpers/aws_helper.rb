@@ -31,8 +31,13 @@ module AwsHelper
         establish_connection unless connected?
 
         # Using 1.45 ratio to build thumbnail from image_path
-        image = Magick::Image.read(image_path).first
-        image = image.resize_to_fill(275, 190)
+        begin
+            image = Magick::Image.read(image_path).first
+            image = image.resize_to_fill(275, 190)
+        rescue => error
+            File.open("#{Rails.root}/site_error.txt", "a+")
+            return nil
+        end
 
         # Upload to s3 bucket
         filename = "thumb_#{image.filename.split("/").last}"
