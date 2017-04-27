@@ -1,2 +1,0 @@
-# This file initializes local ENV variables
-ELASTICSEARCH_URL: http://localhost:9200
