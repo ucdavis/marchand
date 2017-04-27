@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 	root 'site#index'
 	get '/edit', to: 'site#edit'
 	get '/search', to: 'site#search'
+	get '/lesson', to: 'site#lesson'
 end

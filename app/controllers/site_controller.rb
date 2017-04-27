@@ -14,4 +14,7 @@ class SiteController < ApplicationController
 
     def edit
     end
+    
+    def lesson
+    end
 end

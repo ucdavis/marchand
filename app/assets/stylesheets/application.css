@@ -103,3 +103,9 @@ text-decoration: none;
 .dropdown-menu li:last-child {
     padding: 0px !important;
 }
+
+.advanced-search-collapse {
+    width: 300px;
+    display: block;
+    margin: auto;
+}
