@@ -79,6 +79,7 @@ body {
 
 .caret {
     //margin-left: 5px !important;
+    color: black;
 }
 
 .search-section {
@@ -125,7 +126,7 @@ body {
      }
      .dropdown-full-width, .dropdown-half-width {
         .dropdown-toggle {
-            width: unset !important;
+            width: 45px !important;
         }
     }
 }
@@ -133,6 +134,26 @@ body {
 .dropdown-half-width {
     width: 49.5%;
     margin-top: 20px;
+    .dropdown-menu {
+        width: 240px !important;
+         li a {
+        width: 250px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
+        li a:hover {
+            width: 100%;
+            white-space: unset;
+            overflow: visible;
+            background: #F8F8F8;
+            color: black;
+            font-weight: 600;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 13px;
+        }
+    }
 }
 
 .dropdown-half-width .dropdown-toggle {
@@ -142,6 +163,23 @@ body {
 .dropdown-full-width {
     width: 100%;
     margin-top: 20px;
+    li a {
+        width: 500px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
+    li a:hover {
+        width: 500px;
+        white-space: unset;
+        overflow: visible;
+        background: #F8F8F8;
+        color: black;
+        font-weight: 600;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 13px;
+    }
 }
 
 .dropdown-full-width .dropdown-toggle {
@@ -218,10 +256,11 @@ img {
 .image-card:hover {
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    border: unset;
 }
 
 .image-card-group {
-    margin: 25px auto;
+    margin: 0px auto;
 }
 
 .form-control:hover {
@@ -277,7 +316,35 @@ img {
     margin: 20px;
     border-radius: 5px;
     position: absolute;
-    margin-top: 35px;
+    margin-top: 33px;
+    .dropdown-toggle {
+        width:45px;
+        text-align: center !important;
+    }
+    .dropdown-menu {
+        width: 288px !important;
+         li a {
+        width: 250px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-style: normal !important;
+    }
+        li a:hover {
+            width: 100%;
+            white-space: unset;
+            overflow: visible;
+            background: #F8F8F8;
+            color: black;
+            font-weight: 600;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 13px;
+        }
+        .input-search-icon {
+            left: 239px !important;
+        }
+    }
 }
 
 .search-result-page {
@@ -314,7 +381,7 @@ img {
 }
 
 .filter-label-group {
-    margin-top: 25px;
+    margin-top: 15px;
     .filter-label {
         background-color:#E5E9EF;
         color: #494949;
@@ -338,12 +405,10 @@ img {
     }
 }
 
-
-  .fix-search {
-    position: fixed !important;
-    background-color: pink;
-    top: 10px;
-    input {
-      width: 250px;
-    }
-  }
+.sticky-content.fixed{
+  position: fixed;
+  margin-top: 15px;
+  top: 5px;
+  left: 0;
+  right: 0;
+}
