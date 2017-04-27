@@ -12,6 +12,7 @@ Things you may want to cover:
 `bundle install`
 
 * Configuration
+1. Set up the ELASTICSEARCH_URL environment variable
 
 * Database creation
 
@@ -21,10 +22,6 @@ Things you may want to cover:
 
 * Services (job queues, cache servers, search engines, etc.)
 
-
 * Deployment instructions
-To import models to index, run:
-`bundle exec rake environment elasticsearch:import:model CLASS='Image' FORCE=y`
 
-For more information checkout the [code](https://github.com/elastic/elasticsearch-rails/blob/master/elasticsearch-rails/lib/elasticsearch/rails/tasks/import.rb#L24)
 * ...
