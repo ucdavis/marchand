@@ -2,7 +2,15 @@
     .modal-header {
         .close {
             margin: 5px !important;
-            margin-right: 10px !important;
+            position: absolute;
+            right: 0;
+            color: black;
+            background: white;
+            padding: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
             span {
                 color: black !important
             }
@@ -25,6 +33,58 @@
         padding: 0px !important;
     }
     .modal-body {
+        margin-left: 20px;
+        margin-right: 20px;
+        .image-title {
+            margin: 5px 0px 30px 0px;
+        }
+        .list-section{
+            margin-top: 15px;
+            margin-bottom: 15px;
+            h5 {
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+
+.vertical-modal {
+    .modal-header {
+        .button-group {
+            margin-left: 20px;
+            margin-right: 20px;
+            button {
+                margin: 10px 0px 10px 5px !important;
+            i {
+                margin-right:5px; 
+            }
+                .glyphicon {
+                    top: 2px !important;
+                }
+            }
+        }
+    }
+    .modal-header {
+        padding: 0px !important;
+    }
+    .modal-body {
+        .close {
+            margin: 5px !important;
+            position: absolute;
+            right: -20px;
+            top: 0;
+            color: black;
+            background: white;
+            padding: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            span {
+                color: black !important
+            }
+        }
         margin-left: 20px;
         margin-right: 20px;
         .image-title {
