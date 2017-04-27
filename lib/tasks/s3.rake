@@ -48,19 +48,19 @@ namespace :s3 do
 			begin
 				s3 = open(img.s3).read
 				hp = open("#{Rails.root}/marchandslides.bak/#{img.file}").read
+				if Digest::MD5.hexdigest(s3) == Digest::MD5.hexdigest(hp)
+					puts "Good"
+				else
+					file.puts "diff #{img.id}\n"
+					puts "\ndiff #{img.id}\n"
+				end
 			rescue => error
 				file.puts "error #{img.id} #{img.s3} #{error}\n"
 				puts "\nerror #{img.id} #{img.s3} #{error}\n" 
 			ensure
 				i = i + 1
 			end
-
-			if Digest::MD5.hexdigest(s3) == Digest::MD5.hexdigest(hp)
-				puts "Good\n"
-			else
-				file.puts "diff #{img.id}\n"
-				puts "\ndiff #{img.id}\n"
-			end
 		end
+		file.close
 	end	
 end
