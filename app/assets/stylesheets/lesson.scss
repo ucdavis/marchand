@@ -26,12 +26,11 @@
     }
     .lesson-content {
         display: flex;
-        padding-top: 15px !important;
-        padding-bottom: 15px !important;
+        padding: 10px 0px 10px 0px !important;
+        margin-bottom: 3px !important;
         background-color:#FCFCFC;
         flex-direction: column;
-        padding-left:0px !important;
-        padding-right:0px !important;
+        border: 1px solid #EAE8E8 !important;
         .content-header {
             display: flex;
             margin-left: 0px;
@@ -50,11 +49,20 @@
                 display: flex;
                 justify-content: center;
                 cursor: pointer;
-                h5:first-child {
-                    text-align: right;margin-right: 35px;
-                }
-                h5:last-child {
+                .download {
                     text-align: right;
+                    margin-right: 35px;
+                    color: black;
+                }
+                .download:hover {
+                    color: #4A4A4A;
+                }
+                .view-online {
+                    text-align: right;
+                    color: black;
+                }
+                .view-online:hover {
+                    color: #4A4A4A;
                 }
                 i {
                     margin-right: 8px;
