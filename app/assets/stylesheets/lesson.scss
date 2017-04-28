@@ -1,0 +1,103 @@
+.lesson-card-group {
+    .panel {
+        padding: 0px 35px 0px 35px !important;
+    }
+    .lesson-header {
+        display: flex;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        margin-top: 25px;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        h5:first-child {
+            flex: 1;
+        }
+        h5:nth-child(2) {
+            flex: 3;
+            text-align: left;
+        }
+        h5:last-child {
+            flex: 2;
+            text-align: center;
+        }
+        h5 {
+            font-weight: bold;
+        }
+    }
+    .lesson-content {
+        display: flex;
+        padding-top: 15px !important;
+        padding-bottom: 15px !important;
+        background-color:#FCFCFC;
+        flex-direction: column;
+        padding-left:0px !important;
+        padding-right:0px !important;
+        .content-header {
+            display: flex;
+            margin-left: 0px;
+            margin-right: 0px;
+            padding-left: 35px;
+            padding-right:35px;
+            h5:first-child {
+                flex: 1;
+            }
+            .lesson-topic {
+                flex: 3;
+                text-align: left;
+            }
+            .lesson-file {
+                flex:2;
+                display: flex;
+                justify-content: center;
+                cursor: pointer;
+                h5:first-child {
+                    text-align: right;margin-right: 35px;
+                }
+                h5:last-child {
+                    text-align: right;
+                }
+                i {
+                    margin-right: 8px;
+                }
+            }
+        }
+        .lesson-info {
+            margin-top: 10px;
+            h5 {
+                padding: 20px 0px 0px 35px;
+                margin-top: 20px;
+                font-weight: bold;
+                border-top: 1px solid #dddddd;
+            }
+            h5:first-child {
+                margin-top: 0px !important;
+            }
+            p {
+                margin-bottom: 0px;
+                padding-left: 35px;
+                padding-right: 35px;
+            }
+            .image-card-group {
+                padding-left: 35px;
+                padding-right: 35px;
+                margin: 20px 0px 0px 0px;
+                display: flex;
+                justify-content: space-between;
+            }
+            .image-card {
+                width: 25%;
+                display: inline-block;
+                flex: 0 1 auto;
+                margin-right: 15px;
+                margin-top: 0px;
+                h5 {
+                    font-weight: unset !important;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    padding: 0px;
+                    border: unset;
+                }
+            }
+        }
+    }
+}
