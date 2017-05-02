@@ -44,7 +44,7 @@ module AwsHelper
         filename = "thumb_#{image.filename.split("/").last}"
         obj = @s3.bucket(Rails.application.secrets.s3_bucket)
         obj = obj.object(filename)
-        obj.put(body: image.to_blob, acl: 'public-read', metadata: get_metadata(image))
+        obj.put(body: image.to_blob, acl: 'public-read')
 
         return obj.public_url
     end
