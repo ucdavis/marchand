@@ -1,6 +1,10 @@
 .horizontal-modal {
+    h3 {
+        line-height: 1.1 !important;
+    }
     .modal-header {
         .close {
+            opacity: 0.5 !important;
             margin: 5px !important;
             position: absolute;
             right: 0;
@@ -12,8 +16,11 @@
             border-radius: 5px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
             span {
-                color: black !important
+                color: black !important;
             }
+        }
+        .close:hover {
+            opacity: 1 !important;
         }
         .button-group {
             margin-left: 20px;
@@ -21,7 +28,7 @@
             button {
                 margin: 10px 0px 10px 5px !important;
             i {
-                margin-right:5px; 
+                margin-right:5px;
             }
                 .glyphicon {
                     top: 2px !important;
@@ -50,7 +57,12 @@
 
 
 .vertical-modal {
+    h3 {
+        line-height: 1.1 !important;
+    }
     .modal-header {
+         background-color: black;
+            width: 100%;
         .button-group {
             margin-left: 20px;
             margin-right: 20px;
@@ -70,6 +82,7 @@
     }
     .modal-body {
         .close {
+            opacity: 0.5 !important;
             margin: 5px !important;
             position: absolute;
             right: -20px;
@@ -82,7 +95,7 @@
             border-radius: 5px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
             span {
-                color: black !important
+                color: black !important;
             }
         }
         margin-left: 20px;
