@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap.min.js
+//= require bootstrap2-toggle.js
 //= require_tree .
 
 $(document).ready(function(){

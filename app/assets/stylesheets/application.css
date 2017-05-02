@@ -11,12 +11,13 @@
  * It is generally better to create a new file per style scope.
  *
  *= require bootstrap.min.css
+ *= require bootstrap2-toggle.min.css
  *= require_tree .
  *= require_self
  */
 
 h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-    line-height: unset !important;
+    line-height: unset;
 }
 
 body {
@@ -110,4 +111,23 @@ text-decoration: none;
     width: 300px;
     display: block;
     margin: auto;
+}
+
+
+.toggle {
+    width: 45px !important;
+    height: 25px !important;
+    padding: unset !important;
+}
+
+.toggle.btn {
+    min-width: 80px !important;
+}
+
+.toggle .toggle-on {
+    padding: 3px 16px 3px 3px !important
+}
+
+.toggle .toggle-off {
+    padding: 3px 3px 3px 13px !important
 }

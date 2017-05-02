@@ -1,6 +1,15 @@
 <div class="container filter-label-group col-xs-7 col-md-8" style="margin-left:384px;">
 	<span class="label label-default filter-label">World War II<i class="glyphicon glyphicon-remove"></i></span>
 	<span class="label label-default filter-label">Europe<i class="glyphicon glyphicon-remove"></i></span>
+    <input id="toggle-two" type="checkbox">
+    <script>
+    $(function() {
+        $('#toggle-two').bootstrapToggle({
+        on: 'Collapse',
+        off: 'Hide'
+        });
+    })
+    </script>
 </div>
 <div class="row search-result-page">
 	<div id="sticky" class="sticky-element">
@@ -126,7 +135,6 @@
 			</div>
 		</div>
 	</div>
-
 	<div class="container lesson-card-group col-xs-7 col-md-8" style="margin-left:384px;">
 		<div class="row" type="button" data-toggle="modal" data-target="#myModal">
             <div class="col-xs-12">
