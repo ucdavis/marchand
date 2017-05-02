@@ -18,7 +18,8 @@ module AwsHelper
         })
 
         # Setup S3
-        @s3 = Aws::S3::Resource.new(:region => Rails.application.secrets.s3_region)
+        # @s3 = Aws::S3::Resource.new(:region => Rails.application.secrets.s3_region)
+        @s3 = Aws::S3::Client.new
     end
 
     # Upload a new thumbnail of the image from image_path to S3
@@ -43,8 +44,20 @@ module AwsHelper
         filename = "thumb_#{image.filename.split("/").last}"
         obj = @s3.bucket(Rails.application.secrets.s3_bucket)
         obj = obj.object(filename)
-        obj.put(body: image.to_blob, acl: 'public-read')
+        obj.put(body: image.to_blob, acl: 'public-read', metadata: get_metadata(image))
 
         return obj.public_url
+    end
+
+    # Returns a hash of the object's metadata only
+    def get_head_object(object_name)
+        establish_connection unless connected?
+        @s3.head_object(key: object_name, bucket: Rails.application.secrets.s3_bucket)
+    end
+
+    def get_metadata(image)
+        return {
+            :view => image.rows > image.columns ? "portrait" : "landscape"
+        }
     end
 end
