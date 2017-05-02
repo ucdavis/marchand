@@ -48,16 +48,4 @@ module AwsHelper
 
         return obj.public_url
     end
-
-    # Returns a hash of the object's metadata only
-    def get_head_object(object_name)
-        establish_connection unless connected?
-        @s3.head_object(key: object_name, bucket: Rails.application.secrets.s3_bucket)
-    end
-
-    def get_metadata(image)
-        return {
-            :view => image.rows > image.columns ? "portrait" : "landscape"
-        }
-    end
 end

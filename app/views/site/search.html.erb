@@ -139,12 +139,11 @@
 		<div class="row" type="button" data-toggle="modal" data-target="#myModal">
 			<% for j in 0...cols %>
 			<% image = @images[(cols * i) + j]%>
-			<% metadata = get_head_object(image.s3.split("/").last)["metadata"]%>
 			<% thumb = get_thumbnail(image) %>
 			<% thumb = "https://s3-us-west-1.amazonaws.com/marchand/thumb_IMG0000.jpg" unless thumb%>
 
 			<div class="col-xs-3">
-				<div class="image-card" data-view="<%= metadata["view"] %>" data-src="<%= image.s3 %>" data-collection="<%= image.collection.present? ? image.collection.name : "" %>" data-card="<%= image.card %>" data-topics="<%= image.topics %>" data-regions="<%= image.regions %>" data-cal-standards="<%= image.cal_standards %>" data-nat-standards="<%= image.nat_standards %>" data-citation="<%= image.citation %>" >
+				<div class="image-card" data-view="<%= image.view.present? ? image.view : "landscape" %>" data-src="<%= image.s3 %>" data-collection="<%= image.collection.present? ? image.collection.name : "" %>" data-card="<%= image.card %>" data-topics="<%= image.topics %>" data-regions="<%= image.regions %>" data-cal-standards="<%= image.cal_standards %>" data-nat-standards="<%= image.nat_standards %>" data-citation="<%= image.citation %>" >
 					<img src="<%= thumb %>">
 					<h5 class="text-center title"><%= image.title %></h5>
 				</div>
