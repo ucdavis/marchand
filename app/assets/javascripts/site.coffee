@@ -20,7 +20,9 @@ fillModal = (el) ->
 	imgCalStandards = $(el).data("cal-standards").split(delim)
 	imgNatStandards = $(el).data("nat-standards").split(delim)
 
-	console.log imgRegions
+	# Firefox chooses to only swap the images once the picture is fully loaded
+	# So we clear it first to avoid having the wrong picutre in a modal
+	$("img", $("##{view}-modal .modal-header")).attr("src", "")
 
 	$("img", $("##{view}-modal .modal-header")).attr("src", imgSrc)
 	$(".title", $("##{view}-modal .image-title")).html(imgTitle)
