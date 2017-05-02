@@ -8,6 +8,7 @@ $(document).ready ->
 
 
 fillModal = (el) ->
+	view = $(el).data("view")
 	delim = "@delim@"
 	imgSrc = $(el).data("src")
 	imgTitle = $(".title", $(el)).html()
@@ -21,28 +22,28 @@ fillModal = (el) ->
 
 	console.log imgRegions
 
-	$("img", $("#myModal .modal-header")).attr("src", imgSrc)
-	$(".title", $("#myModal .image-title")).html(imgTitle)
-	$(".collection", $("#myModal .image-title")).html(imgCollection)
-	$(".card", $("#myModal .list-section")).html(imgCard)
-	$(".citation", $("#myModal .list-section")).html(imgCitation)
+	$("img", $("##{view}-modal .modal-header")).attr("src", imgSrc)
+	$(".title", $("##{view}-modal .image-title")).html(imgTitle)
+	$(".collection", $("##{view}-modal .image-title")).html(imgCollection)
+	$(".card", $("##{view}-modal .list-section")).html(imgCard)
+	$(".citation", $("##{view}-modal .list-section")).html(imgCitation)
 
-	$(".topics", $("#myModal .list-section")).html("")
+	$(".topics", $("##{view}-modal .list-section")).html("")
 	imgTopics.forEach (topic) ->
 		if topic.length > 0
-			$(".topics", $("#myModal .list-section")).append("<li>#{topic}</li>")
+			$(".topics", $("##{view}-modal .list-section")).append("<li>#{topic}</li>")
 
-	$(".regions", $("#myModal .list-section")).html("")
+	$(".regions", $("##{view}-modal .list-section")).html("")
 	imgRegions.forEach (region) ->
 		if region.length > 0
-			$(".regions", $("#myModal .list-section")).append("<li>#{region}</li>")
+			$(".regions", $("##{view}-modal .list-section")).append("<li>#{region}</li>")
 
-	$(".cal-standards", $("#myModal .list-section")).html("")
+	$(".cal-standards", $("##{view}-modal .list-section")).html("")
 	imgCalStandards.forEach (calStandard) ->
 		if calStandard.length > 0
-			$(".cal-standards", $("#myModal .list-section")).append("<li>#{calStandard}</li>")
+			$(".cal-standards", $("##{view}-modal .list-section")).append("<li>#{calStandard}</li>")
 
-	$(".nat-standards", $("#myModal .list-section")).html("")
+	$(".nat-standards", $("##{view}-modal .list-section")).html("")
 	imgNatStandards.forEach (natStandard) ->
 		if natStandard.length > 0
-			$(".nat-standards", $("#myModal .list-section")).append("<li>#{natStandard}</li>")
+			$(".nat-standards", $("##{view}-modal .list-section")).append("<li>#{natStandard}</li>")
