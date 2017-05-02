@@ -79,7 +79,7 @@ namespace :s3 do
                 location = "#{bucket.name}/#{object_summary.key}"
 
                 object_summary.copy_to(location, options)
-                puts "Copied #{current_count} of #{max_count}"
+                puts "Copied #{curr_count} of #{max_count}"
             rescue => e
                 puts "Exception Raised: #{e}"
             end
