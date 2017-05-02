@@ -18,7 +18,8 @@ module AwsHelper
         })
 
         # Setup S3
-        @s3 = Aws::S3::Resource.new(:region => Rails.application.secrets.s3_region)
+        # @s3 = Aws::S3::Resource.new(:region => Rails.application.secrets.s3_region)
+        @s3 = Aws::S3::Client.new
     end
 
     # Upload a new thumbnail of the image from image_path to S3
@@ -31,8 +32,13 @@ module AwsHelper
         establish_connection unless connected?
 
         # Using 1.45 ratio to build thumbnail from image_path
-        image = Magick::Image.read(image_path).first
-        image = image.resize_to_fill(275, 190)
+        begin
+            image = Magick::Image.read(image_path).first
+            image = image.resize_to_fill(275, 190)
+        rescue => error
+            File.open("#{Rails.root}/site_error.txt", "a+")
+            return nil
+        end
 
         # Upload to s3 bucket
         filename = "thumb_#{image.filename.split("/").last}"

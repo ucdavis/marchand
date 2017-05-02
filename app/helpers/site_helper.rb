@@ -13,7 +13,7 @@ module SiteHelper
 
         # Create, upload, and save link to
         thumbnail = upload_new_thumbnail(image.s3)
-        image.update( {:thumbnail => thumbnail } )
+        image.update( {:thumbnail => thumbnail } ) if thumbnail
 
         return thumbnail
     end

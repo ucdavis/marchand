@@ -136,13 +136,15 @@
 		<% cols = 4 %>
 		<% rows = @images.size / cols %>
 		<% for i in 0...rows %>
-		<div class="row" type="button" data-toggle="modal" data-target="#myModal">
+		<div class="row">
 			<% for j in 0...cols %>
 			<% image = @images[(cols * i) + j]%>
 			<% thumb = get_thumbnail(image) %>
+			<% thumb = "https://s3-us-west-1.amazonaws.com/marchand/thumb_IMG0000.jpg" unless thumb%>
+			<% view = image.view.present? ? image.view : "landscape" %>
 
-			<div class="col-xs-3">
-				<div class="image-card" data-src="<%= image.s3 %>" data-collection="<%= image.collection.present? ? image.collection.name : "" %>" data-card="<%= image.card %>" data-topics="<%= image.topics %>" data-regions="<%= image.regions %>" data-cal-standards="<%= image.cal_standards %>" data-nat-standards="<%= image.nat_standards %>" data-citation="<%= image.citation %>">
+			<div class="col-xs-3" type="button" data-toggle="modal" data-target="#<%= view %>-modal">
+				<div class="image-card" data-view="<%= view %>" data-src="<%= image.s3 %>" data-collection="<%= image.collection.present? ? image.collection.name : "" %>" data-card="<%= image.card %>" data-topics="<%= image.topics %>" data-regions="<%= image.regions %>" data-cal-standards="<%= image.cal_standards %>" data-nat-standards="<%= image.nat_standards %>" data-citation="<%= image.citation %>" >
 					<img src="<%= thumb %>">
 					<h5 class="text-center title"><%= image.title %></h5>
 				</div>
@@ -154,4 +156,5 @@
 	</div> <!--Container-->
 </div>
 
-<%= render 'site/modal_horizontal_image.html.erb' %>
+<%= render 'site/modal_vertical_image' %>
+<%= render 'site/modal_horizontal_image' %>
