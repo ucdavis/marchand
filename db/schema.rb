@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502193838) do
+ActiveRecord::Schema.define(version: 20170502194026) do
 
   create_table "cal_standards", force: :cascade do |t|
     t.integer "grade_id",               default: 0,  null: false
