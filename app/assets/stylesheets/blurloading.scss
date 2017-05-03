@@ -1,4 +1,4 @@
-.placeholder-test {
+.image-placeholder {
   background-color: #f6f6f6;
   background-size: cover;
   background-repeat: no-repeat;
@@ -8,13 +8,13 @@
     animation-duration: 3s;
 }
 
-.placeholder-test img {
+.image-placeholder img {
     animation-name: blur;
     animation-duration: 2s;
     transition: opacity 1s linear;
 }
 
-.placeholder-test img {
+.image-placeholder img {
   opacity: 1;
 }
 
