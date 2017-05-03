@@ -95,7 +95,7 @@
     }
     .modal-body {
         .close {
-            opacity: 0.5 !important;
+            opacity: 0.5;
             margin: 5px !important;
             position: absolute;
             right: -20px;
@@ -110,6 +110,9 @@
             span {
                 color: black !important;
             }
+        }
+        .close:hover {
+            opacity: 1 !important;
         }
         margin-left: 20px;
         margin-right: 20px;
