@@ -1,6 +1,12 @@
 .horizontal-modal {
     h3 {
         line-height: 1.1 !important;
+    ul {
+        list-style: none !important;
+        li {
+            padding-left: 0px !important;
+        }
+    }
     }
     .modal-header {
         .close {
@@ -46,6 +52,10 @@
         .image-title {
             margin: 5px 0px 30px 0px;
         }
+        .description {
+            padding-bottom: 5px;
+            border-bottom: 1px solid #e5e5e5;
+        }
         .list-section{
             margin-top: 15px;
             margin-bottom: 15px;
@@ -60,6 +70,10 @@
 .vertical-modal {
     h3 {
         line-height: 1.1 !important;
+    }
+    ul {
+        list-style: none !important;
+        padding-left: 0px !important;
     }
     .modal-header {
          background-color: black;
@@ -103,6 +117,10 @@
         margin-right: 20px;
         .image-title {
             margin: 5px 0px 30px 0px;
+        }
+         .description {
+            padding-bottom: 5px;
+            border-bottom: 1px solid #e5e5e5;
         }
         .list-section{
             margin-top: 15px;
