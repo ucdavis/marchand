@@ -137,7 +137,7 @@ body {
     margin-top: 20px;
     .dropdown-menu {
         width: 240px !important;
-         li a {
+        li a {
         width: 250px;
         white-space: nowrap;
         overflow: hidden;
@@ -150,8 +150,8 @@ body {
             background: #F8F8F8;
             color: black;
             font-weight: 600;
-            padding-top: 10px;
-            padding-bottom: 10px;
+            //padding-top: 10px;
+            //padding-bottom: 10px;
             font-size: 13px;
         }
     }
@@ -177,8 +177,8 @@ body {
         background: #F8F8F8;
         color: black;
         font-weight: 600;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        //padding-top: 10px;
+        //padding-bottom: 10px;
         font-size: 13px;
     }
 }
@@ -233,6 +233,21 @@ input[type=submit] {
 .dropdown-menu li:last-child {
     padding-left: 20px;
     padding-right: 20px;
+}
+
+.dropdown-list {
+    li {
+        a {
+        cursor: pointer;
+        width: 100% !important;
+        }
+    }
+    input {
+        width: unset;
+        display: inline;
+        margin-left: 85%;
+        cursor: pointer;
+    }
 }
 
 
@@ -338,8 +353,8 @@ img {
             background: #F8F8F8;
             color: black;
             font-weight: 600;
-            padding-top: 10px;
-            padding-bottom: 10px;
+            //padding-top: 10px;
+            //padding-bottom: 10px;
             font-size: 13px;
         }
         .input-search-icon {
