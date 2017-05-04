@@ -333,6 +333,12 @@ img {
     border-radius: 5px;
     position: absolute;
     margin-top: 33px;
+    .divider {
+        border-bottom: 1px solid #EAE8E8;
+        margin-left: -15px !important;
+        margin-right: -15px !important;
+        margin-bottom: 10px;
+    }
     .dropdown-toggle {
         width:45px;
         text-align: center !important;
@@ -348,7 +354,7 @@ img {
     }
         li a:hover {
             width: 100%;
-            white-space: unset;
+            //white-space: unset;
             overflow: visible;
             background: #F8F8F8;
             color: black;
@@ -427,4 +433,31 @@ img {
   top: 5px;
   left: 0;
   right: 0;
+}
+
+
+/* search panel customized-search-tag */
+
+.customized-search-group {
+    .filter-label {
+        background-color:#E5E9EF;
+        color: #494949;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 15px;
+        padding-right: 15px;;
+        margin-right: 10px;
+        font-weight:unset;
+        font-size: 13px;
+        display: inline-block;
+        margin-top: 10px;
+    }
+    i {
+        font-size: 10px;
+        margin-left: 8px;
+    }
+    i:hover {
+        cursor:pointer;
+        color:black;
+    }
 }

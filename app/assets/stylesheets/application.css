@@ -74,6 +74,13 @@ body {
     overflow-x: hidden;
 }
 
+.dropdown-list input {
+    margin-left: 81% !important;
+    opacity: 0;
+    z-index: 99999;
+    position: relative;
+}
+
 .dropdown-list li a {
     display: block;
     padding: 3px 20px;
@@ -82,6 +89,10 @@ body {
     line-height: 1.42857143;
     color: #333;
     white-space: nowrap;
+}
+
+.dropdown-list li:first-child a {
+    padding-top: 6px !important;
 }
 
 .dropdown-list li a:hover {
@@ -138,4 +149,58 @@ text-decoration: none;
 .toggle .toggle-off {
     padding: 3px 3px 3px 13px !important
 }
+
+/* customize checkbox*/
+
+
+
+/* SQUARED THREE */
+.customized-checkbox {
+	width: 100%;
+	position: relative;
+}
+
+.customized-checkbox label {
+	cursor: pointer;
+	position: absolute;
+	width: 19px;
+    margin-bottom: 0px;;
+	height: 19px;
+	top: 0;
+    right: 0;
+	border-radius: 4px;
+    background-color: white;
+    border: 1px solid #494949;
+}
+
+.customized-checkbox label:after {
+	opacity: 0;
+	content: '';
+	position: absolute;
+	width: 9px;
+	height: 5px;
+	background: transparent;
+	top: 6px;
+	left: 4px;
+	border: 3px solid #494949;
+	border-top: none;
+	border-right: none;
+
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+.customized-checkbox label:hover::after {
+	opacity: 0.3;
+}
+
+.customized-checkbox input[type=checkbox]:checked + label:after {
+	opacity: 1;
+}
+
+
+
 
