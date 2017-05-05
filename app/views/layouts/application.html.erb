@@ -61,7 +61,15 @@
 										</div>
 										<ul class="dropdown-list">
 											<% @regions.each do |region| %>
-											<li><a href="#"><%= region.title %></a></li>
+											<li>
+												<a>
+													<div class="customized-checkbox">
+														<span><%= region.title %></span>
+														<input type="checkbox" value="None" id="customized-checkbox" name="check" style="position: absolute; right:0px;">
+														<label for="customized-checkbox"></label>
+													</div>
+												</a>
+											</li>
 											<% end %>
 										</ul>
 									</div>
@@ -79,7 +87,15 @@
 										</div>
 										<ul class="dropdown-list">
 											<% @collections.each do |collection| %>
-											<li><a href="#"><%= collection.name %></a></li>
+											<li>
+												<a>
+													<div class="customized-checkbox">
+														<span><%= collection.name %></span>
+														<input type="checkbox" value="None" id="customized-checkbox" name="check" style="position: absolute; right:0px;">
+														<label for="customized-checkbox"></label>
+													</div>
+												</a>
+											</li>
 											<% end %>
 										</ul>
 									</div>
@@ -98,7 +114,15 @@
 										</div>
 										<ul class="dropdown-list">
 											<% @topics.each do |topic| %>
-											<li><a href="#"><%= topic.title %></a></li>
+											<li>
+												<a>
+													<div class="customized-checkbox">
+														<span><%= topic.title %></span>
+														<input type="checkbox" value="None" id="customized-checkbox" name="check" style="position: absolute; right:0px;">
+														<label for="customized-checkbox"></label>
+													</div>
+												</a>
+											</li>
 											<% end %>
 										</ul>
 									</div>
@@ -116,7 +140,15 @@
 										</div>
 										<ul class="dropdown-list">
 											<% @ca_standards.each do |standard| %>
-											<li><a href="#"><%= standard.label %></a></li>
+											<li>
+												<div>
+													<div class="customized-checkbox">
+														<a style="padding-right:50px !important" ><%= standard.label %></a>
+														<input type="checkbox" value="None" id="customized-checkbox" name="check" style="position: absolute; right:0px; position: absolute;right: 23px;top: 5px;z-index: 99999;">
+														<label for="customized-checkbox" style="right:2%; margin-top:5px !important; margin-right:10px;"></label>
+													</div>
+												</div>
+											</li>
 											<% end %>
 										</ul>
 									</div>

@@ -81,6 +81,7 @@
             margin-right: 20px;
             button {
                 margin: 10px 0px 10px 5px !important;
+                border:none;
             i {
                 margin-right:5px;
             }
@@ -92,13 +93,18 @@
     }
     .modal-header {
         padding: 0px !important;
+        img {
+            padding: 35px;
+        }
     }
     .modal-body {
+        padding:35px 15px 35px 15px !important;
+        margin:0px 35px 0px 35px !important;
         .close {
             opacity: 0.5;
             margin: 5px !important;
             position: absolute;
-            right: -20px;
+            right: -35px;
             top: 0;
             color: black;
             background: white;

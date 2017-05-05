@@ -328,11 +328,10 @@ img {
 .filter-panel {
     background-color: #FCFCFC;
     border: 1px solid #EAE8E8;
-    height: 450px;
     margin: 20px;
     border-radius: 5px;
     position: absolute;
-    margin-top: 33px;
+    margin-top: 25px;
     .divider {
         border-bottom: 1px solid #EAE8E8;
         margin-left: -15px !important;
@@ -439,6 +438,7 @@ img {
 /* search panel customized-search-tag */
 
 .customized-search-group {
+    margin-bottom: 25px;
     .filter-label {
         background-color:#E5E9EF;
         color: #494949;
