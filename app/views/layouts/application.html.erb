@@ -49,7 +49,7 @@
 						<div class="collapse" id="collapseExample">
 							<div class="advanced-search-section">
 								<div class="btn-group dropdown-half-width">
-									<button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Region</button>
+									<button type="button" class="btn btn-default disabale-click" style="width: calc(100% - 45px);">Region</button>
 									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<span class="caret"></span>
 										<span class="sr-only">Toggle Dropdown</span>
@@ -65,7 +65,7 @@
 												<a>
 													<div class="customized-checkbox">
 														<span><%= region.title %></span>
-														<input type="checkbox" value="None" id="customized-checkbox" name="check" style="position: absolute; right:0px;">
+														<input type="checkbox" value="None" name="check">
 														<label for="customized-checkbox"></label>
 													</div>
 												</a>
@@ -75,7 +75,7 @@
 									</div>
 								</div>
 								<div class="btn-group dropdown-half-width">
-									<button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Collection</button>
+									<button type="button" class="btn btn-default disabale-click" style="width: calc(100% - 45px);">Collection</button>
 									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<span class="caret"></span>
 										<span class="sr-only">Toggle Dropdown</span>
@@ -91,7 +91,7 @@
 												<a>
 													<div class="customized-checkbox">
 														<span><%= collection.name %></span>
-														<input type="checkbox" value="None" id="customized-checkbox" name="check" style="position: absolute; right:0px;">
+														<input type="checkbox" value="None" id="customized-checkbox" name="check">
 														<label for="customized-checkbox"></label>
 													</div>
 												</a>
@@ -101,7 +101,7 @@
 									</div>
 								</div>
 								<div class="btn-group dropdown-full-width">
-									<button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Topic/Theme</button>
+									<button type="button" class="btn btn-default disabale-click" style="width: calc(100% - 45px);">Topic/Theme</button>
 									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<span class="caret"></span>
 										<span class="sr-only">Toggle Dropdown</span>
@@ -118,7 +118,7 @@
 												<a>
 													<div class="customized-checkbox">
 														<span><%= topic.title %></span>
-														<input type="checkbox" value="None" id="customized-checkbox" name="check" style="position: absolute; right:0px;">
+														<input class="topic-search" type="checkbox" value="None" name="check">
 														<label for="customized-checkbox"></label>
 													</div>
 												</a>
@@ -128,7 +128,7 @@
 									</div>
 								</div>
 								<div class="btn-group dropdown-full-width">
-									<button type="button" class="btn btn-default" style="width: calc(100% - 45px);">California Standard</button>
+									<button type="button" class="btn btn-default disabale-click" style="width: calc(100% - 45px);">California Standard</button>
 									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<span class="caret"></span>
 										<span class="sr-only">Toggle Dropdown</span>
@@ -144,7 +144,7 @@
 												<div>
 													<div class="customized-checkbox">
 														<a style="padding-right:50px !important" ><%= standard.label %></a>
-														<input type="checkbox" value="None" id="customized-checkbox" name="check" style="position: absolute; right:0px; position: absolute;right: 23px;top: 5px;z-index: 99999;">
+														<input type="checkbox" value="None" id="customized-checkbox" name="check">
 														<label for="customized-checkbox" style="right:2%; margin-top:5px !important; margin-right:10px;"></label>
 													</div>
 												</div>
@@ -154,7 +154,7 @@
 									</div>
 								</div>
 								<div class="btn-group dropdown-half-width">
-									<button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Grade Level</button>
+									<button type="button" class="btn btn-default disabale-click" style="width: calc(100% - 45px);">Grade Level</button>
 									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<span class="caret"></span>
 										<span class="sr-only">Toggle Dropdown</span>
@@ -166,13 +166,21 @@
 										</div>
 										<ul class="dropdown-list">
 											<% @regions.each do |region| %>
-											<li><a href="#"><%= region.title %></a></li>
+											<li>
+												<a>
+												<div class="customized-checkbox">
+													<span><%= region.title %></span>
+													<input class="topic-search" type="checkbox" value="None" name="check">
+													<label for="customized-checkbox"></label>
+												</div>
+												</a>
+											</li>
 											<% end %>
 										</ul>
 									</div>
 								</div>
 								<div class="btn-group dropdown-half-width">
-									<button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Year</button>
+									<button type="button" class="btn btn-default disabale-click" style="width: calc(100% - 45px);">Year</button>
 									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<span class="caret"></span>
 										<span class="sr-only">Toggle Dropdown</span>
@@ -184,7 +192,15 @@
 										</div>
 										<ul class="dropdown-list">
 											<% @collections.each do |collection| %>
-											<li><a href="#"><%= collection.name %></a></li>
+											<li>
+												<a>
+												<div class="customized-checkbox">
+													<span><%= collection.name %></span>
+													<input class="topic-search" type="checkbox" value="None" name="check">
+													<label for="customized-checkbox"></label>
+												</div>
+												</a>
+											</li>
 											<% end %>
 										</ul>
 									</div>

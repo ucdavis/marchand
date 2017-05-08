@@ -75,7 +75,7 @@
     }
     .modal-header {
          background-color: black;
-            width: 100%;
+        width: 100%;
         .button-group {
             margin-left: 20px;
             margin-right: 20px;
@@ -94,18 +94,21 @@
     .modal-header {
         padding: 0px !important;
         img {
-            padding: 35px;
+            //padding: 35px;
         }
     }
     .modal-body {
-        padding:35px 15px 35px 15px !important;
-        margin:0px 35px 0px 35px !important;
+        //overflow-y: auto;
+        //overflow-x: hidden;
+        //height: 670px;
+        padding:0px 0px 35px 15px !important;
+        margin:35px 0px 0px 35px !important;
         .close {
             opacity: 0.5;
             margin: 5px !important;
             position: absolute;
-            right: -35px;
-            top: 0;
+            right: 0px;
+            top: -35px;
             color: black;
             background: white;
             padding: 5px;
