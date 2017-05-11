@@ -8,6 +8,25 @@ class Image < ActiveRecord::Base
     has_many :data_nat_standards
     belongs_to :collection
 
+    # @param query - text to search for
+    # @param filter - arrat of hashes in the form of ElasticSearch's filter parameter for queryDSL
+    def self.search(query, filter)
+        __elasticsearch__.search({
+            query: {
+                bool: {
+                    must: {
+                        multi_match: {
+                            query: query,
+                            fields: ['card^5', 'title', 'citation', 'notes']
+                        }
+                    },
+
+                    filter: filter.split(",")
+                }
+            }
+        })
+    end
+
     def topics
         topics = []
         self.topic_assignments.each do |topic_assignment|
