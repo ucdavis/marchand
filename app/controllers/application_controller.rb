@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
     include SiteHelper
 
     def set_filters
-        @regions = Region.select(:title).uniq
-        @collections = Collection.select(:name).uniq
-        @topics = Topic.select(:title).uniq
+        @regions = Region.select(:id, :title).uniq
+        @collections = Collection.select(:id, :name).uniq
+        @topics = Topic.select(:id, :title).uniq
         @ca_standards = CalStandard.select(:id, :grade_id, :standard_id, :description).order(:grade_id, :standard_id)
     end
 end

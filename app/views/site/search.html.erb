@@ -26,7 +26,7 @@
 						</div>
 						<ul class="dropdown-list">
 							<% @regions.each do |region| %>
-							<li><a href="#"><%= region.title %></a></li>
+							<li data-id="<%= region.id %>"><a href="#"><%= region.title %></a></li>
 							<% end %>
 						</ul>
 					</div>
@@ -46,7 +46,7 @@
 						</div>
 						<ul class="dropdown-list">
 							<% @topics.each do |topic| %>
-							<li><a href="#"><%= topic.title %></a></li>
+							<li data-id="<%= topic.id %>"><a href="#"><%= topic.title %></a></li>
 							<% end %>
 						</ul>
 					</div>
@@ -65,7 +65,7 @@
 						</div>
 						<ul class="dropdown-list">
 							<% @ca_standards.each do |ca_standard| %>
-							<li><a href="#"><%= ca_standard.label %></a></li>
+							<li data-id="<%= ca_standard.id %>"><a href="#"><%= ca_standard.label %></a></li>
 							<% end %>
 						</ul>
 					</div>
