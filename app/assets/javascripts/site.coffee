@@ -10,6 +10,18 @@ $(document).ready ->
 		target = $("[data-target]", this).data("target")
 		searchFilter(this, target)
 
+	$("input[type=checkbox]", $("[data-type=list]")).on "click", (e) ->
+		target = $(this).closest("[data-tag-target]").data("tag-target")
+		text = $(this).closest("span").html()
+		toggleTag(this, text, targetId)
+
+# Adds / Remove the tag in the tag area
+toggleTag = (checkbox, text, targetId) ->
+	if $(checkbox).is(":checked")
+		# Add tag to target area
+	else
+		# Remove tag from target area
+
 # Filters a given ul based on information in the search-box
 # @param{jQuery} menu - Container that consists of a search-box and a list
 # @param{String} target - Inner most wrapper for the text to search through.
