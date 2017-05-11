@@ -54,7 +54,7 @@ class Image < ActiveRecord::Base
     def nat_standards
         nat_standards = []
         self.data_nat_standards.each do |data|
-            nat_standards << data.nat_standard.label if data.nat_standard.label.present?
+            nat_standards << data.nat_standard.label if data.nat_standard.present?
         end
 
         nat_standards.join("@delim@")
