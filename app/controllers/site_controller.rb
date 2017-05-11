@@ -7,15 +7,27 @@ class SiteController < ApplicationController
     end
 
     def search
+        # All text query in ES
         query = params[:q].present? ? params[:q] : "*"
-        @images = Image.search(query).records
-        # if params[:query].present?
-        #     @cards = Image.search(params[:query]).records
-        # else
-        #     if params[:bestof].present? && params[:bestof]
-        #         @cards = TopicAssignment.joins(:image).joins(:topic).where(:images => {:featured => 1, :public => 1}, :topics => {:featured => 1, }, :topic_id => params[:topic_id])
-        #     end
-        # end
+        filter = []
+        filter << {
+            term: {
+                collection_id: 2
+            }
+        }
+
+        filter << {
+            term: {
+                public: 1
+            }
+        }
+
+        puts filter
+        @images = Image.search(query, filter).records
+
+        # Filter using ORM
+        # @images = @allDocuments.where(:collection_id => 2)
+        # @images = @allDocuments.where(:collection_id => 4).or(@images)
     end
 
     def edit

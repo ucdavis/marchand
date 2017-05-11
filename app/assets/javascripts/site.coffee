@@ -7,7 +7,8 @@ $(document).ready ->
 		fillModal(this)
 
 	$("[data-type=menu]").on "keyup", (e) ->
-		searchFilter(this, 'a')
+		target = $("[data-target]", this).data("target")
+		searchFilter(this, target)
 
 # Filters a given ul based on information in the search-box
 # @param{jQuery} menu - Container that consists of a search-box and a list
@@ -18,7 +19,9 @@ searchFilter = (menu, target) ->
 	searchArea = $("[data-type=list]", menu);
 
 	$('li', searchArea).each (index, item) ->
-		if ( $(target, item).html().toLowerCase().indexOf(filter) > -1 )
+		text = if target == "input" then $(target, item).val() else $(target,item).html()
+		console.log text
+		if ( text.toLowerCase().indexOf(filter) > -1 )
 			$(item).css("display", "")
 		else
 			$(item).css("display", "none")

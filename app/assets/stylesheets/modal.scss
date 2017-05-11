@@ -1,6 +1,14 @@
 .horizontal-modal {
+    h3 {
+        line-height: 1.1 !important;
+    }
+    ul {
+        list-style: none !important;
+        padding-left: 0px !important;
+    }
     .modal-header {
         .close {
+            opacity: 0.5 !important;
             margin: 5px !important;
             position: absolute;
             right: 0;
@@ -11,46 +19,14 @@
             padding-right: 10px;
             border-radius: 5px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            z-index: 999;
             span {
-                color: black !important
+                color: black !important;
             }
         }
-        .button-group {
-            margin-left: 20px;
-            margin-right: 20px;
-            button {
-                margin: 10px 0px 10px 5px !important;
-            i {
-                margin-right:5px; 
-            }
-                .glyphicon {
-                    top: 2px !important;
-                }
-            }
+        .close:hover {
+            opacity: 1 !important;
         }
-    }
-    .modal-header {
-        padding: 0px !important;
-    }
-    .modal-body {
-        margin-left: 20px;
-        margin-right: 20px;
-        .image-title {
-            margin: 5px 0px 30px 0px;
-        }
-        .list-section{
-            margin-top: 15px;
-            margin-bottom: 15px;
-            h5 {
-                font-weight: 600;
-            }
-        }
-    }
-}
-
-
-.vertical-modal {
-    .modal-header {
         .button-group {
             margin-left: 20px;
             margin-right: 20px;
@@ -69,11 +45,70 @@
         padding: 0px !important;
     }
     .modal-body {
+        margin-left: 20px;
+        margin-right: 20px;
+        .image-title {
+            margin: 5px 0px 30px 0px;
+        }
+        .description {
+            padding-bottom: 5px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .list-section{
+            margin-top: 15px;
+            margin-bottom: 15px;
+            h5 {
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+
+.vertical-modal {
+    h3 {
+        line-height: 1.1 !important;
+    }
+    ul {
+        list-style: none !important;
+        padding-left: 0px !important;
+    }
+    .modal-header {
+         background-color: black;
+        width: 100%;
+        .button-group {
+            margin-left: 20px;
+            margin-right: 20px;
+            button {
+                margin: 10px 0px 10px 5px !important;
+                border:none;
+            i {
+                margin-right:5px;
+            }
+                .glyphicon {
+                    top: 2px !important;
+                }
+            }
+        }
+    }
+    .modal-header {
+        padding: 0px !important;
+        .button-group {
+            margin-left: 5px !important;
+        }
+    }
+    .modal-body {
+        //overflow-y: auto;
+        //overflow-x: hidden;
+        //height: 670px;
+        padding:0px 0px 15px 15px !important;
+        margin:35px 0px 0px 35px !important;
         .close {
+            opacity: 0.5;
             margin: 5px !important;
             position: absolute;
-            right: -20px;
-            top: 0;
+            right: 0px;
+            top: -35px;
             color: black;
             background: white;
             padding: 5px;
@@ -82,19 +117,32 @@
             border-radius: 5px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
             span {
-                color: black !important
+                color: black !important;
             }
+        }
+        .close:hover {
+            opacity: 1 !important;
         }
         margin-left: 20px;
         margin-right: 20px;
-        .image-title {
-            margin: 5px 0px 30px 0px;
-        }
-        .list-section{
-            margin-top: 15px;
-            margin-bottom: 15px;
-            h5 {
-                font-weight: 600;
+        .image-info {
+            padding-right:35px !important;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            height: 535px;
+            .image-title {
+                margin: 5px 0px 30px 0px;
+            }
+            .description {
+                padding-bottom: 5px;
+                border-bottom: 1px solid #e5e5e5;
+            }
+            .list-section{
+                margin-top: 15px;
+                margin-bottom: 15px;
+                h5 {
+                    font-weight: 600;
+                }
             }
         }
     }

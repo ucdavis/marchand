@@ -1,7 +1,3 @@
-<div class="container filter-label-group col-xs-7 col-md-8" style="margin-left:384px;">
-    <span class="label label-default filter-label">World War II<i class="glyphicon glyphicon-remove"></i></span>
-    <span class="label label-default filter-label">Europe<i class="glyphicon glyphicon-remove"></i></span>
-</div>
 <div class="row search-result-page">
     <div id="sticky" class="sticky-element">
         <div class="sticky-anchor"></div>
@@ -13,8 +9,13 @@
                 <button class="btn btn-default btn-filter" type="submit">Images</button>
                 <button class="btn btn-default btn-filter pull-right" type="submit">Lessons</button>
 
+                <% @filters.each do |filter| %>
+                <% next if filter.empty? %>
+                <% # Checks to see if we override a class's `name` method %>
+                <% klass = filter.first.class %>
+                <% title = defined?(klass.readable_class_name) ? klass.readable_class_name : klass.name %>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Region</button>
+                    <button type="button" class="btn btn-default disabale-click" style="width: calc(100% - 45px);"><%= title %></button>
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="caret"></span>
                         <span class="sr-only">Toggle Dropdown</span>
@@ -24,130 +25,60 @@
                             <span class="glyphicon glyphicon-search input-search-icon"></span>
                             <input class="dropdown-search" type="text" data-type="search-box">
                         </div>
-                        <ul class="dropdown-list" data-type="list">
-                            <% @regions.each do |region| %>
-                            <li data-id="<%= region.id %>"><a href="#"><%= region.title %></a></li>
+                        <ul class="dropdown-list" data-type="list" data-target="span">
+                            <%= filter.each do |item| %>
+                            <li>
+                                <a>
+                                    <div class="customized-checkbox">
+                                        <span><%= item.title %></span>
+                                        <input type="checkbox" value="<%= item.id %>" id="customized-checkbox" name="check" />
+                                        <label for="customized-checkbox"></label>
+                                    </div>
+                                </a>
+                            </li>
                             <% end %>
                         </ul>
                     </div>
                 </div>
 
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Topic/Theme</button>
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu" data-type="menu">
-                        <!-- test -->
-                        <div class="select2-search" style="padding: 12px 15px;">
-                            <span class="glyphicon glyphicon-search input-search-icon"></span>
-                            <input class="dropdown-search" type="text" data-type="search-box">
-                        </div>
-                        <ul class="dropdown-list" data-type="list">
-                            <% @topics.each do |topic| %>
-                            <li data-id="<%= topic.id %>"><a href="#"><%= topic.title %></a></li>
-                            <% end %>
-                        </ul>
-                    </div>
+                <div class="customized-search-group">
+                    <span class="label label-default filter-label">World War II<i class="glyphicon glyphicon-remove"></i></span>
+                    <span class="label label-default filter-label">Europe<i class="glyphicon glyphicon-remove"></i></span>
                 </div>
-
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default" style="width: calc(100% - 45px);">California Standard</button>
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu" data-type="menu">
-                        <div class="select2-search" style="padding: 12px 15px;">
-                            <span class="glyphicon glyphicon-search input-search-icon"></span>
-                            <input class="dropdown-search" type="text" data-type="search-box">
-                        </div>
-                        <ul class="dropdown-list" data-type="list">
-                            <% @ca_standards.each do |ca_standard| %>
-                            <li data-id="<%= ca_standard.id %>"><a href="#"><%= ca_standard.label %></a></li>
-                            <% end %>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Grade Level</button>
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu" data-type="menu">
-                        <div class="select2-search" style="padding: 12px 15px;">
-                            <span class="glyphicon glyphicon-search input-search-icon"></span>
-                            <input class="dropdown-search" type="text" data-type="search-box">
-                        </div>
-                        <ul class="dropdown-list" data-type="list">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Year</button>
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu" data-type="menu">
-                        <div class="select2-search" style="padding: 12px 15px;">
-                            <span class="glyphicon glyphicon-search input-search-icon"></span>
-                            <input class="dropdown-search" type="text" data-type="search-box">
-                        </div>
-                        <ul class="dropdown-list" data-type="list">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                        </ul>
-                    </div>
-                </div>
+                <div class="divider"></div>
+                <% end %>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="container image-card-group col-xs-7 col-md-8" style="margin-left:384px;">
-        <% if @images.nil? %>
-        <div class="row">
-            <h5 class="col-xs-12">No Images</h5>
-        </div>
-        <% else %>
-        <% cols = 4.0 %>
-        <% rows = @images.size / cols %>
-        <% rows = rows.ceil %>
-        <% for i in 0...rows %>
-        <div class="row">
-            <% for j in 0...cols %>
-            <% index = (cols * i) + j %>
-            <% break if index >= @images.size %>
-            <% image = @images[index]%>
-            <% thumb = get_thumbnail(image) %>
-            <% thumb = "https://s3-us-west-1.amazonaws.com/marchand/thumb_IMG0000.jpg" unless thumb%>
-            <% view = image.view.present? ? image.view : "landscape" %>
+<div class="container image-card-group col-xs-7 col-md-8" style="margin-left:384px;">
+    <% if @images.nil? %>
+    <div class="row">
+        <h5 class="col-xs-12">No Images</h5>
+    </div>
+    <% else %>
+    <% cols = 4 %>
+    <% rows = @images.size / cols %>
+    <% for i in 0...rows %>
+    <div class="row">
+        <% for j in 0...cols %>
+        <% image = @images[(cols * i) + j]%>
+        <% thumb = get_thumbnail(image) %>
+        <% thumb = "https://s3-us-west-1.amazonaws.com/marchand/thumb_IMG0000.jpg" unless thumb%>
+        <% view = image.view.present? ? image.view : "landscape" %>
 
-            <div class="col-xs-3" type="button" data-toggle="modal" data-target="#<%= view %>-modal">
-                <div class="image-card" data-view="<%= view %>" data-src="<%= image.s3 %>" data-collection="<%= image.collection.present? ? image.collection.name : "" %>" data-card="<%= image.card %>" data-topics="<%= image.topics %>" data-regions="<%= image.regions %>" data-cal-standards="<%= image.cal_standards %>" data-nat-standards="<%= image.nat_standards %>" data-citation="<%= image.citation %>" >
-                    <img src="<%= thumb %>">
-                    <h5 class="text-center title"><%= image.title %></h5>
-                </div>
+        <div class="col-xs-3" type="button" data-toggle="modal" data-target="#<%= view %>-modal">
+            <div class="image-card" data-view="<%= view %>" data-src="<%= image.s3 %>" data-collection="<%= image.collection.present? ? image.collection.name : "" %>" data-card="<%= image.card %>" data-topics="<%= image.topics %>" data-regions="<%= image.regions %>" data-cal-standards="<%= image.cal_standards %>" data-nat-standards="<%= image.nat_standards %>" data-citation="<%= image.citation %>" >
+                <img src="<%= thumb %>">
+                <h5 class="text-center title"><%= image.title %></h5>
             </div>
-            <% end %>
         </div>
         <% end %>
-        <% end %>
-    </div> <!--Container-->
+    </div>
+    <% end %>
+    <% end %>
+</div> <!--Container-->
 </div>
 
 <%= render 'site/modal_vertical_image' %>
