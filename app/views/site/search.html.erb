@@ -8,45 +8,47 @@
             <div class="filter-panel-content">
                 <button class="btn btn-default btn-filter" type="submit">Images</button>
                 <button class="btn btn-default btn-filter pull-right" type="submit">Lessons</button>
-
-                <% @filters.each do |filter| %>
-                <% next if filter.empty? %>
-                <% # Checks to see if we override a class's `name` method %>
-                <% klass = filter.first.class %>
-                <% title = defined?(klass.readable_class_name) ? klass.readable_class_name : klass.name %>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default disabale-click" style="width: calc(100% - 45px);"><%= title %></button>
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu" data-type="menu">
-                        <div class="select2-search" style="padding: 12px 15px;">
-                            <span class="glyphicon glyphicon-search input-search-icon"></span>
-                            <input class="dropdown-search" type="text" data-type="search-box">
+                <form name="filter" method="GET">
+                    <input type="hidden" name="q">
+                    <% @filters.each do |filter| %>
+                    <% next if filter.empty? %>
+                    <% # Checks to see if we override a class's `name` method %>
+                    <% klass = filter.first.class %>
+                    <% title = defined?(klass.readable_class_name) ? klass.readable_class_name : klass.name %>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default disabale-click" style="width: calc(100% - 45px);"><%= title %></button>
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu" data-type="menu">
+                            <div class="select2-search" style="padding: 12px 15px;">
+                                <span class="glyphicon glyphicon-search input-search-icon"></span>
+                                <input class="dropdown-search" type="text" data-type="search-box">
+                            </div>
+                            <ul class="dropdown-list" data-type="list" data-target="span">
+                                <% filter.each do |item| %>
+                                <li>
+                                    <a>
+                                        <div class="customized-checkbox">
+                                            <span><%= item.title %></span>
+                                            <input type="checkbox" value="<%= item.id %>" id="customized-checkbox" name="<%= klass.name %>" />
+                                            <label for="customized-checkbox"></label>
+                                        </div>
+                                    </a>
+                                </li>
+                                <% end %>
+                            </ul>
                         </div>
-                        <ul class="dropdown-list" data-type="list" data-target="span">
-                            <% filter.each do |item| %>
-                            <li>
-                                <a>
-                                    <div class="customized-checkbox">
-                                        <span><%= item.title %></span>
-                                        <input type="checkbox" value="<%= item.id %>" id="customized-checkbox" name="check" />
-                                        <label for="customized-checkbox"></label>
-                                    </div>
-                                </a>
-                            </li>
-                            <% end %>
-                        </ul>
                     </div>
-                </div>
 
-                <div class="customized-search-group">
-                    <span class="label label-default filter-label">World War II<i class="glyphicon glyphicon-remove"></i></span>
-                    <span class="label label-default filter-label">Europe<i class="glyphicon glyphicon-remove"></i></span>
-                </div>
-                <div class="divider"></div>
-                <% end %>
+                    <div class="customized-search-group">
+                        <span class="label label-default filter-label">World War II<i class="glyphicon glyphicon-remove"></i></span>
+                        <span class="label label-default filter-label">Europe<i class="glyphicon glyphicon-remove"></i></span>
+                    </div>
+                    <div class="divider"></div>
+                    <% end %>
+                </form>
             </div>
         </div>
     </div>
