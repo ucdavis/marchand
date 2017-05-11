@@ -124,12 +124,15 @@
             <h5 class="col-xs-12">No Images</h5>
         </div>
         <% else %>
-        <% cols = 4 %>
+        <% cols = 4.0 %>
         <% rows = @images.size / cols %>
+        <% rows = rows.ceil %>
         <% for i in 0...rows %>
         <div class="row">
             <% for j in 0...cols %>
-            <% image = @images[(cols * i) + j]%>
+            <% index = (cols * i) + j %>
+            <% break if index >= @images.size %>
+            <% image = @images[index]%>
             <% thumb = get_thumbnail(image) %>
             <% thumb = "https://s3-us-west-1.amazonaws.com/marchand/thumb_IMG0000.jpg" unless thumb%>
             <% view = image.view.present? ? image.view : "landscape" %>
