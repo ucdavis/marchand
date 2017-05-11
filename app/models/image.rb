@@ -11,20 +11,19 @@ class Image < ActiveRecord::Base
     # @param query - text to search for
     # @param filter - arrat of hashes in the form of ElasticSearch's filter parameter for queryDSL
     def self.search(query, filter)
-        __elasticsearch__.search({
-            query: {
-                bool: {
-                    must: {
-                        multi_match: {
-                            query: query,
-                            fields: ['card^5', 'title', 'citation', 'notes']
-                        }
-                    },
-
-                    filter: filter.split(",")
+        q = {
+            bool: {
+                must: {
+                    multi_match: {
+                        query: query,
+                        fields: ['card^5', 'title', 'citation', 'notes']
+                    }
                 }
             }
-        })
+        }
+
+        q[:bool][:filter] = filter.split(",") unless filter.empty?
+        __elasticsearch__.search({ query: q })
     end
 
     def topics

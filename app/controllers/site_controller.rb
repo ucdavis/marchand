@@ -10,19 +10,18 @@ class SiteController < ApplicationController
         # All text query in ES
         query = params[:q].present? ? params[:q] : "*"
         filter = []
-        filter << {
-            term: {
-                collection_id: 2
-            }
-        }
+        # filter << {
+        #     term: {
+        #         collection_id: 2
+        #     }
+        # }
+        #
+        # filter << {
+        #     term: {
+        #         public: 1
+        #     }
+        # }
 
-        filter << {
-            term: {
-                public: 1
-            }
-        }
-
-        puts filter
         @images = Image.search(query, filter).records
 
         # Filter using ORM
