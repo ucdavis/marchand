@@ -25,12 +25,9 @@
 							<input class="dropdown-search" type="text">
 						</div>
 						<ul class="dropdown-list">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
+							<% @regions.each do |region| %>
+							<li><a href="#"><%= region.title %></a></li>
+							<% end %>
 						</ul>
 					</div>
 				</div>
@@ -48,12 +45,9 @@
 							<input class="dropdown-search" type="text">
 						</div>
 						<ul class="dropdown-list">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
+							<% @topics.each do |topic| %>
+							<li><a href="#"><%= topic.title %></a></li>
+							<% end %>
 						</ul>
 					</div>
 				</div>
@@ -70,12 +64,9 @@
 							<input class="dropdown-search" type="text">
 						</div>
 						<ul class="dropdown-list">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
+							<% @ca_standards.each do |ca_standard| %>
+							<li><a href="#"><%= ca_standard.label %></a></li>
+							<% end %>
 						</ul>
 					</div>
 				</div>
