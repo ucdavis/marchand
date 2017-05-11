@@ -19,12 +19,12 @@
 						<span class="caret"></span>
 						<span class="sr-only">Toggle Dropdown</span>
 					</button>
-					<div class="dropdown-menu">
+					<div class="dropdown-menu" data-type="menu">
 						<div class="select2-search" style="padding: 12px 15px;">
 							<span class="glyphicon glyphicon-search input-search-icon"></span>
-							<input class="dropdown-search" type="text">
+							<input class="dropdown-search" type="text" data-type="search-box">
 						</div>
-						<ul class="dropdown-list">
+						<ul class="dropdown-list" data-type="list">
 							<% @regions.each do |region| %>
 							<li data-id="<%= region.id %>"><a href="#"><%= region.title %></a></li>
 							<% end %>
@@ -38,13 +38,13 @@
 						<span class="caret"></span>
 						<span class="sr-only">Toggle Dropdown</span>
 					</button>
-					<div class="dropdown-menu">
+					<div class="dropdown-menu" data-type="menu">
 						<!-- test -->
 						<div class="select2-search" style="padding: 12px 15px;">
 							<span class="glyphicon glyphicon-search input-search-icon"></span>
-							<input class="dropdown-search" type="text">
+							<input class="dropdown-search" type="text" data-type="search-box">
 						</div>
-						<ul class="dropdown-list">
+						<ul class="dropdown-list" data-type="list">
 							<% @topics.each do |topic| %>
 							<li data-id="<%= topic.id %>"><a href="#"><%= topic.title %></a></li>
 							<% end %>
@@ -58,12 +58,12 @@
 						<span class="caret"></span>
 						<span class="sr-only">Toggle Dropdown</span>
 					</button>
-					<div class="dropdown-menu">
+					<div class="dropdown-menu" data-type="menu">
 						<div class="select2-search" style="padding: 12px 15px;">
 							<span class="glyphicon glyphicon-search input-search-icon"></span>
-							<input class="dropdown-search" type="text">
+							<input class="dropdown-search" type="text" data-type="search-box">
 						</div>
-						<ul class="dropdown-list">
+						<ul class="dropdown-list" data-type="list">
 							<% @ca_standards.each do |ca_standard| %>
 							<li data-id="<%= ca_standard.id %>"><a href="#"><%= ca_standard.label %></a></li>
 							<% end %>
@@ -77,12 +77,12 @@
 						<span class="caret"></span>
 						<span class="sr-only">Toggle Dropdown</span>
 					</button>
-					<div class="dropdown-menu">
+					<div class="dropdown-menu" data-type="menu">
 						<div class="select2-search" style="padding: 12px 15px;">
 							<span class="glyphicon glyphicon-search input-search-icon"></span>
-							<input class="dropdown-search" type="text">
+							<input class="dropdown-search" type="text" data-type="search-box">
 						</div>
-						<ul class="dropdown-list">
+						<ul class="dropdown-list" data-type="list">
 							<li><a href="#">Action</a></li>
 							<li><a href="#">Another action</a></li>
 							<li><a href="#">Something else here</a></li>
@@ -99,12 +99,12 @@
 						<span class="caret"></span>
 						<span class="sr-only">Toggle Dropdown</span>
 					</button>
-					<div class="dropdown-menu">
+					<div class="dropdown-menu" data-type="menu">
 						<div class="select2-search" style="padding: 12px 15px;">
 							<span class="glyphicon glyphicon-search input-search-icon"></span>
-							<input class="dropdown-search" type="text">
+							<input class="dropdown-search" type="text" data-type="search-box">
 						</div>
-						<ul class="dropdown-list">
+						<ul class="dropdown-list" data-type="list">
 							<li><a href="#">Action</a></li>
 							<li><a href="#">Another action</a></li>
 							<li><a href="#">Something else here</a></li>

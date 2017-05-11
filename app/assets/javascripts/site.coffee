@@ -6,7 +6,25 @@ $(document).ready ->
 	$(".image-card").on "click", (e) ->
 		fillModal(this)
 
+	$("[data-type=menu]").on "keyup", (e) ->
+		searchFilter(this, 'a')
 
+# Filters a given ul based on information in the search-box
+# @param{jQuery} menu - Container that consists of a search-box and a list
+# @param{String} target - Inner most wrapper for the text to search through.
+searchFilter = (menu, target) ->
+	input = $("[data-type='search-box']", menu)
+	filter = $(input).val().toLowerCase()
+	searchArea = $("[data-type=list]", menu);
+
+	$('li', searchArea).each (index, item) ->
+		if ( $(target, item).html().toLowerCase().indexOf(filter) > -1 )
+			$(item).css("display", "")
+		else
+			$(item).css("display", "none")
+
+# Changes the data in a modal
+# @param el - div containing information of the picture
 fillModal = (el) ->
 	view = $(el).data("view")
 	delim = "@delim@"
