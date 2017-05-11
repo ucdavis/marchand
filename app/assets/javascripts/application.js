@@ -28,10 +28,12 @@ $(document).ready(function(){
         var onScroll = function(e){
             var docTop = doc.scrollTop(),
             anchorTop = anchor.offset().top;
+            testyes = node.find('.btn-group-up');
 
             console.log('scroll', docTop, anchorTop);
-            if(docTop > anchorTop){
-                if(!fixed){;
+            if(docTop > anchorTop+300){
+                if(!fixed){
+                    testyes.addClass('dropup');
                     content.addClass('fixed');
                     fixed = true;
                 }
@@ -39,6 +41,7 @@ $(document).ready(function(){
                 if(fixed){
                     anchor.height(0);
                     content.removeClass('fixed');
+                    testyes.removeClass('dropup');
                     fixed = false;
                 }
             }
@@ -47,5 +50,5 @@ $(document).ready(function(){
         $(window).on('scroll', onScroll);
     };
 
-    var demo = new StickyElement($('#sticky'));
+    var stickydemo = new StickyElement($('#sticky'));
 });

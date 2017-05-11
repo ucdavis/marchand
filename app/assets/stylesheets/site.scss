@@ -21,7 +21,7 @@ body {
 }
 
 .universal-search {
-    margin-left: 140px; 
+    margin-left: 140px;
     width: 124px;
 }
 
@@ -247,6 +247,7 @@ input[type=submit] {
         display: inline;
         margin-left: 85%;
         cursor: pointer;
+        transform: scale(2);
     }
 }
 

@@ -93,8 +93,8 @@
     }
     .modal-header {
         padding: 0px !important;
-        img {
-            //padding: 35px;
+        .button-group {
+            margin-left: 5px !important;
         }
     }
     .modal-body {
@@ -125,18 +125,24 @@
         }
         margin-left: 20px;
         margin-right: 20px;
-        .image-title {
-            margin: 5px 0px 30px 0px;
-        }
-         .description {
-            padding-bottom: 5px;
-            border-bottom: 1px solid #e5e5e5;
-        }
-        .list-section{
-            margin-top: 15px;
-            margin-bottom: 15px;
-            h5 {
-                font-weight: 600;
+        .image-info {
+            padding-right:35px !important;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            height: 535px;
+            .image-title {
+                margin: 5px 0px 30px 0px;
+            }
+            .description {
+                padding-bottom: 5px;
+                border-bottom: 1px solid #e5e5e5;
+            }
+            .list-section{
+                margin-top: 15px;
+                margin-bottom: 15px;
+                h5 {
+                    font-weight: 600;
+                }
             }
         }
     }

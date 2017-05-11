@@ -34,6 +34,10 @@ body {
     float: unset !important;
 }
 
+textarea {
+    box-shadow: unset !important;
+}
+
 .input-group-addon {
     font-size: 13px !important;
 }
@@ -126,6 +130,7 @@ text-decoration: none;
     right: 23px;
     top: 5px;
     z-index: 99999;
+    transform: scale(2);
 }
 
 .dropdown-full-width .customized-checkbox .topic-search {
@@ -154,7 +159,7 @@ text-decoration: none;
 }
 
 .toggle.btn {
-    min-width: 80px !important;
+    min-width: 100px !important;
 }
 
 .toggle .toggle-on {
