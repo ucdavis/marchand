@@ -8,6 +8,7 @@ end
 # Elastic Search
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
+gem "elasticsearch-persistence", require: 'elasticsearch/persistence/model'
 
 # Creating thumbnails
 gem 'rmagick'
