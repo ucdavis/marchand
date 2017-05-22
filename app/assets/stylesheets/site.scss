@@ -339,6 +339,12 @@ img {
         margin-right: -15px !important;
         margin-bottom: 10px;
     }
+    .divider:last-child {
+        border-bottom: none;
+        margin-left: -15px !important;
+        margin-right: -15px !important;
+        margin-bottom: 10px;
+    }
     .dropdown-toggle {
         width:45px;
         text-align: center !important;
