@@ -9,7 +9,7 @@ class Image < ActiveRecord::Base
     belongs_to :collection
 
     # @param query - text to search for
-    # @param filter - arrat of hashes in the form of ElasticSearch's filter parameter for queryDSL
+    # @param filter - array of hashes in the form of ElasticSearch's filter parameter for queryDSL
     def self.search(query, filter)
         q = {
             bool: {
@@ -19,6 +19,15 @@ class Image < ActiveRecord::Base
 
         q[:bool][:filter] = filter.split(",") unless filter.empty?
         __elasticsearch__.search({ query: q })
+    end
+
+    def as_indexed_json(options={})
+        self.as_json(
+            include: { topic_assignments: { only: :topic_id},
+            region_assignments: { only: :region_id },
+            data_cal_standards: { only: :cal_standard_id },
+            data_nat_standards: { only: :nat_standard_id }
+        })
     end
 
     def topics

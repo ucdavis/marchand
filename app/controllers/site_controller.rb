@@ -15,12 +15,11 @@ class SiteController < ApplicationController
             { query_string: { query: q }}
         ]
 
-        # @query << { query_string: get_query_string("region", params[:region])} if params[:region].present?
-        # @query << { query_string: get_query_string("topic", params[:topic])} if params[:topic].present?
+        @query << { query_string: get_query_string("region_assignments.region_id", params[:region])} if params[:region].present?
+        @query << { query_string: get_query_string("topic_assignments.topic_id", params[:topic])} if params[:topic].present?
         @query << { query_string: get_query_string("collection_id", params[:collection])} if params[:collection].present?
-        # @query << { query_string: get_query_string("calstandard", params[:calstandard])} if params[:calstandard].present?
-        puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-        puts @query
+        @query << { query_string: get_query_string("data_cal_standards.cal_standard_id", params[:calstandard])} if params[:calstandard].present?
+
         filter = []
         filter << {
             term: {
@@ -29,10 +28,6 @@ class SiteController < ApplicationController
         }
 
         @images = Image.search(@query, filter).records
-
-        # Filter using ORM
-        # @images = @allDocuments.where(:collection_id => 2)
-        # @images = @allDocuments.where(:collection_id => 4).or(@images)
     end
 
     def get_query_string(field, values)
