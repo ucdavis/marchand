@@ -3,17 +3,37 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
+	# Fill modal content
 	$(".image-card").on "click", (e) ->
 		fillModal(this)
 
+	# Add filter search
 	$("[data-type=menu]").on "keyup", (e) ->
 		target = $("[data-target]", this).data("target")
 		searchFilter(this, target)
 
+	# Prevent checkbox's default event in favor of clicking the div
 	$("input[type=checkbox]", $("[data-type=list]")).on "click", (e) ->
+		e.stopPropagation()
+
+	# Prevent bootstrap's default hide-on-click for dropdowns
+	$(".dropdown-menu").on "click", (e) ->
+		event.stopPropagation()
+
+	# Add / Remove tags for filters
+	$("input[type=checkbox]", $("[data-type=list]")).change (e) ->
 		targetId = $(this).data("target-id")
 		text = $("span", $(this).parent()).html()
 		toggleTag(this, text, targetId)
+
+	# Toggle checkbox on item click
+	$(".customized-checkbox").on "click", (e) ->
+		cb = $("input[type=checkbox]", this)[0]
+		if $(cb).is(":checked")
+			$(cb).prop("checked", false);
+		else
+			$(cb).prop("checked", true);
+		$(cb).trigger("change")
 
 # Adds / Remove the tag in the tag area
 # @param checkbox - clicked checkbox
