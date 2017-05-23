@@ -9,14 +9,19 @@ class SiteController < ApplicationController
 
     def search
         # All text query in ES
-        @query = params[:q].present? ? params[:q] : "*"
-        filter = []
-        filter << {
-            term: {
-                collection_id: 2
-            }
-        }
+        # ~1 indicates fuzzy matching. It suspects that the query might have been mispelled by 1 letter
+        q = params[:q].present? ? "#{params[:q]}~1" : "*"
+        @query = [
+            { query_string: { query: q }}
+        ]
 
+        # @query << { query_string: get_query_string("region", params[:region])} if params[:region].present?
+        # @query << { query_string: get_query_string("topic", params[:topic])} if params[:topic].present?
+        @query << { query_string: get_query_string("collection_id", params[:collection])} if params[:collection].present?
+        # @query << { query_string: get_query_string("calstandard", params[:calstandard])} if params[:calstandard].present?
+        puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        puts @query
+        filter = []
         filter << {
             term: {
                 public: 1
@@ -28,6 +33,13 @@ class SiteController < ApplicationController
         # Filter using ORM
         # @images = @allDocuments.where(:collection_id => 2)
         # @images = @allDocuments.where(:collection_id => 4).or(@images)
+    end
+
+    def get_query_string(field, values)
+        {
+                fields: [field],
+                query: values.join(" OR ")
+        }
     end
 
     def edit

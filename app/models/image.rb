@@ -13,11 +13,7 @@ class Image < ActiveRecord::Base
     def self.search(query, filter)
         q = {
             bool: {
-                must: {
-                    query_string: {
-                        query: query,
-                    }
-                }
+                must: query
             }
         }
 
