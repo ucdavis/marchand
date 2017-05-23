@@ -8,7 +8,7 @@ class SiteController < ApplicationController
 
     def search
         # All text query in ES
-        query = params[:q].present? ? params[:q] : "*"
+        @query = params[:q].present? ? params[:q] : "*"
         filter = []
         filter << {
             term: {
@@ -22,7 +22,7 @@ class SiteController < ApplicationController
             }
         }
 
-        @images = Image.search(query, filter).records
+        @images = Image.search(@query, filter).records
 
         # Filter using ORM
         # @images = @allDocuments.where(:collection_id => 2)

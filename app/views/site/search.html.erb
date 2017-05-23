@@ -1,3 +1,7 @@
+<script type="text/javascript">
+    window.marchand.query = "<%= @query %>";
+</script>
+
 <div class="row search-result-page">
     <div id="sticky" class="sticky-element">
         <div class="sticky-anchor"></div>
@@ -16,7 +20,7 @@
                     <% klass = filter.first.class %>
                     <% title = defined?(klass.readable_class_name) ? klass.readable_class_name : klass.name %>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-default disabale-click" style="width: calc(100% - 45px);"><%= title %></button>
+                        <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);"><%= title %></button>
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="caret"></span>
                             <span class="sr-only">Toggle Dropdown</span>
@@ -32,7 +36,7 @@
                                     <a>
                                         <div class="customized-checkbox">
                                             <span><%= item.title %></span>
-                                            <input type="checkbox" value="<%= item.id %>" id="customized-checkbox" name="<%= klass.name %>" data-target-id="<%= klass.name %>" />
+                                            <input type="checkbox" value="<%= item.id %>" id="customized-checkbox" name="<%= klass.name.downcase %>" data-target-id="<%= klass.name %>" />
                                             <label for="customized-checkbox"></label>
                                         </div>
                                     </a>
@@ -44,8 +48,10 @@
 
                     <div id="<%= klass.name %>" class="customized-search-group">
                     </div>
+
                     <div class="divider"></div>
                     <% end %>
+                    <div class="btn-group"><button type="submit" class="btn btn-default">Submit</button></div>
                 </form>
             </div>
         </div>

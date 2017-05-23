@@ -35,6 +35,47 @@ $(document).ready ->
 			$(cb).prop("checked", true);
 		$(cb).trigger("change")
 
+	# Manually build url on submit
+	$("form[name=filter]").on "submit", (e) ->
+		e.preventDefault()
+		url = buildUrl(this)
+		Turbolinks.visit url
+
+# Builds the url on advanced search
+buildUrl = (form) ->
+	query = "q=#{window.marchand.query}"
+	regions = []
+	collections = []
+	topics = []
+	calStandards = []
+	$("input[type=checkbox]", form).each (i, item) ->
+		if !item.checked
+			return true
+
+		param = item.getAttribute("name")
+		value = item.getAttribute("value")
+		switch(param)
+			when 'region'
+				regions.push value
+				break
+			when 'collection'
+				collections.push value
+				break
+			when 'topic'
+				topics.push value
+				break
+			when 'calstandard'
+				calStandards.push value
+				break
+
+	regions = "region=" + regions.join ","
+	collections  = "collection=" + collections.join ","
+	topics = "topic=" + topics.join ","
+	calStandards = "calstandard=" + calStandards.join ","
+
+	return "/search?#{regions}&#{collections}&#{topics}&#{calStandards}&#{query}"
+
+
 # Adds / Remove the tag in the tag area
 # @param checkbox - clicked checkbox
 # @param text - Text assigned for the checkbox
