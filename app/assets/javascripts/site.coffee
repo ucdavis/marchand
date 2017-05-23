@@ -48,7 +48,7 @@ $(document).ready ->
 
 # Builds the url on advanced search
 buildUrl = (form) ->
-	query = "q=#{window.marchand.query}"
+	query = "q=#{$("input[name=q][type=text]").val()}"
 	regions = []
 	collections = []
 	topics = []
