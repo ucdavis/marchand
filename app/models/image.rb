@@ -14,9 +14,8 @@ class Image < ActiveRecord::Base
         q = {
             bool: {
                 must: {
-                    multi_match: {
+                    query_string: {
                         query: query,
-                        fields: ['card^5', 'title', 'citation', 'notes']
                     }
                 }
             }
