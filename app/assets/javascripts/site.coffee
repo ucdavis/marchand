@@ -3,24 +3,116 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
+	# Persist filters / tags from previous search
+	$("input:checked").each (i, item) ->
+		targetId = $(this).data("target-id")
+		text = $("span", $(this).parent()).html()
+		createTag(this, text, targetId)
+
+	# Fill modal content
 	$(".image-card").on "click", (e) ->
 		fillModal(this)
 
+	# Add filter search
 	$("[data-type=menu]").on "keyup", (e) ->
 		target = $("[data-target]", this).data("target")
 		searchFilter(this, target)
 
+	# Prevent checkbox's default event in favor of clicking the div
 	$("input[type=checkbox]", $("[data-type=list]")).on "click", (e) ->
-		target = $(this).closest("[data-tag-target]").data("tag-target")
-		text = $(this).closest("span").html()
-		toggleTag(this, text, targetId)
+		e.stopPropagation()
+
+	# Prevent bootstrap's default hide-on-click for dropdowns
+	$(".dropdown-menu").on "click", (e) ->
+		event.stopPropagation()
+
+	# Add / Remove tags for filters
+	$("input[type=checkbox]", $("[data-type=list]")).change (e) ->
+		toggleTag(this)
+
+	# Toggle checkbox on item click
+	$(".customized-checkbox").on "click", (e) ->
+		cb = $("input[type=checkbox]", this)[0]
+		if $(cb).is(":checked")
+			$(cb).prop("checked", false);
+		else
+			$(cb).prop("checked", true);
+		$(cb).trigger("change")
+
+	# Manually build url on submit
+	$("form[name=filter]").on "submit", (e) ->
+		e.preventDefault()
+		url = buildUrl(this)
+		Turbolinks.supported = false
+		Turbolinks.visit url
+
+# Builds the url on advanced search
+buildUrl = (form) ->
+	query = "q=#{$("input[name=q][type=text]").val()}"
+	regions = []
+	collections = []
+	topics = []
+	calStandards = []
+	$("input[type=checkbox]", form).each (i, item) ->
+		if !item.checked
+			return true
+
+		param = item.getAttribute("name")
+		value = item.getAttribute("value")
+		switch(param)
+			when 'region'
+				regions.push value
+				break
+			when 'collection'
+				collections.push value
+				break
+			when 'topic'
+				topics.push value
+				break
+			when 'calstandard'
+				calStandards.push value
+				break
+
+	regions = "region=" + regions.join ","
+	collections  = "collection=" + collections.join ","
+	topics = "topic=" + topics.join ","
+	calStandards = "calstandard=" + calStandards.join ","
+
+	return "/search?#{regions}&#{collections}&#{topics}&#{calStandards}&#{query}"
+
 
 # Adds / Remove the tag in the tag area
-toggleTag = (checkbox, text, targetId) ->
+# @param checkbox - clicked checkbox
+toggleTag = (checkbox) ->
+	targetId = $(checkbox).data("target-id")
+	text = $("span", $(checkbox).parent()).html()
 	if $(checkbox).is(":checked")
-		# Add tag to target area
+		createTag(checkbox, text, targetId)
 	else
 		# Remove tag from target area
+		removeTag(text, targetId)
+
+createTag = (checkbox, text, targetId) ->
+	# Initialize close icon for tag
+	closeIcon = $("<i></i>",
+		"class": "glyphicon glyphicon-remove"
+		on:
+			click: (e) ->
+				$(checkbox).prop("checked", false);
+				toggleTag(checkbox, text, targetId)
+	)
+
+	# Add tag to target area
+	$("<span></span>",
+		"class": "label label-default filter-label"
+	).html("#{text}").append(closeIcon).appendTo("##{targetId}")
+
+removeTag = (text, targetId) ->
+	$("span", "##{targetId}").each (i, el) ->
+		content = el.innerHTML
+		content = content.substring 0, content.indexOf("<")
+		if content == text
+			el.remove()
 
 # Filters a given ul based on information in the search-box
 # @param{jQuery} menu - Container that consists of a search-box and a list

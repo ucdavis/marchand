@@ -7,7 +7,7 @@
                 <div class="input-group">
                     <input type="text" class="form-control">
                     <div class="input-group-btn">
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search" style="line-height: 0; top:3px;"></span></button>
+                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search" style="line-height: 0; top:3px;"></span></button>
                     </div>
                 </div>
             </div>
@@ -17,69 +17,60 @@
                 <form name="filter" method="GET">
                     <input type="hidden" name="q">
                     <% @filters.each do |filter| %>
-                    <% next if filter.empty? %>
-                    <% # Checks to see if we override a class's `name` method %>
-                    <% klass = filter.first.class %>
-                    <% title = defined?(klass.readable_class_name) ? klass.readable_class_name : klass.name %>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default disabale-click" style="width: calc(100% - 45px);"><%= title %></button>
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <% next if filter.empty? %>
+                            <% # Checks to see if we override a class's `name` method %>
+                                <% klass = filter.first.class %>
+                                    <% title = defined?(klass.readable_class_name) ? klass.readable_class_name : klass.name %>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);"><%= title %></button>
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="caret"></span>
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
-                        <div class="dropdown-menu" data-type="menu">
-                            <div class="select2-search" style="padding: 12px 15px;">
-                                <span class="glyphicon glyphicon-search input-search-icon"></span>
-                                <input class="dropdown-search" type="text" data-type="search-box">
-                            </div>
-                            <ul class="dropdown-list" data-type="list" data-target="span">
-                                <% filter.each do |item| %>
-                                <li>
-                                    <a>
-                                        <div class="customized-checkbox">
-                                            <span><%= item.title %></span>
-                                            <input type="checkbox" value="<%= item.id %>" id="customized-checkbox" name="<%= klass.name %>" />
-                                            <label for="customized-checkbox"></label>
+                                            <div class="dropdown-menu" data-type="menu">
+                                                <div class="select2-search" style="padding: 12px 15px;">
+                                                    <span class="glyphicon glyphicon-search input-search-icon"></span>
+                                                    <input class="dropdown-search" type="text" data-type="search-box">
+                                                </div>
+                                                <ul class="dropdown-list" data-type="list" data-target="span">
+                                                    <% filter.each do |item| %>
+                                                        <% checked = params[klass.name.downcase].include?(item.id.to_s) ? "checked" : "" if params[klass.name.downcase].present?%>
+                                                            <li>
+                                                                <a>
+                                                                    <div class="customized-checkbox">
+                                                                        <span><%= item.title %></span>
+                                                                        <input type="checkbox" value="<%= item.id %>" id="customized-checkbox" name="<%= klass.name.downcase %>" data-target-id="<%= klass.name %>" <%=c hecked %> />
+                                                                        <label for="customized-checkbox"></label>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                            <% end %>
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </a>
-                                </li>
-                                <% end %>
-                            </ul>
-                        </div>
-                    </div>
 
-                    <div class="customized-search-group">
-                        <span class="label label-default filter-label">World War II<i class="glyphicon glyphicon-remove"></i></span>
-                        <span class="label label-default filter-label">Europe<i class="glyphicon glyphicon-remove"></i></span>
-                    </div>
-                    <div class="divider"></div>
-                    <% end %>
-                    <div style="padding: 5px 10px 15px 10px;">
-                        <h5 style="margin-left: -10px;"><b>Select Years</b></h5>
-                        <span id="ex6CurrentSliderValLabel">Current Slider Value: <span id="ex6SliderVal">3</span></span>
-                    <input id="myslider" style="width:100%;"
-                    type="text"
-                    class="span2"
-                    value="1600,2000"
-                    data-slider-id="myslider"
-                    data-slider-min="1500"
-                    data-slider-max="2000"
-                    data-slider-step="10"
-                    data-slider-value="[5,10]"
-                    data-value="5,10"
-                    />
-                    </div>
+                                        <div id="<%= klass.name %>" class="customized-search-group">
+                                        </div>
+
+                                        <div class="divider"></div>
+                                        <% end %>
+                                            <div style="padding: 5px 10px 15px 10px;">
+                                                <h5 style="margin-left: -10px;"><b>Select Years</b></h5>
+                                                <span id="ex6CurrentSliderValLabel">Current Slider Value: <span id="ex6SliderVal">3</span></span>
+                                                <input id="myslider" style="width:100%;" type="text" class="span2" value="1600,2000" data-slider-id="myslider" data-slider-min="1500" data-slider-max="2000" data-slider-step="10" data-slider-value="[5,10]" data-value="5,10" />
+                                            </div>
 
 
-<script language="javascript">
-    var mySlider = new Slider('#myslider');
-    mySlider.on('slideStop', function(value) {
-        document.getElementById('slider').innerHTML = value;
-    });
-mySlider.on("slide", function(sliderValue) {
-	document.getElementById("ex6SliderVal").textContent = sliderValue;
-});
-</script>
+                                            <script language="javascript">
+                                                var mySlider = new Slider('#myslider');
+                                                mySlider.on('slideStop', function(value) {
+                                                    document.getElementById('slider').innerHTML = value;
+                                                });
+                                                mySlider.on("slide", function(sliderValue) {
+                                                    document.getElementById("ex6SliderVal").textContent = sliderValue;
+                                                });
+                                            </script>
+                                            <div class="btn-group"><button type="submit" class="btn btn-default">Submit</button></div>
                 </form>
             </div>
         </div>
@@ -88,35 +79,39 @@ mySlider.on("slide", function(sliderValue) {
 
 <div class="container image-card-group col-xs-10 col-md-8 test-margin">
     <% if @images.nil? %>
-    <div class="row">
-        <h5 class="col-xs-12">No Images</h5>
-    </div>
-    <% else %>
-    <% cols = 4.0 %>
-    <% rows = @images.size / cols %>
-    <% rows = rows.ceil %>
-    <% for i in 0...rows %>
-    <div class="row">
-        <% for j in 0...cols %>
-        <% index = (cols * i) + j %>
-        <% break unless index < @images.size %>
-        <% image = @images[index]%>
-        <% thumb = get_thumbnail(image) %>
-        <% thumb = "https://s3-us-west-1.amazonaws.com/marchand/thumb_IMG0000.jpg" unless thumb%>
-        <% view = image.view.present? ? image.view : "landscape" %>
-
-        <div class="col-xs-3" type="button" data-toggle="modal" data-target="#<%= view %>-modal">
-            <div class="image-card" data-view="<%= view %>" data-src="<%= image.s3 %>" data-collection="<%= image.collection.present? ? image.collection.name : "" %>" data-card="<%= image.card %>" data-topics="<%= image.topics %>" data-regions="<%= image.regions %>" data-cal-standards="<%= image.cal_standards %>" data-nat-standards="<%= image.nat_standards  %>" data-citation="<%= image.citation %>" >
-                <img src="<%= thumb %>">
-                <h5 class="text-center title"><%= image.title %></h5>
-            </div>
+        <div class="row">
+            <h5 class="col-xs-12">No Images</h5>
         </div>
-        <% end %>
-    </div>
-    <% end %>
-    <% end %>
-</div> <!--Container-->
+        <% else %>
+            <% cols = 4.0 %>
+                <% rows = @images.size / cols %>
+                    <% rows = rows.ceil %>
+                        <% for i in 0...rows %>
+                            <div class="row">
+                                <% for j in 0...cols %>
+                                    <% index = (cols * i) + j %>
+                                        <% break unless index < @images.size %>
+                                            <% image = @images[index]%>
+                                                <% thumb = get_thumbnail(image) %>
+                                                    <% thumb = "https://s3-us-west-1.amazonaws.com/marchand/thumb_IMG0000.jpg" unless thumb%>
+                                                        <% view = image.view.present? ? image.view : "landscape" %>
+
+                                                            <div class="col-xs-3" type="button" data-toggle="modal" data-target="#<%= view %>-modal">
+                                                                <div class="image-card" data-view="<%= view %>" data-src="<%= image.s3 %>" data-collection="<%= image.collection.present? ? image.collection.name : " " %>" data-card="<%= image.card %>" data-topics="<%= image.topics %>" data-regions="<%= image.regions %>"
+                                                                    data-cal-standards="<%= image.cal_standards %>" data-nat-standards="<%= image.nat_standards  %>" data-citation="<%= image.citation %>">
+                                                                    <img src="<%= thumb %>">
+                                                                    <h5 class="text-center title">
+                                                                        <%= image.title %>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                            <% end %>
+                            </div>
+                            <% end %>
+                                <% end %>
+</div>
+<!--Container-->
 </div>
 
 <%= render 'site/modal_vertical_image' %>
-<%= render 'site/modal_horizontal_image' %>
+    <%= render 'site/modal_horizontal_image' %>

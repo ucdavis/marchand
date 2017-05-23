@@ -1,4 +1,5 @@
 class SiteController < ApplicationController
+    before_action :parse_param
     IMAGE_LIMIT = 24
 
     def index
@@ -8,30 +9,45 @@ class SiteController < ApplicationController
 
     def search
         # All text query in ES
-        query = params[:q].present? ? params[:q] : "*"
+        # ~1 indicates fuzzy matching. It suspects that the query might have been mispelled by 1 letter
+        q = params[:q].present? ? "#{params[:q]}~1" : "*"
+        @query = [
+            { query_string: { query: q }}
+        ]
+
+        @query << { query_string: get_query_string("region_assignments.region_id", params[:region])} if params[:region].present?
+        @query << { query_string: get_query_string("topic_assignments.topic_id", params[:topic])} if params[:topic].present?
+        @query << { query_string: get_query_string("collection_id", params[:collection])} if params[:collection].present?
+        @query << { query_string: get_query_string("data_cal_standards.cal_standard_id", params[:calstandard])} if params[:calstandard].present?
+
         filter = []
-        # filter << {
-        #     term: {
-        #         collection_id: 2
-        #     }
-        # }
-        #
-        # filter << {
-        #     term: {
-        #         public: 1
-        #     }
-        # }
+        filter << {
+            term: {
+                public: 1
+            }
+        }
 
-        @images = Image.search(query, filter).records
+        @images = Image.search(@query, filter).records
+    end
 
-        # Filter using ORM
-        # @images = @allDocuments.where(:collection_id => 2)
-        # @images = @allDocuments.where(:collection_id => 4).or(@images)
+    def get_query_string(field, values)
+        {
+                fields: [field],
+                query: values.join(" OR ")
+        }
     end
 
     def edit
     end
 
     def lesson
+    end
+
+    private
+    def parse_param
+        params[:region] = params[:region].split(",") if params[:region].present?
+        params[:collection] = params[:collection].split(",") if params[:collection].present?
+        params[:topic] = params[:topic].split(",") if params[:topic].present?
+        params[:calstandard] = params[:calstandard].split(",") if params[:calstandard].present?
     end
 end
