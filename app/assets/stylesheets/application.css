@@ -240,10 +240,6 @@ text-decoration: none;
     right:3px;
 }
 
-.disabale-click {
+.disable-click {
     pointer-events: none;
 }
-
-
-
-
