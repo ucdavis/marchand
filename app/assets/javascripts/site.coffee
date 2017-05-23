@@ -11,16 +11,36 @@ $(document).ready ->
 		searchFilter(this, target)
 
 	$("input[type=checkbox]", $("[data-type=list]")).on "click", (e) ->
-		target = $(this).closest("[data-tag-target]").data("tag-target")
-		text = $(this).closest("span").html()
+		targetId = $(this).data("target-id")
+		text = $("span", $(this).parent()).html()
 		toggleTag(this, text, targetId)
 
 # Adds / Remove the tag in the tag area
+# @param checkbox - clicked checkbox
+# @param text - Text assigned for the checkbox
+# @param targetId - id of location to add / remove tag
 toggleTag = (checkbox, text, targetId) ->
 	if $(checkbox).is(":checked")
+		# Initialize close icon for tag
+		closeIcon = $("<i></i>",
+			"class": "glyphicon glyphicon-remove"
+			on:
+				click: (e) ->
+					$(checkbox).prop("checked", false);
+					toggleTag(checkbox, text, targetId)
+		)
+
 		# Add tag to target area
+		$("<span></span>",
+			"class": "label label-default filter-label"
+		).html("#{text}").append(closeIcon).appendTo("##{targetId}")
 	else
 		# Remove tag from target area
+		$("span", "##{targetId}").each (i, el) ->
+			content = el.innerHTML
+			content = content.substring 0, content.indexOf("<")
+			if content == text
+				el.remove()
 
 # Filters a given ul based on information in the search-box
 # @param{jQuery} menu - Container that consists of a search-box and a list
