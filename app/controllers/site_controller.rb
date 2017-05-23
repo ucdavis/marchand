@@ -1,4 +1,5 @@
 class SiteController < ApplicationController
+    before_action :parse_param
     IMAGE_LIMIT = 24
 
     def index
@@ -33,5 +34,13 @@ class SiteController < ApplicationController
     end
 
     def lesson
+    end
+
+    private
+    def parse_param
+        params[:region] = params[:region].split(",") if params[:region].present?
+        params[:collection] = params[:collection].split(",") if params[:collection].present?
+        params[:topic] = params[:topic].split(",") if params[:topic].present?
+        params[:calstandard] = params[:calstandard].split(",") if params[:calstandard].present?
     end
 end

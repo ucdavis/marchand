@@ -32,11 +32,12 @@
                             </div>
                             <ul class="dropdown-list" data-type="list" data-target="span">
                                 <% filter.each do |item| %>
+                                <% checked = params[klass.name.downcase].include?(item.id.to_s) ? "checked" : "" %>
                                 <li>
                                     <a>
                                         <div class="customized-checkbox">
                                             <span><%= item.title %></span>
-                                            <input type="checkbox" value="<%= item.id %>" id="customized-checkbox" name="<%= klass.name.downcase %>" data-target-id="<%= klass.name %>" />
+                                            <input type="checkbox" value="<%= item.id %>" id="customized-checkbox" name="<%= klass.name.downcase %>" data-target-id="<%= klass.name %>" <%= checked %> />
                                             <label for="customized-checkbox"></label>
                                         </div>
                                     </a>

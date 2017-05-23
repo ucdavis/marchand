@@ -3,6 +3,12 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
+	# Persist filters / tags from previous search
+	$("input:checked").each (i, item) ->
+		targetId = $(this).data("target-id")
+		text = $("span", $(this).parent()).html()
+		createTag(this, text, targetId)
+
 	# Fill modal content
 	$(".image-card").on "click", (e) ->
 		fillModal(this)
@@ -22,9 +28,7 @@ $(document).ready ->
 
 	# Add / Remove tags for filters
 	$("input[type=checkbox]", $("[data-type=list]")).change (e) ->
-		targetId = $(this).data("target-id")
-		text = $("span", $(this).parent()).html()
-		toggleTag(this, text, targetId)
+		toggleTag(this)
 
 	# Toggle checkbox on item click
 	$(".customized-checkbox").on "click", (e) ->
@@ -39,6 +43,7 @@ $(document).ready ->
 	$("form[name=filter]").on "submit", (e) ->
 		e.preventDefault()
 		url = buildUrl(this)
+		Turbolinks.supported = false
 		Turbolinks.visit url
 
 # Builds the url on advanced search
@@ -78,9 +83,9 @@ buildUrl = (form) ->
 
 # Adds / Remove the tag in the tag area
 # @param checkbox - clicked checkbox
-# @param text - Text assigned for the checkbox
-# @param targetId - id of location to add / remove tag
-toggleTag = (checkbox, text, targetId) ->
+toggleTag = (checkbox) ->
+	targetId = $(checkbox).data("target-id")
+	text = $("span", $(checkbox).parent()).html()
 	if $(checkbox).is(":checked")
 		createTag(checkbox, text, targetId)
 	else
