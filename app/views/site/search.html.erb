@@ -4,8 +4,6 @@
         <div class="filter-panel col-xs-3 sticky-content">
             <div class="filter-panel-title">
                 <h5 style="font-weight:bold;">Advanced Search</h5>
-            </div>
-            <div class="filter-panel-content">
                 <div class="input-group">
                     <input type="text" class="form-control">
                     <div class="input-group-btn">
@@ -56,13 +54,39 @@
                     </div>
                     <div class="divider"></div>
                     <% end %>
+                    <div style="padding: 5px 10px 15px 10px;">
+                        <h5 style="margin-left: -10px;"><b>Select Years</b></h5>
+                        <span id="ex6CurrentSliderValLabel">Current Slider Value: <span id="ex6SliderVal">3</span></span>
+                    <input id="myslider" style="width:100%;"
+                    type="text"
+                    class="span2"
+                    value="1600,2000"
+                    data-slider-id="myslider"
+                    data-slider-min="1500"
+                    data-slider-max="2000"
+                    data-slider-step="10"
+                    data-slider-value="[5,10]"
+                    data-value="5,10"
+                    />
+                    </div>
+
+
+<script language="javascript">
+    var mySlider = new Slider('#myslider');
+    mySlider.on('slideStop', function(value) {
+        document.getElementById('slider').innerHTML = value;
+    });
+mySlider.on("slide", function(sliderValue) {
+	document.getElementById("ex6SliderVal").textContent = sliderValue;
+});
+</script>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container image-card-group col-xs-7 col-md-8" style="margin-left:384px;">
+<div class="container image-card-group col-xs-10 col-md-8 test-margin">
     <% if @images.nil? %>
     <div class="row">
         <h5 class="col-xs-12">No Images</h5>

@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require bootstrap.min.js
 //= require bootstrap2-toggle.js
+//= require bootstrap-slider.js
 //= require_tree .
 
 $(document).ready(function(){
@@ -51,4 +52,24 @@ $(document).ready(function(){
     };
 
     var stickydemo = new StickyElement($('#sticky'));
+
+
+    $("#slider").slider({
+        min: 0,
+        max: 100,
+        step: 1,
+        values: [10, 90],
+        slide: function(event, ui) {
+            for (var i = 0; i < ui.values.length; ++i) {
+                $("input.sliderValue[data-index=" + i + "]").val(ui.values[i]);
+            }
+        }
+    });
+
+    $("input.sliderValue").change(function() {
+        var $this = $(this);
+        $("#slider").slider("values", $this.data("index"), $this.val());
+    });
 });
+
+

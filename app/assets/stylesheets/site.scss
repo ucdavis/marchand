@@ -468,3 +468,20 @@ img {
         color:black;
     }
 }
+
+
+.test-margin {
+    margin-left:384px;
+}
+
+@media only screen and (max-width: 850px) {
+   .test-margin {
+       margin-left:230px;
+   }
+}
+
+@media only screen and (max-width: 550px) {
+   .test-margin {
+       margin-left:160px;
+   }
+}

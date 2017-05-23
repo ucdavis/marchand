@@ -12,12 +12,25 @@
  *
  *= require bootstrap.min.css
  *= require bootstrap2-toggle.min.css
+ *= require bootstrap-slider.min.css
  *= require_tree .
  *= require_self
  */
+
+
 input {
     outline: none !important;
     box-shadow: none !important;
+}
+
+.tooltip {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
 
 button {
