@@ -82,26 +82,32 @@ buildUrl = (form) ->
 # @param targetId - id of location to add / remove tag
 toggleTag = (checkbox, text, targetId) ->
 	if $(checkbox).is(":checked")
-		# Initialize close icon for tag
-		closeIcon = $("<i></i>",
-			"class": "glyphicon glyphicon-remove"
-			on:
-				click: (e) ->
-					$(checkbox).prop("checked", false);
-					toggleTag(checkbox, text, targetId)
-		)
-
-		# Add tag to target area
-		$("<span></span>",
-			"class": "label label-default filter-label"
-		).html("#{text}").append(closeIcon).appendTo("##{targetId}")
+		createTag(checkbox, text, targetId)
 	else
 		# Remove tag from target area
-		$("span", "##{targetId}").each (i, el) ->
-			content = el.innerHTML
-			content = content.substring 0, content.indexOf("<")
-			if content == text
-				el.remove()
+		removeTag(text, targetId)
+
+createTag = (checkbox, text, targetId) ->
+	# Initialize close icon for tag
+	closeIcon = $("<i></i>",
+		"class": "glyphicon glyphicon-remove"
+		on:
+			click: (e) ->
+				$(checkbox).prop("checked", false);
+				toggleTag(checkbox, text, targetId)
+	)
+
+	# Add tag to target area
+	$("<span></span>",
+		"class": "label label-default filter-label"
+	).html("#{text}").append(closeIcon).appendTo("##{targetId}")
+
+removeTag = (text, targetId) ->
+	$("span", "##{targetId}").each (i, el) ->
+		content = el.innerHTML
+		content = content.substring 0, content.indexOf("<")
+		if content == text
+			el.remove()
 
 # Filters a given ul based on information in the search-box
 # @param{jQuery} menu - Container that consists of a search-box and a list
