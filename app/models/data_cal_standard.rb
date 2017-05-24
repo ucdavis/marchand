@@ -1,4 +1,6 @@
 class DataCalStandard < ApplicationRecord
+    include EsConcern
+
     validates_presence_of :image
     validates_presence_of :cal_standard
 

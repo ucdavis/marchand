@@ -1,4 +1,6 @@
 class RegionAssignment < ActiveRecord::Base
+    include EsConcern
+
     belongs_to :image
     belongs_to :region
 
