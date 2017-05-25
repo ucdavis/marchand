@@ -20,12 +20,12 @@
                             <span class="caret"></span>
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu" data-type="menu">
                             <div class="select2-search" style="padding: 12px 15px;">
                                 <span class="glyphicon glyphicon-search input-search-icon"></span>
-                                <input class="dropdown-search" type="text">
+                                <input class="dropdown-search" type="text" data-type="search-box">
                             </div>
-                            <ul class="dropdown-list">
+                            <ul class="dropdown-list" data-type="list" data-target="span">
                                 <% @regions.each do |region| %>
                                 <li>
                                     <a>
@@ -41,17 +41,17 @@
                         </div>
                     </div>
                     <div class="btn-group dropdown-half-width">
-                        <button type="button" class="btn btn-default disabale-click" style="width: calc(100% - 45px);">Collection</button>
+                        <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);">Collection</button>
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="caret"></span>
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu" data-type="menu">
                             <div class="select2-search" style="padding: 12px 15px;">
                                 <span class="glyphicon glyphicon-search input-search-icon"></span>
-                                <input class="dropdown-search" type="text">
+                                <input class="dropdown-search" type="text" data-type="search-box">
                             </div>
-                            <ul class="dropdown-list">
+                            <ul class="dropdown-list" data-type="list" data-target="span">
                                 <% @collections.each do |collection| %>
                                 <li>
                                     <a>
@@ -67,18 +67,18 @@
                         </div>
                     </div>
                     <div class="btn-group dropdown-full-width">
-                        <button type="button" class="btn btn-default disabale-click" style="width: calc(100% - 45px);">Topic/Theme</button>
+                        <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);">Topic/Theme</button>
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="caret"></span>
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu" data-type="menu">
                             <!-- test -->
                             <div class="select2-search" style="padding: 12px 15px;">
                                 <span class="glyphicon glyphicon-search input-search-icon"></span>
-                                <input class="dropdown-search" type="text">
+                                <input class="dropdown-search" type="text" data-type="search-box">
                             </div>
-                            <ul class="dropdown-list">
+                            <ul class="dropdown-list" data-type="list" data-target="span">
                                 <% @topics.each do |topic| %>
                                 <li>
                                     <a>
@@ -94,17 +94,17 @@
                         </div>
                     </div>
                     <div class="btn-group dropdown-full-width">
-                        <button type="button" class="btn btn-default disabale-click" style="width: calc(100% - 45px);">California Standard</button>
+                        <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);">California Standard</button>
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="caret"></span>
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu" data-type="menu">
                             <div class="select2-search">
                                 <span class="glyphicon glyphicon-search input-search-icon"></span>
-                                <input class="dropdown-search" type="text">
+                                <input class="dropdown-search" type="text" data-type="search-box">
                             </div>
-                            <ul class="dropdown-list">
+                            <ul class="dropdown-list" data-type="list" data-target="a">
                                 <% @ca_standards.each do |standard| %>
                                 <li>
                                     <div>
