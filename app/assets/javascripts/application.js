@@ -71,5 +71,3 @@ $(document).ready(function(){
         $("#slider").slider("values", $this.data("index"), $this.val());
     });
 });
-
-

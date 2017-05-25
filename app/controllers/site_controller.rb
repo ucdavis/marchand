@@ -43,6 +43,15 @@ class SiteController < ApplicationController
     def lesson
     end
 
+    def download
+        # Rails translate /file.jpg as key: file, format: jpg
+        key = "#{params[:key]}.#{params[:format]}"
+        file = get_object(key)
+        send_data file.body.read, filename: key,
+                                   type: file.content_type,
+                                   disposition: 'attachment'
+    end
+
     private
     def parse_param
         params[:region] = params[:region].split(",") if params[:region].present?
