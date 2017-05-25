@@ -237,6 +237,7 @@ text-decoration: none;
 
 .customized-checkbox input {
     position: absolute;
+    top: 0;
     right:3px;
 }
 

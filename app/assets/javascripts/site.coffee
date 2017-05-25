@@ -105,14 +105,14 @@ createTag = (checkbox, text, targetId) ->
 	# Add tag to target area
 	$("<span></span>",
 		"class": "label label-default filter-label"
-	).html("#{text}").append(closeIcon).appendTo("##{targetId}")
+	).html("<span class='text-short'>#{text}</span>").append(closeIcon).appendTo("##{targetId}")
 
 removeTag = (text, targetId) ->
-	$("span", "##{targetId}").each (i, el) ->
+	$("span.text-short", "##{targetId}").each (i, el) ->
 		content = el.innerHTML
-		content = content.substring 0, content.indexOf("<")
+		# content = content.substring 0, content.indexOf("<")
 		if content == text
-			el.remove()
+			$(el).parent().remove()
 
 # Filters a given ul based on information in the search-box
 # @param{jQuery} menu - Container that consists of a search-box and a list

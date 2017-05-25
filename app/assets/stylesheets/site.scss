@@ -1,10 +1,8 @@
 // Place all the styles related to the site controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 @import "modal";
 @import "lesson";
-
 body {
     font: 14px/20px 'Arimo', sans-serif;
     color: #494949;
@@ -37,10 +35,9 @@ body {
 }
 
 .nav li a:hover {
-    background-color:unset !important;
+    background-color: unset !important;
     color: #CCD4E1 !important;
 }
-
 
 .nav-pages {
     background-color: #C99700;
@@ -53,13 +50,13 @@ body {
     padding-top: 26px;
 }
 
-.nav-pages .nav li{
+.nav-pages .nav li {
     float: left;
     padding-left: 25px;
     padding-right: 25px;
 }
 
-.nav-pages .nav li a{
+.nav-pages .nav li a {
     padding: 0px !important;
     display: inline-block;
     color: white;
@@ -67,7 +64,7 @@ body {
 }
 
 .nav-pages .nav li a:hover {
-    color:#002855 !important;
+    color: #002855 !important;
 }
 
 .cas-login {
@@ -75,6 +72,7 @@ body {
     margin-right: 140px;
     color: white;
 }
+
 
 /* ---- search and advanced search section -----*/
 
@@ -88,6 +86,7 @@ body {
     background-color: #F4F4F4;
     border-bottom: 1px solid #EAE8E8;
 }
+
 .search-icon {
     background: white !important;
 }
@@ -103,12 +102,12 @@ body {
 .keyword-search {
     width: 40%;
     margin: 0 auto;
-
     span {
         background-color: white !important;
     }
     button {
-        border: 0;background: transparent;
+        border: 0;
+        background: transparent;
     }
 }
 
@@ -121,11 +120,12 @@ body {
 .advanced-search-section {
     width: 484px;
     margin: 0 auto;
-     .dropdown-menu {
-         height: 300px;
-         overflow-y: auto;
-     }
-     .dropdown-full-width, .dropdown-half-width {
+    .dropdown-menu {
+        height: 300px;
+        overflow-y: auto;
+    }
+    .dropdown-full-width,
+    .dropdown-half-width {
         .dropdown-toggle {
             width: 45px !important;
         }
@@ -138,11 +138,11 @@ body {
     .dropdown-menu {
         width: 240px !important;
         li a {
-        width: 250px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis
-    }
+            width: 250px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
         li a:hover {
             width: 100%;
             white-space: unset;
@@ -196,14 +196,14 @@ input[type=search] {
 }
 
 input[type=submit] {
-  position: absolute;
-  right: 0.75em;
-  top: 0.5em;
-  bottom: 0.5em;
-  z-index: 1;
-  width: 6em;
-  padding: 0;
-  cursor: pointer;
+    position: absolute;
+    right: 0.75em;
+    top: 0.5em;
+    bottom: 0.5em;
+    z-index: 1;
+    width: 6em;
+    padding: 0;
+    cursor: pointer;
 }
 
 .advanced-search {
@@ -238,8 +238,8 @@ input[type=submit] {
 .dropdown-list {
     li {
         a {
-        cursor: pointer;
-        width: 100% !important;
+            cursor: pointer;
+            width: 100% !important;
         }
     }
     input {
@@ -251,13 +251,10 @@ input[type=submit] {
     }
 }
 
-
 /* ------ */
 
-
-
 img {
-  width: 100% !important;
+    width: 100% !important;
 }
 
 .image-card {
@@ -265,14 +262,13 @@ img {
     border: 1px solid #EAE8E8;
     padding: 10px 10px 0px 10px;
     margin-top: 25px;
-    margin-bottom: 25px;
     cursor: pointer;
     border-radius: 5px;
 }
 
 .image-card:hover {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
     border: 1px solid transparent;
 }
 
@@ -284,11 +280,9 @@ img {
     box-shadow: unset !important;
 }
 
-
 .panel {
     padding: 20px !important;
 }
-
 
 .permission-check-box {
     padding-left: 0px;
@@ -304,60 +298,59 @@ img {
     margin-right: 20px;
 }
 
-
-
 .edit-image {
-    padding-left:35px;
-    padding-right:35px;
-
+    padding-left: 35px;
+    padding-right: 35px;
     h5 {
         font-weight: bold;
     }
-
-
     .btn-assign {
-    background: #F5F5F5;
-    border: 1px solid #D8D8D8;
-    border-radius: 3px;
+        background: #F5F5F5;
+        border: 1px solid #D8D8D8;
+        border-radius: 3px;
     }
 }
 
 
-
 /* filter search */
 
-.filter-panel {
+.filter-panel { 
     background-color: #FCFCFC;
     border: 1px solid #EAE8E8;
     margin: 20px;
     border-radius: 5px;
     position: absolute;
     margin-top: 25px;
+    .image-lesson-toggle {
+        border: 1px solid #ccc;
+        background-color: white;
+        color: #555;
+    }
     .divider {
         border-bottom: 1px solid #EAE8E8;
         margin-left: -15px !important;
         margin-right: -15px !important;
         margin-bottom: 10px;
     }
-    .divider:last-child {
+    /*.divider:last-child {
         border-bottom: none;
         margin-left: -15px !important;
         margin-right: -15px !important;
         margin-bottom: 10px;
-    }
+    }*/
     .dropdown-toggle {
-        width:45px;
+        width: 45px;
         text-align: center !important;
     }
     .dropdown-menu {
         width: 288px !important;
-         li a {
-        width: 250px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        font-style: normal !important;
-    }
+        li a {
+            width: 250px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-style: normal !important;
+        }
         li a:hover {
             width: 100%;
             //white-space: unset;
@@ -369,6 +362,23 @@ img {
             //padding-bottom: 10px;
             //font-size: 13px;
         }
+
+        li a .customized-checkbox span {
+            width: 220px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+        }
+
+        li a .customized-checkbox span:hover {
+            white-space: initial !important;
+            overflow: visible;
+            color: black;
+            display: block;
+        }
+
+
         .input-search-icon {
             left: 239px !important;
         }
@@ -388,6 +398,10 @@ img {
 
 .filter-panel-content {
     padding: 5px 0px 5px 0px !important;
+    .btn-submit {
+        widows: 100%;
+        background-color: #286090 !important;
+    }
     .btn-filter {
         width: 48% !important;
         margin-bottom: 15px;
@@ -399,7 +413,7 @@ img {
     }
     .btn-group {
         width: 100%;
-        margin:15px 0px 15px 0px;
+        margin: 15px 0px 15px 0px;
         font-style: italic;
         button {
             color: #B6B4B4;
@@ -411,14 +425,14 @@ img {
 .filter-label-group {
     margin-top: 15px;
     .filter-label {
-        background-color:#E5E9EF;
+        background-color: #E5E9EF;
         color: #494949;
         padding-top: 5px;
         padding-bottom: 5px;
         padding-left: 15px;
-        padding-right: 15px;;
+        padding-right: 15px;
         margin-right: 10px;
-        font-weight:unset;
+        font-weight: unset;
         font-size: 13px;
         display: inline-block;
         margin-top: 10px;
@@ -428,17 +442,17 @@ img {
         margin-left: 8px;
     }
     i:hover {
-        cursor:pointer;
-        color:black;
+        cursor: pointer;
+        color: black;
     }
 }
 
-.sticky-content.fixed{
-  position: fixed;
-  margin-top: 15px;
-  top: 5px;
-  left: 0;
-  right: 0;
+.sticky-content.fixed {
+    position: fixed;
+    margin-top: 15px;
+    top: 5px;
+    left: 0;
+    right: 0;
 }
 
 
@@ -447,41 +461,60 @@ img {
 .customized-search-group {
     margin-bottom: 25px;
     .filter-label {
-        background-color:#E5E9EF;
+        background-color: #E5E9EF;
         color: #494949;
         padding-top: 5px;
         padding-bottom: 5px;
         padding-left: 15px;
-        padding-right: 15px;;
+        padding-right: 15px;
         margin-right: 10px;
-        font-weight:unset;
+        font-weight: unset;
         font-size: 13px;
         display: inline-block;
         margin-top: 10px;
+        //overflow-x: hidden;
+        //text-overflow: ellipsis;
+        max-width: 100%;
+    }
+    .text-short {
+        display: inline-block;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        max-width: 90%;
+        vertical-align: bottom;
+
     }
     i {
         font-size: 10px;
         margin-left: 8px;
     }
     i:hover {
-        cursor:pointer;
-        color:black;
+        cursor: pointer;
+        color: black;
+    }
+}
+
+.test-margin {
+    margin-left: 384px;
+}
+
+@media only screen and (max-width: 850px) {
+    .test-margin {
+        margin-left: 230px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .test-margin {
+        margin-left: 160px;
     }
 }
 
 
-.test-margin {
-    margin-left:384px;
-}
 
-@media only screen and (max-width: 850px) {
-   .test-margin {
-       margin-left:230px;
-   }
-}
-
-@media only screen and (max-width: 550px) {
-   .test-margin {
-       margin-left:160px;
-   }
+/* toggle overwrite */
+.active {
+color: #fff !important;
+background-color: #286090 !important;
+border-color: #204d74 !important;
 }
