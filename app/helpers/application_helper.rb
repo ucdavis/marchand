@@ -10,4 +10,9 @@ module ApplicationHelper
             end
         end
     end
+
+    def isAdmin?
+        return false
+        # Implement CAS check if user is whitelisted
+    end
 end
