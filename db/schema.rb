@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502194026) do
+ActiveRecord::Schema.define(version: 20170525202456) do
 
   create_table "cal_standards", force: :cascade do |t|
     t.integer "grade_id",               default: 0,  null: false
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 20170502194026) do
     t.text    "notes",                                  null: false
     t.text    "s3"
     t.string  "view"
+    t.integer "start_year"
+    t.integer "end_year"
     t.index ["title", "card", "citation", "notes"], name: "idx_images_searchable"
   end
 

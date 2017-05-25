@@ -1,4 +1,6 @@
 class DataNatStandard < ApplicationRecord
+    include EsConcern
+
     validates_presence_of :image
     validates_presence_of :nat_standard
 

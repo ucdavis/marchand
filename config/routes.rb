@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 	get '/edit', to: 'site#edit'
 	get '/search', to: 'site#search'
 	get '/lesson', to: 'site#lesson'
+    get '/download/:key', to: 'site#download'
 end
