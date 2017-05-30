@@ -23,7 +23,11 @@
 						</div>
 					</form>
 					<ul class="nav pull-right">
+						<% if session[:cas_user].present? %>
+						<li><a href="/logout" class="cas-login">CAS Logout</a></li>
+						<% else %>
 						<li><a href="/login" class="cas-login">CAS Login</a></li>
+						<% end %>
 					</ul>
 				</div>
 				<div class="row nav-pages">

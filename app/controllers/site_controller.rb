@@ -1,3 +1,6 @@
+require 'casclient'
+require 'casclient/frameworks/rails/filter'
+
 class SiteController < ApplicationController
     before_action :parse_param
     before_action CASClient::Frameworks::Rails::Filter, only: [:login]
