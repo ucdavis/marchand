@@ -1,3 +1,21 @@
+GIT
+  remote: https://github.com/cthielen/rubycas-client.git
+  revision: e0d1c916661ddaba6cc987ce267568ef44353248
+  specs:
+    rubycas-client (2.3.10.rc1)
+      activesupport
+
+GIT
+  remote: https://github.com/rails/activerecord-session_store
+  revision: e97fa9f0d20fd932ecee6124b0b46d244d6f7ce6
+  specs:
+    activerecord-session_store (1.1.0)
+      actionpack (>= 4.0, < 5.2)
+      activerecord (>= 4.0, < 5.2)
+      multi_json (~> 1.11, >= 1.11.2)
+      rack (>= 1.5.2, < 3)
+      railties (>= 4.0, < 5.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -38,8 +56,6 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.5.1)
-      public_suffix (~> 2.0, >= 2.0.2)
     arel (7.1.4)
     aws-sdk (2.9.7)
       aws-sdk-resources (= 2.9.7)
@@ -125,13 +141,8 @@ GEM
     nio4r (2.0.0)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
-    public_suffix (2.0.5)
     puma (3.8.2)
     rack (2.0.1)
-    rack-cas (0.15.0)
-      addressable (~> 2.3)
-      nokogiri (~> 1.5)
-      rack (>= 1.3)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.2)
@@ -210,6 +221,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-session_store!
   aws-sdk (~> 2)
   byebug
   coffee-rails (~> 4.2)
@@ -220,9 +232,9 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   puma (~> 3.0)
-  rack-cas
   rails (~> 5.0.2)
   rmagick
+  rubycas-client!
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
