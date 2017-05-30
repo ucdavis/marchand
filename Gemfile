@@ -9,10 +9,10 @@ end
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem "elasticsearch-persistence", require: 'elasticsearch/persistence/model'
-
+# CAS authentication
+gem 'rack-cas'
 # Creating thumbnails
 gem 'rmagick'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
 # Use sqlite3 as the database for Active Record
