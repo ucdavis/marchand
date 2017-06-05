@@ -2,9 +2,13 @@
     padding: unset !important;
 }
 
-.panel-body:not(:last-child) {
-    border-bottom: 1px solid #ddd;
+.panel-body {
     padding-bottom: 45px;
+
+    &:not(:last-child) {
+        border-bottom: 1px solid #ddd;
+    }
+    
     .row {
         .col-xs-12 {
             padding-right: 0px;

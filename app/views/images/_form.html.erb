@@ -43,12 +43,17 @@
 
     <!-- Topic / Standard / Collection -->
     <div class="panel panel-default">
+        <% @filters.each do |filter| %>
+        <% next if filter.empty? %>
+        <% # Checks to see if we override a class's `name` method %>
+        <% klass = filter.first.class %>
+        <% title = defined?(klass.readable_class_name) ? klass.readable_class_name : klass.name %>
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-12">
-                            <h5>Topic</h5>
+                            <h5><%= title %></h5>
                             <div class="row">
                                 <div class="col-xs-6">
                                     <div class="btn-group">
@@ -63,9 +68,22 @@
                                                 <input class="dropdown-search" type="text" data-type="search-box">
                                             </div>
                                             <ul class="dropdown-list" data-type="list" data-target="span">
-                                                <% @topics.each do |item| %>
-                                                <% klass = item.class %>
-                                                <% checked = @image.topic_assignments.include?(TopicAssignment.where(:id => item.id)) ? "checked" : "" if %>
+                                                <% filter.each do |item| %>
+                                                <% case item %>
+                                                <% when Topic %>
+                                                <% checked = @image.topic_assignments.exists?(topic_id: item.id) ? "checked" : "" %>
+                                                <% when Collection %>
+                                                <% checked = (@image.collection == item.id) ? "checked" : "" %>
+                                                <% when CalStandard %>
+                                                <% checked = @image.data_cal_standards.exists?(cal_standard_id: item.id) ? "checked" : "" %>
+                                                <% when NatStandard %>
+                                                <% checked = @image.data_nat_standards.exists?(nat_standard_id: item.id) ? "checked" : "" %>
+                                                <% when Region %>
+                                                <% checked = @image.region_assignments.exists?(region_id: item.id) ? "checked" : "" %>
+                                                <% else %>
+                                                <% puts "Something went wrong" %>
+                                                <% checked = "" %>
+                                                <% end %>
                                                 <li>
                                                     <a>
                                                         <div class="customized-checkbox">
@@ -85,8 +103,8 @@
                                     </div>
                                     <button type="button" class="btn btn-default btn-assign" style="margin-top: 10px;margin-left: 15px; margin-top: 30px;">Assign<div></div></button>
                                 </div>
-                                <div class="col-xs-6" style="padding-left:45px;padding-right:45px;"><!-- assign tag -->
-                                    <span class="label label-default" style="background-color:#E5E9EF;color: #494949;padding-top: 5px;padding-bottom: 5px;padding-left: 15px;padding-right: 15px;margin-left: 5px;margin-right: 5px; font-weight:unset;font-size: 13px;">Asia <i class="glyphicon glyphicon-remove" style="font-size: 10px;"></i></span>
+                                <!-- Filter tags go here -->
+                                <div id="<%= klass.name %>" class="col-xs-6" style="padding-left:45px;padding-right:45px;">
                                 </div>
                             </div>
                         </div>
@@ -95,135 +113,34 @@
                 </div>
             </div>
         </div>
-        <div class="panel-body" style="border-bottom: 1px solid #ddd;padding-bottom: 45px;">
+        <% end %>
+    </div>
+    <!-- Permissions -->
+    <div class="panel panel-default">
+        <div class="panel-body">
             <div class="row">
-                <div class="col-xs-12" style="padding-right: 0px;padding-left: 0px;">
+                <div class="col-xs-12" >
                     <div class="row">
-                        <div class="col-xs-12" style="padding-left: 50px;padding-right: 50px;">
-                            <h5>Standard</h5>
-                            <div class="row">
-                                <div class="col-xs-6" style="border-right:1px solid #ddd;">
-                                    <div class="btn-group" style="width: 340px; margin-top:10px;">
-                                        <button type="button" class="btn btn-default" style="width: calc(100% - 26px);">Action</button>
-                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Action</a></li>
-                                            <li><a href="#">Another action</a></li>
-                                            <li><a href="#">Something else here</a></li>
-                                            <li role="separator" class="divider"></li>
-                                            <li><a href="#">Separated link</a></li>
-                                        </ul>
-                                    </div>
-                                    <button type="button" class="btn btn-default btn-assign" style="margin-top: 10px;margin-left: 15px;">Assign<div></div></button>
-                                </div>
-                                <div class="col-xs-6" style="padding-left:45px;padding-right:45px;"><!-- assign tag -->
-                                    <span class="label label-default" style="background-color:#E5E9EF;color: #494949;padding-top: 5px;padding-bottom: 5px;padding-left: 15px;padding-right: 15px;margin-left: 5px;margin-right: 5px; font-weight:unset;font-size: 13px;">Asia <i class="glyphicon glyphicon-remove" style="font-size: 10px;"></i></span>
-                                </div>
-                            </div>
+                        <div class="col-xs-12">
+                            <h5>Permission to Display</h5>
+                            <ul class="permission-check-box">
+                                <li>
+                                    <input type="checkbox" value="1" name="test[]" id="myid1">
+                                    <label for="myid1">Yes</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" value="2" name="test[]" id="myid2">
+                                    <label for="myid2">No</label>
+                                </li>
+                            </ul>
                         </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel-body" style="border-bottom: 1px solid #ddd;padding-bottom: 45px;">
-            <div class="row">
-                <div class="col-xs-12" style="padding-right: 0px;padding-left: 0px;">
-                    <div class="row">
-                        <div class="col-xs-12" style="padding-left: 50px;padding-right: 50px;">
-                            <h5>National/World</h5>
-                            <div class="row">
-                                <div class="col-xs-6" style="border-right:1px solid #ddd;">
-                                    <div class="btn-group" style="width: 340px; margin-top:10px;">
-                                        <button type="button" class="btn btn-default" style="width: calc(100% - 26px);">Action</button>
-                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Action</a></li>
-                                            <li><a href="#">Another action</a></li>
-                                            <li><a href="#">Something else here</a></li>
-                                            <li role="separator" class="divider"></li>
-                                            <li><a href="#">Separated link</a></li>
-                                        </ul>
-                                    </div>
-                                    <button type="button" class="btn btn-default btn-assign" style="margin-top: 10px;margin-left: 15px;">Assign<div></div></button>
-                                </div>
-                                <div class="col-xs-6" style="padding-left:45px;padding-right:45px;"><!-- assign tag -->
-                                    <span class="label label-default" style="background-color:#E5E9EF;color: #494949;padding-top: 5px;padding-bottom: 5px;padding-left: 15px;padding-right: 15px;margin-left: 5px;margin-right: 5px; font-weight:unset;font-size: 13px;">Asia <i class="glyphicon glyphicon-remove" style="font-size: 10px;"></i></span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel-body" style="padding-bottom: 45px;">
-            <div class="row">
-                <div class="col-xs-12" style="padding-right: 0px;padding-left: 0px;">
-                    <div class="row">
-                        <div class="col-xs-12" style="padding-left: 50px;padding-right: 50px;">
-                            <h5>Collection</h5>
-                            <div class="row">
-                                <div class="col-xs-6" style="border-right:1px solid #ddd;">
-                                    <div class="btn-group" style="width: 340px; margin-top:10px;">
-                                        <button type="button" class="btn btn-default" style="width: calc(100% - 26px);">Action</button>
-                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Action</a></li>
-                                            <li><a href="#">Another action</a></li>
-                                            <li><a href="#">Something else here</a></li>
-                                            <li role="separator" class="divider"></li>
-                                            <li><a href="#">Separated link</a></li>
-                                        </ul>
-                                    </div>
-                                    <button type="button" class="btn btn-default btn-assign" style="margin-top: 10px;margin-left: 15px;">Assign<div></div></button>                                </div>
-                                    <div class="col-xs-6" style="padding-left:45px;padding-right:45px;"><!-- assign tag -->
-                                        <span class="label label-default" style="background-color:#E5E9EF;color: #494949;padding-top: 5px;padding-bottom: 5px;padding-left: 15px;padding-right: 15px;margin-left: 5px;margin-right: 5px; font-weight:unset;font-size: 13px;">Asia <i class="glyphicon glyphicon-remove" style="font-size: 10px;"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Permissions -->
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-xs-12" >
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Permission to Display</h5>
-                                <ul class="permission-check-box">
-                                    <li>
-                                        <input type="checkbox" value="1" name="test[]" id="myid1">
-                                        <label for="myid1">Yes</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" value="2" name="test[]" id="myid2">
-                                        <label for="myid2">No</label>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-xs-12"style="margin-top:30px;">
-                                <h5>Permission Tracking Notes</h5>
-                                <textarea class="form-control" placeholder="Search" type="text"></textarea>
-                            </div>
+                        <div class="col-xs-12"style="margin-top:30px;">
+                            <h5>Permission Tracking Notes</h5>
+                            <textarea class="form-control" placeholder="Search" type="text"></textarea>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
