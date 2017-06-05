@@ -8,4 +8,6 @@ Rails.application.routes.draw do
 
     get '/login', to: 'site#login'
     get '/logout', to: 'site#logout'
+
+    resources :images
 end
