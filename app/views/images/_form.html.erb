@@ -1,6 +1,7 @@
-<div class="container edit-image" style="padding-left: 50px;padding-right:80px;">
+<div class="container edit-image">
     <h4>Edit Image</h4>
-    <div class="panel panel-default" style="background-color:#FCFCFC; margin-top:80px;">
+    <!-- Image & Image Title -->
+    <div class="panel panel-default">
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-6">
@@ -13,24 +14,26 @@
                 </div>
                 <div class="col-xs-6">
                     <div class="row">
-                        <img src="<%= @image.s3 %>" style="padding:30px;">
+                        <img src="<%= @image.s3 %>">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="panel panel-default" style="background-color:#FCFCFC; margin-top: 50px;">
+
+    <!-- Card Text & Citation -->
+    <div class="panel panel-default">
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12" >
                     <div class="row">
                         <div class="col-xs-12">
                             <h5>Card Text</h5>
-                            <textarea class="form-control" placeholder="Description" type="text" style="height: 150px;"><%= @image.card %></textarea>
+                            <textarea class="form-control" placeholder="Description" type="text"><%= @image.card %></textarea>
                         </div>
-                        <div class="col-xs-12"style="margin-top:30px;">
+                        <div class="col-xs-12">
                             <h5>Card Citation</h5>
-                            <textarea class="form-control" placeholder="Search" type="text" style="height: 150px;"><%= @image.citation %></textarea>
+                            <textarea class="form-control" placeholder="Search" type="text"><%= @image.citation %></textarea>
                         </div>
                     </div>
                 </div>
@@ -38,54 +41,17 @@
         </div>
     </div>
 
-    <div class="panel panel-default" style="background-color:#FCFCFC; margin-top: 50px;padding-left: 0px !important;padding-right: 0px !important;">
-        <div class="panel-body" style="border-bottom: 1px solid #ddd;padding-bottom: 45px;">
+    <!-- Topic / Standard / Collection -->
+    <div class="panel panel-default">
+        <div class="panel-body">
             <div class="row">
-                <div class="col-xs-12" style="padding-right: 0px;padding-left: 0px;">
+                <div class="col-xs-12">
                     <div class="row">
-                        <div class="col-xs-12" style="padding-left: 50px;padding-right: 50px;">
+                        <div class="col-xs-12">
                             <h5>Topic</h5>
                             <div class="row">
-                                <div class="col-xs-6" style="border-right:1px solid #ddd;">
-                                    <div class="btn-group" style="width: 340px; margin-top:10px;">
-                                        <button type="button" class="btn btn-default" style="width: calc(100% - 26px);">Action</button>
-                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Action</a></li>
-                                            <li><a href="#">Another action</a></li>
-                                            <li><a href="#">Something else here</a></li>
-                                            <li role="separator" class="divider"></li>
-                                            <li><a href="#">Separated link</a></li>
-                                        </ul>
-                                    </div>
-                                    <button type="button" class="btn btn-default btn-assign" style="margin-top: 10px;margin-left: 15px;">Assign<div></div></button>
-                                    <div class="btn-group" style="width: 340px; margin-top:30px;">
-                                        <input style="width:100%;" class="form-control">
-                                    </div>
-                                    <button type="button" class="btn btn-default btn-assign" style="margin-top: 10px;margin-left: 15px; margin-top: 30px;">Assign<div></div></button>
-                                </div>
-                                <div class="col-xs-6" style="padding-left:45px;padding-right:45px;"><!-- assign tag -->
-                                    <span class="label label-default" style="background-color:#E5E9EF;color: #494949;padding-top: 5px;padding-bottom: 5px;padding-left: 15px;padding-right: 15px;margin-left: 5px;margin-right: 5px; font-weight:unset;font-size: 13px;">Asia <i class="glyphicon glyphicon-remove" style="font-size: 10px;"></i></span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel-body" style="border-bottom: 1px solid #ddd;padding-bottom: 45px;">
-            <div class="row">
-                <div class="col-xs-12" style="padding-right: 0px;padding-left: 0px;">
-                    <div class="row">
-                        <div class="col-xs-12" style="padding-left: 50px;padding-right: 50px;">
-                            <h5>Topic</h5>
-                            <div class="row">
-                                <div class="col-xs-6" style="border-right:1px solid #ddd;">
-                                    <div class="btn-group" style="width: 340px; margin-top:10px;">
+                                <div class="col-xs-6">
+                                    <div class="btn-group">
                                         <button type="button" class="btn btn-default" style="width: calc(100% - 26px);">Action</button>
                                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <span class="caret"></span>
@@ -98,7 +64,8 @@
                                             </div>
                                             <ul class="dropdown-list" data-type="list" data-target="span">
                                                 <% @topics.each do |item| %>
-                                                <% checked = params[item.class.name.downcase].include?(item.id.to_s) ? "checked" : "" if params[klass.name.downcase].present?%>
+                                                <% klass = item.class %>
+                                                <% checked = @image.topic_assignments.include?(TopicAssignment.where(:id => item.id)) ? "checked" : "" if %>
                                                 <li>
                                                     <a>
                                                         <div class="customized-checkbox">
@@ -230,7 +197,9 @@
                 </div>
             </div>
         </div>
-        <div class="panel panel-default" style="background-color:#FCFCFC; margin-top: 50px;">
+
+        <!-- Permissions -->
+        <div class="panel panel-default">
             <div class="panel-body">
                 <div class="row">
                     <div class="col-xs-12" >
@@ -250,8 +219,7 @@
                             </div>
                             <div class="col-xs-12"style="margin-top:30px;">
                                 <h5>Permission Tracking Notes</h5>
-                                <textarea class="form-control" placeholder="Search" type="text" style="height: 150px;">
-                                </textarea>
+                                <textarea class="form-control" placeholder="Search" type="text"></textarea>
                             </div>
                         </div>
                     </div>
