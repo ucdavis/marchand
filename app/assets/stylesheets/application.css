@@ -128,7 +128,7 @@ text-decoration: none;
 .input-search-icon {
     position: absolute;
     top: 13px;
-    left: 194px;
+    right: 16px;
     background: #f3f3f3 !important;
     padding: 7px;
     border-radius: 3px;
