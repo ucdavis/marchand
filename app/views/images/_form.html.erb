@@ -1,72 +1,76 @@
 <div class="container edit-image">
-<h4>Edit Image</h4>
-<%= form_for @image do |f| %>
-<!-- Image & Image Title -->
-<div class="panel panel-default">
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-xs-6">
-                <div class="col-xs-12">
-                    <h5>Image Title</h5>
-                    <%= f.text_field :title, :class => "form-control" %>
-                </div>
-                <div class="col-xs-12">
-                    <h5>Image Collection</h5>
-                    <%= f.select :collection_id, Collection.all.collect { |c| [c.name, c.id] }, include_blank: true %>
-                </div>
-                <div class="col-xs-12">
-                    <h5>Permission to Display</h5>
-                    <%= f.check_box :public %>
-                    <%= label_tag :image_public, "Public" %>
-                </div>
-            </div>
-            <div class="col-xs-6">
-                <div class="row">
-                    <img src="<%= @image.s3 %>">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Card Text & Citation -->
-<div class="panel panel-default">
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-xs-12" >
-                <div class="row">
+    <%= form_for @image do |f| %>
+    <h3 class="center page-title text-left">Edit Image</h3>
+    <!-- Image & Image Title -->
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-6 image-basic-information">
                     <div class="col-xs-12">
-                        <h5>Card Text</h5>
-                        <%= f.text_area :card, class: "form-control" %>
+                        <h5>Image Title</h5>
+                        <input class="form-control" placeholder="Title" type="text" value="<%= @image.title %>">
                     </div>
                     <div class="col-xs-12">
-                        <h5>Card Citation</h5>
-                        <%= f.text_area :citation, class: "form-control" %>
+                        <h5>Image Collection</h5>
+                        <%= f.select :collection_id, Collection.all.collect { |c| [c.name, c.id] }, include_blank: true %>
+                    </div>
+                    <div class="col-xs-12">
+                        <h5>Permission to Display</h5>
+                        <%= f.check_box :public %>
+                        <%= label_tag :image_public, "Public" %>
+                    </div>
+                </div>
+
+
+                <div class="col-xs-6 flex-center">
+                    <div class="row">
+                        <div class="image-thumbnail">
+                            <img src="<%= @image.thumbnail %>">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Topic / Standard / Collection -->
-<div class="panel panel-default">
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <%= render "filter", :f => f, :klass => Topic, :member => :topic_assignments %>
-                        <%= render "filter", :f => f, :klass => Region, :member => :region_assignments %>
-                        <%= render "filter", :f => f, :klass => CalStandard, :member => :data_cal_standards %>
-                        <%= render "filter", :f => f, :klass => NatStandard, :member => :data_nat_standards %>
+    <!-- Card Text & Citation -->
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12" >
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h5>Card Text</h5>
+                            <%= f.text_area :card, class: "form-control" %>
+                        </div>
+                        <div class="col-xs-12">
+                            <h5>Card Citation</h5>
+                            <%= f.text_area :citation, class: "form-control" %>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <!-- Topic / Standard / Collection -->
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <%= render "filter", :f => f, :klass => Topic, :member => :topic_assignments %>
+                            <%= render "filter", :f => f, :klass => Region, :member => :region_assignments %>
+                            <%= render "filter", :f => f, :klass => CalStandard, :member => :data_cal_standards %>
+                            <%= render "filter", :f => f, :klass => NatStandard, :member => :data_nat_standards %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-<% end # image form %>
+    <% end # image form %>
 </div>

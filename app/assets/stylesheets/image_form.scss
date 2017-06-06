@@ -1,5 +1,15 @@
 /* CSS Specific for _form in /views/images/_form */
 .container.edit-image {
+    .image-basic-information {
+        padding: 0px 35px 0px 35px;
+    }
+    .image-thumbnail {
+        background-color: #FCFCFC;
+        border: 1px solid #EAE8E8;
+        padding: 10px 10px 10px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
     .glyphicon.glyphicon-remove {
         font-size: 10px;
     }
