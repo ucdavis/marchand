@@ -5,4 +5,9 @@ Rails.application.routes.draw do
 	get '/search', to: 'site#search'
 	get '/lesson', to: 'site#lesson'
     get '/download/:key', to: 'site#download'
+
+    get '/login', to: 'site#login'
+    get '/logout', to: 'site#logout'
+
+    resources :images
 end

@@ -2,7 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).ready ->
+# turbolinks:load instead of document.ready because we do not want this cached
+$(document).on "turbolinks:load", ->
 	# Persist filters / tags from previous search
 	$("input:checked").each (i, item) ->
 		targetId = $(this).data("target-id")

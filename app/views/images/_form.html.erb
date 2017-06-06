@@ -1,0 +1,128 @@
+<div class="container edit-image">
+    <h4>Edit Image</h4>
+    <!-- Image & Image Title -->
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="col-xs-12">
+                        <h5>Image Title</h5>
+                        <input class="form-control" placeholder="Title" type="text" value="<%= @image.title %>">
+                    </div>
+                    <div class="col-xs-12">
+                        <h5>Image Collection</h5>
+                        <%= collection_select(:image, :collection_id, Collection.all, :id, :name) %>
+                    </div>
+                    <div class="col-xs-12">
+                        <h5>Permission to Display</h5>
+                        <% public_view = (@image.public == 1) %>
+                        <input id="public_true" type="radio" name="public" value="0" <%= "checked" if public_view %>>
+                        <label for="public_true">Yes</label>
+                        <input id="public_false" type="radio" name="public" value="1" <%= "checked" unless public_view %>>
+                        <label for="public_false">No</lable>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="row">
+                        <img src="<%= @image.s3 %>">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card Text & Citation -->
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12" >
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h5>Card Text</h5>
+                            <textarea class="form-control" placeholder="Description" type="text"><%= @image.card %></textarea>
+                        </div>
+                        <div class="col-xs-12">
+                            <h5>Card Citation</h5>
+                            <textarea class="form-control" placeholder="Search" type="text"><%= @image.citation %></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Topic / Standard / Collection -->
+    <div class="panel panel-default">
+        <% @filters.each do |filter| %>
+        <% next if filter.empty? || filter.first.class == Collection %>
+        <% # Checks to see if we override a class's `name` method %>
+        <% klass = filter.first.class %>
+        <% title = defined?(klass.readable_class_name) ? klass.readable_class_name : klass.name %>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h5><%= title %></h5>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default" style="width: calc(100% - 26px);">Action</button>
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <div class="dropdown-menu" data-type="menu">
+                                            <div class="select2-search" style="padding: 12px 15px;">
+                                                <span class="glyphicon glyphicon-search input-search-icon"></span>
+                                                <input class="dropdown-search" type="text" data-type="search-box">
+                                            </div>
+                                            <ul class="dropdown-list" data-type="list" data-target="span">
+                                                <% filter.each do |item| %>
+                                                <% case item %>
+                                                <% when Topic %>
+                                                <% checked = @image.topic_assignments.exists?(topic_id: item.id) ? "checked" : "" %>
+                                                <% when Collection %>
+                                                <% checked = (@image.collection == item.id) ? "checked" : "" %>
+                                                <% when CalStandard %>
+                                                <% checked = @image.data_cal_standards.exists?(cal_standard_id: item.id) ? "checked" : "" %>
+                                                <% when NatStandard %>
+                                                <% checked = @image.data_nat_standards.exists?(nat_standard_id: item.id) ? "checked" : "" %>
+                                                <% when Region %>
+                                                <% checked = @image.region_assignments.exists?(region_id: item.id) ? "checked" : "" %>
+                                                <% else %>
+                                                <% puts "Something went wrong" %>
+                                                <% checked = "" %>
+                                                <% end %>
+                                                <li>
+                                                    <a>
+                                                        <div class="customized-checkbox">
+                                                            <span><%= item.title %></span>
+                                                            <input type="checkbox" value="<%= item.id %>" id="customized-checkbox" name="<%= klass.name.downcase %>" data-target-id="<%= klass.name %>" <%= checked %> />
+                                                            <label for="customized-checkbox"></label>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <% end %>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-default btn-assign" style="margin-top: 10px;margin-left: 15px;">Assign<div></div></button>
+                                    <div class="btn-group" style="width: 340px; margin-top:30px;">
+                                        <input style="width:100%;" class="form-control">
+                                    </div>
+                                    <button type="button" class="btn btn-default btn-assign" style="margin-top: 10px;margin-left: 15px; margin-top: 30px;">Assign<div></div></button>
+                                </div>
+                                <!-- Filter tags go here -->
+                                <div id="<%= klass.name %>" class="col-xs-6" style="padding-left:45px;padding-right:45px;">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>

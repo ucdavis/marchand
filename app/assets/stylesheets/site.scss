@@ -286,6 +286,11 @@ img {
     padding: 20px !important;
 }
 
+.panel-default {
+    background-color:#FCFCFC;
+    margin-top:80px;
+}
+
 .permission-check-box {
     padding-left: 0px;
 }
@@ -316,7 +321,7 @@ img {
 
 /* filter search */
 
-.filter-panel { 
+.filter-panel {
     background-color: #FCFCFC;
     border: 1px solid #EAE8E8;
     margin: 20px;

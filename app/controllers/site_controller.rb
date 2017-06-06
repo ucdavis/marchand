@@ -1,5 +1,9 @@
+require 'casclient'
+require 'casclient/frameworks/rails/filter'
+
 class SiteController < ApplicationController
     before_action :parse_param
+    before_action CASClient::Frameworks::Rails::Filter, only: [:login]
     IMAGE_LIMIT = 24
 
     def index
@@ -57,6 +61,14 @@ class SiteController < ApplicationController
         send_data file.body.read, filename: key,
         type: file.content_type,
         disposition: 'attachment'
+    end
+
+    def login
+        redirect_to "/"
+    end
+
+    def logout
+        CASClient::Frameworks::Rails::Filter.logout(self)
     end
 
     private
