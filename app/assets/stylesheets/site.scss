@@ -10,6 +10,11 @@ body {
     width: 100%;
 }
 
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
 .top-header {
     background: #002855;
 }
@@ -345,6 +350,15 @@ img {
         margin-right: -15px !important;
         margin-bottom: 10px;
     }*/
+    .btn-submit-filters {
+        width: 80%;
+        color: white !important;
+        //background-color: #204d74;
+        //border-color: #122b40;
+        text-align: center !important;
+        font-style: normal;
+        margin-top: 25px;
+    }
     .dropdown-toggle {
         width: 45px;
         text-align: center !important;
