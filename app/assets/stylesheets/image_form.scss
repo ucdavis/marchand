@@ -7,9 +7,15 @@
     .filter-label {
         background-color:#E5E9EF;
         color: #494949;
-        padding: 5px 15px;
-        margin: 0 5px;
         font-weight:unset;
         font-size: 13px;
+    }
+
+    li a .customized-checkbox span {
+        width: 90%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
     }
 }
