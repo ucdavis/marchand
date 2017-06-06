@@ -1,0 +1,53 @@
+<!-- f => form_for @image-->
+<!-- klass => class to build fields for -->
+<!-- member => nested_attribute to build fields_for -->
+
+<% title = defined?(klass.readable_class_name) ? klass.readable_class_name : klass.name %>
+<% column = "#{klass.name.underscore}_id".to_sym %>
+
+<h5><%= title %></h5>
+<div class="row">
+    <div class="col-xs-6">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default" style="width: calc(100% - 26px);">Action</button>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu" data-type="menu">
+                <div class="select2-search" style="padding: 12px 15px;">
+                    <span class="glyphicon glyphicon-search input-search-icon"></span>
+                    <input class="dropdown-search" type="text" data-type="search-box">
+                </div>
+
+                <ul class="dropdown-list" data-type="list" data-target="span">
+
+                    <%= f.fields_for member do |form| %>
+                    <%= form.collection_check_boxes column, klass.all, :id, :title, {}, "data-target-id" => klass.name do |b| %>
+                    <li>
+                        <a>
+                            <div class="customized-checkbox">
+                                <span> <%= b.text %> </span>
+                                <%= b.check_box %>
+                                <% # The block passed is essential to have a label with no text %>
+                                <%= b.label { " " } %>
+                            </div>
+                        </a>
+                    </li>
+                    <% end %>
+                    <% end %>
+                </ul>
+
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-default btn-assign" style="margin-top: 10px;margin-left: 15px;">Assign<div></div></button>
+        <div class="btn-group" style="width: 340px; margin-top:30px;">
+            <input style="width:100%;" class="form-control">
+        </div>
+        <button type="button" class="btn btn-default btn-assign" style="margin-top: 10px;margin-left: 15px; margin-top: 30px;">Assign<div></div></button>
+    </div>
+
+    <!-- Filter tags go here -->
+    <div id="<%= klass.name %>" class="col-xs-6 customized-search-group" style="padding-left:45px;padding-right:45px;"></div>
+</div>
