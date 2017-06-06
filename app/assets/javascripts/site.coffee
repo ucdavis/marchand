@@ -145,11 +145,15 @@ fillModal = (el) ->
 	imgRegions = $(el).data("regions").split(delim)
 	imgCalStandards = $(el).data("cal-standards").split(delim)
 	imgNatStandards = $(el).data("nat-standards").split(delim)
+	imgId = $(el).data("id")
 
 	# Download Button
 	$("#download-image", $("##{view}-modal .modal-header")).on "click", (e) ->
 		key = imgSrc.split("/").pop()
 		tmp = window.open "download/#{key}"
+
+	# Edit Button
+	$(".btn-edit", $("##{view}-modal .modal-header")).attr("href", "/images/#{imgId}/edit")
 
 	# Firefox chooses to only swap the images once the picture is fully loaded
 	# So we clear it first to avoid having the wrong picutre in a modal
