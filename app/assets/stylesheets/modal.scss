@@ -32,9 +32,19 @@
             margin-right: 20px;
             button {
                 margin: 10px 0px 10px 5px !important;
-            i {
-                margin-right:5px;
+                i {
+                    margin-right:5px;
+                }
+                .glyphicon {
+                    top: 2px !important;
+                }
             }
+
+            a {
+                margin: 10px 0px 10px 5px !important;
+                i {
+                    margin-right:5px;
+                }
                 .glyphicon {
                     top: 2px !important;
                 }
@@ -82,9 +92,20 @@
             button {
                 margin: 10px 0px 10px 5px !important;
                 border:none;
-            i {
-                margin-right:5px;
+                i {
+                    margin-right:5px;
+                }
+                .glyphicon {
+                    top: 2px !important;
+                }
             }
+
+            a {
+                margin: 10px 0px 10px 5px !important;
+                border:none;
+                i {
+                    margin-right:5px;
+                }
                 .glyphicon {
                     top: 2px !important;
                 }
