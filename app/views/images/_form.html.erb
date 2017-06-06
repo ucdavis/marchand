@@ -1,10 +1,10 @@
 <div class="container edit-image">
-    <h4>Edit Image</h4>
+    <h3 class="center page-title text-left">Edit Image</h3>
     <!-- Image & Image Title -->
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="row">
-                <div class="col-xs-6">
+                <div class="col-xs-6 image-basic-information">
                     <div class="col-xs-12">
                         <h5>Image Title</h5>
                         <input class="form-control" placeholder="Title" type="text" value="<%= @image.title %>">
@@ -22,9 +22,11 @@
                         <label for="public_false">No</lable>
                     </div>
                 </div>
-                <div class="col-xs-6">
+                <div class="col-xs-6 flex-center">
                     <div class="row">
-                        <img src="<%= @image.s3 %>">
+                        <div class="image-thumbnail">
+                            <img src="<%= @image.thumbnail %>">
+                        </div>
                     </div>
                 </div>
             </div>

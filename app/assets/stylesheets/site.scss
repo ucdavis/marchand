@@ -10,6 +10,12 @@ body {
     width: 100%;
 }
 
+.page-title {
+    font-weight: bold;
+    margin-bottom: 35px;
+    margin-top: 60px;
+}
+
 .flex-center {
     display: flex;
     justify-content: center;
@@ -293,7 +299,6 @@ img {
 
 .panel-default {
     background-color:#FCFCFC;
-    margin-top:80px;
 }
 
 .permission-check-box {
