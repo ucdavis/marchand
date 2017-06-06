@@ -35,7 +35,7 @@ class SiteController < ApplicationController
                 term: {
                     public: 1
                 }
-            }
+            } unless isAdmin?
 
             @images = Image.search(@query, filter).records
         end
