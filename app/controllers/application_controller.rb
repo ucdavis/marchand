@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     before_action :set_filters
     include SiteHelper
+    include ApplicationHelper
 
     def set_filters
         @regions = Region.select(:id, :title).uniq

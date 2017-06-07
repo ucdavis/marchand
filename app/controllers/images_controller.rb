@@ -1,4 +1,6 @@
 class ImagesController < ApplicationController
+    include ImagesHelper
+    
     before_action :set_image, only: [:show, :edit, :update, :destroy]
 
     def new
@@ -14,6 +16,16 @@ class ImagesController < ApplicationController
     end
 
     def update
+        respond_to do |format|
+            if @image.update(image_params)
+                format.html { redirect_to build_search_url(@image) }
+                format.json { head :no_content }
+            else
+                format.html { render action: :edit }
+                format.json { render json: @image.errors, status: :unprocessable_entity }
+            end
+        end
+
     end
 
     def destroy
@@ -21,7 +33,7 @@ class ImagesController < ApplicationController
 
     private
     def image_params
-        # params.require(:image).permit(:developer_id, :email, :account_type)
+        params.require(:image).permit(:title, :collection_id, :public, :card, :citation)
     end
     def set_image
       @image = Image.find(params[:id])
