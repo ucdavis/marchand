@@ -10,4 +10,8 @@ class NatStandard < ActiveRecord::Base
 
         return "#{prefix} Era #{self.era} - #{self.title}"
     end
+
+    def self.readable_class_name
+        return "National Standard"
+    end
 end

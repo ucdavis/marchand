@@ -1,4 +1,5 @@
 <div class="container edit-image">
+    <%= form_for @image do |f| %>
     <h3 class="center page-title text-left">Edit Image</h3>
     <!-- Image & Image Title -->
     <div class="panel panel-default">
@@ -11,6 +12,7 @@
                     </div>
                     <div class="col-xs-12">
                         <h5>Image Collection</h5>
+<<<<<<< HEAD
                         <!--
                         <%= collection_select(:image, :collection_id, Collection.all, :id, :name) %> -->
                         <div class="btn-group collection-dropdown">
@@ -21,16 +23,18 @@
                             </button>
                     </div>
 
+=======
+                        <%= f.select :collection_id, Collection.all.collect { |c| [c.name, c.id] }, include_blank: true %>
+>>>>>>> 0d17d58cdd7fdd10d892a5558c971cbf73b4055c
                     </div>
                     <div class="col-xs-12">
                         <h5>Permission to Display</h5>
-                        <% public_view = (@image.public == 1) %>
-                        <input id="public_true" type="radio" name="public" value="0" <%= "checked" if public_view %>>
-                        <label for="public_true">Yes</label>
-                        <input id="public_false" type="radio" name="public" value="1" <%= "checked" unless public_view %>>
-                        <label for="public_false">No</lable>
+                        <%= f.check_box :public %>
+                        <%= label_tag :image_public, "Public" %>
                     </div>
                 </div>
+
+
                 <div class="col-xs-6 flex-center">
                     <div class="row">
                         <div class="image-thumbnail">
@@ -50,11 +54,11 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <h5>Card Text</h5>
-                            <textarea class="form-control" placeholder="Description" type="text"><%= @image.card %></textarea>
+                            <%= f.text_area :card, class: "form-control" %>
                         </div>
                         <div class="col-xs-12">
                             <h5>Card Citation</h5>
-                            <textarea class="form-control" placeholder="Search" type="text"><%= @image.citation %></textarea>
+                            <%= f.text_area :citation, class: "form-control" %>
                         </div>
                     </div>
                 </div>
@@ -64,16 +68,12 @@
 
     <!-- Topic / Standard / Collection -->
     <div class="panel panel-default">
-        <% @filters.each do |filter| %>
-        <% next if filter.empty? || filter.first.class == Collection %>
-        <% # Checks to see if we override a class's `name` method %>
-        <% klass = filter.first.class %>
-        <% title = defined?(klass.readable_class_name) ? klass.readable_class_name : klass.name %>
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-12">
+<<<<<<< HEAD
                             <h5><%= title %></h5>
                             <div class="row">
                                 <div class="col-xs-6">
@@ -128,12 +128,19 @@
                                 <div id="<%= klass.name %>" class="col-xs-6" style="padding-left:45px;padding-right:45px;">
                                 </div>
                             </div>
+=======
+                            <%= render "filter", :f => f, :klass => Topic, :member => :topic_assignments %>
+                            <%= render "filter", :f => f, :klass => Region, :member => :region_assignments %>
+                            <%= render "filter", :f => f, :klass => CalStandard, :member => :data_cal_standards %>
+                            <%= render "filter", :f => f, :klass => NatStandard, :member => :data_nat_standards %>
+>>>>>>> 0d17d58cdd7fdd10d892a5558c971cbf73b4055c
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-        <% end %>
     </div>
+
+
+    <% end # image form %>
 </div>
