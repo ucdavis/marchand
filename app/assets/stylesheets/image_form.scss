@@ -28,4 +28,12 @@
         text-overflow: ellipsis;
         display: block;
     }
+
+    .btn-submit {
+        position: fixed;
+        width:10%;
+        right: 0;
+        margin-right: 10px;
+        top: 95%;
+    }
 }
