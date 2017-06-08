@@ -15,9 +15,12 @@
                         <%= f.select :collection_id, Collection.all.collect { |c| [c.name, c.id] }, include_blank: true %>
                     </div>
                     <div class="col-xs-12">
-                        <h5>Permission to Display</h5>
                         <%= f.check_box :public %>
                         <%= label_tag :image_public, "Public" %>
+                    </div>
+                    <div class="col-xs-12">
+                        <%= f.check_box :featured %>
+                        <%= label_tag :image_featured, "Featured" %>
                     </div>
                 </div>
 
