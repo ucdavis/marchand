@@ -4,7 +4,7 @@
     <!-- Image & Image Title -->
     <div class="panel panel-default">
         <div class="panel-body">
-            <div class="row flex-center ">
+            <div class="row flex-center">
                 <div class="col-xs-6 image-basic-information">
                     <div class="col-xs-12">
                         <h5>Image Title</h5>
@@ -30,10 +30,9 @@
 
 
                 <div class="col-xs-6 flex-center">
-                    <div class="row">
-                        <div class="image-thumbnail">
-                            <img src="<%= @image.thumbnail %>">
-                        </div>
+                    <div class="image-thumbnail">
+                        <img src="<%= @image.thumbnail %>">
+                        <button type="button" class="btn btn-default upload-image-btn" style="display:block;">Upload New Image</button>
                     </div>
                 </div>
             </div>
@@ -44,9 +43,9 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="row">
-                <div class="col-xs-12" >
+                <div class="col-xs-12">
                     <div class="row">
-                        <div class="col-xs-12">
+                        <div class="col-xs-12 card-text">
                             <h5>Card Text</h5>
                             <%= f.text_area :card, class: "form-control" %>
                         </div>

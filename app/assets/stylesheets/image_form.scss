@@ -1,5 +1,11 @@
 /* CSS Specific for _form in /views/images/_form */
 .container.edit-image {
+    .panel {
+        margin-bottom: 35px !important; 
+    }
+    .border-right {
+        border-right:1px solid #ddd;
+    }
     .flex-center {
         display: flex;
         align-items: center;
@@ -9,8 +15,16 @@
     }
     .image-basic-information {
         padding: 0px 35px 0px 35px;
+    }
+    .upload-image-btn {
+        display: block;
+        width: 35%;
+        padding: 5px 5px;
+        margin-top: 10px;
+        font-size: 11px;
+    }
     .col-xs-12 {
-        margin-top: 25px;
+        margin-top: 15px;
     }
     .collection-dropdown {
         width: 45%;
@@ -19,8 +33,8 @@
         width: 45px;
         text-align: center !important;
     }
-    }
     .image-thumbnail {
+        width: 75%;
         background-color: #FCFCFC;
         border: 1px solid #EAE8E8;
         padding: 10px 10px 10px 10px;
@@ -46,15 +60,29 @@
         display: block;
     }
 
-    .test-border {
+    .border-bottom {
         border-bottom: 1px solid #ddd;
         padding-bottom: 35px;
         margin-bottom: 30px;
     }
 
-    .test-border:last-child {
+    .border-bottom:last-child {
         margin-bottom: 0px;
         padding-bottom: 0px;
         border: unset;
     }
+
+    .dropdown-menu li a .customized-checkbox span:hover {
+        white-space: initial !important;
+        overflow: visible;
+        color: black;
+        display: block;
+    }
+     li a:hover {
+        width: 100%;
+        overflow: visible;
+        background: #F8F8F8;
+        color: black;
+        }
+
 }
