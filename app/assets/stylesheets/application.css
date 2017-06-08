@@ -232,10 +232,9 @@ text-decoration: none;
 }
 
 .marchand-logo{
-    width: 18% !important;
-    position: absolute;
-    left: 8%;
-    top: 12%;
+    width: 80% !important;
+    margin-top: 10px;
+    float: right;
 }
 
 .marchand-description-container {
