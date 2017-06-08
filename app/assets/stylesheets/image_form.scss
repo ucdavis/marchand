@@ -38,16 +38,23 @@
         font-size: 13px;
     }
 
-<<<<<<< HEAD
-    .glyphicon-remove {
-        margin-left: 8px;
-=======
     li a .customized-checkbox span {
         width: 90%;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         display: block;
->>>>>>> 0d17d58cdd7fdd10d892a5558c971cbf73b4055c
+    }
+
+    .test-border {
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 35px;
+        margin-bottom: 30px;
+    }
+
+    .test-border:last-child {
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+        border: unset;
     }
 }
