@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
     include ApplicationHelper
 
     def set_filters
-        @regions = Region.select(:id, :title).uniq
-        @collections = Collection.select(:id, 'name as title').uniq
-        @topics = Topic.select(:id, :title).uniq
+        @regions = Region.select(:id, :title).distinct
+        @collections = Collection.select(:id, 'name as title').distinct
+        @topics = Topic.select(:id, :title).distinct
         @ca_standards = CalStandard.select(:id, :grade_id, :standard_id, :description).order(:grade_id, :standard_id)
 
         @filters = []
