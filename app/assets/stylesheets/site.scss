@@ -467,18 +467,18 @@ img {
     right: 0;
 }
 
-.test-margin {
+.content-margin {
     margin-left: 384px;
 }
 
 @media only screen and (max-width: 850px) {
-    .test-margin {
+    .content-margin {
         margin-left: 230px;
     }
 }
 
 @media only screen and (max-width: 550px) {
-    .test-margin {
+    .content-margin {
         margin-left: 160px;
     }
 }
