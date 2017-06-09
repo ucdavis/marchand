@@ -359,6 +359,9 @@ img {
         margin-right: -15px !important;
         margin-bottom: 10px;
     }*/
+    .btn {
+        width: calc(100% - 45px);
+    }
     .btn-submit-filters {
         width: 80%;
         color: white !important;
