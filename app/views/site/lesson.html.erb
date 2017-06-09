@@ -1,14 +1,3 @@
-<div class="container filter-label-group col-xs-7 col-md-8" style="margin-left:384px;">
-    <input id="toggle-two" type="checkbox">
-    <script>
-    $(function() {
-        $('#toggle-two').bootstrapToggle({
-        on: 'Expand all',
-        off: 'Hide all'
-        });
-    })
-    </script>
-</div>
 <div class="row search-result-page">
 	<div id="sticky" class="sticky-element">
 		<div class="sticky-anchor"></div>
@@ -20,13 +9,13 @@
 				<button class="btn btn-default btn-filter" type="submit">Images</button>
 				<button class="btn btn-default btn-filter pull-right" type="submit">Lessons</button>
 				<div class="btn-group">
-					<button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Region</button>
+					<button type="button" class="btn btn-default">Region</button>
 					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<span class="caret"></span>
 						<span class="sr-only">Toggle Dropdown</span>
 					</button>
 					<div class="dropdown-menu">
-						<div class="select2-search" style="padding: 12px 15px;">
+						<div class="select2-search">
 							<span class="glyphicon glyphicon-search input-search-icon"></span>
 							<input class="dropdown-search" type="text">
 						</div>
@@ -42,14 +31,14 @@
 				</div>
 
 				<div class="btn-group">
-					<button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Topic/Theme</button>
+					<button type="button" class="btn btn-default">Topic/Theme</button>
 					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<span class="caret"></span>
 						<span class="sr-only">Toggle Dropdown</span>
 					</button>
 					<div class="dropdown-menu">
 						<!-- test -->
-						<div class="select2-search" style="padding: 12px 15px;">
+						<div class="select2-search">
 							<span class="glyphicon glyphicon-search input-search-icon"></span>
 							<input class="dropdown-search" type="text">
 						</div>
@@ -65,13 +54,13 @@
 				</div>
 
 				<div class="btn-group">
-					<button type="button" class="btn btn-default" style="width: calc(100% - 45px);">California Standard</button>
+					<button type="button" class="btn btn-default">California Standard</button>
 					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<span class="caret"></span>
 						<span class="sr-only">Toggle Dropdown</span>
 					</button>
 					<div class="dropdown-menu">
-						<div class="select2-search" style="padding: 12px 15px;">
+						<div class="select2-search">
 							<span class="glyphicon glyphicon-search input-search-icon"></span>
 							<input class="dropdown-search" type="text">
 						</div>
@@ -87,13 +76,13 @@
 				</div>
 
 				<div class="btn-group btn-group-up">
-					<button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Grade Level</button>
+					<button type="button" class="btn btn-default">Grade Level</button>
 					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<span class="caret"></span>
 						<span class="sr-only">Toggle Dropdown</span>
 					</button>
 					<div class="dropdown-menu">
-						<div class="select2-search" style="padding: 12px 15px;">
+						<div class="select2-search">
 							<span class="glyphicon glyphicon-search input-search-icon"></span>
 							<input class="dropdown-search" type="text">
 						</div>
@@ -109,13 +98,13 @@
 				</div>
 
 				<div class="btn-group btn-group-up">
-					<button type="button" class="btn btn-default" style="width: calc(100% - 45px);">Year</button>
+					<button type="button" class="btn btn-default">Year</button>
 					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<span class="caret"></span>
 						<span class="sr-only">Toggle Dropdown</span>
 					</button>
 					<div class="dropdown-menu">
-						<div class="select2-search" style="padding: 12px 15px;">
+						<div class="select2-search">
 							<span class="glyphicon glyphicon-search input-search-icon"></span>
 							<input class="dropdown-search" type="text">
 						</div>
@@ -132,7 +121,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="container lesson-card-group col-xs-7 col-md-8" style="margin-left:384px;">
+	<div class="container lesson-card-group col-xs-7 col-md-8">
 		<div class="row" type="button" data-toggle="modal" data-target="#myModal">
             <div class="col-xs-12">
                 <div class="lesson-header panel panel-default">
@@ -144,60 +133,16 @@
 		</div>
         <div class="row">
             <div class="col-xs-12">
-                <div class="lesson-content panel panel-default" data-toggle="collapse" data-target="#demo" aria-expanded="true">
-                    <div class="content-header">
-                        <h5>Middle School</h5>
-                        <h5 class="lesson-topic">The Cause of World War 2</h5>
-                        <div class="lesson-file">
-                            <h5 class="download"><i class="glyphicon glyphicon-save"></i>Download</h5>
-                            <h5 class="view-online"><i class="glyphicon glyphicon-file"></i>View Online</h5>
-                        </div>
-                    </div>
-                     <div id="demo" class="collapse lesson-info" aria-expanded="false">
-                        <h5>Background</h5>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <h5 class="image-title">Image(s)</h5>
-                        <div class="image-card-group">
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-		    </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
                 <div class="lesson-content panel panel-default" data-toggle="collapse" data-target="#demo1" aria-expanded="true">
                     <div class="content-header">
-                        <h5>Middle School</h5>
-                        <h5 class="lesson-topic">The Cause of World War 2</h5>
+                        <span>Middle School</span>
+                        <div class="lesson-topic flex-row">
+                            <span class="title">The Cause of World War 2</span>
+                            <span>Created By Shang Lu</span>
+                        </div>
                         <div class="lesson-file">
-                            <h5 class="download"><i class="glyphicon glyphicon-save"></i>Download</h5>
-                            <h5 class="view-online"><i class="glyphicon glyphicon-file"></i>View Online</h5>
+                            <span class="download"><i class="glyphicon glyphicon-save"></i>Download</span>
+                            <span class="view-online"><i class="glyphicon glyphicon-file"></i>View</span>
                         </div>
                     </div>
                      <div id="demo1" class="collapse lesson-info" aria-expanded="false">
@@ -240,11 +185,14 @@
             <div class="col-xs-12">
                 <div class="lesson-content panel panel-default" data-toggle="collapse" data-target="#demo1" aria-expanded="true">
                     <div class="content-header">
-                        <h5>Middle School</h5>
-                        <h5 class="lesson-topic">The Cause of World War 2</h5>
+                        <span>Middle School</span>
+                        <div class="lesson-topic flex-row">
+                            <span class="title">The Cause of World War 2</span>
+                            <span>Created By Shang Lu</span>
+                        </div>
                         <div class="lesson-file">
-                            <h5 class="download"><i class="glyphicon glyphicon-save"></i>Download</h5>
-                            <h5 class="view-online"><i class="glyphicon glyphicon-file"></i>View Online</h5>
+                            <span class="download"><i class="glyphicon glyphicon-save"></i>Download</span>
+                            <span class="view-online"><i class="glyphicon glyphicon-file"></i>View</span>
                         </div>
                     </div>
                      <div id="demo1" class="collapse lesson-info" aria-expanded="false">
@@ -287,11 +235,14 @@
             <div class="col-xs-12">
                 <div class="lesson-content panel panel-default" data-toggle="collapse" data-target="#demo1" aria-expanded="true">
                     <div class="content-header">
-                        <h5>Middle School</h5>
-                        <h5 class="lesson-topic">The Cause of World War 2</h5>
+                        <span>Middle School</span>
+                        <div class="lesson-topic flex-row">
+                            <span class="title">The Cause of World War 2</span>
+                            <span>Created By Shang Lu</span>
+                        </div>
                         <div class="lesson-file">
-                            <h5 class="download"><i class="glyphicon glyphicon-save"></i>Download</h5>
-                            <h5 class="view-online"><i class="glyphicon glyphicon-file"></i>View Online</h5>
+                            <span class="download"><i class="glyphicon glyphicon-save"></i>Download</span>
+                            <span class="view-online"><i class="glyphicon glyphicon-file"></i>View</span>
                         </div>
                     </div>
                      <div id="demo1" class="collapse lesson-info" aria-expanded="false">
@@ -334,484 +285,17 @@
             <div class="col-xs-12">
                 <div class="lesson-content panel panel-default" data-toggle="collapse" data-target="#demo1" aria-expanded="true">
                     <div class="content-header">
-                        <h5>Middle School</h5>
-                        <h5 class="lesson-topic">The Cause of World War 2</h5>
+                        <span>Middle School</span>
+                        <div class="lesson-topic flex-row">
+                            <span class="title">The Cause of World War 2</span>
+                            <span>Created By Shang Lu</span>
+                        </div>
                         <div class="lesson-file">
-                            <h5 class="download"><i class="glyphicon glyphicon-save"></i>Download</h5>
-                            <h5 class="view-online"><i class="glyphicon glyphicon-file"></i>View Online</h5>
+                            <span class="download"><i class="glyphicon glyphicon-save"></i>Download</span>
+                            <span class="view-online"><i class="glyphicon glyphicon-file"></i>View</span>
                         </div>
                     </div>
                      <div id="demo1" class="collapse lesson-info" aria-expanded="false">
-                        <h5>Background</h5>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <h5 class="image-title">Image(s)</h5>
-                        <div class="image-card-group">
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-		    </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="lesson-content panel panel-default" data-toggle="collapse" data-target="#demo1" aria-expanded="true">
-                    <div class="content-header">
-                        <h5>Middle School</h5>
-                        <h5 class="lesson-topic">The Cause of World War 2</h5>
-                        <div class="lesson-file">
-                            <h5 class="download"><i class="glyphicon glyphicon-save"></i>Download</h5>
-                            <h5 class="view-online"><i class="glyphicon glyphicon-file"></i>View Online</h5>
-                        </div>
-                    </div>
-                     <div id="demo1" class="collapse lesson-info" aria-expanded="false">
-                        <h5>Background</h5>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <h5 class="image-title">Image(s)</h5>
-                        <div class="image-card-group">
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-		    </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="lesson-content panel panel-default" data-toggle="collapse" data-target="#demo1" aria-expanded="true">
-                    <div class="content-header">
-                        <h5>Middle School</h5>
-                        <h5 class="lesson-topic">The Cause of World War 2</h5>
-                        <div class="lesson-file">
-                            <h5 class="download"><i class="glyphicon glyphicon-save"></i>Download</h5>
-                            <h5 class="view-online"><i class="glyphicon glyphicon-file"></i>View Online</h5>
-                        </div>
-                    </div>
-                     <div id="demo1" class="collapse lesson-info" aria-expanded="false">
-                        <h5>Background</h5>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <h5 class="image-title">Image(s)</h5>
-                        <div class="image-card-group">
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-		    </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="lesson-content panel panel-default" data-toggle="collapse" data-target="#demo1" aria-expanded="true">
-                    <div class="content-header">
-                        <h5>Middle School</h5>
-                        <h5 class="lesson-topic">The Cause of World War 2</h5>
-                        <div class="lesson-file">
-                            <h5 class="download"><i class="glyphicon glyphicon-save"></i>Download</h5>
-                            <h5 class="view-online"><i class="glyphicon glyphicon-file"></i>View Online</h5>
-                        </div>
-                    </div>
-                     <div id="demo1" class="collapse lesson-info" aria-expanded="false">
-                        <h5>Background</h5>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <h5 class="image-title">Image(s)</h5>
-                        <div class="image-card-group">
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-		    </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="lesson-content panel panel-default" data-toggle="collapse" data-target="#demo1" aria-expanded="true">
-                    <div class="content-header">
-                        <h5>Middle School</h5>
-                        <h5 class="lesson-topic">The Cause of World War 2</h5>
-                        <div class="lesson-file">
-                            <h5 class="download"><i class="glyphicon glyphicon-save"></i>Download</h5>
-                            <h5 class="view-online"><i class="glyphicon glyphicon-file"></i>View Online</h5>
-                        </div>
-                    </div>
-                     <div id="demo1" class="collapse lesson-info" aria-expanded="false">
-                        <h5>Background</h5>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <h5 class="image-title">Image(s)</h5>
-                        <div class="image-card-group">
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-		    </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="lesson-content panel panel-default" data-toggle="collapse" data-target="#demo1" aria-expanded="true">
-                    <div class="content-header">
-                        <h5>Middle School</h5>
-                        <h5 class="lesson-topic">The Cause of World War 2</h5>
-                        <div class="lesson-file">
-                            <h5 class="download"><i class="glyphicon glyphicon-save"></i>Download</h5>
-                            <h5 class="view-online"><i class="glyphicon glyphicon-file"></i>View Online</h5>
-                        </div>
-                    </div>
-                     <div id="demo1" class="collapse lesson-info" aria-expanded="false">
-                        <h5>Background</h5>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <h5 class="image-title">Image(s)</h5>
-                        <div class="image-card-group">
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-		    </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="lesson-content panel panel-default" data-toggle="collapse" data-target="#demo2" aria-expanded="true">
-                    <div class="content-header">
-                        <h5>Middle School</h5>
-                        <h5 class="lesson-topic">The Cause of World War 2</h5>
-                        <div class="lesson-file">
-                            <h5 class="download"><i class="glyphicon glyphicon-save"></i>Download</h5>
-                            <h5 class="view-online"><i class="glyphicon glyphicon-file"></i>View Online</h5>
-                        </div>
-                    </div>
-                     <div id="demo2" class="collapse lesson-info" aria-expanded="false">
-                        <h5>Background</h5>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <h5 class="image-title">Image(s)</h5>
-                        <div class="image-card-group">
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-		    </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="lesson-content panel panel-default" data-toggle="collapse" data-target="#demo2" aria-expanded="true">
-                    <div class="content-header">
-                        <h5>Middle School</h5>
-                        <h5 class="lesson-topic">The Cause of World War 2</h5>
-                        <div class="lesson-file">
-                            <h5 class="download"><i class="glyphicon glyphicon-save"></i>Download</h5>
-                            <h5 class="view-online"><i class="glyphicon glyphicon-file"></i>View Online</h5>
-                        </div>
-                    </div>
-                     <div id="demo2" class="collapse lesson-info" aria-expanded="false">
-                        <h5>Background</h5>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <h5 class="image-title">Image(s)</h5>
-                        <div class="image-card-group">
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-		    </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="lesson-content panel panel-default" data-toggle="collapse" data-target="#demo2" aria-expanded="true">
-                    <div class="content-header">
-                        <h5>Middle School</h5>
-                        <h5 class="lesson-topic">The Cause of World War 2</h5>
-                        <div class="lesson-file">
-                            <h5 class="download"><i class="glyphicon glyphicon-save"></i>Download</h5>
-                            <h5 class="view-online"><i class="glyphicon glyphicon-file"></i>View Online</h5>
-                        </div>
-                    </div>
-                     <div id="demo2" class="collapse lesson-info" aria-expanded="false">
-                        <h5>Background</h5>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <h5 class="image-title">Image(s)</h5>
-                        <div class="image-card-group">
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-		    </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="lesson-content panel panel-default" data-toggle="collapse" data-target="#demo2" aria-expanded="true">
-                    <div class="content-header">
-                        <h5>Middle School</h5>
-                        <h5 class="lesson-topic">The Cause of World War 2</h5>
-                        <div class="lesson-file">
-                            <h5 class="download"><i class="glyphicon glyphicon-save"></i>Download</h5>
-                            <h5 class="view-online"><i class="glyphicon glyphicon-file"></i>View Online</h5>
-                        </div>
-                    </div>
-                     <div id="demo2" class="collapse lesson-info" aria-expanded="false">
-                        <h5>Background</h5>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <h5 class="image-title">Image(s)</h5>
-                        <div class="image-card-group">
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                            <div class="image-card">
-                                <a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-                                    <img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-                                </a>
-                                <h5 class="text-center">Slavery and Abolition</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-		    </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="lesson-content panel panel-default" data-toggle="collapse" data-target="#demo2" aria-expanded="true">
-                    <div class="content-header">
-                        <h5>Middle School</h5>
-                        <h5 class="lesson-topic">The Cause of World War 2</h5>
-                        <div class="lesson-file">
-                            <h5 class="download"><i class="glyphicon glyphicon-save"></i>Download</h5>
-                            <h5 class="view-online"><i class="glyphicon glyphicon-file"></i>View Online</h5>
-                        </div>
-                    </div>
-                     <div id="demo2" class="collapse lesson-info" aria-expanded="false">
                         <h5>Background</h5>
                         <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,

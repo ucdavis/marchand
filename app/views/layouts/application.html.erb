@@ -31,13 +31,18 @@
 					</ul>
 				</div>
 				<div class="row nav-pages">
-					<ul class="nav">
-						<li><a href="<%= root_url %>">Home</a></li>
-						<li><a href="#">Programs</a></li>
-						<li><a href="#">Resources</a></li>
-						<li><a href="#">Event</a></li>
-						<li><a href="#">About Us</a></li>
-					</ul>
+					<div class="col-md-3">
+						<%= image_tag("marchand-logo.svg", :class => "center-block marchand-logo") %>
+					</div>
+					<div class="col-md-6 navigation-bar">
+						<ul class="nav">
+							<li><a href="<%= root_url %>">Home</a></li>
+							<li><a href="#">Programs</a></li>
+							<li><a href="#">Resources</a></li>
+							<li><a href="#">Event</a></li>
+							<li><a href="#">About Us</a></li>
+						</ul>
+					</div>
 				</div>
 
 			</div>

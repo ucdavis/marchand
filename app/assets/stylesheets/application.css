@@ -231,6 +231,12 @@ text-decoration: none;
     width: 60% !important;
 }
 
+.marchand-logo{
+    width: 80% !important;
+    margin-top: 10px;
+    float: right;
+}
+
 .marchand-description-container {
     margin: 65px auto 65px auto;
     background-color: #FCFCFC;
