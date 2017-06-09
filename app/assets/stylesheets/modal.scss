@@ -84,7 +84,9 @@
         padding-left: 0px !important;
     }
     .modal-header {
-         background-color: black;
+        border: unset;
+        min-width: 75%;
+        background-color: black;
         width: 100%;
         .button-group {
             margin-left: 20px;

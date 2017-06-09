@@ -16,6 +16,7 @@
 //= require bootstrap.min.js
 //= require bootstrap2-toggle.js
 //= require bootstrap-slider.js
+//= require sticky.js
 //= require_tree .
 
 $(document).ready(function(){
