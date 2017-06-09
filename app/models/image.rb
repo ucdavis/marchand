@@ -3,15 +3,23 @@ class Image < ActiveRecord::Base
     include Elasticsearch::Model::Callbacks
 
     has_many :topic_assignments, dependent: :destroy
+    has_many :topics, through: :topic_assignments
+
     has_many :region_assignments, dependent: :destroy
+    has_many :regions, through: :region_assignments
+
     has_many :data_cal_standards, dependent: :destroy
+    has_many :cal_standards, through: :data_cal_standards
+
     has_many :data_nat_standards, dependent: :destroy
+    has_many :nat_standards, through: :data_nat_standards
+
     belongs_to :collection
 
-    accepts_nested_attributes_for :topic_assignments
-    accepts_nested_attributes_for :region_assignments
-    accepts_nested_attributes_for :data_cal_standards
-    accepts_nested_attributes_for :data_nat_standards
+    # accepts_nested_attributes_for :topic_assignments
+    # accepts_nested_attributes_for :region_assignments
+    # accepts_nested_attributes_for :data_cal_standards
+    # accepts_nested_attributes_for :data_nat_standards
 
     # @param query - text to search for
     # @param filter - array of hashes in the form of ElasticSearch's filter parameter for queryDSL

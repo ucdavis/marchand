@@ -3,13 +3,13 @@
 <!-- member => nested_attribute to build fields_for -->
 
 <% title = defined?(klass.readable_class_name) ? klass.readable_class_name : klass.name %>
-<% column = "#{klass.name.underscore}_id".to_sym %>
+<% column = "#{klass.name.underscore}_ids".to_sym %>
 
 <h5><%= title %></h5>
 <div class="row border-bottom">
     <div class="col-xs-6 border-right">
         <div class="btn-group">
-            <button type="button" class="btn btn-default">Action</button>
+            <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);">Choose <%= title.downcase.pluralize %></button>
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
@@ -21,9 +21,7 @@
                 </div>
 
                 <ul class="dropdown-list" data-type="list" data-target="span">
-
-                    <%= f.fields_for member do |form| %>
-                    <%= form.collection_check_boxes column, klass.all, :id, :title, {}, "data-target-id" => klass.name do |b| %>
+                    <%= f.collection_check_boxes column, klass.all, :id, :title, {}, "data-target-id" => klass.name do |b| %>
                     <li>
                         <a>
                             <div class="customized-checkbox">
@@ -34,7 +32,6 @@
                             </div>
                         </a>
                     </li>
-                    <% end %>
                     <% end %>
                 </ul>
 
