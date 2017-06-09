@@ -101,7 +101,7 @@
         }
     .assign-btn {
         margin-left: 15px;
-        margin-top: 30px;
+        //margin-top: 30px;
     }
     .permission-check-box {
     padding-left: 0px;
@@ -135,8 +135,10 @@
         margin-left: 15px;
     }
     .input-section-btn-assign {
-        @extend .btn-assign;
-        margin-top: 30px;
+        background: #F5F5F5;
+        border: 1px solid #D8D8D8;
+        border-radius: 3px;
+        margin-top: 10px;
         margin-left: 15px;
     }
 
