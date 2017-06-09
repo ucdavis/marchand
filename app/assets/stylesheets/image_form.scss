@@ -1,5 +1,9 @@
 /* CSS Specific for _form in /views/images/_form */
 .container.edit-image {
+    padding: 0px 35px 0px 35px;
+    h5 {
+        font-weight: bold;
+    }
     .panel {
         margin-bottom: 35px !important;
     }
@@ -32,6 +36,9 @@
     .collection-dropdown .dropdown-toggle {
         width: 45px;
         text-align: center !important;
+        .btn {
+            width: calc(100% - 45px);
+        }
     }
     .image-thumbnail {
         width: 75%;
@@ -91,11 +98,46 @@
         overflow: visible;
         background: #F8F8F8;
         color: black;
+        }
+    .assign-btn {
+        margin-left: 15px;
+        margin-top: 30px;
+    }
+    .permission-check-box {
+    padding-left: 0px;
+}
+
+    .permission-check-box li {
+        margin-top: 15px;
+        display: inline-block;
+        list-style: none;
     }
 
+    .permission-check-box li:first-child {
+        margin-right: 20px;
+    }
     .btn.disable-click {
         font-style: italic;
         color: #B6B4B4;
+    }
+    .input-customize-tag {
+        width: 340px;
+        margin-top:30px;
+        input {
+            width: 100%;
+        }
+    }
+    .btn-assign {
+        background: #F5F5F5;
+        border: 1px solid #D8D8D8;
+        border-radius: 3px;
+        margin-top: 10px;
+        margin-left: 15px;
+    }
+    .input-section-btn-assign {
+        @extend .btn-assign;
+        margin-top: 30px;
+        margin-left: 15px;
     }
 
 }

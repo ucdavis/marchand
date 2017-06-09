@@ -305,34 +305,6 @@ img {
     background-color:#FCFCFC;
 }
 
-.permission-check-box {
-    padding-left: 0px;
-}
-
-.permission-check-box li {
-    margin-top: 15px;
-    display: inline-block;
-    list-style: none;
-}
-
-.permission-check-box li:first-child {
-    margin-right: 20px;
-}
-
-.edit-image {
-    padding-left: 35px;
-    padding-right: 35px;
-    h5 {
-        font-weight: bold;
-    }
-    .btn-assign {
-        background: #F5F5F5;
-        border: 1px solid #D8D8D8;
-        border-radius: 3px;
-    }
-}
-
-
 /* filter search */
 
 .filter-panel {
@@ -359,9 +331,6 @@ img {
         margin-right: -15px !important;
         margin-bottom: 10px;
     }*/
-    .btn {
-        width: calc(100% - 45px);
-    }
     .btn-submit-filters {
         width: 80%;
         color: white !important;
@@ -432,7 +401,7 @@ img {
 .filter-panel-content {
     padding: 5px 0px 5px 0px !important;
     .btn-submit {
-        widows: 100%;
+        width: 100%;
         background-color: #286090 !important;
     }
     .btn-filter {
