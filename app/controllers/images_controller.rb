@@ -18,12 +18,9 @@ class ImagesController < ApplicationController
     def update
         respond_to do |format|
             if @image.update(image_params)
-                puts "UPDATE SUCCEEDED"
                 format.html { redirect_to build_search_url(@image) }
                 format.json { head :no_content }
             else
-                puts "UPDATE FAILED"
-                puts @image.errors.full_messages
                 format.html { render action: :edit }
                 format.json { render json: @image.errors, status: :unprocessable_entity }
             end
