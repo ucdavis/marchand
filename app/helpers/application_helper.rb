@@ -1,7 +1,7 @@
 require 'csv'
 
 module ApplicationHelper
-    WHITELIST = %w(cthielen msdiez guilden kkipp22 sbgreer jeremy)
+    WHITELIST = %w(cthielen msdiez guilden kkipp22 sbgreer jeremy shangl2)
 
     def to_csv(obj, attributes)
         CSV.generate(headers: true) do |csv|
