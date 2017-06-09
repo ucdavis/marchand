@@ -41,17 +41,38 @@ module AwsHelper
 
         # Upload to s3 bucket
         filename = "thumb_#{image.filename.split("/").last}"
-        obj = @s3resrc.bucket(Rails.application.secrets.s3_bucket)
-        obj = obj.object(filename)
-        obj.put(body: image.to_blob, acl: 'public-read')
+        obj = upload_image(filename, image)
 
         return obj.public_url
     end
 
     # Get an object from s3 bucket
     # @param key - filename
+    # @return - nil if object does not exist
     def get_object(key)
         establish_connection unless connected?
-        resp = @s3client.get_object(bucket:Rails.application.secrets.s3_bucket, key: key)
+        begin
+            resp = @s3client.get_object(bucket:Rails.application.secrets.s3_bucket, key: key)
+        rescue
+            resp = nil
+        end
+    end
+
+    def upload_image(key, image)
+        establish_connection unless connected?
+        obj = @s3resrc.bucket(Rails.application.secrets.s3_bucket)
+        obj = obj.object(key)
+        obj.put(body: image.to_blob, acl: 'public-read')
+
+        return obj
+    end
+
+    def remove_image(key)
+        establish_connection unless connected?
+        begin
+            resp = @s3client.delete_object(bucket:Rails.application.secrets.s3_bucket, key: key)
+        rescue
+            resp = nil
+        end
     end
 end
