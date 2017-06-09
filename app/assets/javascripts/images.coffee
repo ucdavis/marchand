@@ -4,7 +4,6 @@ $(document).on 'turbolinks:load', () ->
         previewImage(this)
 
 previewImage = (file) ->
-    console.log "previewing"
     file = file.files[0]
     reader = new FileReader()
     reader.addEventListener "load", ( ->
