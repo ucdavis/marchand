@@ -12,7 +12,8 @@ Things you may want to cover:
 `bundle install`
 
 * Configuration
-1. Set up the ELASTICSEARCH_URL environment variable
+1. Set up the ELASTICSEARCH_URL environment variable to the elastic search end point
+2. Set up config/secrets.yml based on the information provided by config/secrets.example.yml
 
 * Database creation
 
