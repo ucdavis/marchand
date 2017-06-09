@@ -4,7 +4,7 @@
     <!-- Image & Image Title -->
     <div class="panel panel-default">
         <div class="panel-body">
-            <div class="row">
+            <div class="row flex-center ">
                 <div class="col-xs-6 image-basic-information">
                     <div class="col-xs-12">
                         <h5>Image Title</h5>
@@ -12,7 +12,14 @@
                     </div>
                     <div class="col-xs-12">
                         <h5>Image Collection</h5>
-                        <%= f.select :collection_id, Collection.all.collect { |c| [c.name, c.id] }, include_blank: true %>
+                        <!-- <%= f.select :collection_id, Collection.all.collect { |c| [c.name, c.id] }, include_blank: true %>-->
+                          <div class="btn-group collection-dropdown">
+                            <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);">test!!</button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                        </div>
                     </div>
                     <div class="col-xs-12">
                         <%= f.check_box :public %>

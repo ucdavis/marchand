@@ -1,7 +1,24 @@
 /* CSS Specific for _form in /views/images/_form */
 .container.edit-image {
+    .flex-center {
+        display: flex;
+        align-items: center;
+    }
+    .dropdown-toggle {
+        width: 45px;
+    }
     .image-basic-information {
         padding: 0px 35px 0px 35px;
+    .col-xs-12 {
+        margin-top: 25px;
+    }
+    .collection-dropdown {
+        width: 45%;
+    }
+    .collection-dropdown .dropdown-toggle {
+        width: 45px;
+        text-align: center !important;
+    }
     }
     .image-thumbnail {
         background-color: #FCFCFC;
@@ -35,5 +52,17 @@
         right: 0;
         margin-right: 10px;
         top: 95%;
+    }
+
+    .test-border {
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 35px;
+        margin-bottom: 30px;
+    }
+
+    .test-border:last-child {
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+        border: unset;
     }
 }
