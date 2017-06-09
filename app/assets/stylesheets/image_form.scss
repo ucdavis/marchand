@@ -86,11 +86,16 @@
         color: black;
         display: block;
     }
-     li a:hover {
+    li a:hover {
         width: 100%;
         overflow: visible;
         background: #F8F8F8;
         color: black;
-        }
+    }
+
+    .btn.disable-click {
+        font-style: italic;
+        color: #B6B4B4;
+    }
 
 }
