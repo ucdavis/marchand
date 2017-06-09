@@ -12,14 +12,14 @@
                     </div>
                     <div class="col-xs-12">
                         <h5>Image Collection</h5>
-                        <!-- <%= f.select :collection_id, Collection.all.collect { |c| [c.name, c.id] }, include_blank: true %>-->
-                          <div class="btn-group collection-dropdown">
+                        <%= f.select :collection_id, Collection.all.collect { |c| [c.name, c.id] }, include_blank: true %>
+                          <!-- <div class="btn-group collection-dropdown">
                             <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);">test!!</button>
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-xs-12">
                         <%= f.check_box :public %>
@@ -37,7 +37,7 @@
 
                         <%= image_tag @image.thumbnail, class: "preview" %>
                         <%= f.file_field :s3, class: "btn btn-default upload-image-btn" %>
-                        <button type="button" class="btn btn-default upload-image-btn" style="display:block;">Upload New Image</button>
+                        <!-- <button type="button" class="btn btn-default upload-image-btn" style="display:block;">Upload New Image</button> -->
                     </div>
                 </div>
             </div>
