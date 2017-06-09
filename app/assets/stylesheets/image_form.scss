@@ -32,6 +32,9 @@
     .collection-dropdown .dropdown-toggle {
         width: 45px;
         text-align: center !important;
+        .btn {
+            width: calc(100% - 45px);
+        }
     }
     .image-thumbnail {
         width: 75%;
@@ -84,5 +87,36 @@
         background: #F8F8F8;
         color: black;
         }
+    .assign-btn {
+        margin-left: 15px;
+        margin-top: 30px;
+    }
+    .permission-check-box {
+    padding-left: 0px;
+}
+
+    .permission-check-box li {
+        margin-top: 15px;
+        display: inline-block;
+        list-style: none;
+    }
+
+    .permission-check-box li:first-child {
+        margin-right: 20px;
+    }
+
+    .edit-image {
+        padding-left: 35px;
+        padding-right: 35px;
+        h5 {
+            font-weight: bold;
+        }
+        .btn-assign {
+            background: #F5F5F5;
+            border: 1px solid #D8D8D8;
+            border-radius: 3px;
+        }
+    }
+
 
 }
