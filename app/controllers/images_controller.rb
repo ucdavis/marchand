@@ -17,21 +17,27 @@ class ImagesController < ApplicationController
 
     def update
         respond_to do |format|
-            # Upload image & thumbnail to s3
             update_params = image_params
+            # Currently, form helpers can't set the value of the :include_blank field
+            update_params[:collection_id] = 0 unless update_params[:collection_id].present?
+
+            # Upload image & thumbnail to s3
             if update_params[:s3].present?
                 filename = "#{Time.now.to_i}_#{image_params[:s3].original_filename}"
-                uploaded_img = Magick::Image.from_blob update_params[:s3].read
-                update_params[:s3] = upload_image(filename, uploaded_img.first).public_url
+                uploaded_img = Magick::Image.from_blob(update_params[:s3].read).first
+                update_params[:s3] = upload_image(filename, uploaded_img).public_url
                 update_params[:thumbnail] = upload_new_thumbnail(update_params[:s3])
+                update_params[:view] = uploaded_img.rows > uploaded_img.columns ? "portrait" : "landscape";
             end
 
             old_image = @image.s3
             old_thumbnail = @image.thumbnail
             if @image.update(update_params)
                 # Remove old image & thumbnail from s3
-                remove_image(old_image.split("/").last)
-                remove_image(old_thumbnail.split("/").last)
+                if update_params[:s3].present?
+                    remove_image(old_image.split("/").last)
+                    remove_image(old_thumbnail.split("/").last)
+                end
 
                 format.html { redirect_to build_search_url(@image) }
                 format.json { head :no_content }

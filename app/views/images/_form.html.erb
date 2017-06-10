@@ -1,5 +1,7 @@
 <div class="container edit-image">
     <%= form_for @image do |f| %>
+    <%= f.hidden_field :view %>
+    <%= f.hidden_field :thumbnail %>
     <h3 class="center page-title text-left">Edit Image</h3>
     <!-- Image & Image Title -->
     <div class="panel panel-default">
