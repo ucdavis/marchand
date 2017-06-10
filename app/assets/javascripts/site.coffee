@@ -2,8 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-# turbolinks:load instead of document.ready because we do not want this cached
-$(document).on "turbolinks:load", ->
+$(document).ready () ->
 	# Persist filters / tags from previous search
 	$("input:checked").each (i, item) ->
 		targetId = $(this).data("target-id")
@@ -44,8 +43,6 @@ $(document).on "turbolinks:load", ->
 	$("form[name=filter]").on "submit", (e) ->
 		e.preventDefault()
 		url = buildUrl(this)
-		Turbolinks.supported = false
-		Turbolinks.visit url
 
 # Builds the url on advanced search
 buildUrl = (form) ->

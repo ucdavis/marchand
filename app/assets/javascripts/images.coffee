@@ -1,5 +1,5 @@
 # https://codepen.io/asommer70/post/rails-image-upload-preview
-$(document).on 'turbolinks:load', () ->
+$(document).ready () ->
     $('.upload-image-btn').on 'change', (e) ->
         previewImage(this)
 

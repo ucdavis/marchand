@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap.min.js
 //= require bootstrap2-toggle.js
 //= require bootstrap-slider.js
