@@ -135,16 +135,15 @@ searchFilter = (menu, target) ->
 # @param el - div containing information of the picture
 fillModal = (el) ->
 	view = $(el).data("view")
-	delim = "@delim@"
 	imgSrc = $(el).data("src")
 	imgTitle = $(".title", $(el)).html()
 	imgCollection = "From #{$(el).data("collection")} collection"
 	imgCard = $(el).data("card")
 	imgCitation = $(el).data("citation")
-	imgTopics = $(el).data("topics").split(delim)
-	imgRegions = $(el).data("regions").split(delim)
-	imgCalStandards = $(el).data("cal-standards").split(delim)
-	imgNatStandards = $(el).data("nat-standards").split(delim)
+	imgTopics = $(el).data("topics")
+	imgRegions = $(el).data("regions")
+	imgCalStandards = $(el).data("cal-standards")
+	imgNatStandards = $(el).data("nat-standards")
 	imgId = $(el).data("id")
 
 	# Download Button
