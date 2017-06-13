@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525202456) do
+ActiveRecord::Schema.define(version: 20170613193118) do
 
   create_table "cal_standards", force: :cascade do |t|
     t.integer "grade_id",               default: 0,  null: false
@@ -41,13 +41,13 @@ ActiveRecord::Schema.define(version: 20170525202456) do
     t.string  "file",          limit: 96,  default: "", null: false
     t.string  "thumbnail",     limit: 128, default: "", null: false
     t.string  "title",         limit: 255, default: "", null: false
-    t.text    "card",                                   null: false
-    t.text    "citation",                               null: false
+    t.string  "card",                      default: "", null: false
+    t.string  "citation",                  default: "", null: false
     t.integer "collection_id",             default: 0,  null: false
     t.integer "public",                    default: 0,  null: false
     t.integer "views",                     default: 0,  null: false
     t.integer "featured",                  default: 0,  null: false
-    t.text    "notes",                                  null: false
+    t.string  "notes",                     default: "", null: false
     t.text    "s3"
     t.string  "view"
     t.integer "start_year"
