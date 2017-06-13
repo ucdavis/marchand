@@ -38,8 +38,9 @@
                     <div class="image-thumbnail">
 
                         <%= image_tag @image.thumbnail, class: "preview" %>
-                        <%= f.file_field :s3, class: "btn btn-default upload-image-btn" %>
-                        <!-- <button type="button" class="btn btn-default upload-image-btn" style="display:block;">Upload New Image</button> -->
+                        <%= f.file_field :s3, class: "hidden" %>
+                        <%= f.label :s3, "Upload New Image", class: "btn btn-default upload-image-btn" %>
+                
                     </div>
                 </div>
             </div>
