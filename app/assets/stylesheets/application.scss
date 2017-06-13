@@ -43,6 +43,12 @@ input {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
+    margin-bottom: 20px;
+
+    &.featured {
+        justify-content: center;
+        margin-right: 0;
+    }
 }
 
 button {

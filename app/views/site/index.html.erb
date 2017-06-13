@@ -1,181 +1,129 @@
 <div class="search-section">
-        <form name="filter">
-            <div class="input-group keyword-search">
-                <input name="q" class="form-control" placeholder="Search" type="text" value="<%= params[:q] %>">
-                <span class="input-group-addon" style="border-left: 1px solid #ccc;">
-                    <button type="submit">
-                        <span class="glyphicon glyphicon-search"></span>
+    <form name="filter">
+        <div class="input-group keyword-search">
+            <input name="q" class="form-control" placeholder="Search" type="text" value="<%= params[:q] %>">
+            <span class="input-group-addon" style="border-left: 1px solid #ccc;">
+                <button type="submit">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+        </div>
+        <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <span class="advanced-search">Advanced Search Option</span>
+        </a>
+        <div class="collapse" id="collapseExample">
+            <div class="advanced-search-section">
+                <div class="btn-group dropdown-half-width">
+                    <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);">Region</button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
                     </button>
-                </span>
-            </div>
-            <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                <span class="advanced-search">Advanced Search Option</span>
-            </a>
-            <div class="collapse" id="collapseExample">
-                <div class="advanced-search-section">
-                    <div class="btn-group dropdown-half-width">
-                        <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);">Region</button>
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu" data-type="menu">
-                            <div class="select2-search" style="padding: 12px 15px;">
-                                <span class="glyphicon glyphicon-search input-search-icon"></span>
-                                <input class="dropdown-search" type="text" data-type="search-box">
-                            </div>
-                            <ul class="dropdown-list" data-type="list" data-target="span">
-                                <% @regions.each do |region| %>
-                                <li>
-                                    <a>
-                                        <div class="customized-checkbox">
-                                            <span><%= region.title %></span>
-                                            <input id="customized-checkbox" type="checkbox" value="<%= region.id %>" name="region">
-                                            <label for="customized-checkbox"></label>
-                                        </div>
-                                    </a>
-                                </li>
-                                <% end %>
-                            </ul>
+                    <div class="dropdown-menu" data-type="menu">
+                        <div class="select2-search" style="padding: 12px 15px;">
+                            <span class="glyphicon glyphicon-search input-search-icon"></span>
+                            <input class="dropdown-search" type="text" data-type="search-box">
                         </div>
-                    </div>
-                    <div class="btn-group dropdown-half-width">
-                        <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);">Collection</button>
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu" data-type="menu">
-                            <div class="select2-search" style="padding: 12px 15px;">
-                                <span class="glyphicon glyphicon-search input-search-icon"></span>
-                                <input class="dropdown-search" type="text" data-type="search-box">
-                            </div>
-                            <ul class="dropdown-list" data-type="list" data-target="span">
-                                <% @collections.each do |collection| %>
-                                <li>
-                                    <a>
-                                        <div class="customized-checkbox">
-                                            <span><%= collection.title %></span>
-                                            <input type="checkbox" value="<%= collection.id %>" id="customized-checkbox" name="collection">
-                                            <label for="customized-checkbox"></label>
-                                        </div>
-                                    </a>
-                                </li>
-                                <% end %>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="btn-group dropdown-full-width">
-                        <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);">Topic/Theme</button>
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu" data-type="menu">
-                            <!-- test -->
-                            <div class="select2-search" style="padding: 12px 15px;">
-                                <span class="glyphicon glyphicon-search input-search-icon"></span>
-                                <input class="dropdown-search" type="text" data-type="search-box">
-                            </div>
-                            <ul class="dropdown-list" data-type="list" data-target="span">
-                                <% @topics.each do |topic| %>
-                                <li>
-                                    <a>
-                                        <div class="customized-checkbox">
-                                            <span><%= topic.title %></span>
-                                            <input class="topic-search" type="checkbox" value="<%= topic.id %>" name="topic">
-                                            <label for="customized-checkbox"></label>
-                                        </div>
-                                    </a>
-                                </li>
-                                <% end %>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="btn-group dropdown-full-width">
-                        <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);">California Standard</button>
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu" data-type="menu">
-                            <div class="select2-search">
-                                <span class="glyphicon glyphicon-search input-search-icon"></span>
-                                <input class="dropdown-search" type="text" data-type="search-box">
-                            </div>
-                            <ul class="dropdown-list" data-type="list" data-target="a">
-                                <% @ca_standards.each do |standard| %>
-                                <li>
-                                    <div>
-                                        <div class="customized-checkbox">
-                                            <a style="padding-right:50px !important">
-                                                <%= standard.label %>
-                                            </a>
-                                            <input type="checkbox" value="<%= standard.id %>" id="customized-checkbox" name="calstandard">
-                                            <label for="customized-checkbox" style="right:2%; margin-top:5px !important; margin-right:10px;"></label>
-                                        </div>
+                        <ul class="dropdown-list" data-type="list" data-target="span">
+                            <% @regions.each do |region| %>
+                            <li>
+                                <a>
+                                    <div class="customized-checkbox">
+                                        <span><%= region.title %></span>
+                                        <input id="customized-checkbox" type="checkbox" value="<%= region.id %>" name="region">
+                                        <label for="customized-checkbox"></label>
                                     </div>
-                                </li>
-                                <% end %>
-                            </ul>
-                        </div>
+                                </a>
+                            </li>
+                            <% end %>
+                        </ul>
                     </div>
-                    <!-- <div class="btn-group dropdown-half-width">
-                        <button type="button" class="btn btn-default disabale-click" style="width: calc(100% - 45px);">Grade Level</button>
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu">
-                            <div class="select2-search" style="padding: 12px 15px;">
-                                <span class="glyphicon glyphicon-search input-search-icon"></span>
-                                <input class="dropdown-search" type="text">
-                            </div>
-                            <ul class="dropdown-list">
-                                <% @regions.each do |region| %>
-                                <li>
-                                    <a>
-                                        <div class="customized-checkbox">
-                                            <span><%= region.title %></span>
-                                            <input class="topic-search" type="checkbox" value="None" name="check">
-                                            <label for="customized-checkbox"></label>
-                                        </div>
-                                    </a>
-                                </li>
-                                <% end %>
-                            </ul>
+                </div>
+                <div class="btn-group dropdown-half-width">
+                    <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);">Collection</button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu" data-type="menu">
+                        <div class="select2-search" style="padding: 12px 15px;">
+                            <span class="glyphicon glyphicon-search input-search-icon"></span>
+                            <input class="dropdown-search" type="text" data-type="search-box">
                         </div>
-                    </div> -->
-                    <!-- <div class="btn-group dropdown-half-width">
-                        <button type="button" class="btn btn-default disabale-click" style="width: calc(100% - 45px);">Year</button>
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu">
-                            <div class="select2-search" style="padding: 12px 15px;">
-                                <span class="glyphicon glyphicon-search input-search-icon"></span>
-                                <input class="dropdown-search" type="text">
-                            </div>
-                            <ul class="dropdown-list">
-                                <% @collections.each do |collection| %>
-                                <li>
-                                    <a>
-                                        <div class="customized-checkbox">
-                                            <span><%= collection.title %></span>
-                                            <input class="topic-search" type="checkbox" value="None" name="check">
-                                            <label for="customized-checkbox"></label>
-                                        </div>
-                                    </a>
-                                </li>
-                                <% end %>
-                            </ul>
+                        <ul class="dropdown-list" data-type="list" data-target="span">
+                            <% @collections.each do |collection| %>
+                            <li>
+                                <a>
+                                    <div class="customized-checkbox">
+                                        <span><%= collection.title %></span>
+                                        <input type="checkbox" value="<%= collection.id %>" id="customized-checkbox" name="collection">
+                                        <label for="customized-checkbox"></label>
+                                    </div>
+                                </a>
+                            </li>
+                            <% end %>
+                        </ul>
+                    </div>
+                </div>
+                <div class="btn-group dropdown-full-width">
+                    <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);">Topic/Theme</button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu" data-type="menu">
+                        <!-- test -->
+                        <div class="select2-search" style="padding: 12px 15px;">
+                            <span class="glyphicon glyphicon-search input-search-icon"></span>
+                            <input class="dropdown-search" type="text" data-type="search-box">
                         </div>
-                    </div> -->
+                        <ul class="dropdown-list" data-type="list" data-target="span">
+                            <% @topics.each do |topic| %>
+                            <li>
+                                <a>
+                                    <div class="customized-checkbox">
+                                        <span><%= topic.title %></span>
+                                        <input class="topic-search" type="checkbox" value="<%= topic.id %>" name="topic">
+                                        <label for="customized-checkbox"></label>
+                                    </div>
+                                </a>
+                            </li>
+                            <% end %>
+                        </ul>
+                    </div>
+                </div>
+                <div class="btn-group dropdown-full-width">
+                    <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);">California Standard</button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu" data-type="menu">
+                        <div class="select2-search">
+                            <span class="glyphicon glyphicon-search input-search-icon"></span>
+                            <input class="dropdown-search" type="text" data-type="search-box">
+                        </div>
+                        <ul class="dropdown-list" data-type="list" data-target="a">
+                            <% @ca_standards.each do |standard| %>
+                            <li>
+                                <div>
+                                    <div class="customized-checkbox">
+                                        <a style="padding-right:50px !important">
+                                            <%= standard.label %>
+                                        </a>
+                                        <input type="checkbox" value="<%= standard.id %>" id="customized-checkbox" name="calstandard">
+                                        <label for="customized-checkbox" style="right:2%; margin-top:5px !important; margin-right:10px;"></label>
+                                    </div>
+                                </div>
+                            </li>
+                            <% end %>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
+</div>
 <div class="container marchand-description-container">
     <div class="row marchand-description-content">
         <div class="col-md-4">
@@ -183,34 +131,27 @@
         </div>
         <div class="col-md-7">
             <div>
-            <h3>The Marchand Image Collection</h3>
-            <p>
-                The Marchand Image Collection comprises more than 8600 images, many of which have been digitized from slides and therefore are not available elsewhere. Faculty members of the UC Davis History Department contribute images used in their teaching. A growing collection with maps, Aztec codices, early Americana, advertising posters and more.
-            </p>
+                <h3>The Marchand Image Collection</h3>
+                <p>
+                    The Marchand Image Collection comprises more than 8600 images, many of which have been digitized from slides and therefore are not available elsewhere. Faculty members of the UC Davis History Department contribute images used in their teaching. A growing collection with maps, Aztec codices, early Americana, advertising posters and more.
+                </p>
             </div>
         </div>
     </div>
 </div>
 <div class="container image-card-group">
     <h3 class="page-title text-center">Featured Collection</h3>
-    <% cols = 4 %>
-    <% rows = @cards.size / cols %>
-    <% for i in 0...rows %>
-    <div class="row">
-        <% for j in 0...cols %>
-        <% card = @cards[(cols * i) + j]%>
+    <div class="flex-row-wrap featured">
+        <% @cards.each do |card| %>
         <% thumb = get_thumbnail(card.image) %>
-        <div class="col-xs-3">
-            <div class="image-card">
-                <%= link_to image_tag(thumb), search_url(:bestof => true, :topic_id => card.topic_id) %>
-                <h5 class="text-center">
-                    <%= card.topic.title %>
-                </h5>
-            </div>
+        <div class="col-xs-3 image-card">
+            <%= link_to image_tag(thumb), search_url(:bestof => true, :topic_id => card.topic_id) %>
+            <h5 class="text-center">
+                <%= card.topic.title %>
+            </h5>
         </div>
         <% end %>
     </div>
-    <% end %>
 </div>
 <!--Container-->
 
