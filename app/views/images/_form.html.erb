@@ -38,7 +38,7 @@
                     <div class="image-thumbnail">
 
                         <%= image_tag @image.thumbnail, class: "preview" %>
-                        <%= f.file_field :s3, class: "hidden" %>
+                        <%= f.file_field :s3, class: "hidden upload-image-btn" %>
                         <%= f.label :s3, "Upload New Image", class: "btn btn-default upload-image-btn" %>
 
                     </div>
