@@ -7,14 +7,18 @@ class ImagesController < ApplicationController
         @image = Image.new
     end
 
+    # POST /images
     def create
         @image = Image.new(image_params)
         # . . .
     end
 
+    # GET /images/:id/edit
     def edit
     end
 
+    # PUT /images/:id
+    # PATCH /images/:id
     def update
         respond_to do |format|
             update_params = image_params
@@ -49,7 +53,11 @@ class ImagesController < ApplicationController
 
     end
 
+    # DELETE /images/:id
     def destroy
+        # Remove images from S3
+        remove_image(@image.s3.split("/").last) if @image.s3.present?
+        remove_image(@image.thumbnail.split("/").last) if @image.thumbnail.present?
     end
 
     private
