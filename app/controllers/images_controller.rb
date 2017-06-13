@@ -58,6 +58,12 @@ class ImagesController < ApplicationController
         # Remove images from S3
         remove_image(@image.s3.split("/").last) if @image.s3.present?
         remove_image(@image.thumbnail.split("/").last) if @image.thumbnail.present?
+
+        @image.destroy
+        respond_to do |format|
+            format.html { redirect_to search_url }
+            format.json { head :no_content }
+        end
     end
 
     private

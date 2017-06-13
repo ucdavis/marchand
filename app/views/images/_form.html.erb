@@ -40,7 +40,7 @@
                         <%= image_tag @image.thumbnail, class: "preview" %>
                         <%= f.file_field :s3, class: "hidden" %>
                         <%= f.label :s3, "Upload New Image", class: "btn btn-default upload-image-btn" %>
-                
+
                     </div>
                 </div>
             </div>
@@ -84,10 +84,16 @@
             </div>
         </div>
     </div>
+    <% if @image.id %>
+        <div class="form-actions col-md-3">
+            <%= f.submit "Update Image", :class => "form-control btn btn-success btn-submit"%>
+            <%= link_to 'Delete',url_for(action: :destroy,id: @image.id),method: :delete, data: {confirm: "Are you sure?"}, class: "form-control btn btn-danger btn-delete" %>
+        </div>
+    <% else %>
     <div class="form-actions col-md-3">
-        <%= f.submit "Update Image", :class => "form-control btn btn-success btn-submit"%>
-        <%= link_to 'Delete',url_for(action: :destroy,id: @image.id),method: :delete, data: {confirm: "Are you sure?"}, class: "form-control btn btn-danger btn-delete" %>
+        <%= f.submit "Add Image", :class => "form-control btn btn-success btn-submit"%>
     </div>
+    <% end %>
 
     <% end # image form %>
 </div>
