@@ -65,9 +65,9 @@
                 justify-content: center;
                 cursor: pointer;
                 .download {
-                    text-align: right;
-                    margin-right: 35px;
+                    text-align: right;;
                     color: #494949;
+                    display: inline-block;
                 }
                 .download:hover {
                     color: #7D7D7D;
@@ -75,16 +75,19 @@
                 .view-online {
                     text-align: right;
                     color: #494949;
+                    display: inline-block;
                 }
                 .view-online:hover {
                     color: #7D7D7D;
                 }
                 i {
                     margin-right: 8px;
+                    margin-left: 15px;
                 }
             }
         }
         .lesson-info {
+            cursor: default;
             background-color: white;
             margin-top: 10px;
             h5 {
