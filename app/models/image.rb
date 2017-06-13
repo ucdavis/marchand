@@ -1,6 +1,7 @@
 class Image < ActiveRecord::Base
     include Elasticsearch::Model
     include Elasticsearch::Model::Callbacks
+
     after_update -> {
       __elasticsearch__.index_document
     }

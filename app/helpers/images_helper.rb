@@ -11,6 +11,6 @@ module ImagesHelper
         calstandards = image.cal_standards.ids
         calstandards = calstandards.join(",")
 
-        return "/search?topic=#{topics}&region=#{regions}&calstandard=#{calstandards}&q=#{@image.title}"
+        return "/search?topic=#{topics}&region=#{regions}&calstandard=#{calstandards}&q=#{image.title}"
     end
 end
