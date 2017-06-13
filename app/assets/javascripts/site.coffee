@@ -43,6 +43,7 @@ $(document).ready () ->
 	$("form[name=filter]").on "submit", (e) ->
 		e.preventDefault()
 		url = buildUrl(this)
+		window.location.href = url
 
 # Builds the url on advanced search
 buildUrl = (form) ->
