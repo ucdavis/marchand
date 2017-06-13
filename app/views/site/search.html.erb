@@ -5,30 +5,30 @@
         <h5 class="col-xs-12">No Images</h5>
     </div>
     <% else %>
-    <% cols = 4.0 %>
-    <% rows = @images.size / cols %>
-    <% rows = rows.ceil %>
-    <% for i in 0...rows %>
-    <div class="row">
-        <% for j in 0...cols %>
-        <% index = (cols * i) + j %>
-        <% break unless index < @images.size %>
-        <% image = @images[index]%>
+    <div class="row flex-row-wrap">
+        <% if isAdmin? %>
+        <div class="col-xs-3 image-card" type="button">
+            <div class="image-card-add">
+                <i class="glyphicon glyphicon-plus"></i>
+            </div>
+            <h5 class="text-center title">Add New Image</h5>
+        </div>
+        <% end %>
+
+        <% @images.each do |image| %>
         <% thumb = get_thumbnail(image) %>
         <% thumb = "https://s3-us-west-1.amazonaws.com/marchand/thumb_IMG0000.jpg" unless thumb%>
         <% view = image.view.present? ? image.view : "landscape" %>
 
-        <div class="col-xs-3" type="button" data-toggle="modal" data-target="#<%= view %>-modal">
-            <div class="image-card" data-view="<%= view %>" data-src="<%= image.s3 %>" data-collection="<%= image.collection.present? ? image.collection.name : " " %>" data-card="<%= image.card %>" data-topics="<%= image.topics.map { |t| t.title } %>" data-regions="<%= image.regions.map { |r| r.title } %>" data-cal-standards="<%= image.cal_standards.map { |c| c.title } %>" data-nat-standards=" <%= image.nat_standards.map { |n| n.title } %>" data-citation="<%= image.citation %>" data-id="<%= image.id %>">
-                <img src="<%= thumb %>">
-                <h5 class="text-center title">
-                    <%= image.title %>
-                </h5>
-            </div>
+        <div class="col-xs-3 image-card" type="button" data-toggle="modal" data-target="#<%= view %>-modal" data-view="<%= view %>" data-src="<%= image.s3 %>" data-collection="<%= image.collection.present? ? image.collection.name : " " %>" data-card="<%= image.card %>" data-topics="<%= image.topics.map { |t| t.title } %>" data-regions="<%= image.regions.map { |r| r.title } %>" data-cal-standards="<%= image.cal_standards.map { |c| c.title } %>" data-nat-standards=" <%= image.nat_standards.map { |n| n.title } %>" data-citation="<%= image.citation %>" data-id="<%= image.id %>">
+            <img src="<%= thumb %>">
+            <h5 class="text-center title">
+                <%= image.title %>
+            </h5>
         </div>
+
         <% end %>
     </div>
-    <% end %>
     <% end %>
 </div>
 <!--Container-->
