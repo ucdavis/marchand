@@ -282,6 +282,10 @@ img {
     width: 24%;
 }
 
+.image-card-new {
+    @extend .image-card;
+}
+
 .image-card-add {
     display: flex;
     justify-content: center;

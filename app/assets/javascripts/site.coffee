@@ -45,6 +45,46 @@ $(document).ready () ->
 		url = buildUrl(this)
 		window.location.href = url
 
+	# Create new card with filter as initial params
+	$("form[name=new-image]").on "click", () ->
+		setNewImageValues($("form[name=new-image]"))
+		this.submit()
+
+#
+setNewImageValues = (form) ->
+	title = $("input[name=q][type=text]").val()
+	regions = []
+	topics = []
+	calStandards = []
+	$("input[type=checkbox]", $("form[name=filter]")).each (i, item) ->
+		if !item.checked
+			return true
+
+		param = item.getAttribute("name")
+		value = item.getAttribute("value")
+		switch(param)
+			when 'region'
+				regions.push value
+				break
+			when 'collection'
+				collections.push value
+				break
+			when 'topic'
+				topics.push value
+				break
+			when 'calstandard'
+				calStandards.push value
+				break
+
+	regions = "#{regions.join('","')}"
+	topics = "#{topics.join('","')}"
+	calStandards = "#{calStandards.join('","')}"
+
+	$('[name="image[title]"]',form).val(title)
+	$('[name="image[topic_ids][]"]', form).val(topics)
+	$('[name="image[cal_standard_ids][]"]', form).val(calStandards)
+	$('[name="image[region_ids][]"]', form).val(regions)
+
 # Builds the url on advanced search
 buildUrl = (form) ->
 	query = "q=#{$("input[name=q][type=text]").val()}"

@@ -10,7 +10,6 @@ module SiteHelper
     # @return string url path to thumbnail image
     def get_thumbnail(image)
         return image.thumbnail if image.thumbnail.present?
-
         # Create, upload, and save link to
         thumbnail = upload_new_thumbnail(image.s3)
         image.update( {:thumbnail => thumbnail } ) if thumbnail
