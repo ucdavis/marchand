@@ -30,12 +30,35 @@ class SiteController < ApplicationController
             @query << { query_string: get_query_string("collection_id", params[:collection])} if params[:collection].present?
             @query << { query_string: get_query_string("data_cal_standards.cal_standard_id", params[:calstandard])} if params[:calstandard].present?
 
+            # Text search dates if only one is given
+            if params[:start_year].present? ^ params[:end_year].present?
+                @query << { query_string:{ query: params[:start_year] }} if params[:start_year].present?
+
+                @query << { query_string:{ query: params[:end_year] }} if params[:end_year].present?
+            end
+
+            # Only show everything to an admin
             filter = []
             filter << {
                 term: {
                     public: 1
                 }
             } unless isAdmin?
+
+            # Filter dates if both are given
+            if params[:start_year].present? && params[:end_year].present?
+                filter << {
+                    range: {
+                        start_year: { gte: params[:start_year] }
+                    }
+                }
+
+                filter << {
+                    range: {
+                        end_year: { lte: params[:end_year] }
+                    }
+                }
+            end
 
             @images = Image.search(@query, filter).records
         end
