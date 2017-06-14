@@ -35,7 +35,7 @@ module AwsHelper
             image = Magick::Image.read(image_path).first
             image = image.resize_to_fill(275, 190)
         rescue => error
-            File.open("#{Rails.root}/site_error.txt", "a+")
+            File.open("#{Rails.root}/site_error.txt", "a+") { |f| f.write(error) }
             return nil
         end
 
