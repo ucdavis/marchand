@@ -1,6 +1,10 @@
 /* CSS Specific for _form in /views/images/_form */
 .container.edit-image {
     padding: 0px 35px 0px 35px;
+
+    #image_start_year {
+        margin-bottom: 10px;
+    }
     h5 {
         font-weight: bold;
     }

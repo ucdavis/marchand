@@ -13,36 +13,42 @@
                 <div class="col-xs-12">
                     <h5>Image Collection</h5>
                     <%= f.select :collection_id, Collection.all.collect { |c| [c.name, c.id] }, include_blank: true %>
-                    <!-- <div class="btn-group collection-dropdown">
-                    <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);">test!!</button>
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                </button>
-            </div> -->
-        </div>
-        <div class="col-xs-12">
-            <%= f.check_box :public %>
-            <%= label_tag :image_public, "Public" %>
-        </div>
-        <div class="col-xs-12">
-            <%= f.check_box :featured %>
-            <%= label_tag :image_featured, "Featured" %>
+                    <!-- <div class="btn-group collection-dropdown"> -->
+                    <!-- <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);">test!!</button> -->
+                    <!-- <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+                    <!-- <span class="caret"></span> -->
+                    <!-- <span class="sr-only">Toggle Dropdown</span> -->
+                    <!-- </button> -->
+                    <!-- </div> -->
+
+                </div>
+                <div class="col-xs-6 row">
+                    <h5>Dates</h5>
+                    <%= f.number_field :start_year, class: "form-control ", placeholder: "Start Year" %>
+                    <%= f.number_field :end_year, class: "form-control", placeholder: "End Year" %>
+                </div>
+                <div class="col-xs-12">
+                    <%= f.check_box :public %>
+                    <%= label_tag :image_public, "Public" %>
+                </div>
+                <div class="col-xs-12">
+                    <%= f.check_box :featured %>
+                    <%= label_tag :image_featured, "Featured" %>
+                </div>
+            </div>
+
+
+            <div class="col-xs-6 flex-center">
+                <div class="image-thumbnail">
+
+                    <%= image_tag @image.thumbnail, class: "preview" %>
+                    <%= f.file_field :s3, class: "hidden upload-image-btn" %>
+                    <%= f.label :s3, "Upload New Image", class: "btn btn-default upload-image-btn" %>
+
+                </div>
+            </div>
         </div>
     </div>
-
-
-    <div class="col-xs-6 flex-center">
-        <div class="image-thumbnail">
-
-            <%= image_tag @image.thumbnail, class: "preview" %>
-            <%= f.file_field :s3, class: "hidden upload-image-btn" %>
-            <%= f.label :s3, "Upload New Image", class: "btn btn-default upload-image-btn" %>
-
-        </div>
-    </div>
-</div>
-</div>
 </div>
 
 <!-- Card Text & Citation -->
