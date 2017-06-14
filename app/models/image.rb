@@ -18,12 +18,10 @@ class Image < ActiveRecord::Base
     has_many :data_nat_standards, dependent: :destroy
     has_many :nat_standards, through: :data_nat_standards
 
-    belongs_to :collection
+    has_many :image_authors, dependent: :destroy
+    has_many :authors, through: :image_authors
 
-    # accepts_nested_attributes_for :topic_assignments
-    # accepts_nested_attributes_for :region_assignments
-    # accepts_nested_attributes_for :data_cal_standards
-    # accepts_nested_attributes_for :data_nat_standards
+    belongs_to :collection
 
     # @param query - text to search for
     # @param filter - array of hashes in the form of ElasticSearch's filter parameter for queryDSL
@@ -43,7 +41,8 @@ class Image < ActiveRecord::Base
             include: { topic_assignments: { only: :topic_id},
             region_assignments: { only: :region_id },
             data_cal_standards: { only: :cal_standard_id },
-            data_nat_standards: { only: :nat_standard_id }
+            data_nat_standards: { only: :nat_standard_id },
+            image_authors: {only: :author_id }
         })
     end
 end
