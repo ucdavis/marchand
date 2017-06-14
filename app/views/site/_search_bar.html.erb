@@ -60,22 +60,12 @@
 
                     <div class="divider"></div>
                     <% end %>
-                    <div class="year-selector-section">
-                        <h5><b>Select Years</b></h5>
-                        <span id="ex6CurrentSliderValLabel" class="selected-year">Current Selected Year: <span id="ex6SliderVal">3</span></span>
-                        <input id="myslider" style="width:100%;" type="text" class="span2" value="1600,2000" data-slider-id="myslider" data-slider-min="1500" data-slider-max="2000" data-slider-step="10" data-slider-value="[5,10]" data-value="5,10" />
+                    <div class="year-selector-section col-xs-12">
+                        <h5><b>Dates</b></h5>
+                        <input type="number" name="start_year" class="col-xs-5" placeholder="Start Year" value="<%= params[:start_year] if params[:start_year].present? %>">
+                        <div class="col-xs-2"></div>
+                        <input type="number" name="end_year" class="col-xs-5" placeholder="End Year" value="<%= params[:end_year] if params[:end_year].present? %>">
                     </div>
-
-
-                    <script language="javascript">
-                    var mySlider = new Slider('#myslider');
-                    mySlider.on('slideStop', function(value) {
-                        document.getElementById('slider').innerHTML = value;
-                    });
-                    mySlider.on("slide", function(sliderValue) {
-                        document.getElementById("ex6SliderVal").textContent = sliderValue;
-                    });
-                    </script>
                     <div class="btn-group flex-center"><button type="submit" class="btn btn-primary btn-submit-filters">Submit</button></div>
                 </form>
             </div>
