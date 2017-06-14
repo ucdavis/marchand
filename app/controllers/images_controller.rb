@@ -85,7 +85,7 @@ class ImagesController < ApplicationController
 
     private
     def image_params
-        params.require(:image).permit(:id, :title, :collection_id, :public, :card, :citation, :featured, :view, :thumbnail, :s3, {:topic_ids => []}, {:region_ids => []}, {:cal_standard_ids => []}, {:nat_standard_ids => []})
+        params.require(:image).permit(:id, :title, :collection_id, :public, :card, :citation, :featured, :view, :thumbnail, :s3, :end_year, :start_year, {:topic_ids => []}, {:region_ids => []}, {:cal_standard_ids => []}, {:nat_standard_ids => []}, {:author_ids => []})
     end
     def set_image
       @image = Image.find(params[:id])
