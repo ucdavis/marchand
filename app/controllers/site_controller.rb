@@ -11,6 +11,10 @@ class SiteController < ApplicationController
         @cards = TopicAssignment.joins(:image).joins(:topic).where(:images => {:featured => 1, :public => 1}, :topics => {:featured => 1}).order("RANDOM()").limit(IMAGE_LIMIT)
     end
 
+    def admin
+        redirect_to root_url unless isAdmin?
+    end
+
     def search
         if params[:bestof].present? && params[:bestof]
             @images = []
