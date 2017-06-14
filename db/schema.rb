@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170613193118) do
+ActiveRecord::Schema.define(version: 20170614203819) do
+
+  create_table "authors", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "cal_standards", force: :cascade do |t|
     t.integer "grade_id",               default: 0,  null: false
@@ -35,6 +41,13 @@ ActiveRecord::Schema.define(version: 20170613193118) do
     t.datetime "updated_at",      null: false
     t.integer  "image_id"
     t.integer  "nat_standard_id"
+  end
+
+  create_table "image_authors", force: :cascade do |t|
+    t.integer  "image_id"
+    t.integer  "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "images", force: :cascade do |t|
