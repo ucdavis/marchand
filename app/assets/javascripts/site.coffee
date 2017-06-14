@@ -177,6 +177,7 @@ fillModal = (el) ->
 	view = $(el).data("view")
 	imgSrc = $(el).data("src")
 	imgTitle = $(".title", $(el)).html()
+	imgAuthors = $(el).data("authors")
 	imgCollection = "From #{$(el).data("collection")} collection"
 	imgCard = $(el).data("card")
 	imgCitation = $(el).data("citation")
@@ -201,6 +202,7 @@ fillModal = (el) ->
 	$("img", $("##{view}-modal .modal-header")).attr("src", imgSrc)
 	$(".title", $("##{view}-modal .image-title")).html(imgTitle)
 	$(".collection", $("##{view}-modal .image-title")).html(imgCollection)
+	$(".authors", $("##{view}-modal .image-title")).html("Uploaded by #{imgAuthors.join(", ")}")
 	$(".card", $("##{view}-modal .list-section")).html(imgCard)
 	$(".citation", $("##{view}-modal .list-section")).html(imgCitation)
 

@@ -25,7 +25,7 @@
         <% thumb = "https://s3-us-west-1.amazonaws.com/marchand/thumb_IMG0000.jpg" unless thumb%>
         <% view = image.view.present? ? image.view : "landscape" %>
 
-        <div class="col-xs-3 image-card" type="button" data-toggle="modal" data-target="#<%= view %>-modal" data-view="<%= view %>" data-src="<%= image.s3 %>" data-collection="<%= image.collection.present? ? image.collection.name : " " %>" data-card="<%= image.card %>" data-topics="<%= image.topics.map { |t| t.title } %>" data-regions="<%= image.regions.map { |r| r.title } %>" data-cal-standards="<%= image.cal_standards.map { |c| c.title } %>" data-nat-standards=" <%= image.nat_standards.map { |n| n.title } %>" data-citation="<%= image.citation %>" data-id="<%= image.id %>">
+        <div class="col-xs-3 image-card" type="button" data-toggle="modal" data-target="#<%= view %>-modal" data-view="<%= view %>" data-authors="<%= image.authors.map { |a| a.name } %>" data-src="<%= image.s3 %>" data-collection="<%= image.collection.present? ? image.collection.name : " " %>" data-card="<%= image.card %>" data-topics="<%= image.topics.map { |t| t.title } %>" data-regions="<%= image.regions.map { |r| r.title } %>" data-cal-standards="<%= image.cal_standards.map { |c| c.title } %>" data-nat-standards=" <%= image.nat_standards.map { |n| n.title } %>" data-citation="<%= image.citation %>" data-id="<%= image.id %>">
             <img src="<%= thumb %>">
             <h5 class="text-center title">
                 <%= image.title %>
