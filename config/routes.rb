@@ -12,4 +12,5 @@ Rails.application.routes.draw do
 
     resources :images
     resources :topics
+    resources :authors
 end

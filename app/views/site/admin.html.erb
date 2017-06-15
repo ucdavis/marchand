@@ -1,5 +1,38 @@
 <div class="container admin">
     <h3 class="center page-title text-left">Admin Control Panel</h3>
+    <!-- Authors -->
+    <div class="panel panel-default">
+        <div class="panel-header row">
+            <h3 class="title col-xs-11">Authors</h3>
+            <%= link_to new_author_path do %>
+            <i class="glyphicon glyphicon-plus col-xs-1" title="Add new author"></i>
+            <% end %>
+        </div>
+        <div class="panel-body filter">
+            <div class="col-xs-12 filter-header">
+                <span class="col-xs-11">Name</span>
+                <span class="col-xs-1">Actions</span>
+            </div>
+            <div class="filter-row-container col-xs-12">
+                <% Author.all.each do |author| %>
+                <div class="col-xs-12 filter-row">
+                    <span class="col-xs-11"><%= author.name %></span>
+                    <div class="col-xs-1 actions">
+                        <%= link_to url_for(controller: :authors, action: :edit, id: author.id), method: :edit do %>
+                        <i class="glyphicon glyphicon-pencil" title="Edit"></i>
+                        <% end %>
+
+                        <%= link_to url_for(controller: :authors, action: :destroy, id: author.id), method: :delete, data: { confirm: "Are you sure?"} do %>
+                        <i class="glyphicon glyphicon-trash" title="Delete"></i>
+                        <% end %>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+
+    <!-- Topics -->
     <div class="panel panel-default">
         <div class="panel-header row">
             <h3 class="title col-xs-11">Topics</h3>
