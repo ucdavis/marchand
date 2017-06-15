@@ -1,4 +1,24 @@
 .container.admin {
+    .notice {
+        color: white;
+        position: fixed;
+        padding: 10px;
+        margin: 10px;
+        bottom: 0;
+        right: 0;
+        border-radius: 5px;
+
+        &.success {
+            background-color: #5cb85c;
+            border-color: #4cae4c;
+        }
+
+        &.failure {
+            background-color: #d9534f;
+            border-color: #d43f3a;
+        }
+    }
+
     a {
         text-decoration: none;
     }

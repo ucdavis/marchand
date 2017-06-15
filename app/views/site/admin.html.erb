@@ -217,4 +217,13 @@
             </div>
         </div>
     </div>
+
+    <!-- Notice -->
+    <% if flash[:notice].present? %>
+        <div class="notice success"><span><%= flash[:notice] %><span></div>
+    <% end %>
+
+    <% if flash[:error].present? %>
+    <div class="notice error"><span><%= flash[:error] %><span></div>
+    <% end %>
 </div>
