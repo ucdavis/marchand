@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get '/logout', to: 'site#logout'
 
     post '/authors/:id/edit', to: 'authors#edit'
+    post '/topics/:id/edit', to: 'topics#edit'
 
     resources :images
     resources :authors

@@ -2,12 +2,23 @@ class TopicsController < ApplicationController
     before_action :set_topic, only: [:update, :edit, :destroy]
 
     def new
+        @prompt = "Add topic"
     end
 
     def edit
+        @prompt = "Update topic"
     end
 
     def update
+        respond_to do |format|
+            if @topic.update(topic_params)
+                format.html { redirect_to admin_path, notice: "Succesfully updated '#{@topic.title}'" }
+                format.json { head :no_content }
+            else
+                format.html { redirect_to admin_path, notice: "Failed to update '#{@topic.title}'" }
+                format.json { render json: @topic.errors, status: :unprocessable_entity }
+            end
+        end
     end
 
     def destroy
