@@ -15,7 +15,7 @@ class AuthorsController < ApplicationController
                 format.html { redirect_to admin_path, :notice => "Successfully updated '#{@author.name}'" }
                 format.json { head :no_content }
             else
-                format.html { redirect_to admin_path, :notice => "Failed to update '#{@author.name}'" }
+                format.html { redirect_to admin_path, :error => "Failed to update '#{@author.name}'" }
                 format.json { render json: @author.errors, status: :unprocessable_entity }
             end
         end
@@ -27,7 +27,7 @@ class AuthorsController < ApplicationController
                 format.html { redirect_to :back, :notice => "Successfully removed '#{@author.name}'" }
                 format.json { head :no_content }
             else
-                format.html { redirect_to :back, :notice => "Failed to remove '#{@author.name}'" }
+                format.html { redirect_to :back, :error => "Failed to remove '#{@author.name}'" }
                 format.json { render json: @author.errors, status: :unprocessable_entity }
             end
         end
@@ -40,7 +40,7 @@ class AuthorsController < ApplicationController
                 format.html { redirect_to :back, :notice => "Successfully added '#{@author.name}'" }
                 format.json { head :no_content }
             else
-                format.html { redirect_to :back, :notice => "Failed to add '#{@author.name}'" }
+                format.html { redirect_to :back, :error => "Failed to add '#{@author.name}'" }
                 format.json { render json: @author.errors, status: :unprocessable_entity }
             end
         end

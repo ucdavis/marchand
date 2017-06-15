@@ -16,7 +16,7 @@ class NatStandardsController < ApplicationController
                 format.html { redirect_to admin_path, notice: "Successfully updated '#{@nat_standard.label}'" }
                 format.json { head :no_content }
             else
-                format.html { redirect_to admin_path, notice: "Failed to update '#{@nat_standard.label}'" }
+                format.html { redirect_to admin_path, error: "Failed to update '#{@nat_standard.label}'" }
                 format.json { render json: @nat_standard.errors, status: :unprocessable_entity }
             end
         end
@@ -28,7 +28,7 @@ class NatStandardsController < ApplicationController
                 format.html { redirect_to :back, notice: "Successfully removed '#{@nat_standard.label}'" }
                 format.json { head :no_content }
             else
-                format.html { redirect_to :back, notice: "Failed to remove '#{@nat_standard.label}'" }
+                format.html { redirect_to :back, error: "Failed to remove '#{@nat_standard.label}'" }
                 format.json { render json: @nat_standard.errors, status: :unprocessable_entity }
             end
         end
@@ -41,7 +41,7 @@ class NatStandardsController < ApplicationController
                 format.html { redirect_to :back, notice: "Successfully created '#{@nat_standard.label}'" }
                 format.json { head :no_content }
             else
-                format.html { redirect_to :back, notice: "Failed to create '#{@nat_standard.label}'" }
+                format.html { redirect_to :back, error: "Failed to create '#{@nat_standard.label}'" }
                 format.json { render json: @nat_standard.errors, status: :unprocessable_entity }
             end
         end

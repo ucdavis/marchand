@@ -15,7 +15,7 @@ class TopicsController < ApplicationController
                 format.html { redirect_to admin_path, notice: "Succesfully updated '#{@topic.title}'" }
                 format.json { head :no_content }
             else
-                format.html { redirect_to admin_path, notice: "Failed to update '#{@topic.title}'" }
+                format.html { redirect_to admin_path, error: "Failed to update '#{@topic.title}'" }
                 format.json { render json: @topic.errors, status: :unprocessable_entity }
             end
         end
@@ -27,7 +27,7 @@ class TopicsController < ApplicationController
                 format.html { redirect_to admin_path, notice: "Succesfully removed '#{@topic.title}'" }
                 format.json { head :no_content }
             else
-                format.html { redirect_to admin_path, notice: "Failed to remove '#{@topic.title}'" }
+                format.html { redirect_to admin_path, error: "Failed to remove '#{@topic.title}'" }
                 format.json { render json: @topic.errors, status: :unprocessable_entity }
             end
         end
@@ -40,7 +40,7 @@ class TopicsController < ApplicationController
                 format.html { redirect_to :back, notice: "Successfully added '#{@topic.title}'" }
                 format.json { head :no_content }
             else
-                format.html { redirect_to :back, notice: "Failied to add '#{@topic.title}'" }
+                format.html { redirect_to :back, error: "Failied to add '#{@topic.title}'" }
                 format.json { render json: @topic.errors, status: :unprocessable_entity }
             end
         end

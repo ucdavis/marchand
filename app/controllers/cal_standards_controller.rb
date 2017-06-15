@@ -15,7 +15,7 @@ class CalStandardsController < ApplicationController
                 format.html { redirect_to admin_path, notice: "Successfully updated '#{@cal_standard.label}'" }
                 format.json { head :no_content }
             else
-                format.html { redirect_to admin_path, notice: "Failed to update '#{@cal_standard.label}'" }
+                format.html { redirect_to admin_path, error: "Failed to update '#{@cal_standard.label}'" }
                 format.json { render json: @cal_standard.errors, status: :unprocessable_entity }
             end
         end
@@ -27,7 +27,7 @@ class CalStandardsController < ApplicationController
                 format.html { redirect_to :back, notice: "Successfully removed '#{@cal_standard.label}'" }
                 format.json { head :no_content }
             else
-                format.html { redirect_to :back, notice: "Failed to remove '#{@cal_standard.label}'" }
+                format.html { redirect_to :back, error: "Failed to remove '#{@cal_standard.label}'" }
                 format.json { render json: @cal_standard.errors, status: :unprocessable_entity }
             end
         end
@@ -40,7 +40,7 @@ class CalStandardsController < ApplicationController
                 format.html { redirect_to :back, notice: "Successfully created '#{@cal_standard.label}'" }
                 format.json { head :no_content }
             else
-                format.html { redirect_to :back, notice: "Failed to create '#{@cal_standard.label}'" }
+                format.html { redirect_to :back, error: "Failed to create '#{@cal_standard.label}'" }
                 format.json { render json: @cal_standard.errors, status: :unprocessable_entity }
             end
         end

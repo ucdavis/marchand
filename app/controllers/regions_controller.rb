@@ -15,7 +15,7 @@ class RegionsController < ApplicationController
                 format.html { redirect_to admin_path, notice: "Succesfully updated '#{@region.title}'"}
                 format.json { head :no_content }
             else
-                format.html { redirect_to admin_path, notice: "Failed to update '#{@region.title}'" }
+                format.html { redirect_to admin_path, error: "Failed to update '#{@region.title}'" }
                 format.json { render json: @region.errors, status: :unprocessable_entity }
             end
         end
@@ -27,7 +27,7 @@ class RegionsController < ApplicationController
                 format.html { redirect_to admin_path, notice: "Succesfully removed '#{@region.title}'" }
                 format.json { head :no_content }
             else
-                format.html { redirect_to admin_path, notice: "Failed to remove '#{@region.title}'" }
+                format.html { redirect_to admin_path, error: "Failed to remove '#{@region.title}'" }
                 format.json { render json: @region.errors, status: :unprocessable_entity }
             end
         end
@@ -40,7 +40,7 @@ class RegionsController < ApplicationController
                 format.html { redirect_to :back, notice: "Succesfully created '#{@region.title}'"}
                 format.json { head :no_content }
             else
-                format.html { redirect_to :back, notice: "Failed to create '#{@region.title}'" }
+                format.html { redirect_to :back, error: "Failed to create '#{@region.title}'" }
                 format.json { render json: @region.errors, status: :unprocessable_entity }
             end
         end
