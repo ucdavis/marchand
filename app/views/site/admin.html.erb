@@ -28,9 +28,15 @@
             </div>
             <div class="filter-row-container col-xs-12">
                 <div class="col-xs-12">
-                    <%= form_for @author, html: { class: "form-inline" } do |f| %>
-                    <%= f.text_field :name, placeholder: "Author name", class: "form-control" %>
-                    <%= f.submit "+", class: "form-control btn btn-default"%>
+                    <%= form_for @author do |f| %>
+                    <div class="form-group row">
+                        <div class="col-xs-11">
+                            <%= f.text_field :name, placeholder: "Author name", class: "form-control" %>
+                        </div>
+                        <div class="col-xs-1">
+                            <%= f.submit "+", class: "form-control btn btn-default"%>
+                        </div>
+                    </div>
                     <% end %>
                 </div>
             </div>
