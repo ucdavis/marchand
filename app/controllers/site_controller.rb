@@ -13,6 +13,7 @@ class SiteController < ApplicationController
 
     def admin
         redirect_to root_url unless isAdmin?
+        @author = Author.new
     end
 
     def search

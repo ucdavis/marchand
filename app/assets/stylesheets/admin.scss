@@ -22,13 +22,12 @@
         }
 
         .filter-row-container {
-            height: 90%;
+            height: auto;
+            max-height: 90%;
             overflow-x: auto;
             margin-top: 10px;
             .filter-row {
-                padding-top: 10px;
-                padding-left: 0;
-                padding-right: 0;
+                padding: 5px 0;
 
                 &:hover {
                     background-color: rgb(243, 243, 243);
@@ -50,5 +49,14 @@
                 }
             }
         }
+    }
+
+    a {
+        color: #494949;
+    }
+
+    i:hover {
+        cursor: pointer;
+        color: black;
     }
 }

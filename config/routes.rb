@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     get '/login', to: 'site#login'
     get '/logout', to: 'site#logout'
 
+    post '/authors/:id/edit', to: 'authors#edit'
+
     resources :images
     resources :authors
     resources :topics
