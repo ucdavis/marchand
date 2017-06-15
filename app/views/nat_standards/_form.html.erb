@@ -1,0 +1,17 @@
+<div class="container author">
+    <h3 class="center page-title text-left"><%= NatStandard.readable_class_name %></h3>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-xs-12">
+                <%= form_for @nat_standard, html: { class: "form-group row" } do |f| %>
+                <div class="col-xs-1"><%= f.number_field :era, class: "form-control", placeholder: "Era" %></div>
+                <div class="col-xs-2"><div class="form-check"><%= f.check_box :us_world, class: "form-check-input" %>
+                <%= f.label :us_world, class: "form-check-label" %></div></div>
+                <div class="col-xs-7"><%= f.text_field :title, class: "form-control", placeholder: "Title" %></div>
+
+                <div class="col-xs-2"><%= f.submit @prompt, class: "btn btn-success" %></div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>
