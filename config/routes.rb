@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
     post '/authors/:id/edit', to: 'authors#edit'
     post '/topics/:id/edit', to: 'topics#edit'
+    post '/regions/:id/edit', to: 'regions#edit'
 
     resources :images
     resources :authors

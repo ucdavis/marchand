@@ -1,0 +1,16 @@
+<div class="container author">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-xs-12 flex-center">
+                <%= form_for @region, html: { class: "form-group row col-xs-12" } do |f| %>
+                <div class="col-xs-9">
+                    <%= f.text_field :title, class: "form-control" %>
+                </div>
+                <div class="col-xs-3">
+                    <%= f.submit @prompt, class: "form-control btn btn-success" %>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>

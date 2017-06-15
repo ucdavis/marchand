@@ -15,6 +15,7 @@ class SiteController < ApplicationController
         redirect_to root_url unless isAdmin?
         @author = Author.new
         @topic = Topic.new
+        @region = Region.new
     end
 
     def search
