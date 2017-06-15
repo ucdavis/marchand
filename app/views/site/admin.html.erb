@@ -72,6 +72,19 @@
                 </div>
                 <% end %>
             </div>
+            <div class="filter-row-container col-xs-12">
+                <div class="col-xs-12">
+                    <%= form_for @topic do |f| %>
+                    <div class="form-group row">
+                        <div class="col-xs-4"><%= f.text_field :title, placeholder: "Title", class: "form-control" %></div>
+                        <div class="col-xs-4"><%= f.text_field :collection, placeholder: "Collection", class: "form-control" %></div>
+                        <div class="col-xs-2"><%= f.text_field :code, placeholder: "Code", class: "form-control" %></div>
+                        <div class="col-xs-1"><%= f.check_box :featured, class: "form-control" %></div>
+                        <div class="col-xs-1"><%= f.submit "+", class: "form-control btn btn-default"%></div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
