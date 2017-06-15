@@ -1,0 +1,23 @@
+<div class="container author">
+    <h3 class="center page-title text-left"><%= CalStandard.readable_class_name %></h3>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-xs-12 flex-center">
+                <%= form_for @cal_standard, html: { class: "form-group row col-xs-12" } do |f| %>
+                <div class="col-xs-1">
+                    <%= f.number_field :grade_id, class: "form-control" %>
+                </div>
+                <div class="col-xs-2">
+                    <%= f.text_field :standard_id, class: "form-control" %>
+                </div>
+                <div class="col-xs-7">
+                    <%= f.text_field :description, class: "form-control" %>
+                </div>
+                <div class="col-xs-2">
+                    <%= f.submit @prompt, class: "form-control btn btn-success" %>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

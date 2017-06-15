@@ -2,11 +2,11 @@ class RegionsController < ApplicationController
     before_action :set_region, only: [:edit, :update, :destroy]
 
     def new
-        @prompt = "Create region"
+        @prompt = "Create"
     end
 
     def edit
-        @prompt = "Update region"
+        @prompt = "Update"
     end
 
     def update

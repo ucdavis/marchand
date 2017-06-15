@@ -16,6 +16,8 @@ class SiteController < ApplicationController
         @author = Author.new
         @topic = Topic.new
         @region = Region.new
+        @cal_standard = CalStandard.new
+        @nat_standard = NatStandard.new
     end
 
     def search

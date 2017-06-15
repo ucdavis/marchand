@@ -2,11 +2,11 @@ class TopicsController < ApplicationController
     before_action :set_topic, only: [:update, :edit, :destroy]
 
     def new
-        @prompt = "Add topic"
+        @prompt = "Create"
     end
 
     def edit
-        @prompt = "Update topic"
+        @prompt = "Update"
     end
 
     def update
