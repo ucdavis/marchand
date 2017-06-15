@@ -1,0 +1,39 @@
+<div class="container admin">
+    <h3 class="center page-title text-left">Admin Control Panel</h3>
+    <div class="panel panel-default">
+        <div class="panel-header row">
+            <h3 class="title col-xs-11">Topics</h3>
+            <%= link_to new_topic_path do %>
+            <i class="glyphicon glyphicon-plus col-xs-1" title="Add new topic"></i>
+            <% end %>
+        </div>
+        <div class="panel-body filter">
+            <div class="col-xs-12 filter-header">
+                <span class="col-xs-4">Title</span>
+                <span class="col-xs-4">Collection</span>
+                <span class="col-xs-2">Code</span>
+                <span class="col-xs-1">Featured</span>
+                <span class="col-xs-1">Actions</span>
+            </div>
+            <div class="filter-row-container col-xs-12">
+                <% Topic.all.each do |topic| %>
+                <div class="col-xs-12 filter-row">
+                    <span class="col-xs-4"><%= topic.title %></span>
+                    <span class="col-xs-4"><%= topic.collection %></span>
+                    <span class="col-xs-2"><%= topic.code %></span>
+                    <span class="col-xs-1"><%= topic.featured? ? "Yes" : "No" %></span>
+                    <div class="col-xs-1 actions">
+                        <%= link_to url_for(controller: :topics, action: :edit, id: topic.id), method: :edit do %>
+                        <i class="glyphicon glyphicon-pencil" title="Edit"></i>
+                        <% end %>
+
+                        <%= link_to url_for(controller: :topics, action: :destroy, id: topic.id), method: :delete, data: { confirm: "Are you sure?"} do %>
+                        <i class="glyphicon glyphicon-trash" title="Delete"></i>
+                        <% end %>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+.container.admin {
+    a {
+        text-decoration: none;
+    }
+
+    h3.title {
+        margin-top: 0;
+    }
+
+    .panel {
+        margin-top: 10px;
+        height: 500px;
+    }
+
+    .filter {
+        height: 100%;
+
+        .filter-header {
+            span {
+                font-weight: bold;
+            }
+        }
+
+        .filter-row-container {
+            height: 90%;
+            overflow-x: auto;
+            margin-top: 10px;
+            .filter-row {
+                padding-top: 10px;
+                padding-left: 0;
+                padding-right: 0;
+
+                &:hover {
+                    background-color: rgb(243, 243, 243);
+                    border-radius: 5px;
+                }
+
+                .actions {
+                    .glyphicon:first-child {
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
