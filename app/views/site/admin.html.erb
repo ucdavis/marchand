@@ -69,4 +69,106 @@
             </div>
         </div>
     </div>
+
+    <!-- Regions -->
+    <div class="panel panel-default">
+        <div class="panel-header row">
+            <h3 class="title col-xs-11">Regions</h3>
+            <%= link_to new_region_path do %>
+            <i class="glyphicon glyphicon-plus col-xs-1" title="Add new region"></i>
+            <% end %>
+        </div>
+        <div class="panel-body filter">
+            <div class="col-xs-12 filter-header">
+                <span class="col-xs-11">Title</span>
+                <span class="col-xs-1">Actions</span>
+            </div>
+            <div class="filter-row-container col-xs-12">
+                <% Region.all.each do |region| %>
+                <div class="col-xs-12 filter-row">
+                    <span class="col-xs-11"><%= region.title %></span>
+                    <div class="col-xs-1 actions">
+                        <%= link_to url_for(controller: :regions, action: :edit, id: region.id), method: :edit do %>
+                        <i class="glyphicon glyphicon-pencil" title="Edit"></i>
+                        <% end %>
+
+                        <%= link_to url_for(controller: :regions, action: :destroy, id: region.id), method: :delete, data: { confirm: "Are you sure?"} do %>
+                        <i class="glyphicon glyphicon-trash" title="Delete"></i>
+                        <% end %>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cal Standards -->
+    <div class="panel panel-default">
+        <div class="panel-header row">
+            <h3 class="title col-xs-11">Cal Standards</h3>
+            <%= link_to new_topic_path do %>
+            <i class="glyphicon glyphicon-plus col-xs-1" title="Add new cal standard"></i>
+            <% end %>
+        </div>
+        <div class="panel-body filter">
+            <div class="col-xs-12 filter-header">
+                <span class="col-xs-1">Grade ID</span>
+                <span class="col-xs-1">Standard ID</span>
+                <span class="col-xs-9">Description</span>
+            </div>
+            <div class="filter-row-container col-xs-12">
+                <% CalStandard.all.each do |cal_standard| %>
+                <div class="col-xs-12 filter-row">
+                    <span class="col-xs-1"><%= cal_standard.grade_id %></span>
+                    <span class="col-xs-1"><%= cal_standard.standard_id %></span>
+                    <span class="col-xs-9"><%= cal_standard.description %></span>
+                    <div class="col-xs-1 actions">
+                        <%= link_to url_for(controller: :cal_standards, action: :edit, id: cal_standard.id), method: :edit do %>
+                        <i class="glyphicon glyphicon-pencil" title="Edit"></i>
+                        <% end %>
+
+                        <%= link_to url_for(controller: :cal_standards, action: :destroy, id: cal_standard.id), method: :delete, data: { confirm: "Are you sure?"} do %>
+                        <i class="glyphicon glyphicon-trash" title="Delete"></i>
+                        <% end %>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nat Standards -->
+    <div class="panel panel-default">
+        <div class="panel-header row">
+            <h3 class="title col-xs-11">Nat Standards</h3>
+            <%= link_to new_topic_path do %>
+            <i class="glyphicon glyphicon-plus col-xs-1" title="Add new nat standard"></i>
+            <% end %>
+        </div>
+        <div class="panel-body filter">
+            <div class="col-xs-12 filter-header">
+                <span class="col-xs-1">Era</span>
+                <span class="col-xs-1">US</span>
+                <span class="col-xs-9">Title</span>
+            </div>
+            <div class="filter-row-container col-xs-12">
+                <% NatStandard.all.each do |nat_standard| %>
+                <div class="col-xs-12 filter-row">
+                    <span class="col-xs-1"><%= nat_standard.era %></span>
+                    <span class="col-xs-1"><%= nat_standard.us_world? ? "Yes" : "No" %></span>
+                    <span class="col-xs-9"><%= nat_standard.title %></span>
+                    <div class="col-xs-1 actions">
+                        <%= link_to url_for(controller: :nat_standards, action: :edit, id: nat_standard.id), method: :edit do %>
+                        <i class="glyphicon glyphicon-pencil" title="Edit"></i>
+                        <% end %>
+
+                        <%= link_to url_for(controller: :nat_standards, action: :destroy, id: nat_standard.id), method: :delete, data: { confirm: "Are you sure?"} do %>
+                        <i class="glyphicon glyphicon-trash" title="Delete"></i>
+                        <% end %>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
 </div>

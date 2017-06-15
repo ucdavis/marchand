@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     get '/logout', to: 'site#logout'
 
     resources :images
-    resources :topics
     resources :authors
+    resources :topics
+    resources :regions
+    resources :cal_standards
+    resources :nat_standards
+
 end
