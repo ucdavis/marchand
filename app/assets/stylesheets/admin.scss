@@ -33,12 +33,20 @@
                 &:hover {
                     background-color: rgb(243, 243, 243);
                     border-radius: 5px;
+                    white-space: normal;
+                    font-weight: bold;
                 }
 
                 .actions {
                     .glyphicon:first-child {
                         margin-right: 10px;
                     }
+                }
+
+                span {
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
                 }
             }
         }
