@@ -12,10 +12,10 @@ class AuthorsController < ApplicationController
     def update
         respond_to do |format|
             if @author.update(author_params)
-                format.html { redirect_to admin_path, :notice => "Successfully added '#{@author.name}'" }
+                format.html { redirect_to admin_path, :notice => "Successfully updated '#{@author.name}'" }
                 format.json { head :no_content }
             else
-                format.html { redirect_to admin_path, :notice => "Failed to add '#{@author.name}'" }
+                format.html { redirect_to admin_path, :notice => "Failed to update '#{@author.name}'" }
                 format.json { render json: @author.errors, status: :unprocessable_entity }
             end
         end
