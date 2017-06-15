@@ -13,7 +13,7 @@
             <div class="filter-row-container col-xs-12">
                 <% Author.all.each do |author| %>
                 <div class="col-xs-12 filter-row">
-                    <span class="col-xs-11"><%= author.name %></span>
+                    <span class="col-xs-11 author-name"><%= author.name %></span>
                     <div class="col-xs-1 actions">
                         <%= link_to url_for(controller: :authors, action: :edit, id: author.id), method: :edit do %>
                         <i class="glyphicon glyphicon-pencil" title="Edit"></i>
@@ -26,12 +26,12 @@
                 </div>
                 <% end %>
             </div>
-            <div class="filter-row-container col-xs-12">
+            <div class="filter-row col-xs-12 search">
                 <div class="col-xs-12">
                     <%= form_for @author do |f| %>
                     <div class="form-group row">
                         <div class="col-xs-11">
-                            <%= f.text_field :name, placeholder: "Author name", class: "form-control" %>
+                            <%= f.text_field :name, placeholder: "Author name", class: "form-control", data: { type: "search-box", target: ".filter-row span.author-name" } %>
                         </div>
                         <div class="col-xs-1">
                             <%= f.submit "+", class: "form-control btn btn-default"%>
@@ -220,10 +220,10 @@
 
     <!-- Notice -->
     <% if flash[:notice].present? %>
-        <div class="notice success"><span><%= flash[:notice] %><span></div>
-    <% end %>
+    <div class="notice success"><span><%= flash[:notice] %><span></div>
+        <% end %>
 
-    <% if flash[:error].present? %>
-    <div class="notice error"><span><%= flash[:error] %><span></div>
-    <% end %>
-</div>
+        <% if flash[:error].present? %>
+        <div class="notice error"><span><%= flash[:error] %><span></div>
+            <% end %>
+        </div>

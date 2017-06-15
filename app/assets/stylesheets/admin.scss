@@ -33,6 +33,7 @@
     }
 
     .filter {
+        position: relative;
         height: 95%;
 
         .filter-header {
@@ -41,11 +42,18 @@
             }
         }
 
+        .filter-row.search {
+            position: absolute;
+            bottom: 0;
+            margin-top: 10px;
+        }
+
         .filter-row-container {
             height: auto;
             max-height: 90%;
             overflow-x: auto;
             margin-top: 10px;
+
             .filter-row {
                 padding: 5px 0;
 
