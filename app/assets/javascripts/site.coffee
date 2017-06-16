@@ -87,6 +87,7 @@ setNewImageValues = (form) ->
 
 # Builds the url on advanced search
 buildUrl = (form) ->
+	page = $(form).data("target")
 	query = "q=#{$("input[name=q][type=text]").val()}"
 	start_year = "start_year=#{$("input[name=start_year]",form).val()}"
 	end_year = "end_year=#{$("input[name=end_year]",form).val()}"
@@ -119,7 +120,7 @@ buildUrl = (form) ->
 	topics = "topic=" + topics.join ","
 	calStandards = "calstandard=" + calStandards.join ","
 
-	return "/search?#{regions}&#{collections}&#{topics}&#{calStandards}&#{start_year}&#{end_year}&#{query}"
+	return "#{page}?#{regions}&#{collections}&#{topics}&#{calStandards}&#{start_year}&#{end_year}&#{query}"
 
 
 # Adds / Remove the tag in the tag area

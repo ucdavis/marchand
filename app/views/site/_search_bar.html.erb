@@ -1,10 +1,11 @@
 <!-- @param :page == A member in %w(lessons images) -->
+<!-- @param :target_page == Page to navigate to -->
 <div class="row search-result-page">
     <div id="sticky" class="sticky-element">
         <div class="sticky-anchor"></div>
         <div class="filter-panel col-xs-3 sticky-content">
             <div class="filter-panel-content">
-                <form name="filter" method="GET">
+                <form name="filter" method="GET" data-target="<%= target_page %>">
                     <div class="filter-panel-title">
                         <h5 style="font-weight:bold;">Advanced Search</h5>
                         <div class="btn-group" data-toggle="buttons" style="margin: 10px 0px 10px 0px;">
