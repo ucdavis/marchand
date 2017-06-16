@@ -33,9 +33,7 @@
 						<span class="view-online"><a href="<%= lesson.pdf %>"><i class="glyphicon glyphicon-file" title="View online"></i></a></span>
 
 						<% if isAdmin? %>
-						<%= link_to url_for(controller: :lessons, action: :edit, id: lesson.id), method: :edit do %>
-						<i class="glyphicon glyphicon-pencil" title="Edit"></i>
-						<% end %>
+						<a href="lessons/<%= lesson.id %>/edit"><i class="glyphicon glyphicon-pencil" title="Edit"></i></a>
 
 						<%= link_to url_for(controller: :lessons, action: :destroy, id: lesson.id), method: :delete, data: { confirm: "Are you sure?"} do %>
 						<i class="glyphicon glyphicon-trash" title="Delete"></i>

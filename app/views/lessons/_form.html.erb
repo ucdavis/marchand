@@ -52,15 +52,5 @@
     </div>
 </div>
 
-<% if @lesson.id %>
-<div class="form-actions col-md-3">
-    <%= f.submit "Update Lesson", :class => "form-control btn btn-success btn-submit"%>
-    <%= link_to 'Delete',url_for(action: :destroy,id: @lesson.id),method: :delete, data: {confirm: "Are you sure?"}, class: "form-control btn btn-danger btn-delete" %>
-</div>
-<% else %>
-<div class="form-actions col-md-3">
-    <%= f.submit "Add Lesson", :class => "form-control btn btn-success btn-submit"%>
-</div>
-<% end %>
-
+<%= f.submit @prompt, class: "btn btn-success col-md-3"%>
 <% end # lesson form %>

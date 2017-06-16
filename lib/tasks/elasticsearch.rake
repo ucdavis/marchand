@@ -18,7 +18,7 @@ namespace :es do
 
     desc "Reindex Lesson model"
 	task :reindex_lessons => :environment do
-		puts "Reindexing images..."
+		puts "Reindexing lessons..."
 		Lesson.__elasticsearch__.create_index! :force => true
 		puts "Importing lesson documents..."
 		Lesson.__elasticsearch__.import

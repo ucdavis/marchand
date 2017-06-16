@@ -1,14 +1,17 @@
 class LessonsController < ApplicationController
-    before_action :set_lesson, only: [:show, :edit, :update, :destroy]
+    before_action :set_lesson, only: [:edit, :update, :destroy]
 
     def index
     end
 
-    def show
-    end
-
     def new
         @lesson = Lesson.new
+        @prompt = "Create"
+    end
+
+
+    def edit
+        @prompt = "Update"
     end
 
     def create
@@ -22,9 +25,6 @@ class LessonsController < ApplicationController
                 format.json { render json: @lesson.errors, status: :unprocessable_entity }
             end
         end
-    end
-
-    def edit
     end
 
     def update
