@@ -1,3 +1,4 @@
+<!-- @param :page == A member in %w(lessons images) -->
 <div class="row search-result-page">
     <div id="sticky" class="sticky-element">
         <div class="sticky-anchor"></div>
@@ -7,10 +8,10 @@
                     <div class="filter-panel-title">
                         <h5 style="font-weight:bold;">Advanced Search</h5>
                         <div class="btn-group" data-toggle="buttons" style="margin: 10px 0px 10px 0px;">
-                                <label class="btn btn-primary image-lesson-toggle active">
+                                <label class="btn btn-primary image-lesson-toggle <%= "active" if page == "images"%>">
                                     <input class="" type="radio" name="options" id="option1" autocomplete="off" checked>Images
                                 </label>
-                                <label class="btn btn-primary image-lesson-toggle">
+                                <label class="btn btn-primary image-lesson-toggle <%= "active" if page == "lessons"%>">
                                     <input type="radio" name="options" id="option2" autocomplete="off">Lessons
                                 </label>
                         </div>

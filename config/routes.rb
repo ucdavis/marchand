@@ -22,5 +22,6 @@ Rails.application.routes.draw do
     resources :regions
     resources :cal_standards
     resources :nat_standards
+    resources :lessons
 
 end
