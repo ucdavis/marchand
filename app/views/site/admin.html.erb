@@ -26,7 +26,7 @@
                 </div>
                 <% end %>
             </div>
-            <div class="filter-row col-xs-12 search">
+            <div class="filter-row-container col-xs-12 search">
                 <div class="col-xs-12">
                     <%= form_for @author do |f| %>
                     <div class="form-group row">
@@ -59,9 +59,9 @@
             <div class="filter-row-container col-xs-12">
                 <% Topic.all.each do |topic| %>
                 <div class="col-xs-12 filter-row">
-                    <span class="col-xs-4"><%= topic.title %></span>
-                    <span class="col-xs-4"><%= topic.collection %></span>
-                    <span class="col-xs-2"><%= topic.code %></span>
+                    <span class="col-xs-4 topic-title"><%= topic.title %></span>
+                    <span class="col-xs-4 topic-collection"><%= topic.collection %></span>
+                    <span class="col-xs-2 topic-code"><%= topic.code %></span>
                     <span class="col-xs-1"><%= topic.featured? ? "Yes" : "No" %></span>
                     <div class="col-xs-1 actions">
                         <%= link_to url_for(controller: :topics, action: :edit, id: topic.id), method: :edit do %>
@@ -75,13 +75,13 @@
                 </div>
                 <% end %>
             </div>
-            <div class="filter-row-container col-xs-12">
+            <div class="filter-row-container col-xs-12 search">
                 <div class="col-xs-12">
                     <%= form_for @topic do |f| %>
                     <div class="form-group row">
-                        <div class="col-xs-4"><%= f.text_field :title, placeholder: "Title", class: "form-control" %></div>
-                        <div class="col-xs-4"><%= f.text_field :collection, placeholder: "Collection", class: "form-control" %></div>
-                        <div class="col-xs-2"><%= f.text_field :code, placeholder: "Code", class: "form-control" %></div>
+                        <div class="col-xs-4"><%= f.text_field :title, placeholder: "Title", class: "form-control", data: { type: "search-box", target: ".filter-row span.topic-title" } %></div>
+                        <div class="col-xs-4"><%= f.text_field :collection, placeholder: "Collection", class: "form-control", data: { type: "search-box", target: ".filter-row span.topic-collection" } %></div>
+                        <div class="col-xs-2"><%= f.text_field :code, placeholder: "Code", class: "form-control", data: { type: "search-box", target: ".filter-row span.topic-code" } %></div>
                         <div class="col-xs-1"><%= f.check_box :featured, class: "form-control" %></div>
                         <div class="col-xs-1"><%= f.submit "+", class: "form-control btn btn-default"%></div>
                     </div>
@@ -104,7 +104,7 @@
             <div class="filter-row-container col-xs-12">
                 <% Region.all.each do |region| %>
                 <div class="col-xs-12 filter-row">
-                    <span class="col-xs-11"><%= region.title %></span>
+                    <span class="col-xs-11 region-title"><%= region.title %></span>
                     <div class="col-xs-1 actions">
                         <%= link_to url_for(controller: :regions, action: :edit, id: region.id), method: :edit do %>
                         <i class="glyphicon glyphicon-pencil" title="Edit"></i>
@@ -117,11 +117,11 @@
                 </div>
                 <% end %>
             </div>
-            <div class="filter-row-container col-xs-12">
+            <div class="filter-row-container col-xs-12 search">
                 <div class="col-xs-12">
                     <%= form_for @region do |f| %>
                     <div class="form-group row">
-                        <div class="col-xs-11"><%= f.text_field :title, placeholder: "Title", class: "form-control" %></div>
+                        <div class="col-xs-11"><%= f.text_field :title, placeholder: "Title", class: "form-control", data: { type: "search-box", target: ".filter-row span.region-title" } %></div>
                         <div class="col-xs-1"><%= f.submit "+", class: "form-control btn btn-default"%></div>
                     </div>
                     <% end %>
@@ -144,9 +144,9 @@
             <div class="filter-row-container col-xs-12">
                 <% CalStandard.all.each do |cal_standard| %>
                 <div class="col-xs-12 filter-row">
-                    <span class="col-xs-1"><%= cal_standard.grade_id %></span>
-                    <span class="col-xs-2"><%= cal_standard.standard_id %></span>
-                    <span class="col-xs-8"><%= cal_standard.description %></span>
+                    <span class="col-xs-1 cs-gid"><%= cal_standard.grade_id %></span>
+                    <span class="col-xs-2 cs-sid"><%= cal_standard.standard_id %></span>
+                    <span class="col-xs-8 cs-description"><%= cal_standard.description %></span>
                     <div class="col-xs-1 actions">
                         <%= link_to url_for(controller: :cal_standards, action: :edit, id: cal_standard.id), method: :edit do %>
                         <i class="glyphicon glyphicon-pencil" title="Edit"></i>
@@ -159,13 +159,13 @@
                 </div>
                 <% end %>
             </div>
-            <div class="filter-row-container col-xs-12">
+            <div class="filter-row-container col-xs-12 search">
                 <div class="col-xs-12">
                     <%= form_for @cal_standard do |f| %>
                     <div class="form-group row">
-                        <div class="col-xs-1"><%= f.text_field :grade_id, placeholder: "GID", class: "form-control" %></div>
-                        <div class="col-xs-2"><%= f.text_field :standard_id, placeholder: "Standard ID", class: "form-control" %></div>
-                        <div class="col-xs-8"><%= f.text_field :description, placeholder: "Description", class: "form-control" %></div>
+                        <div class="col-xs-1"><%= f.text_field :grade_id, placeholder: "GID", class: "form-control", data: { type: "search-box", target: ".filter-row span.cs-gid" } %></div>
+                        <div class="col-xs-2"><%= f.text_field :standard_id, placeholder: "Standard ID", class: "form-control", data: { type: "search-box", target: ".filter-row span.cs-sid" } %></div>
+                        <div class="col-xs-8"><%= f.text_field :description, placeholder: "Description", class: "form-control", data: { type: "search-box", target: ".filter-row span.cs-description" } %></div>
                         <div class="col-xs-1"><%= f.submit "+", class: "form-control btn btn-default"%></div>
                     </div>
                     <% end %>
@@ -188,9 +188,9 @@
             <div class="filter-row-container col-xs-12">
                 <% NatStandard.all.each do |nat_standard| %>
                 <div class="col-xs-12 filter-row">
-                    <span class="col-xs-1"><%= nat_standard.era %></span>
+                    <span class="col-xs-1 ns-era"><%= nat_standard.era %></span>
                     <span class="col-xs-1"><%= nat_standard.us_world? ? "Yes" : "No" %></span>
-                    <span class="col-xs-9"><%= nat_standard.title %></span>
+                    <span class="col-xs-9 ns-title"><%= nat_standard.title %></span>
                     <div class="col-xs-1 actions">
                         <%= link_to url_for(controller: :nat_standards, action: :edit, id: nat_standard.id), method: :edit do %>
                         <i class="glyphicon glyphicon-pencil" title="Edit"></i>
@@ -203,13 +203,13 @@
                 </div>
                 <% end %>
             </div>
-            <div class="filter-row-container col-xs-12">
+            <div class="filter-row-container col-xs-12 search">
                 <div class="col-xs-12">
                     <%= form_for @nat_standard do |f| %>
                     <div class="form-group row">
-                        <div class="col-xs-1"><%= f.text_field :era, placeholder: "GID", class: "form-control" %></div>
+                        <div class="col-xs-1"><%= f.text_field :era, placeholder: "Era", class: "form-control", data: { type: "search-box", target: ".filter-row span.ns-era" } %></div>
                         <div class="col-xs-1"><%= f.check_box :us_world, placeholder: "Standard ID", class: "form-control" %></div>
-                        <div class="col-xs-9"><%= f.text_field :title, placeholder: "Description", class: "form-control" %></div>
+                        <div class="col-xs-9"><%= f.text_field :title, placeholder: "Description", class: "form-control", data: { type: "search-box", target: ".filter-row span.ns-title" } %></div>
                         <div class="col-xs-1"><%= f.submit "+", class: "form-control btn btn-default"%></div>
                     </div>
                     <% end %>
