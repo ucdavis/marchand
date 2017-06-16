@@ -46,7 +46,7 @@ class LessonsController < ApplicationController
 
             old_pdf = @lesson.pdf
             if @lesson.update(new_params)
-                remove_image(old_pdf.split("/").last) if new_params[:pdf].present?
+                remove_image(old_pdf.split("/").last) if new_params[:pdf].present? && old_pdf
 
                 format.html { redirect_to lessons_path, notice: "Succesfully updated lesson" }
                 format.json { head :no_content }
@@ -62,7 +62,7 @@ class LessonsController < ApplicationController
         respond_to do |format|
             if @lesson.destroy
                 remove_image(@lesson.pdf.split("/").last)
-                
+
                 format.html { redirect_to lessons_path, notice: "Succesfully deleted lesson" }
                 format.json { head :no_content }
             else

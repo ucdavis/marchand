@@ -16,8 +16,8 @@
                         <h5>Lesson PDF</h5>
                         <%= f.file_field :pdf, class: "hidden" %>
                         <%= f.label :pdf do %>
-                            <span class="btn btn-default">Upload PDF</span>
-                            <span class="pdf-path"></span>
+                        <span class="btn btn-default">Upload PDF</span>
+                        <span class="pdf-path"><%= @lesson.pdf.present? ? @lesson.pdf : "No file" %></span>
                         <% end %>
                     </div>
                 </div>
@@ -40,11 +40,11 @@
                     </div>
                     <div class="col-xs-12 card-text">
                         <h5>Lesson Images</h5>
-
+                        <!-- TODO -->
                     </div>
                     <div class="col-xs-12 card-text">
                         <h5>Lesson Attachments</h5>
-                        <%= f.file_field :pdf, class: "" %>
+                        <!-- TODO -->
                     </div>
                 </div>
             </div>
