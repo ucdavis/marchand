@@ -19,7 +19,7 @@
 	</div>
 	<% end %>
 
-	<% Lesson.all.each do |lesson| %>
+	<% @lessons.each do |lesson| %>
 	<% lesson.pdf = "" if lesson.pdf.nil? %>
 	<div class="row">
 		<div class="col-md-12 lesson-content panel panel-default" data-toggle="collapse" data-target="#lesson-<%= lesson.id %>" aria-expanded="true">

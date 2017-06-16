@@ -3,6 +3,17 @@ class LessonsController < ApplicationController
     before_action :set_lesson, only: [:edit, :update, :destroy]
 
     def index
+        q = params[:q].present? ? "#{params[:q]}~1" : "*"
+        @query = [
+            { query_string: { query: q }}
+        ]
+
+        # @query << { query_string: get_query_string("region_assignments.region_id", params[:region])} if params[:region].present?
+        # @query << { query_string: get_query_string("topic_assignments.topic_id", params[:topic])} if params[:topic].present?
+        # @query << { query_string: get_query_string("collection_id", params[:collection])} if params[:collection].present?
+        # @query << { query_string: get_query_string("data_cal_standards.cal_standard_id", params[:calstandard])} if params[:calstandard].present?
+
+        @lessons = Lesson.search(@query, []).records
     end
 
     def new
