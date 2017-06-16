@@ -26,6 +26,21 @@ input {
     box-shadow: none !important;
 }
 
+ul.inline {
+    margin-top: 10px;
+
+    li {
+        display: inline;
+        a {
+            text-decoration: none;
+
+            &:hover {
+                color: #CCD4E1 !important;
+            }
+        }
+    }
+}
+
 .container {
     margin-top: 10px;
 }

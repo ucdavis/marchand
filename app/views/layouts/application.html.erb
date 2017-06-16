@@ -22,8 +22,10 @@
 							<input class="universal-search" name="SearchableText" size="18" title="Search Site" placeholder="Search Site" accesskey="4" class="searchField" id="searchGadget" autocomplete="off" type="text">
 						</div>
 					</form>
-					<ul class="nav pull-right">
+
+					<ul class="pull-right inline">
 						<% if session[:cas_user].present? %>
+						<li><a href="/admin" class="cas-login">Control Panel</a></li>
 						<li><a href="/logout" class="cas-login">CAS Logout</a></li>
 						<% else %>
 						<li><a href="/login" class="cas-login">CAS Login</a></li>
