@@ -5,7 +5,7 @@
 			<h5 class="col-md-3">Grade</h5>
 			<h5 class="col-md-4">Title</h5>
 			<h5 class="col-md-3">Author(s)</h5>
-			<h5 class="col-md-2">PDF</h5>
+			<h5 class="col-md-2">Actions</h5>
 		</div>
 	</div>
 
@@ -19,54 +19,52 @@
 	</div>
 	<% end %>
 
+	<% Lesson.all.each do |lesson| %>
+	<% lesson.pdf = "" if lesson.pdf.nil? %>
 	<div class="row">
-		<div class="col-md-12 lesson-content panel panel-default" data-toggle="collapse" data-target="#demo1" aria-expanded="true">
+		<div class="col-md-12 lesson-content panel panel-default" data-toggle="collapse" data-target="#lesson-<%= lesson.id %>" aria-expanded="true">
 			<div class="col-md-12 header">
-				<span class="col-md-3">Middle School</span>
-				<span class="col-md-4">The Cause of World War 2</span>
-				<span class="col-md-3">Shang Lu</span>
+				<span class="col-md-3"><%= lesson.grade %></span>
+				<span class="col-md-4"><%= lesson.title %></span>
+				<span class="col-md-3"><%= lesson.authors.map { |a| a.name }.join(", ") %></span>
 				<div class="col-md-2 lesson-file">
 					<div>
-						<span class="download"><i class="glyphicon glyphicon-save" title="Download"></i></span>
-						<span class="view-online"><i class="glyphicon glyphicon-file" title="View online"></i></span>
+						<span class="download"><a href="<%= lesson.pdf %>"><i class="glyphicon glyphicon-save" title="Download"></i></a></span>
+						<span class="view-online"><a href="<%= lesson.pdf %>"><i class="glyphicon glyphicon-file" title="View online"></i></a></span>
+
+						<% if isAdmin? %>
+						<%= link_to url_for(controller: :lessons, action: :edit, id: lesson.id), method: :edit do %>
+						<i class="glyphicon glyphicon-pencil" title="Edit"></i>
+						<% end %>
+
+						<%= link_to url_for(controller: :lessons, action: :destroy, id: lesson.id), method: :delete, data: { confirm: "Are you sure?"} do %>
+						<i class="glyphicon glyphicon-trash" title="Delete"></i>
+						<% end %>
+						<% end %>
 					</div>
 				</div>
 			</div>
 
-			<div id="demo1" class="collapse lesson-info col-xs-12" aria-expanded="false">
+			<div id="lesson-<%= lesson.id %>" class="collapse lesson-info col-xs-12" aria-expanded="false">
 				<h5>Background</h5>
-				<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-					sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</p>
+				<p><%= lesson.background %></p>
 				<h5 class="image-title">Image(s)</h5>
 				<div class="image-card-group">
+					<% lesson.images.each do |image| %>
 					<div class="image-card">
-						<a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-							<img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-						</a>
-						<h5 class="text-center">Slavery and Abolition</h5>
+						<img src="<%= image.thumbnail %>">
+						<h5 class="text-center"><%= image.title %></h5>
 					</div>
-					<div class="image-card">
-						<a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-							<img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-						</a>
-						<h5 class="text-center">Slavery and Abolition</h5>
-					</div>
-					<div class="image-card">
-						<a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-							<img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-						</a>
-						<h5 class="text-center">Slavery and Abolition</h5>
-					</div>
-					<div class="image-card">
-						<a href="http://localhost:3000/search?bestof=true&amp;topic_id=449">
-							<img src="https://marchand.s3-us-west-1.amazonaws.com/thumb_3-IMG00243.jpg" alt="Thumb 3 img00243">
-						</a>
-						<h5 class="text-center">Slavery and Abolition</h5>
-					</div>
+					<% end %>
 				</div>
+				<h5 class="image-title">Attachment(s)</h5>
+				<ul class="attachment-card-group">
+					<% lesson.attachments.each do |attachment| %>
+					<li><a href="<%= attachement.url %>"><%= attachement.url.split("/").last %></a></li>
+					<% end %>
+				</ul>
 			</div>
 		</div>
 	</div>
+	<% end %>
 </div>

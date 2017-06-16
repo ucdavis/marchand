@@ -2,6 +2,10 @@ h5 {
     font-weight: bold;
 }
 
+.pdf-path {
+    font-weight: normal;
+}
+
 .lesson-card-group {
     margin-bottom: 35px;
     margin-left:384px;
@@ -101,7 +105,7 @@ h5 {
                 padding-right: 35px;
                 margin: 20px 0px 35px 0px;
                 display: flex;
-                justify-content: space-between;
+                justify-content: flex-start;
                 height: inherit;
             }
             .image-card {

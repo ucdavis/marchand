@@ -284,6 +284,12 @@ img {
     width: 100% !important;
 }
 
+.container.image-card-group {
+    .image-card {
+        max-height: 250px;
+    }
+}
+
 .image-card {
     background-color: #FCFCFC;
     border: 1px solid #EAE8E8;
@@ -292,7 +298,6 @@ img {
     border-radius: 5px;
     margin: 0 5px;
     width: 24%;
-    max-height: 250px;
 }
 
 .image-card-new {
