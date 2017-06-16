@@ -22,6 +22,8 @@ Things you may want to cover:
 * How to run the test suite
 
 * Services (job queues, cache servers, search engines, etc.)
+1. Index / Reindex the models in elasticsearch when you switch ES servers or when you update the model
+    - Run `rake es:reindex_all` or `rake es:reindex_lessons` or `rake es:reindex_images`
 
 * Deployment instructions
 
