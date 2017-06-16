@@ -1,0 +1,51 @@
+<%= form_for @lesson do |f| %>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5>Lesson Title</h5>
+                        <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+                    </div>
+                    <div class="col-xs-12">
+                        <h5>Lesson Grade</h5>
+                        <%= f.text_field :grade, class: "form-control", placeholder: "Grade" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Card Text & Citation -->
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <%= render "images/filter", :f => f, :klass => Author, :member => :lesson_authors %>
+                    </div>
+                    <div class="col-xs-12 card-text">
+                        <h5>Lesson Background</h5>
+                        <%= f.text_area :background, class: "form-control" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% if @lesson.id %>
+<div class="form-actions col-md-3">
+    <%= f.submit "Update Lesson", :class => "form-control btn btn-success btn-submit"%>
+    <%= link_to 'Delete',url_for(action: :destroy,id: @lesson.id),method: :delete, data: {confirm: "Are you sure?"}, class: "form-control btn btn-danger btn-delete" %>
+</div>
+<% else %>
+<div class="form-actions col-md-3">
+    <%= f.submit "Add Lesson", :class => "form-control btn btn-success btn-submit"%>
+</div>
+<% end %>
+
+<% end # lesson form %>
