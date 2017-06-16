@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170614203819) do
+ActiveRecord::Schema.define(version: 20170616194402) do
+
+  create_table "attachments", force: :cascade do |t|
+    t.string   "url"
+    t.integer  "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "authors", force: :cascade do |t|
     t.string   "name"
@@ -77,6 +84,29 @@ ActiveRecord::Schema.define(version: 20170614203819) do
   create_table "keywords", force: :cascade do |t|
     t.string "title", limit: 64, default: "", null: false
     t.index ["title"], name: "sqlite_autoindex_keywords_1", unique: true
+  end
+
+  create_table "lesson_authors", force: :cascade do |t|
+    t.integer  "author_id"
+    t.integer  "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lesson_images", force: :cascade do |t|
+    t.integer  "lesson_id"
+    t.integer  "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.string   "grade"
+    t.string   "title"
+    t.string   "background"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "pdf"
   end
 
   create_table "nat_standards", force: :cascade do |t|
