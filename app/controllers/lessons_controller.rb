@@ -8,7 +8,7 @@ class LessonsController < ApplicationController
     end
 
     def new
-        @lesson = Image.new(image_params)
+        @lesson = Lesson.new
     end
 
     def create
@@ -25,7 +25,7 @@ class LessonsController < ApplicationController
     end
 
     private
-    def image_params
+    def lesson_params
         params.require(:lesson)
     end
 
