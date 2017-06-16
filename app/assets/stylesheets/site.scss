@@ -293,6 +293,7 @@ img {
     border-radius: 5px;
     margin: 0 5px;
     width: 24%;
+    max-height: 250px;
 }
 
 .image-card-new {
@@ -321,6 +322,7 @@ img {
 }
 
 .image-card-group {
+    height: 100%;
     width: auto;
     margin: 0px auto;
     .col-xs-3 {
