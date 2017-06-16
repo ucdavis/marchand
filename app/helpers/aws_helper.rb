@@ -67,6 +67,15 @@ module AwsHelper
         return obj
     end
 
+    def upload_file(key, file_blob)
+        establish_connection unless connected?
+        obj = @s3resrc.bucket(Rails.application.secrets.s3_bucket)
+        obj = obj.object(key)
+        obj.put(body: file_blob, acl: 'public-read')
+
+        return obj
+    end
+
     def remove_image(key)
         establish_connection unless connected?
         begin

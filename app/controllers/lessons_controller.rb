@@ -1,4 +1,5 @@
 class LessonsController < ApplicationController
+    include AwsHelper
     before_action :set_lesson, only: [:edit, :update, :destroy]
 
     def index
@@ -16,7 +17,13 @@ class LessonsController < ApplicationController
 
     def create
         respond_to do |format|
-            @lesson = Lesson.new(lesson_params)
+            new_params = lesson_params
+            pdf_key = new_params[:pdf].original_filename.split(" ").join("-")
+            pdf_key = "#{Time.now.to_i}_#{pdf_key}"
+            pdf_blob = new_params[:pdf].read
+            new_params[:pdf] = upload_file(pdf_key, pdf_blob).public_url
+
+            @lesson = Lesson.new(new_params)
             if @lesson.save
                 format.html { redirect_to lessons_path, notice: "Succesfully created lesson" }
                 format.json { head :no_content }
@@ -29,7 +36,18 @@ class LessonsController < ApplicationController
 
     def update
         respond_to do |format|
-            if @lesson.update(lesson_params)
+            new_params = lesson_params
+            if new_params[:pdf].present?
+                pdf_key = new_params[:pdf].original_filename.split(" ").join("-")
+                pdf_key = "#{Time.now.to_i}_#{pdf_key}"
+                pdf_blob = new_params[:pdf].read
+                new_params[:pdf] = upload_file(pdf_key, pdf_blob).public_url
+            end
+
+            old_pdf = @lesson.pdf
+            if @lesson.update(new_params)
+                remove_image(old_pdf.split("/").last) if new_params[:pdf].present?
+
                 format.html { redirect_to lessons_path, notice: "Succesfully updated lesson" }
                 format.json { head :no_content }
             else
@@ -43,6 +61,8 @@ class LessonsController < ApplicationController
     def destroy
         respond_to do |format|
             if @lesson.destroy
+                remove_image(@lesson.pdf.split("/").last)
+                
                 format.html { redirect_to lessons_path, notice: "Succesfully deleted lesson" }
                 format.json { head :no_content }
             else
