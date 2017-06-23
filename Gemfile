@@ -5,17 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-# Elastic Search
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
-gem "elasticsearch-persistence", require: 'elasticsearch/persistence/model'
-
-# CAS authentication
-# Use AR Session Store as required by rubycas-client
-gem 'activerecord-session_store', git: 'https://github.com/rails/activerecord-session_store'
-gem 'rubycas-client', :git => 'https://github.com/cthielen/rubycas-client.git'
-# Creating thumbnails
-gem 'rmagick'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0'
 # Use sqlite3 as the database for Active Record
@@ -43,9 +32,6 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# For managing data in S3 bucket
-gem 'aws-sdk', '~> 2.10'
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
@@ -62,3 +48,19 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Elastic Search
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+gem "elasticsearch-persistence", require: 'elasticsearch/persistence/model'
+
+# For managing data in S3 bucket
+gem 'aws-sdk', '~> 2.10'
+
+# CAS authentication
+# Use AR Session Store as required by rubycas-client
+gem 'activerecord-session_store', git: 'https://github.com/rails/activerecord-session_store'
+gem 'rubycas-client', :git => 'https://github.com/cthielen/rubycas-client.git'
+
+# For thumbnail support
+gem 'rmagick'
