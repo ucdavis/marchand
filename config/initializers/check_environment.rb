@@ -2,7 +2,6 @@ env_var = %w(ELASTICSEARCH_URL)
 
 env_var.each do |env|
   unless ENV[env]
-    STDERR.puts "'#{env}' environment variable is not set."
-    exit(-1)
+    STDERR.puts "Warning: '#{env}' environment variable is not set."
   end
 end
