@@ -1,13 +1,10 @@
-FROM ubuntu:latest
+FROM ruby:2.4
 
-# Update
-apt-get update
-
-# Install LAMP stack
-apt-get install apache2
-apt-get install php7.0 
-# No Database -- handled by AWS S3
-
-/etc/init.d/apache2 restart
-
-
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+RUN mkdir /myapp
+WORKDIR /myapp
+ADD Gemfile /myapp/Gemfile
+ADD Gemfile.lock /myapp/Gemfile.lock
+RUN bundle install
+ADD . /myapp
+RUN bundle exec bin/rake db:setup
