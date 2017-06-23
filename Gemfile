@@ -9,6 +9,7 @@ end
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem "elasticsearch-persistence", require: 'elasticsearch/persistence/model'
+
 # CAS authentication
 # Use AR Session Store as required by rubycas-client
 gem 'activerecord-session_store', git: 'https://github.com/rails/activerecord-session_store'
@@ -16,7 +17,7 @@ gem 'rubycas-client', :git => 'https://github.com/cthielen/rubycas-client.git'
 # Creating thumbnails
 gem 'rmagick'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.2'
+gem 'rails', '~> 5.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
