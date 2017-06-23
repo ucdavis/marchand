@@ -1,7 +1,7 @@
 # Installation
 
-docker-compose build
-docker-compose up
+`docker-compose build`
+`docker-compose up`
 
 # Requires imagemagick 6 for RMagick
 ## RMagick
@@ -9,6 +9,11 @@ docker-compose up
 `bundle install`
 
 # Configuration
+
+## Importing original data
+After Rails sets up the database, run:
+
+`sqlite3 db/development.sqlite3 < ./original-data.sql`
 
 ## ElasticSearch
 1. Set up `ELASTICSEARCH_URL` environment variable as your elastcisearch end point
