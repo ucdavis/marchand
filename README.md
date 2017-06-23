@@ -1,4 +1,9 @@
-# System dependencies
+# Installation
+
+docker-compose build
+docker-compose up
+
+# Requires imagemagick 6 for RMagick
 ## RMagick
 `brew install imagemagick@6 && brew link imagemagick@6 --force`
 `bundle install`
@@ -12,4 +17,3 @@
 
 ## AWS
 1. Set up config/secrets.yml based on the information provided by config/secrets.example.yml
-
