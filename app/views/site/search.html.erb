@@ -6,7 +6,7 @@
     </div>
     <% else %>
     <div class="row flex-row-wrap">
-        <% if isAdmin? %>
+        <% if is_admin? %>
         <form name="new-image" method="GET" action="/images/new" class="col-xs-3 image-card-new">
             <input type="hidden" name="image[title]">
             <input type="hidden" name="image[topic_ids][]">

@@ -13,7 +13,7 @@ module ApplicationHelper
         end
     end
 
-    def isAdmin?
+    def is_admin?
         if session[:cas_user].present?
             return true if WHITELIST.include?(session[:cas_user])
         end

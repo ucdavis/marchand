@@ -17,7 +17,7 @@ class SiteController < ApplicationController
     end
 
     def admin
-        redirect_to root_url unless isAdmin?
+        redirect_to root_url unless is_admin?
 
         @author = Author.new
         @topic = Topic.new
@@ -58,7 +58,7 @@ class SiteController < ApplicationController
                 term: {
                     public: 1
                 }
-            } unless isAdmin?
+            } unless is_admin?
 
             # Filter dates if both are given
             if params[:start_year].present? && params[:end_year].present?
@@ -110,6 +110,7 @@ class SiteController < ApplicationController
     end
 
     private
+
     def parse_param
         params[:region] = params[:region].split(",") if params[:region].present?
         params[:collection] = params[:collection].split(",") if params[:collection].present?
