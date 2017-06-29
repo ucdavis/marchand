@@ -24,10 +24,12 @@ class ImagesController < ApplicationController
   # POST /images
   def create
     new_params = image_params
+
     respond_to do |format|
       # Upload image & thumbnail to s3
       if new_params[:s3].present?
         filename = "#{Time.now.to_i}_#{image_params[:s3].original_filename}"
+
         uploaded_img = Magick::Image.from_blob(new_params[:s3].read).first
         new_params[:s3] = upload_image(filename, uploaded_img).public_url
         new_params[:thumbnail] = upload_new_thumbnail(new_params[:s3])
@@ -108,7 +110,7 @@ class ImagesController < ApplicationController
       @image.s3 = "https://thumb7.shutterstock.com/display_pic_with_logo/64260/405078397/stock-photo-business-architecture-building-construction-and-people-concept-close-up-of-architect-hands-405078397.jpg" unless @image.s3.present?
     end
 
-        def as_query_string(field, values)
+    def as_query_string(field, values)
       return {
         fields: [field],
         query: values.join(" OR ")
