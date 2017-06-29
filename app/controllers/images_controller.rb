@@ -13,7 +13,7 @@ class ImagesController < ApplicationController
     else
       @query, filter = es_query_from_params(params)
 
-      @images = Image.search(@query, filter).records
+      @images = Image.search(@query, filter).page(params[:page]).records
     end
   end
 

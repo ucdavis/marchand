@@ -1,56 +1,63 @@
 <%= render 'site/search_sidebar', page: "images", target_page: "/search" %>
 
 <div class="container image-card-group content-margin">
-    <% if @images.nil? %>
+
+  <% if @images.nil? %>
+
     <div class="row">
-        <h5 class="col-xs-12">No Images</h5>
+      <h5 class="col-xs-12">No Images</h5>
     </div>
-    <% else %>
-    <div class="row flex-row-wrap">
-        <% if is_admin? %>
-        <form name="new-image" method="GET" action="/images/new" class="col-xs-3 image-card-new">
-            <input type="hidden" name="image[title]">
-            <input type="hidden" name="image[topic_ids][]">
-            <input type="hidden" name="image[cal_standard_ids][]">
-            <input type="hidden" name="image[region_ids][]">
-            <input type="hidden" value="submit">
-            <div class="image-card-add">
-                <i class="glyphicon glyphicon-plus"></i>
-            </div>
-            <h5 class="text-center title">Add New Image</h5>
-        </form>
-        <% end %>
 
-        <% @images.each do |image| %>
-        <% thumb = get_thumbnail(image) %>
-        <% thumb = "https://s3-us-west-1.amazonaws.com/marchand/thumb_IMG0000.jpg" unless thumb%>
-        <% view = image.view.present? ? image.view : "landscape" %>
+  <% else %>
 
-        <div class="col-xs-3 image-card"
-             type="button"
-             data-toggle="modal"
-             data-target="#<%= view %>-modal"
-             data-view="<%= view %>"
-             data-authors="<%= image.authors.map { |a| a.name } %>"
-             data-src="<%= image.s3 %>"
-             data-collection="<%= image.collection.present? ? image.collection.name : " " %>"
-             data-card="<%= image.card %>"
-             data-topics="<%= image.topics.map { |t| t.title } %>"
-             data-regions="<%= image.regions.map { |r| r.title } %>"
-             data-cal-standards="<%= image.cal_standards.map { |c| c.title } %>"
-             data-nat-standards=" <%= image.nat_standards.map { |n| n.title } %>"
-             data-citation="<%= image.citation %>"
-             data-id="<%= image.id %>">
+  <div class="apple_pagination">
+    <%= will_paginate @images %>
+  </div>
 
-            <img src="<%= thumb %>" />
-            <h5 class="text-center title">
-                <%= image.title %>
-            </h5>
+  <div class="row flex-row-wrap">
+
+    <% if is_admin? %>
+      <form name="new-image" method="GET" action="/images/new" class="col-xs-3 image-card-new">
+        <input type="hidden" name="image[title]">
+        <input type="hidden" name="image[topic_ids][]">
+        <input type="hidden" name="image[cal_standard_ids][]">
+        <input type="hidden" name="image[region_ids][]">
+        <input type="hidden" value="submit">
+        <div class="image-card-add">
+          <i class="glyphicon glyphicon-plus"></i>
         </div>
-
-        <% end %>
-    </div>
+        <h5 class="text-center title">Add New Image</h5>
+      </form>
     <% end %>
+
+    <% @images.each do |image| %>
+      <% thumb = get_thumbnail(image) %>
+      <% thumb = "https://s3-us-west-1.amazonaws.com/marchand/thumb_IMG0000.jpg" unless thumb %>
+      <% view = image.view.present? ? image.view : "landscape" %>
+
+      <div class="col-xs-3 image-card"
+          type="button"
+          data-toggle="modal"
+          data-target="#<%= view %>-modal"
+          data-view="<%= view %>"
+          data-authors="<%= image.authors.map { |a| a.name } %>"
+          data-src="<%= image.s3 %>"
+          data-collection="<%= image.collection.present? ? image.collection.name : " " %>"
+          data-card="<%= image.card %>"
+          data-topics="<%= image.topics.map { |t| t.title } %>"
+          data-regions="<%= image.regions.map { |r| r.title } %>"
+          data-cal-standards="<%= image.cal_standards.map { |c| c.title } %>"
+          data-nat-standards=" <%= image.nat_standards.map { |n| n.title } %>"
+          data-citation="<%= image.citation %>"
+          data-id="<%= image.id %>">
+
+        <img src="<%= thumb %>" />
+
+        <h5 class="text-center title"><%= image.title %></h5>
+      </div>
+    <% end %>
+  </div>
+  <% end %>
 </div>
 
 <%= render 'site/modal_vertical_image' %>
