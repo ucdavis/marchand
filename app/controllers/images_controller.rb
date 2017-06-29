@@ -2,7 +2,6 @@ class ImagesController < ApplicationController
   include ImagesHelper
 
   before_action :set_image, only: [:show, :edit, :update, :destroy]
-  before_action :format_search_params, only: [:index]
 
   def index
     if params[:bestof].present? && params[:bestof]
@@ -126,10 +125,15 @@ class ImagesController < ApplicationController
         { query_string: { query: q }}
       ]
 
-      query << { query_string: as_query_string("region_assignments.region_id", params[:region])} if params[:region].present?
-      query << { query_string: as_query_string("topic_assignments.topic_id", params[:topic])} if params[:topic].present?
-      query << { query_string: as_query_string("collection_id", params[:collection])} if params[:collection].present?
-      query << { query_string: as_query_string("data_cal_standards.cal_standard_id", params[:calstandard])} if params[:calstandard].present?
+      params_region = params[:region].split(",") if params[:region].present?
+      params_topic = params[:topic].split(",") if params[:topic].present?
+      params_collection = params[:collection].split(",") if params[:collection].present?
+      params_calstandard = params[:calstandard].split(",") if params[:calstandard].present?
+
+      query << { query_string: as_query_string("region_assignments.region_id", params_region)} if params[:region].present?
+      query << { query_string: as_query_string("topic_assignments.topic_id", params_topic)} if params[:topic].present?
+      query << { query_string: as_query_string("collection_id", params_collection)} if params[:collection].present?
+      query << { query_string: as_query_string("data_cal_standards.cal_standard_id", params_calstandard)} if params[:calstandard].present?
 
       # Text search dates if only one is given
       if params[:start_year].present? ^ params[:end_year].present?
@@ -159,13 +163,6 @@ class ImagesController < ApplicationController
       end
 
       return query, filter
-    end
-
-    def format_search_params
-      params[:region] = params[:region].split(",") if params[:region].present?
-      params[:collection] = params[:collection].split(",") if params[:collection].present?
-      params[:topic] = params[:topic].split(",") if params[:topic].present?
-      params[:calstandard] = params[:calstandard].split(",") if params[:calstandard].present?
     end
 
 end
