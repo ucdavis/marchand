@@ -346,10 +346,13 @@ img {
     border-radius: 5px;
     position: absolute;
     margin-top: 25px;
+
     .image-lesson-toggle {
         border: 1px solid #ccc;
         background-color: white;
         color: #555;
+        width: 49%;
+        font-style: normal;
     }
     .divider {
         border-bottom: 1px solid #EAE8E8;
@@ -357,17 +360,10 @@ img {
         margin-right: -15px !important;
         margin-bottom: 10px;
     }
-    /*.divider:last-child {
-        border-bottom: none;
-        margin-left: -15px !important;
-        margin-right: -15px !important;
-        margin-bottom: 10px;
-    }*/
+
     .btn-submit-filters {
         width: 80%;
         color: white !important;
-        //background-color: #204d74;
-        //border-color: #122b40;
         text-align: center !important;
         font-style: normal;
         margin-top: 25px;
