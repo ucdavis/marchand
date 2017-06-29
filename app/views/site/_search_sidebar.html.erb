@@ -1,5 +1,6 @@
 <!-- @param :page == A member in %w(lessons images) -->
 <!-- @param :target_page == Page to navigate to -->
+
 <div class="row search-result-page">
     <div id="sticky" class="sticky-element">
         <div class="sticky-anchor"></div>
@@ -7,7 +8,6 @@
             <div class="filter-panel-content">
                 <form name="filter" method="GET" data-target="<%= target_page %>">
                     <div class="filter-panel-title">
-                        <h5 style="font-weight:bold;">Advanced Search</h5>
                         <div class="btn-group" style="margin: 10px 0px 10px 0px;">
                                 <a class="btn btn-primary image-lesson-toggle <%= "active" if page == "images" %>" href="/search" >Images</a>
                                 <a class="btn btn-primary image-lesson-toggle <%= "active" if page == "lessons" %>" href="/lessons">Lessons</a>
@@ -64,7 +64,7 @@
                         <div class="col-xs-2"></div>
                         <input type="number" name="end_year" class="col-xs-5" placeholder="End Year" value="<%= params[:end_year] if params[:end_year].present? %>">
                     </div>
-                    <div class="btn-group flex-center"><button type="submit" class="btn btn-primary btn-submit-filters">Search</button></div>
+                    <div class="btn-group flex-center"><button type="submit" class="btn btn-primary btn-submit-filters"><span class="glyphicon glyphicon-search" style="line-height: 0; top: 2px; margin-right: 4px;"></span> Search</button></div>
                 </form>
             </div>
         </div>
