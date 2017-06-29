@@ -8,11 +8,17 @@ class SiteController < ApplicationController
 
     def index
         # Retrieve featured topics and images available to the public
-        @cards = TopicAssignment.joins(:image).joins(:topic).where(:images => {:featured => 1, :public => 1}, :topics => {:featured => 1}).order("RANDOM()").limit(IMAGE_LIMIT)
+        @cards = TopicAssignment.joins(:image)
+                                .joins(:topic)
+                                .where(
+                                    :images => {:featured => 1, :public => 1},
+                                    :topics => {:featured => 1}
+                                ).order("RANDOM()").limit(IMAGE_LIMIT)
     end
 
     def admin
         redirect_to root_url unless isAdmin?
+
         @author = Author.new
         @topic = Topic.new
         @region = Region.new
