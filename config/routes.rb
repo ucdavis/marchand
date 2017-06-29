@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get '/admin', to: 'site#admin'
   post '/admin', to: 'site#admin'
-  get '/search', to: 'site#search'
+
   get '/download/:key', to: 'site#download'
 
   get '/login', to: 'site#login'

@@ -9,8 +9,8 @@
                 <form name="filter" method="GET" data-target="<%= target_page %>">
                     <div class="filter-panel-title">
                         <div class="btn-group" style="margin: 10px 0px 10px 0px;">
-                                <a class="btn btn-primary image-lesson-toggle <%= "active" if page == "images" %>" href="/search" >Images</a>
-                                <a class="btn btn-primary image-lesson-toggle <%= "active" if page == "lessons" %>" href="/lessons">Lessons</a>
+                                <a class="btn btn-primary image-lesson-toggle <%= "active" if page == "images" %>" href="<%= images_url %>" >Images</a>
+                                <a class="btn btn-primary image-lesson-toggle <%= "active" if page == "lessons" %>" href="<%= lessons_url %>">Lessons</a>
                         </div>
                         <div class="input-group" style="margin:15px 0px 25px 0px;">
                             <input type="text" name="q" class="form-control" value="<%= params[:q].present? ? params[:q] : "" %>">
