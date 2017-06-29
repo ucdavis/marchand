@@ -38,6 +38,28 @@ body {
 .universal-search {
     margin-left: 140px;
     width: 124px;
+    background-color: #002855;
+    border: none;
+    color: #fff;
+
+    &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color:    #fff;
+        font-weight: 100;
+    }
+    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color:    #fff;
+        opacity:  1;
+    }
+    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color:    #fff;
+        opacity:  1;
+    }
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color:    #fff;
+    }
+    &::-ms-input-placeholder { /* Microsoft Edge */
+        color:    #fff;
+    }
 }
 
 .navbar {
