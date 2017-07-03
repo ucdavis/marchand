@@ -25,7 +25,7 @@ class Image < ActiveRecord::Base
 
   # @param query - text to search for
   # @param filter - array of hashes in the form of ElasticSearch's filter parameter for queryDSL
-  def self.search(query, filter, size = 24)
+  def self.search(query, filter)
     q = {
       bool: {
         must: query
@@ -33,7 +33,7 @@ class Image < ActiveRecord::Base
     }
 
     q[:bool][:filter] = filter.split(",") unless filter.empty?
-    __elasticsearch__.search({ query: q, size: size })
+    __elasticsearch__.search({ query: q })
   end
 
   def as_indexed_json(options={})
