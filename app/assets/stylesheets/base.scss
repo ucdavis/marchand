@@ -368,7 +368,7 @@ img {
         border: 1px solid #ccc;
         background-color: white;
         color: #555;
-        width: 49%;
+        width: 50%;
         font-style: normal;
     }
     .divider {
@@ -400,14 +400,9 @@ img {
         }
         li a:hover {
             width: 100%;
-            //white-space: unset;
             overflow: visible;
             background: #F8F8F8;
             color: black;
-            //font-weight: 600;
-            //padding-top: 10px;
-            //padding-bottom: 10px;
-            //font-size: 13px;
         }
 
         li a .customized-checkbox span {
