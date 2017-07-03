@@ -145,7 +145,7 @@
         <% @cards.each do |card| %>
         <% thumb = get_thumbnail(card.image) %>
         <div class="image-card">
-            <%= link_to image_tag(thumb), search_url(:bestof => true, :topic_id => card.topic_id) %>
+            <%= link_to image_tag(thumb), images_url(:bestof => true, :topic_id => card.topic_id) %>
             <h5 class="text-center">
                 <%= card.topic.title %>
             </h5>
