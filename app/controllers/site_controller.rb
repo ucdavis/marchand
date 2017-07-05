@@ -17,7 +17,7 @@ class SiteController < ApplicationController
   end
 
   def admin
-    redirect_to root_url unless is_admin?
+    redirect_to root_url unless admin?
 
     @author = Author.new
     @topic = Topic.new

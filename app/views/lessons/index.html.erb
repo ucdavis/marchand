@@ -10,7 +10,7 @@
 		</div>
 	</div>
 
-	<% if is_admin? %>
+	<% if admin? %>
 	<div class="row">
 		<div class="col-md-12 panel panel-default lesson-content new">
 			<div class="col-md-12 header">
@@ -33,7 +33,7 @@
 						<span class="download"><a href="<%= lesson.pdf %>"><i class="glyphicon glyphicon-save" title="Download"></i></a></span>
 						<span class="view-online"><a href="<%= lesson.pdf %>"><i class="glyphicon glyphicon-file" title="View online"></i></a></span>
 
-						<% if is_admin? %>
+						<% if admin? %>
 						<a href="lessons/<%= lesson.id %>/edit"><i class="glyphicon glyphicon-pencil" title="Edit"></i></a>
 
 						<%= link_to url_for(controller: :lessons, action: :destroy, id: lesson.id), method: :delete, data: { confirm: "Are you sure?"} do %>

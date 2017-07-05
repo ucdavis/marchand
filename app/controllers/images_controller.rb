@@ -7,7 +7,10 @@ class ImagesController < ApplicationController
 
   def index
     if params[:bestof].present? && params[:bestof]
-      @images = Image.joins(:topics).where(featured: true, public: true, topics: { featured: true, id: params[:topic_id] }).paginate(page: params[:page], per_page: RESULTS_PER_PAGE)
+      @images = Image.joins(:topics)
+                     .where(featured: true, public: true,
+                            topics: { featured: true, id: params[:topic_id] })
+                     .paginate(page: params[:page], per_page: RESULTS_PER_PAGE)
     else
       @query, filter = es_query_from_params(params)
 
@@ -20,6 +23,7 @@ class ImagesController < ApplicationController
   end
 
   # POST /images
+  # rubocop:disable Metrics/AbcSize
   def create
     new_params = image_params
 
@@ -31,7 +35,7 @@ class ImagesController < ApplicationController
         uploaded_img = Magick::Image.from_blob(new_params[:s3].read).first
         new_params[:s3] = upload_image(filename, uploaded_img).public_url
         new_params[:thumbnail] = upload_new_thumbnail(new_params[:s3])
-        new_params[:view] = uploaded_img.rows > uploaded_img.columns ? "portrait" : "landscape";
+        new_params[:view] = uploaded_img.rows > uploaded_img.columns ? 'portrait' : 'landscape'
       end
 
       @image = Image.new(new_params)
@@ -44,13 +48,15 @@ class ImagesController < ApplicationController
       end
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   # GET /images/:id/edit
-  def edit
-  end
+  def edit; end
 
   # PUT /images/:id
   # PATCH /images/:id
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
   def update
     respond_to do |format|
       update_params = image_params
@@ -63,7 +69,7 @@ class ImagesController < ApplicationController
         uploaded_img = Magick::Image.from_blob(update_params[:s3].read).first
         update_params[:s3] = upload_image(filename, uploaded_img).public_url
         update_params[:thumbnail] = upload_new_thumbnail(update_params[:s3])
-        update_params[:view] = uploaded_img.rows > uploaded_img.columns ? "portrait" : "landscape";
+        update_params[:view] = uploaded_img.rows > uploaded_img.columns ? 'portrait' : 'landscape'
       end
 
       old_image = @image.s3
@@ -71,8 +77,8 @@ class ImagesController < ApplicationController
       if @image.update(update_params)
         # Remove old image & thumbnail from s3
         if update_params[:s3].present?
-          remove_image(old_image.split("/").last)
-          remove_image(old_thumbnail.split("/").last)
+          remove_image(old_image.split('/').last)
+          remove_image(old_thumbnail.split('/').last)
         end
 
         format.html { redirect_to build_search_url(@image) }
@@ -83,12 +89,14 @@ class ImagesController < ApplicationController
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize
 
   # DELETE /images/:id
   def destroy
     # Remove images from S3
-    remove_image(@image.s3.split("/").last) if @image.s3.present?
-    remove_image(@image.thumbnail.split("/").last) if @image.thumbnail.present?
+    remove_image(@image.s3.split('/').last) if @image.s3.present?
+    remove_image(@image.thumbnail.split('/').last) if @image.thumbnail.present?
 
     @image.destroy
     respond_to do |format|
@@ -99,69 +107,85 @@ class ImagesController < ApplicationController
 
   private
 
-    def image_params
-      params.require(:image).permit(:id, :title, :collection_id, :public, :card, :citation, :featured, :view, :thumbnail, :s3, :end_year, :start_year, {:topic_ids => []}, {:region_ids => []}, {:cal_standard_ids => []}, {:nat_standard_ids => []}, {:author_ids => []})
+  # rubocop:disable Style/BracesAroundHashParameters
+  def image_params
+    params.require(:image).permit(:id, :title, :collection_id, :public, :card, :citation, :featured,
+                                  :view, :thumbnail, :s3, :end_year, :start_year,
+                                  { topic_ids: [] }, { region_ids: [] }, { cal_standard_ids: [] },
+                                  { nat_standard_ids: [] }, { author_ids: [] })
+  end
+  # rubocop:enable Style/BracesAroundHashParameters
+
+  def set_image
+    @image = Image.find(params[:id])
+    @image.s3 = '' unless @image.s3.present?
+  end
+
+  def as_query_string(field, values)
+    {
+      fields: [field],
+      query: values.join(' OR ')
+    }
+  end
+
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/PerceivedComplexity
+  def es_query_from_params(params)
+    # All text query in ES
+    # ~1 indicates fuzzy matching. It suspects that the query might have been mispelled by 1 letter
+    q = params[:q].present? ? "#{params[:q]}~1" : '*'
+
+    query = [
+      { query_string: { query: q } }
+    ]
+
+    params_region = params[:region].split(',') if params[:region].present?
+    params_topic = params[:topic].split(',') if params[:topic].present?
+    params_collection = params[:collection].split(',') if params[:collection].present?
+    params_calstandard = params[:calstandard].split(',') if params[:calstandard].present?
+
+    # rubocop:disable Metrics/LineLength
+    query << { query_string: as_query_string('region_assignments.region_id', params_region) } if params[:region].present?
+    query << { query_string: as_query_string('topic_assignments.topic_id', params_topic) } if params[:topic].present?
+    query << { query_string: as_query_string('collection_id', params_collection) } if params[:collection].present?
+    query << { query_string: as_query_string('data_cal_standards.cal_standard_id', params_calstandard) } if params[:calstandard].present?
+    # rubocop:enable Metrics/LineLength
+
+    # Text search dates if only one is given
+    if params[:start_year].present? ^ params[:end_year].present?
+      query << { query_string: { query: params[:start_year] } } if params[:start_year].present?
+      query << { query_string: { query: params[:end_year] } } if params[:end_year].present?
     end
 
-    def set_image
-      @image = Image.find(params[:id])
-      @image.s3 = "https://thumb7.shutterstock.com/display_pic_with_logo/64260/405078397/stock-photo-business-architecture-building-construction-and-people-concept-close-up-of-architect-hands-405078397.jpg" unless @image.s3.present?
-    end
-
-    def as_query_string(field, values)
-      return {
-        fields: [field],
-        query: values.join(" OR ")
+    # Show everything if admin
+    filter = []
+    unless admin?
+      filter << {
+        term: { public: 1 }
       }
     end
 
-    def es_query_from_params(params)
-      # All text query in ES
-      # ~1 indicates fuzzy matching. It suspects that the query might have been mispelled by 1 letter
-      q = params[:q].present? ? "#{params[:q]}~1" : "*"
-      
-      query = [
-        { query_string: { query: q }}
-      ]
-
-      params_region = params[:region].split(",") if params[:region].present?
-      params_topic = params[:topic].split(",") if params[:topic].present?
-      params_collection = params[:collection].split(",") if params[:collection].present?
-      params_calstandard = params[:calstandard].split(",") if params[:calstandard].present?
-
-      query << { query_string: as_query_string("region_assignments.region_id", params_region)} if params[:region].present?
-      query << { query_string: as_query_string("topic_assignments.topic_id", params_topic)} if params[:topic].present?
-      query << { query_string: as_query_string("collection_id", params_collection)} if params[:collection].present?
-      query << { query_string: as_query_string("data_cal_standards.cal_standard_id", params_calstandard)} if params[:calstandard].present?
-
-      # Text search dates if only one is given
-      if params[:start_year].present? ^ params[:end_year].present?
-        query << { query_string:{ query: params[:start_year] }} if params[:start_year].present?
-        query << { query_string:{ query: params[:end_year] }} if params[:end_year].present?
-      end
-
-      # Show everything if admin
-      filter = []
+    # Filter dates if both are given
+    if params[:start_year].present? && params[:end_year].present?
       filter << {
-        term: { public: 1 }
-      } unless is_admin?
-
-      # Filter dates if both are given
-      if params[:start_year].present? && params[:end_year].present?
-        filter << {
-          range: {
-            start_year: { gte: params[:start_year] }
-          }
+        range: {
+          start_year: { gte: params[:start_year] }
         }
+      }
 
-        filter << {
-          range: {
-            end_year: { lte: params[:end_year] }
-          }
+      filter << {
+        range: {
+          end_year: { lte: params[:end_year] }
         }
-      end
-
-      return query, filter
+      }
     end
 
+    return query, filter # rubocop:disable Style/RedundantReturn
+  end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/PerceivedComplexity
 end

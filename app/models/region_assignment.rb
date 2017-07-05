@@ -1,9 +1,9 @@
 class RegionAssignment < ActiveRecord::Base
-    include EsConcern
+  include EsConcern
 
-    belongs_to :image
-    belongs_to :region
+  belongs_to :image
+  belongs_to :region
 
-    validates_presence_of :image
-    validates_presence_of :region
+  validates_presence_of :image
+  validates_presence_of :region
 end

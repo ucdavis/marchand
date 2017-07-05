@@ -12,10 +12,8 @@ module AwsHelper
   def establish_connection
     # Configure AWS
     Aws.config.update(
-      {
-        region: Rails.application.secrets.s3_region,
-        credentials: Aws::Credentials.new(Rails.application.secrets.aws_key, Rails.application.secrets.aws_secret)
-      }
+      region: Rails.application.secrets.s3_region,
+      credentials: Aws::Credentials.new(Rails.application.secrets.aws_key, Rails.application.secrets.aws_secret)
     )
 
     # Setup S3
@@ -37,12 +35,12 @@ module AwsHelper
       image = Magick::Image.read(image_path).first
       image = image.resize_to_fill(275, 190)
     rescue => error
-      File.open("#{Rails.root}/site_error.txt", "a+") { |f| f.write(error) }
+      File.open("#{Rails.root}/site_error.txt", 'a+') { |f| f.write(error) }
       return nil
     end
 
     # Upload to s3 bucket
-    filename = "thumb_#{image.filename.split("/").last}"
+    filename = "thumb_#{image.filename.split('/').last}"
     obj = upload_image(filename, image)
 
     obj.public_url
@@ -54,7 +52,7 @@ module AwsHelper
   def get_object(key)
     establish_connection unless connected?
 
-    @s3client.get_object(bucket:Rails.application.secrets.s3_bucket, key: key)
+    @s3client.get_object(bucket: Rails.application.secrets.s3_bucket, key: key)
   end
 
   def upload_image(key, image)

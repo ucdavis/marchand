@@ -13,5 +13,5 @@ class CalStandard < ActiveRecord::Base
     NAME
   end
 
-  alias_method :title, :label
+  alias title label
 end
