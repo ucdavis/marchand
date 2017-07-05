@@ -1,2 +1,5 @@
 Style/Documentation:
   Enabled: false
+
+Methods/BlockLength:
+  Max: 50
