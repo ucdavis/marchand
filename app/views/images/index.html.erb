@@ -10,9 +10,11 @@
 
   <% else %>
 
+    <% if @images.total_pages > 1 %>
     <div class="apple_pagination">
       <%= will_paginate @images, params: params %>
     </div>
+    <% end %>
 
     <div class="row flex-row-wrap">
 
