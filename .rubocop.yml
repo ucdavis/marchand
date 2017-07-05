@@ -1,5 +1,19 @@
+AllCops:
+  Exclude:
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+    - 'db/schema.rb'
+    - 'db/migrate/*'
+  TargetRubyVersion: 2.4
+
 Style/Documentation:
   Enabled: false
 
-Methods/BlockLength:
+Metrics/BlockLength:
   Max: 50
+
+Metrics/MethodLength:
+  Max: 15
+
+Metrics/LineLength:
+  Max: 90

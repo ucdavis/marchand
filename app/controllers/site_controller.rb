@@ -11,9 +11,9 @@ class SiteController < ApplicationController
     @cards = TopicAssignment.joins(:image)
                             .joins(:topic)
                             .where(
-                                :images => {:featured => 1, :public => 1},
-                                :topics => {:featured => 1}
-                            ).order("RANDOM()").limit(FEATURED_IMAGE_LIMIT)
+                              images: { featured: 1, public: 1 },
+                              topics: { featured: 1 }
+                            ).order('RANDOM()').limit(FEATURED_IMAGE_LIMIT)
   end
 
   def admin
@@ -40,11 +40,10 @@ class SiteController < ApplicationController
   end
 
   def login
-    redirect_to "/"
+    redirect_to '/'
   end
 
   def logout
     CASClient::Frameworks::Rails::Filter.logout(self)
   end
-
 end

@@ -2,9 +2,7 @@ class Image < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
-  after_update -> {
-    __elasticsearch__.index_document
-  }
+  after_update -> { __elasticsearch__.index_document }
 
   has_many :topic_assignments, dependent: :destroy
   has_many :topics, through: :topic_assignments
@@ -32,17 +30,19 @@ class Image < ActiveRecord::Base
       }
     }
 
-    q[:bool][:filter] = filter.split(",") unless filter.empty?
-    __elasticsearch__.search({ query: q })
+    q[:bool][:filter] = filter.split(',') unless filter.empty?
+    __elasticsearch__.search(query: q)
   end
 
-  def as_indexed_json(options={})
-    self.as_json(
-      include: { topic_assignments: { only: :topic_id},
-      region_assignments: { only: :region_id },
-      data_cal_standards: { only: :cal_standard_id },
-      data_nat_standards: { only: :nat_standard_id },
-      image_authors: {only: :author_id }
-    })
+  def as_indexed_json(_)
+    as_json(
+      include: {
+        topic_assignments: { only: :topic_id },
+        region_assignments: { only: :region_id },
+        data_cal_standards: { only: :cal_standard_id },
+        data_nat_standards: { only: :nat_standard_id },
+        image_authors: { only: :author_id }
+      }
+    )
   end
 end
