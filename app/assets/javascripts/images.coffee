@@ -131,7 +131,7 @@ searchFilter = (menu, target) ->
 
 # Changes the data in a modal
 # @param el - div containing information of the picture
-fillModal = (el) ->
+setModalImageDetails = (el) ->
   view = $(el).data("view")
   imgSrc = $(el).data("src")
   imgTitle = $(".title", $(el)).html()
@@ -144,11 +144,6 @@ fillModal = (el) ->
   imgCalStandards = $(el).data("cal-standards")
   imgNatStandards = $(el).data("nat-standards")
   imgId = $(el).data("id")
-
-  # Download Button
-  $("#download-image", $("##{view}-modal .modal-header")).on "click", (e) ->
-    key = imgSrc.split("/").pop()
-    tmp = window.open "download/#{key}"
 
   # Edit Button
   $(".btn-edit", $("##{view}-modal .modal-header")).attr("href", "/images/#{imgId}/edit")
@@ -184,7 +179,17 @@ fillModal = (el) ->
     if natStandard.length > 0
       $(".nat-standards", $("##{view}-modal .list-section")).append("<li>#{natStandard}</li>")
 
+# Sets up event handlers for all future image modals
+setupModalEvents = () ->
+  # Download Button
+  $('#download-image').on 'click', (e) ->
+    imgSrc = $(window.modalImage).data('src')
+    key = imgSrc.split('/').pop()
+    tmp = window.open "download/#{key}"
+
 $(document).ready () ->
+  setupModalEvents()
+
   $('.upload-image-btn').on 'change', (e) ->
       previewImage(this)
     
@@ -196,7 +201,8 @@ $(document).ready () ->
 
   # Fill modal content
   $(".image-card").on "click", (e) ->
-    fillModal(this)
+    window.modalImage = this
+    setModalImageDetails(this)
 
   # Add filter search
   $("[data-type=menu]").on "keyup", (e) ->
