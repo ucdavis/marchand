@@ -10,6 +10,12 @@
 
   <% else %>
 
+    <div class="collection-title">
+      <% if @bestof %>
+        <h3>Featured Collection: <%= @bestof %></h3>
+      <% end %>
+    </div>
+
     <% if @images.total_pages > 1 %>
     <div class="apple_pagination">
       <%= will_paginate @images, params: params %>

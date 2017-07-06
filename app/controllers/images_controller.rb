@@ -7,6 +7,8 @@ class ImagesController < ApplicationController
 
   def index
     if params[:bestof].present? && params[:bestof]
+      @bestof = Topic.find_by_id(params[:topic_id]).title
+
       @images = Image.joins(:topics)
                      .where(featured: true, public: true,
                             topics: { featured: true, id: params[:topic_id] })
