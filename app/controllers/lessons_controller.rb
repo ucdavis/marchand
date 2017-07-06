@@ -1,4 +1,4 @@
-class LessonsController < ApplicationController
+class LessonsController < GalleryController
   include AwsHelper
   before_action :set_lesson, only: [:edit, :update, :destroy]
 

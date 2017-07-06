@@ -1,6 +1,7 @@
-class ImagesController < ApplicationController
+class ImagesController < GalleryController
   RESULTS_PER_PAGE = 20
 
+  include ApplicationHelper
   include ImagesHelper
 
   before_action :set_image, only: [:show, :edit, :update, :destroy]
