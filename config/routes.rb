@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'site#index'
+  root 'images#featured'
 
   get '/admin', to: 'site#admin'
   post '/admin', to: 'site#admin'
