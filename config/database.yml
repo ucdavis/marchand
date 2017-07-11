@@ -1,21 +1,17 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#
 default: &default
   adapter: sqlite3
   pool: 5
   timeout: 5000
 
 development:
-  <<: *default
-  database: db/development.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  database: <%= ENV['MARCHAND_DEV_DB'] %>
+  pool: 10
+  username: <%= ENV['MARCHAND_DEV_DB_USER'] %>
+  password: <%= ENV['MARCHAND_DEV_DB_PASSWORD'] %>
+  reconnect: true
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
   <<: *default
   database: db/test.sqlite3
@@ -23,9 +19,8 @@ test:
 production:
    adapter: mysql2
    encoding: utf8
-   database: image_archive
+   database: <%= ENV['MARCHAND_PROD_DB'] %>
    pool: 10
-   username: example
-   password: secure
-   socket: /var/run/mysqld/mysqld.sock
+   username: <%= ENV['MARCHAND_PROD_DB_USER'] %>
+   password: <%= ENV['MARCHAND_PROD_DB_PASSWORD'] %>
    reconnect: true
