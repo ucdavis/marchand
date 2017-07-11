@@ -63,3 +63,6 @@ gem 'rubycas-client', :git => 'https://github.com/cthielen/rubycas-client.git'
 
 # For thumbnail support
 gem 'rmagick'
+
+# Used in development and production
+gem 'mysql2'
