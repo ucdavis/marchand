@@ -39,6 +39,11 @@
     text-overflow: ellipsis;
     max-width: 90%;
     vertical-align: bottom;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+      width: 0 !important;
+    }
   }
 
   i {
