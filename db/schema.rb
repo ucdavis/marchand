@@ -12,127 +12,127 @@
 
 ActiveRecord::Schema.define(version: 20170616194402) do
 
-  create_table "attachments", force: :cascade do |t|
-    t.string "url"
-    t.integer "lesson_id"
+  create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "url"
+    t.integer  "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "authors", force: :cascade do |t|
-    t.string "name"
+  create_table "authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "cal_standards", force: :cascade do |t|
-    t.integer "grade_id", default: 0, null: false
-    t.string "standard_id", limit: 50, default: "", null: false
-    t.text "description", null: false
+  create_table "cal_standards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "grade_id",                  default: 0,  null: false
+    t.string  "standard_id", limit: 50,    default: "", null: false
+    t.text    "description", limit: 65535,              null: false
   end
 
-  create_table "collections", force: :cascade do |t|
-    t.string "name", limit: 255, default: "", null: false
+  create_table "collections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name",            default: "", null: false
     t.string "code", limit: 50, default: "", null: false
   end
 
-  create_table "data_cal_standards", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "image_id"
-    t.integer "cal_standard_id"
+  create_table "data_cal_standards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "image_id"
+    t.integer  "cal_standard_id"
   end
 
-  create_table "data_nat_standards", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "image_id"
-    t.integer "nat_standard_id"
+  create_table "data_nat_standards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "image_id"
+    t.integer  "nat_standard_id"
   end
 
-  create_table "image_authors", force: :cascade do |t|
-    t.integer "image_id"
-    t.integer "author_id"
+  create_table "image_authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "image_id"
+    t.integer  "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "images", force: :cascade do |t|
-    t.string "file", limit: 96, default: "", null: false
-    t.string "thumbnail", limit: 128, default: "", null: false
-    t.string "title", limit: 255, default: "", null: false
-    t.string "card", default: "", null: false
-    t.string "citation", default: "", null: false
-    t.integer "collection_id", default: 0, null: false
-    t.integer "public", default: 0, null: false
-    t.integer "views", default: 0, null: false
-    t.integer "featured", default: 0, null: false
-    t.string "notes", default: "", null: false
-    t.text "s3"
-    t.string "view"
+  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string  "file",          limit: 96,    default: "", null: false
+    t.string  "thumbnail",     limit: 128,   default: "", null: false
+    t.string  "title",                       default: "", null: false
+    t.text    "card",          limit: 65535
+    t.text    "citation",      limit: 65535
+    t.integer "collection_id",               default: 0,  null: false
+    t.integer "public",                      default: 0,  null: false
+    t.integer "views",                       default: 0,  null: false
+    t.integer "featured",                    default: 0,  null: false
+    t.text    "notes",         limit: 65535
+    t.text    "s3",            limit: 65535
+    t.string  "view"
     t.integer "start_year"
     t.integer "end_year"
-    t.index ["title", "card", "citation", "notes"], name: "idx_images_searchable"
+    t.index ["title"], name: "idx_images_searchable", using: :btree
   end
 
-  create_table "keyword_assignments", id: false, force: :cascade do |t|
+  create_table "keyword_assignments", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "sid", default: 0, null: false
     t.integer "kid", default: 0, null: false
   end
 
-  create_table "keywords", force: :cascade do |t|
+  create_table "keywords", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title", limit: 64, default: "", null: false
-    t.index ["title"], name: "idx_keywords_title", unique: true
+    t.index ["title"], name: "idx_keywords_title", unique: true, using: :btree
   end
 
-  create_table "lesson_authors", force: :cascade do |t|
-    t.integer "author_id"
-    t.integer "lesson_id"
+  create_table "lesson_authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "author_id"
+    t.integer  "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "lesson_images", force: :cascade do |t|
-    t.integer "lesson_id"
-    t.integer "image_id"
+  create_table "lesson_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "lesson_id"
+    t.integer  "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "lessons", force: :cascade do |t|
-    t.string "grade"
-    t.string "title"
-    t.string "background"
+  create_table "lessons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "grade"
+    t.string   "title"
+    t.string   "background"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "pdf"
+    t.string   "pdf"
   end
 
-  create_table "nat_standards", force: :cascade do |t|
-    t.integer "era", default: 0, null: false
-    t.integer "us_world", default: 0, null: false
-    t.text "title", null: false
+  create_table "nat_standards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "era",                    default: 0, null: false
+    t.integer "us_world",               default: 0, null: false
+    t.text    "title",    limit: 65535,             null: false
   end
 
-  create_table "region_assignments", force: :cascade do |t|
-    t.integer "image_id", default: 0, null: false
+  create_table "region_assignments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "image_id",  default: 0, null: false
     t.integer "region_id", default: 0, null: false
   end
 
-  create_table "regions", force: :cascade do |t|
+  create_table "regions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title", limit: 64, default: "", null: false
   end
 
-  create_table "topic_assignments", force: :cascade do |t|
+  create_table "topic_assignments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "image_id", default: 0, null: false
     t.integer "topic_id", default: 0, null: false
   end
 
-  create_table "topics", force: :cascade do |t|
-    t.string "code", limit: 3, default: "", null: false
-    t.string "title", limit: 50, default: "", null: false
-    t.text "collection", default: "US", null: false
-    t.integer "featured", default: 0, null: false
+  create_table "topics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string  "code",       limit: 3,  default: "",   null: false
+    t.string  "title",      limit: 50, default: "",   null: false
+    t.string  "collection", limit: 2,  default: "US", null: false
+    t.integer "featured",              default: 0,    null: false
   end
 
 end
