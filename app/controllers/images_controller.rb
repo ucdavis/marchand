@@ -27,7 +27,8 @@ class ImagesController < GalleryController
     else
       @query, filter = es_query_from_params(params)
 
-      @images = Image.search(@query, filter).paginate(page: params[:page], per_page: RESULTS_PER_PAGE).records
+      @images = Image.search(@query, filter)
+                     .paginate(page: params[:page], per_page: RESULTS_PER_PAGE).records
     end
   end
 

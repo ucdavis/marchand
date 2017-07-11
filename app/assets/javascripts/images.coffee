@@ -52,12 +52,14 @@ buildUrl = (form) ->
   collections = []
   topics = []
   calStandards = []
+
   $("input[type=checkbox]", form).each (i, item) ->
     if !item.checked
       return true
 
     param = item.getAttribute("name")
     value = item.getAttribute("value")
+
     switch(param)
       when 'region'
         regions.push value
@@ -85,13 +87,14 @@ buildUrl = (form) ->
 toggleTag = (checkbox) ->
   targetId = $(checkbox).data("target-id")
   text = $("span", $(checkbox).parent()).html()
+  
   if $(checkbox).is(":checked")
-    createTag(checkbox, text, targetId)
+    addTag(checkbox, text, targetId)
   else
     # Remove tag from target area
     removeTag(text, targetId)
 
-createTag = (checkbox, text, targetId) ->
+addTag = (checkbox, text, targetId) ->
   # Initialize close icon for tag
   closeIcon = $("<i></i>",
     "class": "glyphicon glyphicon-remove"
@@ -197,7 +200,7 @@ $(document).ready () ->
   $("input:checked").each (i, item) ->
     targetId = $(this).data("target-id")
     text = $("span", $(this).parent()).html()
-    createTag(this, text, targetId)
+    addTag(this, text, targetId)
 
   # Fill modal content
   $(".image-card").on "click", (e) ->

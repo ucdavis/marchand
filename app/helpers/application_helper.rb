@@ -1,7 +1,7 @@
 require 'csv'
 
 module ApplicationHelper
-  WHITELIST = %w[cthielen msdiez guilden kkipp22 sbgreer jeremy shangl2].freeze
+  WHITELIST = %w[cthielen guilden kkipp22 sbgreer jeremy safutrel].freeze
 
   def admin?
     if session[:cas_user].present?
