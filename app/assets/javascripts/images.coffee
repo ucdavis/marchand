@@ -45,9 +45,17 @@ setNewImageValues = (form) ->
 # Builds the url on advanced search
 buildUrl = (form) ->
   page = $(form).data("target")
+
   query = "q=#{$("input[name=q][type=text]").val()}"
-  start_year = "start_year=#{$("input[name=start_year]",form).val()}"
-  end_year = "end_year=#{$("input[name=end_year]",form).val()}"
+
+  _start_year = $("input[name=start_year]", form).val()
+  _start_year = '' if _start_year == undefined
+  start_year = "start_year=#{_start_year}"
+
+  _end_year = $("input[name=end_year]", form).val()
+  _end_year = '' if _end_year == undefined
+  end_year = "end_year=#{_end_year}"
+
   regions = []
   collections = []
   topics = []
