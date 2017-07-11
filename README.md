@@ -1,24 +1,33 @@
 # Installation
 
-`docker-compose build`
-`docker-compose up`
+A standard Rails installation applies, or you can use the Dockerfile.
 
 # Requires imagemagick 6 for RMagick
-## RMagick
+## RMagick (on macOS)
 `brew install imagemagick@6 && brew link imagemagick@6 --force`
 `bundle install`
 
 # Configuration
 
-## Importing original data
-After Rails sets up the database, run:
+## Database data
+Though `rake db:schema:load` followed by `rake db:migrate` should work, it is recommended
+that you use a copy of the production database.
 
-`sqlite3 db/development.sqlite3 < ./original-data.sql`
+## Environment variables
+This project expects the following environment variables:
 
-## ElasticSearch
-1. Set up `ELASTICSEARCH_URL` environment variable as your elastcisearch end point
-2. Index / Reindex the models in elasticsearch when you switch ES servers or when you update the model
-    - Run `rake es:reindex_all` or `rake es:reindex_lessons` or `rake es:reindex_images`
+RAILS_ENV                 - Rails environment (by convention)
+ELASTICSEARCH_URL         - URI for ElasticSearch instance
+MARCHAND_DEV_DB           - Database name (if RAILS_ENV=development)
+MARCHAND_DEV_DB_USER      - Database user (if RAILS_ENV=development)
+MARCHAND_DEV_DB_PASSWORD  - Database password (if RAILS_ENV=development)
+MARCHAND_PROD_DB          - Database name (if RAILS_ENV=production)
+MARCHAND_PROD_DB_USER     - Database user (if RAILS_ENV=production)
+MARCHAND_PROD_DB_PASSWORD - Database password (if RAILS_ENV=production)
 
-## AWS
-1. Set up config/secrets.yml based on the information provided by config/secrets.example.yml
+## ElasticSearch Indexing
+If you need to force a reindex, use the given `rake` tasks:
+
+* `rake es:reindex_all`
+* `rake es:reindex_lessons`
+* `rake es:reindex_images`
