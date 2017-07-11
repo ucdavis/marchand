@@ -158,7 +158,10 @@ setModalImageDetails = (el) ->
   $("img", $("##{view}-modal .modal-header")).attr("src", imgSrc)
   $(".title", $("##{view}-modal .image-title")).html(imgTitle)
   $(".collection", $("##{view}-modal .image-title")).html(imgCollection)
-  $(".authors", $("##{view}-modal .image-title")).html("Uploaded by #{imgAuthors.join(", ")}")
+
+  if imgAuthors.length > 0
+    $(".authors", $("##{view}-modal .image-title")).html("Uploaded by #{imgAuthors.join(", ")}")
+  
   $(".card", $("##{view}-modal .list-section")).html(imgCard)
   $(".citation", $("##{view}-modal .list-section")).html(imgCitation)
 
