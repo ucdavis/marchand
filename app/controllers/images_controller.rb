@@ -13,7 +13,7 @@ class ImagesController < GalleryController
                             .where(
                               images: { featured: 1, public: 1 },
                               topics: { featured: 1 }
-                            ).order('RANDOM()').limit(FEATURED_IMAGE_LIMIT)
+                            ).order('RAND()').limit(FEATURED_IMAGE_LIMIT)
   end
 
   def index
