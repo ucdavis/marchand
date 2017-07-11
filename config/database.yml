@@ -6,6 +6,8 @@ default: &default
 development:
   adapter: mysql2
   encoding: utf8
+  host: <%= ENV['MARCHAND_DEV_DB_HOST'] %>
+  port: <%= ENV['MARCHAND_DEV_DB_PORT'] %>
   database: <%= ENV['MARCHAND_DEV_DB'] %>
   pool: 10
   username: <%= ENV['MARCHAND_DEV_DB_USER'] %>
@@ -17,10 +19,12 @@ test:
   database: db/test.sqlite3
 
 production:
-   adapter: mysql2
-   encoding: utf8
-   database: <%= ENV['MARCHAND_PROD_DB'] %>
-   pool: 10
-   username: <%= ENV['MARCHAND_PROD_DB_USER'] %>
-   password: <%= ENV['MARCHAND_PROD_DB_PASSWORD'] %>
-   reconnect: true
+  adapter: mysql2
+  encoding: utf8
+  host: <%= ENV['MARCHAND_PROD_DB_HOST'] %>
+  port: <%= ENV['MARCHAND_PROD_DB_PORT'] %>
+  database: <%= ENV['MARCHAND_PROD_DB'] %>
+  pool: 10
+  username: <%= ENV['MARCHAND_PROD_DB_USER'] %>
+  password: <%= ENV['MARCHAND_PROD_DB_PASSWORD'] %>
+  reconnect: true
