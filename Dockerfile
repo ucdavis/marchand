@@ -10,6 +10,8 @@ RUN bundle install
 
 COPY . .
 
+RUN rake assets:precompile
+
 ENV PORT 3000
 
 CMD [ "bundle", "exec", "rails", "s", "-b", "0.0.0.0" ]
