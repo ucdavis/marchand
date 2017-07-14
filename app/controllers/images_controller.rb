@@ -7,13 +7,16 @@ class ImagesController < GalleryController
   FEATURED_IMAGE_LIMIT = 24
 
   def featured
-    # Retrieve featured topics and images available to the public
-    @cards = TopicAssignment.joins(:image)
-                            .joins(:topic)
-                            .where(
-                              images: { featured: 1, public: 1 },
-                              topics: { featured: 1 }
-                            ).order('RAND()').limit(FEATURED_IMAGE_LIMIT)
+    @cards = []
+    Topic.where(featured: true).each do |topic|
+      @cards << {
+        image: Image.joins(:topics)
+                    .where(public: 1, featured: 1, topics: { id: topic.id })
+                    .order('RAND()')
+                    .first,
+        topic: topic
+      }
+    end
   end
 
   def index
