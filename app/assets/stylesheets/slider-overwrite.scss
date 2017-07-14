@@ -1,13 +1,16 @@
 .year-selector-section {
-    padding: 5px 10px 10px 10px;
-    .slider-track {
-        background: #E5E9EF !important;
-    }
-    .selected-year {
-        display: block;
-        margin-bottom: 15px;
-    }
-    .slider-selection {
-        background: #337ab7 !important;
-    }
+  padding: 5px 10px 10px 10px;
+
+  .slider-track {
+    background: #E5E9EF !important;
+  }
+
+  .selected-year {
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  .slider-selection {
+    background: #337ab7 !important;
+  }
 }

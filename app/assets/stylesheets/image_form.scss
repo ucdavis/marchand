@@ -1,149 +1,169 @@
 /* CSS Specific for _form in /views/images/_form */
 .container.edit-image {
+  padding: 0px 35px 0px 35px;
+
+  #image_start_year {
+    margin-bottom: 10px;
+  }
+
+  h5 {
+    font-weight: bold;
+  }
+
+  .panel {
+    margin-bottom: 35px !important;
+  }
+
+  .border-right {
+    border-right:1px solid #ddd;
+  }
+
+  .flex-center {
+    display: flex;
+    align-items: center;
+  }
+
+  .dropdown-toggle {
+    width: 45px;
+  }
+
+  .image-basic-information {
     padding: 0px 35px 0px 35px;
+  }
 
-    #image_start_year {
-        margin-bottom: 10px;
-    }
-    h5 {
-        font-weight: bold;
-    }
-    .panel {
-        margin-bottom: 35px !important;
-    }
-    .border-right {
-        border-right:1px solid #ddd;
-    }
-    .flex-center {
-        display: flex;
-        align-items: center;
-    }
-    .dropdown-toggle {
-        width: 45px;
-    }
-    .image-basic-information {
-        padding: 0px 35px 0px 35px;
-    }
-    .upload-image-btn {
-        display: block;
-        width: 35%;
-        padding: 5px 5px;
-        margin-top: 10px;
-        font-size: 11px;
-    }
-    .col-xs-12 {
-        margin-top: 15px;
-    }
-    .collection-dropdown {
-        width: 45%;
-    }
-    .collection-dropdown .dropdown-toggle {
-        width: 45px;
-        text-align: center !important;
-        .btn {
-            width: calc(100% - 45px);
-        }
-    }
-    .image-thumbnail {
-        width: 75%;
-        background-color: #FCFCFC;
-        border: 1px solid #EAE8E8;
-        padding: 10px 10px 10px 10px;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-    .glyphicon.glyphicon-remove {
-        font-size: 10px;
-    }
+  .upload-image-btn {
+    display: block;
+    width: 35%;
+    padding: 5px 5px;
+    margin-top: 10px;
+    font-size: 11px;
+  }
 
-    .filter-label {
-        background-color:#E5E9EF;
-        color: #494949;
-        font-weight:unset;
-        font-size: 13px;
-    }
+  .col-xs-12 {
+    margin-top: 15px;
+  }
 
-    li a .customized-checkbox span {
-        width: 90%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: block;
-    }
+  .collection-dropdown {
+    width: 45%;
+  }
 
-    .form-actions {
-        float: right;
-        padding-right: 0;
-        .btn {
-            margin-bottom: 5px;
-        }
-    }
+  .collection-dropdown .dropdown-toggle {
+    width: 45px;
+    text-align: center !important;
 
-    .border-bottom {
-        border-bottom: 1px solid #ddd;
-        padding-bottom: 35px;
-        margin-bottom: 30px;
+    .btn {
+      width: calc(100% - 45px);
     }
+  }
 
-    .border-bottom:last-child {
-        margin-bottom: 0px;
-        padding-bottom: 0px;
-        border: unset;
-    }
+  .image-thumbnail {
+    width: 75%;
+    background-color: #FCFCFC;
+    border: 1px solid #EAE8E8;
+    padding: 10px 10px 10px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
 
-    .dropdown-menu li a .customized-checkbox span:hover {
-        white-space: initial !important;
-        overflow: visible;
-        color: black;
-        display: block;
+  .glyphicon.glyphicon-remove {
+    font-size: 10px;
+  }
+
+  .filter-label {
+    background-color:#E5E9EF;
+    color: #494949;
+    font-weight:unset;
+    font-size: 13px;
+  }
+
+  li a .customized-checkbox span {
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
+
+  .form-actions {
+    float: right;
+    padding-right: 0;
+
+    .btn {
+      margin-bottom: 5px;
     }
-    li a:hover {
-        width: 100%;
-        overflow: visible;
-        background: #F8F8F8;
-        color: black;
-        }
-    .assign-btn {
-        margin-left: 15px;
-        //margin-top: 30px;
-    }
-    .permission-check-box {
+  }
+
+  .border-bottom {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 35px;
+    margin-bottom: 30px;
+  }
+
+  .border-bottom:last-child {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    border: unset;
+  }
+
+  .dropdown-menu li a .customized-checkbox span:hover {
+    white-space: initial !important;
+    overflow: visible;
+    color: black;
+    display: block;
+  }
+
+  li a:hover {
+    width: 100%;
+    overflow: visible;
+    background: #F8F8F8;
+    color: black;
+  }
+
+  .assign-btn {
+    margin-left: 15px;
+  }
+
+  .permission-check-box {
     padding-left: 0px;
-}
+  }
 
-    .permission-check-box li {
-        margin-top: 15px;
-        display: inline-block;
-        list-style: none;
-    }
+  .permission-check-box li {
+    margin-top: 15px;
+    display: inline-block;
+    list-style: none;
+  }
 
-    .permission-check-box li:first-child {
-        margin-right: 20px;
-    }
-    .btn.disable-click {
-        font-style: italic;
-        color: #B6B4B4;
-    }
-    .input-customize-tag {
-        width: 340px;
-        margin-top:30px;
-        input {
-            width: 100%;
-        }
-    }
-    .btn-assign {
-        background: #F5F5F5;
-        border: 1px solid #D8D8D8;
-        border-radius: 3px;
-        margin-top: 10px;
-        margin-left: 15px;
-    }
-    .input-section-btn-assign {
-        background: #F5F5F5;
-        border: 1px solid #D8D8D8;
-        border-radius: 3px;
-        margin-top: 10px;
-        margin-left: 15px;
-    }
+  .permission-check-box li:first-child {
+    margin-right: 20px;
+  }
 
+  .btn.disable-click {
+    font-style: italic;
+    color: #B6B4B4;
+  }
+
+  .input-customize-tag {
+    width: 340px;
+    margin-top:30px;
+
+    input {
+      width: 100%;
+    }
+  }
+
+  .btn-assign {
+    background: #F5F5F5;
+    border: 1px solid #D8D8D8;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-left: 15px;
+  }
+
+  .input-section-btn-assign {
+    background: #F5F5F5;
+    border: 1px solid #D8D8D8;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-left: 15px;
+  }
 }

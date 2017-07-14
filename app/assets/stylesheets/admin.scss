@@ -1,92 +1,93 @@
 .container.admin {
-    .notice {
-        color: white;
-        position: fixed;
-        padding: 10px;
-        margin: 10px;
+  .notice {
+    color: white;
+    position: fixed;
+    padding: 10px;
+    margin: 10px;
+    bottom: 0;
+    right: 0;
+    border-radius: 5px;
+
+    &.success {
+      background-color: #5cb85c;
+      border-color: #4cae4c;
+    }
+
+    &.failure {
+      background-color: #d9534f;
+      border-color: #d43f3a;
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  h3.title {
+    margin-top: 0;
+  }
+
+  .panel {
+    margin-top: 10px;
+    height: 500px;
+  }
+
+  .filter {
+    position: relative;
+    height: 95%;
+
+    .filter-header {
+      span {
+        font-weight: bold;
+      }
+    }
+
+    .filter-row-container {
+      height: auto;
+      max-height: 85%;
+      overflow-x: auto;
+      margin-top: 10px;
+
+      &.search {
+        position: absolute;
         bottom: 0;
-        right: 0;
-        border-radius: 5px;
+      }
 
-        &.success {
-            background-color: #5cb85c;
-            border-color: #4cae4c;
+      .filter-row {
+        padding: 5px 0;
+
+        &:hover {
+          background-color: rgb(243, 243, 243);
+          border-radius: 5px;
+          white-space: normal;
+          font-weight: bold;
         }
 
-        &.failure {
-            background-color: #d9534f;
-            border-color: #d43f3a;
-        }
-    }
-
-    a {
-        text-decoration: none;
-    }
-
-    h3.title {
-        margin-top: 0;
-    }
-
-    .panel {
-        margin-top: 10px;
-        height: 500px;
-    }
-
-    .filter {
-        position: relative;
-        height: 95%;
-
-        .filter-header {
-            span {
-                font-weight: bold;
-            }
+        .actions {
+          .glyphicon:first-child {
+            margin-right: 10px;
+          }
         }
 
-        .filter-row-container {
-            height: auto;
-            max-height: 85%;
-            overflow-x: auto;
-            margin-top: 10px;
+        span {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
 
-            &.search {
-                position: absolute;
-                bottom: 0;
-            }
-
-            .filter-row {
-                padding: 5px 0;
-
-                &:hover {
-                    background-color: rgb(243, 243, 243);
-                    border-radius: 5px;
-                    white-space: normal;
-                    font-weight: bold;
-                }
-
-                .actions {
-                    .glyphicon:first-child {
-                        margin-right: 10px;
-                    }
-                }
-
-                span {
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    &:hover {
-                        white-space: normal;
-                    }
-                }
-            }
+          &:hover {
+            white-space: normal;
+          }
         }
+      }
     }
+  }
 
-    a {
-        color: #494949;
-    }
+  a {
+    color: #494949;
+  }
 
-    i:hover {
-        cursor: pointer;
-        color: black;
-    }
+  i:hover {
+    cursor: pointer;
+    color: black;
+  }
 }

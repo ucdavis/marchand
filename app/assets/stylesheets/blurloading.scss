@@ -2,13 +2,13 @@
   position: relative;
   overflow: hidden;
   animation-name: blackout;
-    animation-duration: 2s;
+  animation-duration: 2s;
 }
 
 .image-placeholder img {
-    animation-name: blur;
-    animation-duration: 2s;
-    transition: opacity 1s;
+  animation-name: blur;
+  animation-duration: 2s;
+  transition: opacity 1s;
 }
 
 .image-placeholder img {
@@ -16,16 +16,17 @@
 }
 
 @keyframes blackout {
-    0% { background-color: black; opacity: 0; }
+  0% { background-color: black; opacity: 0; }
   50% { background-color: black; opacity: 0.5;}
   100% { background-color: black; opacity: 1; }
 }
 
 @keyframes blur {
-    0% { filter: blur(10px); }
+  0% { filter: blur(10px); }
   50% { filter: blur(5px); }
   100% {filter: blur(0px); }
 }
+
 .img-small {
   filter: blur(50px);
   /* this is needed so Safari keeps sharp edges */
