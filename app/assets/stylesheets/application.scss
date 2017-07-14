@@ -6,41 +6,42 @@
  *= require_self
  */
 
- * {
-   box-sizing: border-box;
- }
+* {
+  box-sizing: border-box;
+}
 
- body {
-     height: 100vh;
- }
+body {
+  // height: 100vh;
+}
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 input {
-    outline: none !important;
-    box-shadow: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 ul.inline {
-    margin-top: 10px;
+  margin-top: 10px;
 
-    li {
-        display: inline;
-        a {
-            text-decoration: none;
+  li {
+    display: inline;
 
-            &:hover {
-                color: #CCD4E1 !important;
-            }
-        }
+    a {
+      text-decoration: none;
+
+      &:hover {
+        color: #CCD4E1 !important;
+      }
     }
+  }
 }
 
 .container {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .tooltip {
@@ -54,234 +55,226 @@ ul.inline {
 }
 
 .flex-row-wrap {
-    display: flex;
-    //width: 100%;
-    //height: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 20px;
 
-    &.featured {
-        justify-content: center;
-        margin-right: 0;
-    }
+  &.featured {
+    justify-content: center;
+    margin-right: 0;
+  }
 }
 
 button {
-    outline: none !important;
+  outline: none !important;
 }
 
 h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-    line-height: unset;
+  line-height: unset;
 }
 
 body {
-    font: 14px/20px 'Arimo', sans-serif;
-    color: #494949;
-    width: 100%;
-    float: unset !important;
+  font: 14px/20px 'Arimo', sans-serif;
+  color: #494949;
+  width: 100%;
+  float: unset !important;
 }
 
 textarea {
-    box-shadow: unset !important;
+  box-shadow: unset !important;
 }
 
 .input-group-addon {
-    font-size: 13px !important;
+  font-size: 13px !important;
 }
 
 .dropdown-search {
-    background: #f3f3f3 !important;
-    border: 0 !important;
-    box-shadow: inset 0 1px 0;
-    border-radius: 3px;
-    padding: 5px 5px;
-    margin-bottom: 0px !important;
-    font-family: "Helvetica Neue", Helvetica, "Noto Sans", sans-serif;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    -moz-box-shadow: inset 0 1px 0 rgba(0,0,0,.03);
-    -webkit-box-shadow: inset 0 1px 0 rgba(0,0,0,.03);
-    box-shadow: inset 0 1px 0 rgba(0,0,0,.03);
+  background: #f3f3f3 !important;
+  border: 0 !important;
+  box-shadow: inset 0 1px 0;
+  border-radius: 3px;
+  padding: 5px 5px;
+  margin-bottom: 0px !important;
+  font-family: "Helvetica Neue", Helvetica, "Noto Sans", sans-serif;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-shadow: inset 0 1px 0 rgba(0,0,0,.03);
+  -webkit-box-shadow: inset 0 1px 0 rgba(0,0,0,.03);
+  box-shadow: inset 0 1px 0 rgba(0,0,0,.03);
 }
 
 .select2-search {
-    padding: 12px 15px;
-    padding-bottom: 12px;
-    padding-top: 12px;
-    border-bottom: 1px solid #e5e5e5;
-
+  padding: 12px 15px;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .dropdown-list {
-    height: 235px;
-    overflow-y: auto;
-    padding-top: 0px;
-    width: unset;
-    font-size: 14px;
-    text-align: left;
-    list-style: none;
-    padding-left: 0px;
-    overflow-x: hidden;
+  height: 235px;
+  overflow-y: auto;
+  padding-top: 0px;
+  width: unset;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  padding-left: 0px;
+  overflow-x: hidden;
 }
 
 .dropdown-list input {
-    right: 0;
-    opacity: 0;
-    z-index: 99999;
-    position: absolute;
+  right: 0;
+  opacity: 0;
+  z-index: 99999;
+  position: absolute;
 }
 
 .dropdown-list li a {
-    display: block;
-    padding: 5px 20px;
-    clear: both;
-    font-weight: 400;
-    line-height: 1.42857143;
-    color: #333;
-    white-space: nowrap;
+  display: block;
+  padding: 5px 20px;
+  clear: both;
+  font-weight: 400;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
 }
 
 .dropdown-list li:first-child a {
-    padding-top: 6px !important;
+  padding-top: 6px !important;
 }
 
 .dropdown-list li a:hover {
-text-decoration: none;
+  text-decoration: none;
 }
 
 .dropdown-menu {
-    overflow-y: unset !important;
-    padding-top: 0px;
-    width: 500px;
-    font-size: 14px;
-    text-align: left;
+  overflow-y: unset !important;
+  padding-top: 0px;
+  width: 500px;
+  font-size: 14px;
+  text-align: left;
 }
 
 .input-search-icon {
-    position: absolute;
-    top: 13px;
-    right: 16px;
-    background: #f3f3f3 !important;
-    padding: 7px;
-    border-radius: 3px;
-    cursor: pointer;
+  position: absolute;
+  top: 13px;
+  right: 16px;
+  background: #f3f3f3 !important;
+  padding: 7px;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 .dropdown-full-width .input-search-icon {
-    left: 454px;
+  left: 454px;
 }
 
 .dropdown-full-width .customized-checkbox input {
-    position: absolute;
-    right: 23px;
-    top: 5px;
-    z-index: 99999;
-    transform: scale(2);
+  position: absolute;
+  right: 23px;
+  top: 5px;
+  z-index: 99999;
+  transform: scale(2);
 }
 
 .dropdown-full-width .customized-checkbox .topic-search {
-    position: absolute;
-    right: 3px;
-    top: 0px;
-    z-index: 99999;
+  position: absolute;
+  right: 3px;
+  top: 0px;
+  z-index: 99999;
 }
 
 .dropdown-menu li:last-child {
-    padding: 0px !important;
+  padding: 0px !important;
 }
 
 .advanced-search-collapse {
-    width: 300px;
-    display: block;
-    margin: auto;
+  width: 300px;
+  display: block;
+  margin: auto;
 }
 
-
 .toggle {
-    width: 45px !important;
-    height: 25px !important;
-    padding: unset !important;
-    float: right;
+  width: 45px !important;
+  height: 25px !important;
+  padding: unset !important;
+  float: right;
 }
 
 .toggle.btn {
-    min-width: 100px !important;
+  min-width: 100px !important;
 }
 
 .toggle .toggle-on {
-    padding: 3px 16px 3px 3px !important
+  padding: 3px 16px 3px 3px !important
 }
 
 .toggle .toggle-off {
-    padding: 3px 3px 3px 13px !important
+  padding: 3px 3px 3px 13px !important
 }
 
-/* customize checkbox*/
-
-
-
-/* SQUARED THREE */
 .customized-checkbox {
-	width: 100%;
-	position: relative;
+  width: 100%;
+  position: relative;
 }
 
 .customized-checkbox label {
-	cursor: pointer;
-	position: absolute;
-	width: 19px;
-    margin-bottom: 0px;;
-	height: 19px;
-	top: 0;
-    right: 0;
-	border-radius: 4px;
-    background-color: white;
-    border: 1px solid #494949;
+  cursor: pointer;
+  position: absolute;
+  width: 19px;
+  margin-bottom: 0px;;
+  height: 19px;
+  top: 0;
+  right: 0;
+  border-radius: 4px;
+  background-color: white;
+  border: 1px solid #494949;
 }
 
 .customized-checkbox label:after {
-	opacity: 0;
-	content: '';
-	position: absolute;
-	width: 9px;
-	height: 5px;
-	background: transparent;
-	top: 6px;
-	left: 4px;
-	border: 3px solid #12AD06;
-	border-top: none;
-	border-right: none;
+  opacity: 0;
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 5px;
+  background: transparent;
+  top: 6px;
+  left: 4px;
+  border: 3px solid #12AD06;
+  border-top: none;
+  border-right: none;
 
-	-webkit-transform: rotate(-45deg);
-	-moz-transform: rotate(-45deg);
-	-o-transform: rotate(-45deg);
-	-ms-transform: rotate(-45deg);
-	transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 .marchand-profile {
-    width: 60% !important;
+  width: 90% !important;
+  min-width: 193px;
 }
 
 .marchand-logo {
-    width: 80% !important;
-    margin-top: 10px;
-    float: right;
+  width: 80% !important;
+  margin-top: 10px;
+  float: right;
 }
 
 .customized-checkbox input[type=checkbox]:checked + label:after {
-	opacity: 1;
+  opacity: 1;
 }
 
 .customized-checkbox input {
-    position: absolute;
-    top: 0;
-    right:3px;
+  position: absolute;
+  top: 0;
+  right:3px;
 }
 
 .disable-click {
-    pointer-events: none;
+  pointer-events: none;
 }

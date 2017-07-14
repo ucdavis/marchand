@@ -1,159 +1,57 @@
 <div class="search-section">
-    <form name="filter">
-        <div class="input-group keyword-search">
-            <input name="q" class="form-control" placeholder="Search" type="text" value="<%= params[:q] %>">
-            <span class="input-group-addon" style="border-left: 1px solid #ccc;">
-                <button type="submit">
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
-            </span>
-        </div>
-        <!--<a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            <span class="advanced-search">Advanced Search ...</span>
-        </a>
-        <div class="collapse" id="collapseExample">
-            <div class="advanced-search-section">
-                <div class="btn-group dropdown-half-width">
-                    <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);">Region</button>
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu" data-type="menu">
-                        <div class="select2-search" style="padding: 12px 15px;">
-                            <span class="glyphicon glyphicon-search input-search-icon"></span>
-                            <input class="dropdown-search" type="text" data-type="search-box">
-                        </div>
-                        <ul class="dropdown-list" data-type="list" data-target="span">
-                            <% @regions.each do |region| %>
-                            <li>
-                                <a>
-                                    <div class="customized-checkbox">
-                                        <span><%= region.title %></span>
-                                        <input id="customized-checkbox" type="checkbox" value="<%= region.id %>" name="region">
-                                        <label for="customized-checkbox"></label>
-                                    </div>
-                                </a>
-                            </li>
-                            <% end %>
-                        </ul>
-                    </div>
-                </div>
-                <div class="btn-group dropdown-half-width">
-                    <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);">Collection</button>
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu" data-type="menu">
-                        <div class="select2-search" style="padding: 12px 15px;">
-                            <span class="glyphicon glyphicon-search input-search-icon"></span>
-                            <input class="dropdown-search" type="text" data-type="search-box">
-                        </div>
-                        <ul class="dropdown-list" data-type="list" data-target="span">
-                            <% @collections.each do |collection| %>
-                            <li>
-                                <a>
-                                    <div class="customized-checkbox">
-                                        <span><%= collection.title %></span>
-                                        <input type="checkbox" value="<%= collection.id %>" id="customized-checkbox" name="collection">
-                                        <label for="customized-checkbox"></label>
-                                    </div>
-                                </a>
-                            </li>
-                            <% end %>
-                        </ul>
-                    </div>
-                </div>
-                <div class="btn-group dropdown-full-width">
-                    <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);">Topic/Theme</button>
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu" data-type="menu">
-                        <div class="select2-search" style="padding: 12px 15px;">
-                            <span class="glyphicon glyphicon-search input-search-icon"></span>
-                            <input class="dropdown-search" type="text" data-type="search-box">
-                        </div>
-                        <ul class="dropdown-list" data-type="list" data-target="span">
-                            <% @topics.each do |topic| %>
-                            <li>
-                                <a>
-                                    <div class="customized-checkbox">
-                                        <span><%= topic.title %></span>
-                                        <input class="topic-search" type="checkbox" value="<%= topic.id %>" name="topic">
-                                        <label for="customized-checkbox"></label>
-                                    </div>
-                                </a>
-                            </li>
-                            <% end %>
-                        </ul>
-                    </div>
-                </div>
-                <div class="btn-group dropdown-full-width">
-                    <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);">California Standard</button>
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu" data-type="menu">
-                        <div class="select2-search">
-                            <span class="glyphicon glyphicon-search input-search-icon"></span>
-                            <input class="dropdown-search" type="text" data-type="search-box">
-                        </div>
-                        <ul class="dropdown-list" data-type="list" data-target="a">
-                            <% @ca_standards.each do |standard| %>
-                            <li>
-                                <div>
-                                    <div class="customized-checkbox">
-                                        <a style="padding-right:50px !important">
-                                            <%= standard.label %>
-                                        </a>
-                                        <input type="checkbox" value="<%= standard.id %>" id="customized-checkbox" name="calstandard">
-                                        <label for="customized-checkbox" style="right:2%; margin-top:5px !important; margin-right:10px;"></label>
-                                    </div>
-                                </div>
-                            </li>
-                            <% end %>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div> --> <!-- .collapse -->
-    </form>
+  <form name="filter">
+    <div class="input-group keyword-search">
+      <input name="q" class="form-control" placeholder="Search" type="text" value="<%= params[:q] %>">
+      <span class="input-group-addon" style="border-left: 1px solid #ccc;">
+        <button type="submit">
+          <span class="glyphicon glyphicon-search"></span>
+        </button>
+      </span>
+    </div>
+  </form>
 </div>
 
 <div class="container marchand-description-container">
-    <div class="row marchand-description-content">
-        <div class="col-md-4">
-            <%= image_tag("Marchand.gif", :class => "center-block marchand-profile") %>
-        </div>
-        <div class="col-md-7">
-            <div>
-                <h3>Marchand Archive</h3>
-                <p>
-                    The Marchand Archive is a collection of more than 15,000 images and a growing number of document-based lesson plans. This site brings together the original <b><i>Adventures in Roland Marchand’s File Cabinent (1999)</i></b> and the <b><i>Marchand Image Collection (2001)</i></b>. In 2007, with funding from the National Endowment for the Humanities, we expanded the image collection with contributions from UC Davis History Department faculty. Many of these images, digitized from slides, are not available elsewhere. The expanding collection of lesson plans developed by teacher leaders, graduate students, and staff, encourage students to apply their analytical skills to a set of primary sources from which they can deduce and explain events from the past.
-                </p>
-                <p>
-                    In July 2017, with support from the UC Davis Division of Social Sciences, we launched this updated platform to make using the collection much easier. Please share with us how you are using the collection and contact us if you have any difficulties finding materials you have used in the past.
-                </p>
-            </div>
-        </div>
+  <div class="row marchand-description-content">
+    <div class="col-md-3">
+      <%= image_tag("Marchand.gif", :class => "center-block marchand-profile") %>
     </div>
+    <div class="col-md-9">
+      <div>
+        <h3>Marchand Archive</h3>
+        <p>
+          The Marchand Archive is a collection of more than 15,000 images and a growing number of document-based lesson plans. This site brings together the original <b><i>Adventures in Roland Marchand’s File Cabinent (1999)</i></b> and the <b><i>Marchand Image Collection (2001)</i></b>. In 2007, with funding from the National Endowment for the Humanities, we expanded the image collection with contributions from UC Davis History Department faculty. Many of these images, digitized from slides, are not available elsewhere. The expanding collection of lesson plans developed by teacher leaders, graduate students, and staff, encourage students to apply their analytical skills to a set of primary sources from which they can deduce and explain events from the past.
+        </p>
+        <p>
+          In July 2017, with support from the UC Davis Division of Social Sciences, we launched this updated platform to make using the collection much easier. Please share with us how you are using the collection and contact us if you have any difficulties finding materials you have used in the past.
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="container image-card-group">
-    <h3 class="page-title text-center">Featured Collections</h3>
-    <div class="flex-row-wrap featured">
-        <% @cards.each do |card| %>
-        <% thumb = get_thumbnail(card[:image]) %>
-        <div class="image-card">
-            <%= link_to image_tag(thumb), images_url(:bestof => true, :topic_id => card[:topic].id) %>
-            <h5 class="text-center">
-                <%= card[:topic].title %>
-            </h5>
-        </div>
-        <% end %>
+  <h3 class="page-title text-center">Featured Collections</h3>
+  <div class="flex-row-wrap featured">
+    <% @cards.each do |card| %>
+    <% thumb = get_thumbnail(card[:image]) %>
+    <div class="image-card">
+      <%= link_to image_tag(thumb), images_url(:bestof => true, :topic_id => card[:topic].id) %>
+      <h5 class="text-center">
+        <%= card[:topic].title %>
+      </h5>
     </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container marchand-description-container" style="margin-bottom: 4em;">
+  <div class="row marchand-description-content">
+    <div class="col-md-12">
+      <h3>About Roland</h3>
+      <p>
+        Roland Marchand, an internationally acclaimed scholar and author of <i>Advertising the American Dream</i> and <i>Creating the Corporate Soul</i>, co-founded the History Project at UC Davis to improve history education, kindergarten through university. Materials from his own award-winning teaching provided the basis for the original online collection.
+      </p>
+    </div>
+  </div>
 </div>
