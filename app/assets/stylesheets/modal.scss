@@ -1,4 +1,4 @@
-.horizontal-modal {
+.horizontal-modal,.vertical-modal {
   h3 {
     line-height: 1.1 !important;
   }
@@ -7,8 +7,12 @@
     list-style: none !important;
     padding-left: 0px !important;
   }
+}
 
+.horizontal-modal {
   .modal-header {
+    padding: 0px !important;
+
     .close {
       opacity: 0.5 !important;
       margin: 5px !important;
@@ -60,10 +64,13 @@
         }
       }
     }
-  }
-  
-  .modal-header {
-    padding: 0px !important;
+
+    .image-placeholder {
+      img {
+        width: 100% !important;
+      }
+    }
+
   }
 
   .modal-body {
@@ -92,24 +99,17 @@
 
 
 .vertical-modal {
-  h3 {
-    line-height: 1.1 !important;
-  }
-
-  ul {
-    list-style: none !important;
-    padding-left: 0px !important;
-  }
-
   .modal-header {
     border: unset;
     min-width: 30%;
     background-color: black;
     width: 100%;
+    padding: 0px !important;
 
     .button-group {
       margin-left: 20px;
       margin-right: 20px;
+      margin-left: 5px !important;
 
       button {
         margin: 10px 0px 10px 5px !important;
@@ -137,17 +137,13 @@
         }
       }
     }
-  }
-
-  .modal-header {
-    padding: 0px !important;
-
-    .button-group {
-      margin-left: 5px !important;
-    }
 
     .image-placeholder {
       max-height: 600px;
+
+      img {
+        width: 100% !important;
+      }
     }
   }
 

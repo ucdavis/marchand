@@ -25,17 +25,21 @@
     <div class="row flex-row-wrap">
 
       <% if admin? %>
-        <form name="new-image" method="GET" action="/images/new" class="col-xs-3 image-card-new">
-          <input type="hidden" name="image[title]">
-          <input type="hidden" name="image[topic_ids][]">
-          <input type="hidden" name="image[cal_standard_ids][]">
-          <input type="hidden" name="image[region_ids][]">
-          <input type="hidden" value="submit">
-          <div class="image-card-add">
-            <i class="glyphicon glyphicon-plus"></i>
-          </div>
-          <h5 class="text-center title">Add New Image</h5>
-        </form>
+        <div class="col-xs-3 image-card">
+          <form name="new-image" method="GET" action="/images/new">
+            <input type="hidden" name="image[title]">
+            <input type="hidden" name="image[topic_ids][]">
+            <input type="hidden" name="image[cal_standard_ids][]">
+            <input type="hidden" name="image[region_ids][]">
+            <input type="hidden" value="submit">
+
+            <div class="image-card-add">
+              <i class="glyphicon glyphicon-plus"></i>
+            </div>
+
+            <h5 class="text-center title">Add New Image</h5>
+          </form>
+        </div>
       <% end %>
 
       <% @images.each do |image| %>
