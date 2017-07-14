@@ -63,52 +63,51 @@ body {
 }
 
 .navbar {
-    border-radius: 0px;
-    min-height: 40px;
+  border-radius: 0px;
+  min-height: 40px;
 }
 
 .navbar-form input {
-    font: 14px/20px 'Arimo', sans-serif;
-    letter-spacing: normal;
-    -moz-appearance: searchfield;
+  font: 14px/20px 'Arimo', sans-serif;
+  letter-spacing: normal;
+  -moz-appearance: searchfield;
 }
 
 .nav li a:hover {
-    background-color: unset !important;
-    color: #CCD4E1 !important;
+  background-color: unset !important;
+  color: #CCD4E1 !important;
 }
 
 .nav-pages {
-    background-color: #C99700;
-    height: 66px;
-}
+  background-color: #C99700;
 
-.nav-pages .nav {
+  .nav {
     display: inline-block;
     padding-top: 26px;
-}
+  }
 
-.nav-pages .nav li {
+  .nav li {
     float: left;
     padding-left: 25px;
     padding-right: 25px;
-}
+  }
 
-.nav-pages .nav li a {
+  .nav li a {
     padding: 0px !important;
     display: inline-block;
     color: white;
     font: 18px/16px 'Arimo', sans-serif;
-}
+  }
 
-.nav-pages .nav li a:hover {
+  .nav li a:hover {
     color: #002855 !important;
+  }
 }
 
 .cas-login {
-    padding: 10px 15px 10px 15px;
-    margin-right: 140px;
-    color: white;
+  padding: 10px 15px 10px 15px;
+  margin-right: 140px;
+  color: white;
 }
 
 
