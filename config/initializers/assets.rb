@@ -8,4 +8,6 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-# Rails.application.config.assets.precompile += %w( search.js )
+Rails.application.config.assets.precompile += %w[glyphicons-halflings-regular.eot glyphicons-halflings-regular.svg
+                                                 glyphicons-halflings-regular.ttf glyphicons-halflings-regular.woff
+                                                 glyphicons-halflings-regular.woff2]
