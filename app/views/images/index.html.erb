@@ -43,8 +43,8 @@
       <% end %>
 
       <% @images.each do |image| %>
-        <% thumb = get_thumbnail(image) %>
-        <% thumb = "https://s3-us-west-1.amazonaws.com/marchand/thumb_IMG0000.jpg" unless thumb %>
+        <%# thumb = get_thumbnail(image) %>
+        <%# thumb = "https://s3-us-west-1.amazonaws.com/marchand/thumb_IMG0000.jpg" unless thumb %>
         <% view = image.view.present? ? image.view : "landscape" %>
 
         <div class="col-xs-3 image-card"
@@ -63,7 +63,7 @@
             data-citation="<%= image.citation %>"
             data-id="<%= image.id %>">
 
-          <img src="<%= thumb %>" />
+          <img src="<%= image.thumbnail %>" />
 
           <h5 class="text-center title"><%= image.title %></h5>
         </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170616194402) do
+ActiveRecord::Schema.define(version: 20170717213344) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "url"
@@ -58,20 +58,23 @@ ActiveRecord::Schema.define(version: 20170616194402) do
   end
 
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string  "file",          limit: 96,    default: "", null: false
-    t.string  "thumbnail",     limit: 128,   default: "", null: false
-    t.string  "title",                       default: "", null: false
-    t.text    "card",          limit: 65535
-    t.text    "citation",      limit: 65535
-    t.integer "collection_id",               default: 0,  null: false
-    t.integer "public",                      default: 0,  null: false
-    t.integer "views",                       default: 0,  null: false
-    t.integer "featured",                    default: 0,  null: false
-    t.text    "notes",         limit: 65535
-    t.text    "s3",            limit: 65535
-    t.string  "view"
-    t.integer "start_year"
-    t.integer "end_year"
+    t.string  "thumbnail",        limit: 128,   default: "", null: false
+    t.string  "title",                          default: "", null: false
+    t.text    "card",             limit: 65535
+    t.text    "citation",         limit: 65535
+    t.integer "collection_id",                  default: 0,  null: false
+    t.integer "public",                         default: 0,  null: false
+    t.integer "featured",                       default: 0,  null: false
+    t.text    "notes",            limit: 65535
+    t.text    "original",         limit: 65535
+    t.string  "orientation"
+    t.string  "preview"
+    t.integer "preview_width"
+    t.integer "preview_height"
+    t.integer "thumbnail_width"
+    t.integer "thumbnail_height"
+    t.integer "original_width"
+    t.integer "original_height"
     t.index ["title"], name: "idx_images_searchable", using: :btree
   end
 

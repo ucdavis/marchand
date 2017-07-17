@@ -1,15 +1,15 @@
 require 'aws-sdk'
 require 'json'
 
-module AwsHelper
+module S3Helper
   # Returns true if we created a resource to our S3 instance successfully
-  def connected?
+  def self.connected?
     !@s3resrc.nil? || !@s3client.nil?
   end
 
   # Establish a connection to S3 instance and sets @s3
   #
-  def establish_connection
+  def self.establish_connection
     # Configure AWS
     Aws.config.update(
       region: Rails.application.secrets.s3_region,
@@ -26,7 +26,7 @@ module AwsHelper
   #
   # @return - S3 Link to uploaded thumbnail
   # TODO: Handle errors such as unable to upload, could not connect to aws etc.
-  def upload_new_thumbnail(image_path)
+  def self.upload_new_thumbnail(image_path)
     # Connect and configure to aws if not already connected
     establish_connection unless connected?
 
@@ -35,7 +35,7 @@ module AwsHelper
       image = Magick::Image.read(image_path).first
       image = image.resize_to_fill(275, 190)
     rescue => error
-      File.open("#{Rails.root}/site_error.txt", 'a+') { |f| f.write(error) }
+      STDERR.puts error
       return nil
     end
 
@@ -49,13 +49,13 @@ module AwsHelper
   # Get an object from s3 bucket
   # @param key - filename
   # @return - nil if object does not exist
-  def get_object(key)
+  def self.get_object(key)
     establish_connection unless connected?
 
     @s3client.get_object(bucket: Rails.application.secrets.s3_bucket, key: key)
   end
 
-  def upload_image(key, image)
+  def self.upload_image(key, image)
     establish_connection unless connected?
 
     obj = @s3resrc.bucket(Rails.application.secrets.s3_bucket)
@@ -65,17 +65,7 @@ module AwsHelper
     obj
   end
 
-  def upload_file(key, file_blob)
-    establish_connection unless connected?
-
-    obj = @s3resrc.bucket(Rails.application.secrets.s3_bucket)
-    obj = obj.object(key)
-    obj.put(body: file_blob, acl: 'public-read')
-
-    obj
-  end
-
-  def remove_image(key)
+  def self.remove_image(key)
     establish_connection unless connected?
 
     @s3client.delete_object(bucket: Rails.application.secrets.s3_bucket, key: key)

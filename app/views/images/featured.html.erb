@@ -34,9 +34,8 @@
   <h3 class="page-title text-center">Featured Collections</h3>
   <div class="flex-row-wrap featured">
     <% @cards.each do |card| %>
-    <% thumb = get_thumbnail(card[:image]) %>
     <div class="image-card">
-      <%= link_to image_tag(thumb), images_url(:bestof => true, :topic_id => card[:topic].id) %>
+      <%= link_to image_tag(card[:image].thumbnail), images_url(:bestof => true, :topic_id => card[:topic].id) %>
       <h5 class="text-center">
         <%= card[:topic].title %>
       </h5>
