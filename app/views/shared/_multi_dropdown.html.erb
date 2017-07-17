@@ -5,19 +5,31 @@
 <% title = defined?(klass.readable_class_name) ? klass.readable_class_name : klass.name %>
 <% column = "#{klass.name.underscore}_ids".to_sym %>
 
-<h5><%= title %></h5>
+<h5><%= title.pluralize %></h5>
 <div class="row border-bottom">
     <div class="col-xs-6 border-right">
         <div class="btn-group">
-            <button type="button" class="btn btn-default disable-click" style="width: calc(100% - 45px);">Choose <%= title.downcase.pluralize %></button>
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div id="<%= klass.name %>" class="customized-search-group" style="width: calc(100% - 45px);
+            min-height: 35px;
+            background-color: #fff;
+            text-align: left;
+            display: inline-block;
+            padding: 2px 12px;
+            padding-bottom: 5px;
+            margin-bottom: 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            float: left;"></div>
+            <button type="button" class="btn btn-default dropdown-toggle" style="border-left: none; min-height: 35px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu" data-type="menu">
                 <div class="select2-search">
                     <span class="glyphicon glyphicon-search input-search-icon"></span>
-                    <input class="dropdown-search" type="text" data-type="search-box">
+                    <input class="dropdown-search" type="text" data-type="search-box" />
                 </div>
 
                 <ul class="dropdown-list" data-type="list" data-target="span">
@@ -38,7 +50,4 @@
             </div>
         </div>
     </div>
-
-    <!-- Filter tags go here -->
-    <div id="<%= klass.name %>" class="col-xs-6 customized-search-group" style="padding-left:45px;padding-right:45px;"></div>
 </div>

@@ -14,11 +14,6 @@
             <h5>Collection</h5>
             <%= f.select :collection_id, Collection.all.collect { |c| [c.name, c.id] }, include_blank: true %>
           </div>
-          <!-- <div class="col-xs-6 row">
-            <h5>Dates</h5>
-            <%#= f.number_field :start_year, class: "form-control ", placeholder: "Start Year" %>
-            <%#= f.number_field :end_year, class: "form-control", placeholder: "End Year" %>
-          </div> -->
           <div class="col-xs-12">
             <%= f.check_box :public %>
             <%= label_tag :image_public, "Public" %>
