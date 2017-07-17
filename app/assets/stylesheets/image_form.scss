@@ -32,7 +32,7 @@
   }
 
   .upload-image-btn {
-    display: block;
+    display: inline-block;
     width: 35%;
     padding: 5px 5px;
     margin-top: 10px;
@@ -58,11 +58,16 @@
 
   .image-thumbnail {
     width: 75%;
+    text-align: center;
     background-color: #FCFCFC;
     border: 1px solid #EAE8E8;
     padding: 10px 10px 10px 10px;
     cursor: pointer;
     border-radius: 5px;
+
+    img {
+      width: 100%;
+    }
   }
 
   .glyphicon.glyphicon-remove {

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717213344) do
+ActiveRecord::Schema.define(version: 20170717224503) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "url"
@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 20170717213344) do
     t.integer "featured",                       default: 0,  null: false
     t.text    "notes",            limit: 65535
     t.text    "original",         limit: 65535
-    t.string  "orientation"
     t.string  "preview"
     t.integer "preview_width"
     t.integer "preview_height"

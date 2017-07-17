@@ -21,7 +21,7 @@
         <div class="row top-header">
           <ul class="pull-right inline">
             <% if session[:cas_user].present? %>
-            <li><a href="/admin" class="cas-login">Control Panel</a></li>
+            <li><a href="/admin" class="cas-login">Admin</a></li>
             <li><a href="/logout" class="cas-login">CAS Logout</a></li>
             <% else %>
             <li><a href="/login" class="cas-login">CAS Login</a></li>

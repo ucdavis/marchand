@@ -20,6 +20,7 @@ namespace :images do
         puts "Error while reading original image for ID #{img.id} at #{img.original}"
         STDERR.puts e
         puts 'Skipping ...'
+        next
       end
 
       if image

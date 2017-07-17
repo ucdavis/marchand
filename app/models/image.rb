@@ -45,4 +45,9 @@ class Image < ActiveRecord::Base
       }
     )
   end
+
+  def orientation
+    return "portrait" if original_width && original_width < original_height
+    return "landscape"
+  end
 end
