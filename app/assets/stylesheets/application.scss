@@ -10,10 +10,6 @@
   box-sizing: border-box;
 }
 
-body {
-  // height: 100vh;
-}
-
 a {
   text-decoration: none;
   color: inherit;
@@ -84,10 +80,6 @@ body {
 
 textarea {
   box-shadow: unset !important;
-}
-
-.input-group-addon {
-  font-size: 13px !important;
 }
 
 .dropdown-search {
@@ -172,12 +164,6 @@ textarea {
   padding: 0px !important;
 }
 
-.advanced-search-collapse {
-  width: 300px;
-  display: block;
-  margin: auto;
-}
-
 .toggle {
   width: 45px !important;
   height: 25px !important;
@@ -233,11 +219,6 @@ textarea {
   -o-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
   transform: rotate(-45deg);
-}
-
-.marchand-profile {
-  width: 90% !important;
-  min-width: 193px;
 }
 
 .marchand-logo {

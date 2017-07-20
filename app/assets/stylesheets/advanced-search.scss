@@ -119,3 +119,16 @@
 .dropdown-full-width .dropdown-toggle {
   width: 100%;
 }
+
+.advanced-search {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  color: #494949;
+}
+
+.advanced-search:hover {
+  color: #002855;
+  text-decoration: underline;
+}
