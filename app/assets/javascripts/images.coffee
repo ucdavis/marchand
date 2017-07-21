@@ -143,18 +143,22 @@ searchFilter = (menu, target) ->
 # Changes the data in a modal
 # @param el - div containing information of the picture
 setModalImageDetails = (el) ->
-  view = $(el).data("view")
-  imgSrc = $(el).data("src")
-  imgTitle = $(".title", $(el)).html()
-  imgAuthors = $(el).data("authors")
+  view = $(el).data('view')
+  imgSrcPreview = $(el).data('src-preview')
+  imgSrcOriginal = $(el).data('src-original')
+  imgTitle = $('.title', $(el)).html()
+  imgAuthors = $(el).data('authors')
   imgCollection = "From #{$(el).data('collection')} collection"
-  imgCard = $(el).data("card")
-  imgCitation = $(el).data("citation")
-  imgTopics = $(el).data("topics")
-  imgRegions = $(el).data("regions")
-  imgCalStandards = $(el).data("cal-standards")
-  imgNatStandards = $(el).data("nat-standards")
-  imgId = $(el).data("id")
+  imgCard = $(el).data('card')
+  imgCitation = $(el).data('citation')
+  imgTopics = $(el).data('topics')
+  imgRegions = $(el).data('regions')
+  imgCalStandards = $(el).data('cal-standards')
+  imgNatStandards = $(el).data('nat-standards')
+  imgId = $(el).data('id')
+
+  # Download button
+  $('#download-image', $("##{view}-modal .modal-header")).attr('href', imgSrcOriginal)
 
   # Edit Button
   $(".btn-edit", $("##{view}-modal .modal-header")).attr("href", "/images/#{imgId}/edit")
@@ -163,7 +167,7 @@ setModalImageDetails = (el) ->
   # So we clear it first to avoid having the wrong picutre in a modal
   $("img", $("##{view}-modal .modal-header")).attr("src", "")
 
-  $("img", $("##{view}-modal .modal-header")).attr("src", imgSrc)
+  $("img", $("##{view}-modal .modal-header")).attr("src", imgSrcPreview)
   $(".title", $("##{view}-modal .image-title")).html(imgTitle)
   $(".collection", $("##{view}-modal .image-title")).html(imgCollection)
 
@@ -193,16 +197,17 @@ setModalImageDetails = (el) ->
     if natStandard.length > 0
       $(".nat-standards", $("##{view}-modal .list-section")).append("<li>#{natStandard}</li>")
 
-# Sets up event handlers for all future image modals
-setupModalEvents = () ->
-  # Download Button
-  $('#download-image').on 'click', (e) ->
-    imgSrc = $(window.modalImage).data('src')
-    key = imgSrc.split('/').pop()
-    tmp = window.open "download/#{key}"
+# # Sets up event handlers for all future image modals
+# setupModalEvents = () ->
+#   # Download Button
+#   $('#download-image').on 'click', (e) ->
+#     debugger
+#     imgSrc = $(window.modalImage).data('src-original')
+#     key = imgSrc.split('/').pop()
+#     tmp = window.open "download/#{key}"
 
 $(document).ready () ->
-  setupModalEvents()
+  #setupModalEvents()
 
   $('.upload-image-btn').on 'change', (e) ->
       previewImage(this)

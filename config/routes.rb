@@ -4,8 +4,6 @@ Rails.application.routes.draw do
   get '/admin', to: 'site#admin'
   post '/admin', to: 'site#admin'
 
-  get '/download/:key', to: 'site#download'
-
   get '/login', to: 'site#login'
   get '/logout', to: 'site#logout'
 
@@ -21,5 +19,4 @@ Rails.application.routes.draw do
   resources :regions
   resources :cal_standards
   resources :nat_standards
-  # resources :lessons
 end
