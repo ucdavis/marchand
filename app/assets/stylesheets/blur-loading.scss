@@ -17,18 +17,10 @@
 
 @keyframes blackout {
   0% { background-color: black; opacity: 0; }
-  50% { background-color: black; opacity: 0.5;}
   100% { background-color: black; opacity: 1; }
 }
 
 @keyframes blur {
   0% { filter: blur(10px); }
-  50% { filter: blur(5px); }
   100% {filter: blur(0px); }
-}
-
-.img-small {
-  filter: blur(50px);
-  /* this is needed so Safari keeps sharp edges */
-  transform: scale(1);
 }
