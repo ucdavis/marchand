@@ -36,7 +36,7 @@ class ImagesController < GalleryController
   end
 
   def new
-    @image = Image.new(image_params)
+    @image = Image.new
   end
 
   # POST /images

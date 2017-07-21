@@ -21,10 +21,13 @@
         <div class="row top-header">
           <ul class="pull-right inline">
             <% if session[:cas_user].present? %>
-            <li><a href="/admin" class="cas-login">Admin</a></li>
-            <li><a href="/logout" class="cas-login">CAS Logout</a></li>
+              <% if admin? %>
+                <li><a href="<%= new_image_url %>" class="admin-nav-link">Add New Image</a></li>
+                <li><a href="/admin" class="admin-nav-link">Admin</a></li>
+              <% end %>
+              <li><a href="/logout" class="admin-nav-link">CAS Logout</a></li>
             <% else %>
-            <li><a href="/login" class="cas-login">CAS Login</a></li>
+              <li><a href="/login" class="admin-nav-link">CAS Login</a></li>
             <% end %>
           </ul>
         </div>
@@ -39,6 +42,7 @@
             <ul class="nav">
               <li><a href="<%= root_url %>">Featured Collections</a></li>
               <li><a href="<%= images_url %>">All Images</a></li>
+
             </ul>
             <ul class="nav navbar-right">
               <li><a href="http://historyproject.ucdavis.edu">Back to History Project</a></li>
