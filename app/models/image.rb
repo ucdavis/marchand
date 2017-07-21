@@ -21,6 +21,8 @@ class Image < ActiveRecord::Base
 
   belongs_to :collection
 
+  validates_presence_of :title, :public, :featured, :collection
+
   # @param query - text to search for
   # @param filter - array of hashes in the form of ElasticSearch's filter parameter for queryDSL
   def self.search(query, filter)
@@ -31,6 +33,7 @@ class Image < ActiveRecord::Base
     }
 
     q[:bool][:filter] = filter.split(',') unless filter.empty?
+
     __elasticsearch__.search(query: q)
   end
 
@@ -47,7 +50,6 @@ class Image < ActiveRecord::Base
   end
 
   def orientation
-    return "portrait" if original_width && original_width < original_height
-    return "landscape"
+    original_width && original_width < original_height ? 'portrait' : 'landscape'
   end
 end
