@@ -22,28 +22,50 @@ module S3Helper
   end
 
   # Upload a new thumbnail of the image from image_path to S3
+  # @param image_id   - ID to use when naming bucket key
   # @param image_path - URL to an image
+  # @param size       - (optional) :original, :preview, or :thumbnail
+  #                     Resizes image to specified 'size' before uploading
   #
-  # @return - S3 Link to uploaded thumbnail
+  # @return           - Object with S3 URL, image width, image height
+  #
   # TODO: Handle errors such as unable to upload, could not connect to aws etc.
-  def self.upload_new_thumbnail(image_path)
-    # Connect and configure to aws if not already connected
-    establish_connection unless connected?
-
-    # Using 1.45 ratio to build thumbnail from image_path
+  # was upload_new_thumbnail
+  def self.upload_image_from_path(image_id, image_path, size = :original)
     begin
-      image = Magick::Image.read(image_path).first
-      image = image.resize_to_fill(275, 190)
-    rescue => error
-      STDERR.puts error
+      rmk_image = Magick::Image.read(image_path).first
+    rescue Magick::ImageMagickError => e
+      puts "Error while reading image at URL #{image_path}"
+      STDERR.puts e
       return nil
     end
 
-    # Upload to s3 bucket
-    filename = "thumb_#{image.filename.split('/').last}"
-    obj = upload_image(filename, image)
+    file_ext = image_path.split('.').last
 
-    obj.public_url
+    upload_image_from_rmk_image(image_id, file_ext, rmk_image, size)
+  end
+
+  def self.upload_image_from_rmk_image(image_id, file_ext, rmk_image, size = :original)
+    case size
+    when :original
+      filename = "original_#{image_id}.#{file_ext}"
+    when :preview
+      filename = "preview_#{image_id}.#{file_ext}"
+      rmk_image = rmk_image.change_geometry('500>x') do |cols, rows, passed_img|
+        passed_img.resize_to_fill(cols, rows)
+      end
+    when :thumbnail
+      filename = "thumb_#{image_id}.#{file_ext}"
+      rmk_image = rmk_image.resize_to_fill(275, 190)
+    else
+      STDERR.puts "Requested 'size' not understood."
+      return nil
+    end
+
+    # Upload to S3 bucket
+    obj = upload_rmagick_image(filename, rmk_image)
+
+    { url: obj.public_url, width: rmk_image.columns, height: rmk_image.rows }
   end
 
   # Get an object from s3 bucket
@@ -55,12 +77,12 @@ module S3Helper
     @s3client.get_object(bucket: Rails.application.secrets.s3_bucket, key: key)
   end
 
-  def self.upload_image(key, image)
+  def self.upload_rmagick_image(key, rmk_image)
     establish_connection unless connected?
 
     obj = @s3resrc.bucket(Rails.application.secrets.s3_bucket)
     obj = obj.object(key)
-    obj.put(body: image.to_blob, acl: 'public-read')
+    obj.put(body: rmk_image.to_blob, acl: 'public-read')
 
     obj
   end

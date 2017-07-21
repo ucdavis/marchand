@@ -11,7 +11,7 @@ namespace :images do
     count = images.size
 
     images.each_with_index do |img, i|
-      puts "Processing #{i + 1} / #{count} ..."
+      puts "Processing #{i + 1} / #{count} (ID #{img.id}) ..."
 
       # Download original image from S3
       begin
@@ -32,25 +32,18 @@ namespace :images do
         # Generate two thumbnails
         # Thumbnail is the smallest and is a 275x190 image where the original
         # is resized while maintaining aspect ratio and cropped to fit 275x190
-        thumb = image.resize_to_fill(275, 190)
-        img.thumbnail_width = thumb.columns
-        img.thumbnail_height = thumb.rows
+        thumb_obj = S3Helper.upload_image_from_rmk_image(img.id, file_ext, image, :thumbnail)
+        img.thumbnail = thumb_obj[:url]
+        img.thumbnail_width = thumb_obj[:width]
+        img.thumbnail_height = thumb_obj[:height]
 
         # Preview is larger than a thumbnail and maintains the aspect ratio but
         # does not involve cropping. '500>x' means resize to a width of 500 only if
         # the image has a width larger than 500, maintaining aspect ratio.
-        preview = image.change_geometry('500>x') do |cols, rows, passed_img|
-          img.preview_width = cols
-          img.preview_height = rows
-          passed_img.resize_to_fill(cols, rows)
-        end
-
-        # Store both thumbnails in S3
-        obj = S3Helper.upload_image("thumb_#{img.id}.#{file_ext}", thumb)
-        img.thumbnail = obj.public_url
-
-        obj = S3Helper.upload_image("preview_#{img.id}.#{file_ext}", preview)
-        img.preview = obj.public_url
+        preview_obj = S3Helper.upload_image_from_rmk_image(img.id, file_ext, image, :preview)
+        img.preview = preview_obj[:url]
+        img.preview_width = preview_obj[:width]
+        img.preview_height = preview_obj[:height]
 
         # Update local record with new thumbnail paths and modified time
         img.save!
