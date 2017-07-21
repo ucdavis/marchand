@@ -42,9 +42,9 @@ setNewImageValues = (form) ->
   $('[name="image[cal_standard_ids][]"]', form).val(calStandards)
   $('[name="image[region_ids][]"]', form).val(regions)
 
-# Builds the url on advanced search
-buildUrl = (form) ->
-  page = $(form).data("target")
+# Builds the URL based on filter parameters (e.g. advanced search form)
+buildFilterUrl = (form) ->
+  page = '/images' #$(form).data("target")
 
   query = "q=#{$("input[name=q][type=text]").val()}"
 
@@ -247,8 +247,7 @@ $(document).ready () ->
   # Manually build url on submit
   $("form[name=filter]").on "submit", (e) ->
     e.preventDefault()
-    url = buildUrl(this)
-    window.location.href = url
+    window.location.href = buildFilterUrl(this)
 
   # Create new card with filter as initial params
   $("form[name=new-image]").on "click", () ->
