@@ -52,6 +52,8 @@
             data-authors="<%= image.authors.map { |a| a.name } %>"
             data-src-original="<%= image.original %>"
             data-src-preview="<%= image.preview %>"
+            data-src-preview-width="<%= image.preview_width %>"
+            data-src-preview-height="<%= image.preview_height %>"
             data-collection="<%= image.collection.present? ? image.collection.name : " " %>"
             data-card="<%= image.card %>"
             data-topics="<%= image.topics.map { |t| t.title } %>"

@@ -145,6 +145,8 @@ searchFilter = (menu, target) ->
 setModalImageDetails = (el) ->
   view = $(el).data('view')
   imgSrcPreview = $(el).data('src-preview')
+  imgSrcPreviewWidth = $(el).data('src-preview-width')
+  imgSrcPreviewHeight = $(el).data('src-preview-height')
   imgSrcOriginal = $(el).data('src-original')
   imgTitle = $('.title', $(el)).html()
   imgAuthors = $(el).data('authors')
@@ -166,8 +168,10 @@ setModalImageDetails = (el) ->
   # Firefox chooses to only swap the images once the picture is fully loaded
   # So we clear it first to avoid having the wrong picutre in a modal
   $("img", $("##{view}-modal .modal-header")).attr("src", "")
-
   $("img", $("##{view}-modal .modal-header")).attr("src", imgSrcPreview)
+  $("img", $("##{view}-modal .modal-header")).css("width", imgSrcPreviewWidth)
+  $("img", $("##{view}-modal .modal-header")).css("height", imgSrcPreviewHeight)
+
   $(".title", $("##{view}-modal .image-title")).html(imgTitle)
   $(".collection", $("##{view}-modal .image-title")).html(imgCollection)
 
