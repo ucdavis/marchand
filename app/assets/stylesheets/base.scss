@@ -263,3 +263,38 @@ input[type=search] {
 .apple_pagination a:hover, .apple_pagination a:focus {
   text-decoration: underline;
 }
+
+.panel-body {
+  padding-bottom: 45px;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .row {
+    .col-xs-12 {
+      padding-right: 0px;
+      padding-left: 0px;
+
+      .row {
+        .col-xs-12 {
+          padding-left: 50px;
+          padding-right: 50px;
+
+          .row {
+            .col-xs-6 {
+              .btn-group {
+                width: 340px;
+                margin-top:10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+textarea.form-control {
+  height: 150px;
+}
