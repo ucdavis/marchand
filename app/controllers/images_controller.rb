@@ -1,5 +1,6 @@
 class ImagesController < GalleryController
   include ImagesHelper
+  require 's3_helper'
 
   before_action :set_image, only: [:show, :edit, :update, :destroy]
 
@@ -42,28 +43,42 @@ class ImagesController < GalleryController
   # POST /images
   # rubocop:disable Metrics/AbcSize
   def create
-    # new_params = image_params
+    @image = Image.new(image_params)
 
-    # respond_to do |format|
-    #   # Upload image & thumbnail to s3
-    #   if new_params[:s3].present?
-    #     filename = "#{Time.now.to_i}_#{image_params[:s3].original_filename}"
+    respond_to do |format|
+      if @image.save
+        uploaded_file_path = image_params[:original]
 
-    #     uploaded_img = Magick::Image.from_blob(new_params[:s3].read).first
-    #     new_params[:s3] = upload_image(filename, uploaded_img).public_url
-    #     new_params[:thumbnail] = upload_new_thumbnail(new_params[:s3])
-    #     new_params[:view] = uploaded_img.rows > uploaded_img.columns ? 'portrait' : 'landscape'
-    #   end
+        # Generate and add both thumbnails to S3
+        if uploaded_file_path.present?
+          rmk_image = Magick::Image.from_blob(image_params[:original].read).first
+          file_ext = image_params[:original].original_filename.split('.').last
 
-    #   @image = Image.new(new_params)
-    #   if @image.save
-    #     format.html { redirect_to edit_image_path @image }
-    #     format.json { head :no_content }
-    #   else
-    #     format.html { render action: :edit }
-    #     format.json { render json: @image.errors, status: :unprocessable_entity }
-    #   end
-    # end
+          original_obj = S3Helper.upload_image_from_rmk_image(@image.id, file_ext, rmk_image)
+          @image.original = original_obj[:url]
+          @image.original_width = original_obj[:width]
+          @image.original_height = original_obj[:height]
+
+          preview_obj = S3Helper.upload_image_from_rmk_image(@image.id, file_ext, rmk_image, :preview)
+          @image.preview = preview_obj[:url]
+          @image.preview_width = preview_obj[:width]
+          @image.preview_height = preview_obj[:height]
+
+          thumbnail_obj = S3Helper.upload_image_from_rmk_image(@image.id, file_ext, rmk_image, :thumbnail)
+          @image.thumbnail = thumbnail_obj[:url]
+          @image.thumbnail_width = thumbnail_obj[:width]
+          @image.thumbnail_height = thumbnail_obj[:height]
+
+          @image.save!
+        end
+
+        format.html { redirect_to edit_image_path @image }
+        format.json { head :no_content }
+      else
+        format.html { render action: :edit }
+        format.json { render json: @image.errors, status: :unprocessable_entity }
+      end
+    end
   end
   # rubocop:enable Metrics/AbcSize
 
@@ -127,7 +142,7 @@ class ImagesController < GalleryController
   # rubocop:disable Style/BracesAroundHashParameters
   def image_params
     params.require(:image).permit(:id, :title, :collection_id, :public, :card, :citation, :featured,
-                                  :view, :thumbnail, :s3, :end_year, :start_year,
+                                  :original,
                                   { topic_ids: [] }, { region_ids: [] }, { cal_standard_ids: [] },
                                   { nat_standard_ids: [] }, { author_ids: [] })
   end
@@ -135,7 +150,6 @@ class ImagesController < GalleryController
 
   def set_image
     @image = Image.find(params[:id])
-    @image.s3 = '' unless @image.s3.present?
   end
 
   def as_query_string(field, values)

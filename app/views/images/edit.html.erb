@@ -1,4 +1,12 @@
 <div class="container edit-image">
-    <h3 class="page-title" style="text-align: center;">Edit Image</h3>
-    <%= render 'form' %>
+  <h3 class="page-title" style="text-align: center;">Edit Image</h3>
+  <% if @image.errors.any? %>
+    <h4 style="color: red;">There were errors saving the image. See below.</h4>
+    <ul>
+      <% @image.errors.full_messages.each do |error_message| %>
+        <li><%= error_message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <%= render 'form' %>
 </div>
