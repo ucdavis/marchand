@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717224503) do
+ActiveRecord::Schema.define(version: 20170722005252) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "url"
@@ -58,13 +58,13 @@ ActiveRecord::Schema.define(version: 20170717224503) do
   end
 
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string  "thumbnail",        limit: 128,   default: "", null: false
-    t.string  "title",                          default: "", null: false
+    t.string  "thumbnail",        limit: 128,   default: "",    null: false
+    t.string  "title",                          default: "",    null: false
     t.text    "card",             limit: 65535
     t.text    "citation",         limit: 65535
-    t.integer "collection_id",                  default: 0,  null: false
-    t.integer "public",                         default: 0,  null: false
-    t.integer "featured",                       default: 0,  null: false
+    t.integer "collection_id",                  default: 0,     null: false
+    t.integer "public",                         default: 0,     null: false
+    t.integer "featured",                       default: 0,     null: false
     t.text    "notes",            limit: 65535
     t.text    "original",         limit: 65535
     t.string  "preview"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20170717224503) do
     t.integer "thumbnail_height"
     t.integer "original_width"
     t.integer "original_height"
+    t.boolean "missing",                        default: false
     t.index ["title"], name: "idx_images_searchable", using: :btree
   end
 
