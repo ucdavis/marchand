@@ -53,6 +53,53 @@ namespace :images do
     end
   end
 
+  # Generate thumbnails for S3 for all images, replacing ones which exist
+  task :replace_image, [:image_id, :filepath] => :environment do |t, args|
+    unless args[:image_id]
+      puts 'You must specify an image ID to replace.'
+      exit(-1)
+    end
+
+    unless args[:filepath]
+      puts 'You must specify a filepath.'
+      exit(-1)
+    end
+
+    img = Image.find_by_id(args[:image_id])
+    unless img
+      STDERR.puts 'Could not find an image with ID #{args[:image_id]}'
+      exit(-1)
+    end
+
+    # Read image from disk
+    begin
+      rmk_image = Magick::Image.read(args[:filepath]).first
+    rescue Magick::ImageMagickError => e
+      puts "Error while reading image at #{args[:filepath]}"
+      STDERR.puts e
+      exit(-1)
+    end
+
+    file_ext = args[:filepath].split('.').last
+
+    original_obj = S3Helper.upload_image_from_rmk_image(img.id, file_ext, rmk_image)
+    img.original = original_obj[:url]
+    img.original_width = original_obj[:width]
+    img.original_height = original_obj[:width]
+
+    thumb_obj = S3Helper.upload_image_from_rmk_image(img.id, file_ext, rmk_image, :thumbnail)
+    img.thumbnail = thumb_obj[:url]
+    img.thumbnail_width = thumb_obj[:width]
+    img.thumbnail_height = thumb_obj[:height]
+
+    preview_obj = S3Helper.upload_image_from_rmk_image(img.id, file_ext, rmk_image, :preview)
+    img.preview = preview_obj[:url]
+    img.preview_width = preview_obj[:width]
+    img.preview_height = preview_obj[:height]
+
+    img.save!
+  end
+
   # Checks if S3 files contain the same image stored in local according to Image.file
   # Outputs any error in #{Rails.root}/log.txt
   task check_integrity: :environment do
