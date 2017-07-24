@@ -126,15 +126,17 @@ class ImagesController < GalleryController
 
   # DELETE /images/:id
   def destroy
-    # # Remove images from S3
-    # remove_image(@image.s3.split('/').last) if @image.s3.present?
-    # remove_image(@image.thumbnail.split('/').last) if @image.thumbnail.present?
+    @image.destroy
 
-    # @image.destroy
-    # respond_to do |format|
-    #   format.html { redirect_to search_url }
-    #   format.json { head :no_content }
-    # end
+    # Remove images from S3
+    S3Helper.remove_image(@image.original.split('/').last) if @image.original.present?
+    S3Helper.remove_image(@image.preview.split('/').last) if @image.preview.present?
+    S3Helper.remove_image(@image.thumbnail.split('/').last) if @image.thumbnail.present?
+
+    respond_to do |format|
+      format.html { redirect_to images_url }
+      format.json { head :no_content }
+    end
   end
 
   private
