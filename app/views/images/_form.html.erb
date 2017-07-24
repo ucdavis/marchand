@@ -79,17 +79,17 @@
   </div>
 
   <% if @image.id %>
-    <div class="col-md-12" style="text-align: center; margin-bottom: 5em;">
+    <div class='col-md-12' style='text-align: center; margin-bottom: 5em;'>
       <%= link_to 'Delete Image', url_for(action: :destroy, id: @image.id),
                             method: :delete,
                             data: { confirm: 'Are you sure?' },
-                            class: "btn btn-lg btn-danger",
+                            class: 'btn btn-lg btn-danger',
                             style: 'margin-right: 8em;' %>
-      <%= f.submit 'Update Image', :class => "btn-lg btn btn-primary", style: 'width: 33%;' %>
+      <%= f.submit 'Update Image', :class => 'btn-lg btn btn-primary', style: 'width: 33%;' %>
     </div>
   <% else %>
-    <div class="col-md-12" style="text-align: center; margin-bottom: 5em;">
-      <%= f.submit "Add New Image", class: "btn-lg btn btn-primary", style: "width: 66%;" %>
+    <div class='col-md-12' style='text-align: center; margin-bottom: 5em;'>
+      <%= f.submit 'Add New Image', class: 'btn-lg btn btn-primary', style: 'width: 66%;' %>
     </div>
   <% end %>
 
