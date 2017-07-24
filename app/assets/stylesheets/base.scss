@@ -235,10 +235,12 @@ input[type=search] {
 }
 
 .apple_pagination {
-  background: #f1f1f1;
-  border: 1px solid #e5e5e5;
   text-align: center;
   cursor: default;
+
+  .pagination {
+    margin: 5px 0;
+  }
 }
 
 .apple_pagination a, .apple_pagination span {
