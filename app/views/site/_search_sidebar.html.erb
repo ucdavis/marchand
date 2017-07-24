@@ -8,10 +8,6 @@
       <div class="filter-panel-content">
         <form name="filter" method="GET" data-target="<%= target_page %>">
           <div class="filter-panel-title">
-            <!--<div class="btn-group" style="margin: 10px 0px 10px 0px;">
-              <a class="btn btn-primary image-lesson-toggle <%= "active" if page == "images" %>" href="<%= images_url %>" >Images</a>
-              <a class="btn btn-primary image-lesson-toggle <%= "active" if page == "lessons" %>" href="#">Lessons</a>
-            </div>-->
 
             <div class="input-group" style="margin:15px 0px 25px 0px;">
               <input type="text" name="q" class="form-control" placeholder="Search terms" value="<%= params[:q].present? ? params[:q] : "" %>">
@@ -72,13 +68,6 @@
             <div class="divider"></div>
 
           <% end %>
-
-          <!-- <div class="year-selector-section col-xs-12">
-            <h5><b>Dates</b></h5>
-            <input type="number" name="start_year" class="col-xs-5" placeholder="Start Year" value="<%= params[:start_year] if params[:start_year].present? %>">
-            <div class="col-xs-2"></div>
-            <input type="number" name="end_year" class="col-xs-5" placeholder="End Year" value="<%= params[:end_year] if params[:end_year].present? %>">
-          </div> -->
 
           <div class="btn-group flex-center"><button type="submit" class="btn btn-primary btn-submit-filters"><span class="glyphicon glyphicon-search" style="line-height: 0; top: 2px; margin-right: 4px;"></span> Search</button></div>
         </form>

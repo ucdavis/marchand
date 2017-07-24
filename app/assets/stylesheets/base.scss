@@ -19,8 +19,8 @@ body {
 
 .page-title {
   font-weight: bold;
-  margin-bottom: 35px;
-  margin-top: 60px;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
 
 .flex-center {
@@ -47,8 +47,7 @@ body {
   -moz-appearance: searchfield;
 }
 
-.nav li a:hover {
-  background-color: unset !important;
+.top-header .nav li a:hover {
   color: #CCD4E1 !important;
 }
 
@@ -74,6 +73,7 @@ body {
   }
 
   .nav li a:hover {
+    background-color: unset !important;
     color: #002855 !important;
   }
 }
@@ -227,13 +227,6 @@ input[type=search] {
     }
 }
 
-/* toggle overwrite */
-.active {
-    color: #fff !important;
-    background-color: #286090 !important;
-    border-color: #204d74 !important;
-}
-
 .apple_pagination {
   text-align: center;
   cursor: default;
@@ -275,8 +268,6 @@ input[type=search] {
 }
 
 .panel-body {
-  padding-bottom: 45px;
-
   &:not(:last-child) {
     border-bottom: 1px solid #ddd;
   }
