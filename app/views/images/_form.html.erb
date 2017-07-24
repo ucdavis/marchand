@@ -4,21 +4,28 @@
     <div class="panel-body">
       <div class="row flex-center">
         <div class="col-xs-6 image-basic-information">
+
           <div class="col-xs-12">
             <h5>Title</h5>
             <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
           </div>
-          <div class="col-xs-12">
+
+          <div class="col-xs-12" style="margin-bottom: 2em;">
             <h5>Collection</h5>
             <%= f.select :collection_id, Collection.all.collect { |c| [c.name, c.id] }, include_blank: true %>
           </div>
-          <div class="col-xs-12">
+
+          <div class="col-xs-4">
             <%= f.check_box :public %>
             <%= label_tag :image_public, "Public" %>
           </div>
-          <div class="col-xs-12">
+          <div class="col-xs-4">
             <%= f.check_box :featured %>
             <%= label_tag :image_featured, "Featured" %>
+          </div>
+          <div class="col-xs-4">
+            <%= f.check_box :missing %>
+            <%= label_tag :image_missing, "Missing" %>
           </div>
         </div>
 
@@ -72,9 +79,13 @@
   </div>
 
   <% if @image.id %>
-    <div class="form-actions col-md-3">
-      <%= f.submit "Update Image", :class => "form-control btn btn-success btn-submit"%>
-      <%= link_to 'Delete',url_for(action: :destroy,id: @image.id),method: :delete, data: {confirm: "Are you sure?"}, class: "form-control btn btn-danger btn-delete" %>
+    <div class="col-md-12" style="text-align: center; margin-bottom: 5em;">
+      <%= link_to 'Delete Image', url_for(action: :destroy, id: @image.id),
+                            method: :delete,
+                            data: { confirm: 'Are you sure?' },
+                            class: "btn btn-lg btn-danger",
+                            style: 'margin-right: 8em;' %>
+      <%= f.submit 'Update Image', :class => "btn-lg btn btn-primary", style: 'width: 33%;' %>
     </div>
   <% else %>
     <div class="col-md-12" style="text-align: center; margin-bottom: 5em;">
