@@ -37,7 +37,7 @@ class Image < ActiveRecord::Base
     __elasticsearch__.search(query: q)
   end
 
-  def as_indexed_json(_)
+  def as_indexed_json
     as_json(
       include: {
         topic_assignments: { only: :topic_id },
