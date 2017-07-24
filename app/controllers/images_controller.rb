@@ -90,36 +90,56 @@ class ImagesController < GalleryController
   # rubocop:disable Metrics/MethodLength
   # rubocop:disable Metrics/AbcSize
   def update
-    # respond_to do |format|
-    #   update_params = image_params
-    #   # Currently, form helpers can't set the value of the :include_blank field
-    #   update_params[:collection_id] = 0 unless update_params[:collection_id].present?
+    respond_to do |format|
+      #update_params = image_params
 
-    #   # Upload image & thumbnail to s3
-    #   if update_params[:s3].present?
-    #     filename = "#{Time.now.to_i}_#{image_params[:s3].original_filename}"
-    #     uploaded_img = Magick::Image.from_blob(update_params[:s3].read).first
-    #     update_params[:s3] = upload_image(filename, uploaded_img).public_url
-    #     update_params[:thumbnail] = upload_new_thumbnail(update_params[:s3])
-    #     update_params[:view] = uploaded_img.rows > uploaded_img.columns ? 'portrait' : 'landscape'
-    #   end
+      # Currently, form helpers can't set the value of the :include_blank field
+      #update_params[:collection_id] = 0 unless update_params[:collection_id].present?
 
-    #   old_image = @image.s3
-    #   old_thumbnail = @image.thumbnail
-    #   if @image.update(update_params)
-    #     # Remove old image & thumbnail from s3
-    #     if update_params[:s3].present?
-    #       remove_image(old_image.split('/').last)
-    #       remove_image(old_thumbnail.split('/').last)
-    #     end
+      if @image.update(image_params)
+        # Update image if provided
+        uploaded_file_path = image_params[:original]
 
-    #     format.html { redirect_to build_search_url(@image) }
-    #     format.json { head :no_content }
-    #   else
-    #     format.html { render action: :edit }
-    #     format.json { render json: @image.errors, status: :unprocessable_entity }
-    #   end
-    # end
+        if uploaded_file_path.present?
+          # Generate and add both thumbnails to S3
+          old_original = @image.original
+          old_thumbnail = @image.thumbnail
+          old_preview = @image.preview
+
+          rmk_image = Magick::Image.from_blob(image_params[:original].read).first
+          file_ext = image_params[:original].original_filename.split('.').last
+
+          original_obj = S3Helper.upload_image_from_rmk_image(@image.id, file_ext, rmk_image)
+          @image.original = original_obj[:url]
+          @image.original_width = original_obj[:width]
+          @image.original_height = original_obj[:height]
+
+          preview_obj = S3Helper.upload_image_from_rmk_image(@image.id, file_ext, rmk_image, :preview)
+          @image.preview = preview_obj[:url]
+          @image.preview_width = preview_obj[:width]
+          @image.preview_height = preview_obj[:height]
+
+          thumbnail_obj = S3Helper.upload_image_from_rmk_image(@image.id, file_ext, rmk_image, :thumbnail)
+          @image.thumbnail = thumbnail_obj[:url]
+          @image.thumbnail_width = thumbnail_obj[:width]
+          @image.thumbnail_height = thumbnail_obj[:height]
+
+          @image.save!
+
+          # Remove old images from S3 only if we updated the keys. If we just uploaded using
+          # the same keys, the images were replaced, and we don't need to worry about this.
+          S3Helper.remove_image(old_original.split('/').last) unless old_original = @image.original
+          S3Helper.remove_image(old_thumbnail.split('/').last) unless old_thumbnail = @image.thumbnail
+          S3Helper.remove_image(old_preview.split('/').last) unless old_preview = @image.preview
+        end
+
+        format.html { redirect_to edit_image_url(@image) }
+        format.json { head :no_content }
+      else
+        format.html { render action: :edit }
+        format.json { render json: @image.errors, status: :unprocessable_entity }
+      end
+    end
   end
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/AbcSize
@@ -144,7 +164,7 @@ class ImagesController < GalleryController
   # rubocop:disable Style/BracesAroundHashParameters
   def image_params
     params.require(:image).permit(:id, :title, :collection_id, :public, :card, :citation, :featured,
-                                  :original,
+                                  :original, :missing,
                                   { topic_ids: [] }, { region_ids: [] }, { cal_standard_ids: [] },
                                   { nat_standard_ids: [] }, { author_ids: [] })
   end
