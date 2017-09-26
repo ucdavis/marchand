@@ -35,11 +35,11 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'web-console', '>= 3.3.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -49,9 +49,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'will_paginate', '~> 3.1.0'
 
 # Elastic Search
+gem 'faraday_middleware-aws-signers-v4'
 gem 'elasticsearch-model'
+gem 'elasticsearch-persistence', require: 'elasticsearch/persistence/model'
 gem 'elasticsearch-rails'
-gem "elasticsearch-persistence", require: 'elasticsearch/persistence/model'
 
 # For managing data in S3 bucket
 gem 'aws-sdk', '~> 2.10'
@@ -59,7 +60,7 @@ gem 'aws-sdk', '~> 2.10'
 # CAS authentication
 # Use AR Session Store as required by rubycas-client
 gem 'activerecord-session_store', git: 'https://github.com/rails/activerecord-session_store'
-gem 'rubycas-client', :git => 'https://github.com/cthielen/rubycas-client.git'
+gem 'rubycas-client', git: 'https://github.com/cthielen/rubycas-client.git'
 
 # For thumbnail support
 gem 'rmagick'
