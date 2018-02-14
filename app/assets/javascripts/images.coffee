@@ -182,33 +182,24 @@ setModalImageDetails = (el) ->
   $(".citation", $("##{view}-modal .list-section")).html(imgCitation)
 
   $(".topics", $("##{view}-modal .list-section")).html("")
-  imgTopics.forEach (topic) ->
+  imgTopics.sort().forEach (topic) ->
     if topic.length > 0
       $(".topics", $("##{view}-modal .list-section")).append("<li>#{topic}</li>")
 
   $(".regions", $("##{view}-modal .list-section")).html("")
-  imgRegions.forEach (region) ->
+  imgRegions.sort().forEach (region) ->
     if region.length > 0
       $(".regions", $("##{view}-modal .list-section")).append("<li>#{region}</li>")
 
   $(".cal-standards", $("##{view}-modal .list-section")).html("")
-  imgCalStandards.forEach (calStandard) ->
+  imgCalStandards.sort().forEach (calStandard) ->
     if calStandard.length > 0
       $(".cal-standards", $("##{view}-modal .list-section")).append("<li>#{calStandard}</li>")
 
   $(".nat-standards", $("##{view}-modal .list-section")).html("")
-  imgNatStandards.forEach (natStandard) ->
+  imgNatStandards.sort().forEach (natStandard) ->
     if natStandard.length > 0
       $(".nat-standards", $("##{view}-modal .list-section")).append("<li>#{natStandard}</li>")
-
-# # Sets up event handlers for all future image modals
-# setupModalEvents = () ->
-#   # Download Button
-#   $('#download-image').on 'click', (e) ->
-#     debugger
-#     imgSrc = $(window.modalImage).data('src-original')
-#     key = imgSrc.split('/').pop()
-#     tmp = window.open "download/#{key}"
 
 $(document).ready () ->
   #setupModalEvents()

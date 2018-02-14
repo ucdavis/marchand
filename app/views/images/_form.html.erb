@@ -31,7 +31,7 @@
 
         <div class="col-xs-6 flex-center">
           <div class="image-thumbnail">
-            <%= image_tag @image.thumbnail, class: "preview" %>
+            <%= image_tag @image.preview, class: "preview" %>
             <%= f.file_field :original, class: "hidden upload-image-btn" %>
             <%= f.label :original, "Upload Image", class: "btn btn-default upload-image-btn" %>
           </div>
@@ -66,12 +66,12 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="row" style="padding-bottom: 25px;">
-            <%= render "shared/multi_dropdown", :f => f, :klass => Topic, :member => :topic_assignments %>
-            <%= render "shared/multi_dropdown", :f => f, :klass => Region, :member => :region_assignments %>
+            <%= render "shared/multi_dropdown", f: f, klass: Topic, member: :topic_assignments, collection: Topic.order(:title).all %>
+            <%= render "shared/multi_dropdown", f: f, klass: Region, member: :region_assignments, collection: Region.order(:title).all %>
           </div>
           <div class="row">
-            <%= render "shared/multi_dropdown", :f => f, :klass => CalStandard, :member => :data_cal_standards %>
-            <%= render "shared/multi_dropdown", :f => f, :klass => NatStandard, :member => :data_nat_standards %>
+            <%= render "shared/multi_dropdown", f: f, klass: CalStandard, member: :data_cal_standards, collection: CalStandard.order(:grade_id).order(:standard_id).all %>
+            <%= render "shared/multi_dropdown", f: f, klass: NatStandard, member: :data_nat_standards, collection: NatStandard.order(:us_world).order(:era).all %>
           </div>
         </div>
       </div>

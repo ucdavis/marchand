@@ -1,6 +1,7 @@
 <!-- f => form_for @image-->
 <!-- klass => class to build fields for -->
 <!-- member => nested_attribute to build fields_for -->
+<!-- collection => collection of objects to render -->
 
 <% title = defined?(klass.readable_class_name) ? klass.readable_class_name : klass.name %>
 <% column = "#{klass.name.underscore}_ids".to_sym %>
@@ -37,7 +38,7 @@
       </div>
 
       <ul class="dropdown-list" data-type="list" data-target="span">
-        <%= f.collection_check_boxes column, klass.all, :id, :title, {}, "data-target-id" => klass.name do |b| %>
+        <%= f.collection_check_boxes column, collection, :id, :title, {}, "data-target-id" => klass.name do |b| %>
         <li>
           <a>
             <div class="customized-checkbox">
