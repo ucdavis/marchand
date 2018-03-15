@@ -160,7 +160,7 @@ setModalImageDetails = (el) ->
   imgId = $(el).data('id')
 
   # Download button
-  $('#download-image', $("##{view}-modal .modal-header")).attr('href', imgSrcOriginal)
+  $('#download-image', $("##{view}-modal")).attr('href', imgSrcOriginal)
 
   # Edit Button
   $(".btn-edit", $("##{view}-modal .modal-header")).attr("href", "/images/#{imgId}/edit")

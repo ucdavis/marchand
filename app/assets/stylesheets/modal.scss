@@ -183,7 +183,7 @@
       height: 535px;
 
       .image-title {
-        margin: 5px 0px 30px 0px;
+        margin: 5px 0px 0px 0px;
       }
 
       .description {
@@ -191,12 +191,16 @@
         border-bottom: 1px solid #e5e5e5;
       }
 
-      .list-section{
+      .list-section {
         margin-top: 15px;
         margin-bottom: 15px;
 
         h5 {
           font-weight: 600;
+        }
+
+        &.description {
+          margin-top: 0;
         }
       }
     }
