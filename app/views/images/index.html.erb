@@ -16,7 +16,7 @@
       <% end %>
     </div>
 
-    <% if @images.total_pages > 1 %>
+    <% if @num_pages > 1 %>
     <div class="apple_pagination">
       <%= will_paginate @images, params: params %>
     </div>

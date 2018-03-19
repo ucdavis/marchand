@@ -2,7 +2,7 @@ class ImagesController < GalleryController
   include ImagesHelper
   require 's3_helper'
 
-  before_action :set_image, only: [:show, :edit, :update, :destroy]
+  before_action :set_image, only: [:edit, :update, :destroy, :manipulate]
 
   RESULTS_PER_PAGE = 20
   FEATURED_IMAGE_LIMIT = 24
@@ -28,11 +28,19 @@ class ImagesController < GalleryController
                      .where(featured: true, public: true,
                             topics: { featured: true, id: params[:topic_id] })
                      .paginate(page: params[:page], per_page: RESULTS_PER_PAGE)
+      @num_results = @images.total_entries
+      @num_pages = @images.total_pages
+    elsif params[:q].present? && (params[:q].to_f.to_s == params[:q].to_s) || (params[:q].to_i.to_s == params[:q].to_s)
+      @images = Image.where(id: params[:q].to_i)
+      @num_results = @images.count
+      @num_pages = (@images.count / RESULTS_PER_PAGE).to_f.ceil
     else
       @query, filter = es_query_from_params(params)
 
       @images = Image.search(@query, filter)
-                     .paginate(page: params[:page], per_page: RESULTS_PER_PAGE).records
+                      .paginate(page: params[:page], per_page: RESULTS_PER_PAGE).records
+      @num_results = @images.total_entries
+      @num_pages = @images.total_pages
     end
   end
 
@@ -85,17 +93,37 @@ class ImagesController < GalleryController
   # GET /images/:id/edit
   def edit; end
 
+  def manipulate
+    # Back up original image first
+
+    # Download and manipulate the image
+    require 'open-uri'
+
+    urlimage = open(Image.first.original)
+    image = Magick::ImageList.new
+    image.from_blob(urlimage.read)
+
+    # vertical flip
+    # image.flip!
+
+    # horizontal flip ("flop")
+    # image.flop!
+
+    # clockwise
+    # image.rotate!(90)
+
+    # counter-clockwise
+    # image.rotate!(-90)
+
+    send_data image.to_blob, type: 'image/jpeg', disposition: 'inline'
+  end
+
   # PUT /images/:id
   # PATCH /images/:id
   # rubocop:disable Metrics/MethodLength
   # rubocop:disable Metrics/AbcSize
   def update
     respond_to do |format|
-      #update_params = image_params
-
-      # Currently, form helpers can't set the value of the :include_blank field
-      #update_params[:collection_id] = 0 unless update_params[:collection_id].present?
-
       if @image.update(image_params)
         # Update image if provided
         uploaded_file_path = image_params[:original]

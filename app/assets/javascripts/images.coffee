@@ -170,7 +170,6 @@ setModalImageDetails = (el) ->
   $("img", $("##{view}-modal .modal-header")).attr("src", "")
   $("img", $("##{view}-modal .modal-header")).attr("src", imgSrcPreview)
   $("img", $("##{view}-modal .modal-header")).css("width", imgSrcPreviewWidth)
-  # $("img", $("##{view}-modal .modal-header")).css("height", imgSrcPreviewHeight)
 
   $(".title", $("##{view}-modal .image-title")).html(imgTitle)
   $(".collection", $("##{view}-modal .image-title")).html(imgCollection)
@@ -178,6 +177,7 @@ setModalImageDetails = (el) ->
   if imgAuthors.length > 0
     $(".authors", $("##{view}-modal .image-title")).html("Uploaded by #{imgAuthors.join(", ")}")
   
+  $(".image_id", $("##{view}-modal .list-section")).html(imgId)
   $(".card", $("##{view}-modal .list-section")).html(imgCard)
   $(".citation", $("##{view}-modal .list-section")).html(imgCitation)
 
