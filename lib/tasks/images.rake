@@ -5,7 +5,6 @@ require 'digest'
 namespace :images do
   # Generate thumbnails for S3 for all images, replacing ones which exist
   task regenerate_thumbnails: :environment do
-    #images = Image.all
     images = Image.where(preview: nil).where.not(original: nil)
 
     count = images.size
@@ -48,13 +47,13 @@ namespace :images do
         # Update local record with new thumbnail paths and modified time
         img.save!
       else
-        puts 'Could not read image for ID #{img.id}. Skipping ...'
+        puts "Could not read image for ID #{img.id}. Skipping ..."
       end
     end
   end
 
   # Generate thumbnails for S3 for all images, replacing ones which exist
-  task :replace_image, [:image_id, :filepath] => :environment do |t, args|
+  task :replace_image, [:image_id, :filepath] => :environment do |_t, args|
     unless args[:image_id]
       puts 'You must specify an image ID to replace.'
       exit(-1)
@@ -67,7 +66,7 @@ namespace :images do
 
     img = Image.find_by_id(args[:image_id])
     unless img
-      STDERR.puts 'Could not find an image with ID #{args[:image_id]}'
+      STDERR.puts "Could not find an image with ID #{args[:image_id]}"
       exit(-1)
     end
 
