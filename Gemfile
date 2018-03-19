@@ -59,7 +59,8 @@ gem 'aws-sdk', '~> 2.10'
 
 # CAS authentication
 # Use AR Session Store as required by rubycas-client
-gem 'activerecord-session_store', git: 'https://github.com/rails/activerecord-session_store'
+# gem 'activerecord-session_store', git: 'https://github.com/rails/activerecord-session_store'
+gem 'activerecord-session_store', '1.1.0'
 gem 'rubycas-client', git: 'https://github.com/cthielen/rubycas-client.git'
 
 # For thumbnail support
