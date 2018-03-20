@@ -24,7 +24,7 @@ $(document).ready () ->
       the_timer = setTimeout( () =>
         $img[0].src = img_src
         clearTimeout(the_timer)
-      , 3500)
+      , 5000)
     ).fail( () =>
       $('#image-edit-controls-text').css('color', '#f00').html('An error occurred. Please try again or contact IT.')
     )
