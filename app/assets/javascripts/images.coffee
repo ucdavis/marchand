@@ -44,7 +44,7 @@ setNewImageValues = (form) ->
 
 # Builds the URL based on filter parameters (e.g. advanced search form)
 buildFilterUrl = (form) ->
-  page = '/images' #$(form).data("target")
+  page = '/images'
 
   query = "q=#{$("input[name=q][type=text]").val()}"
 
@@ -253,3 +253,7 @@ $(document).ready () ->
   $("form[name=new-image]").on "click", () ->
     setNewImageValues($("form[name=new-image]"))
     this.submit()
+
+  $(".view-controls>button").on "click", (e) =>
+    debugger
+    false

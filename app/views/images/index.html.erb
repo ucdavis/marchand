@@ -16,6 +16,13 @@
       <% end %>
     </div>
 
+    <div class="row">
+      <div class="col-xs-12 view-controls">
+        <button class="btn btn-default selected" title="Grid view"><%= image_tag 'ic_view_module_black_24dp_2x.png' %></button>
+        <button class="btn btn-default" title="List view"><%= image_tag 'ic_view_list_black_24dp_2x.png' %></button>
+      </div>
+    </div>
+
     <% if @num_pages > 1 %>
     <div class="apple_pagination">
       <%= will_paginate @images, params: params %>

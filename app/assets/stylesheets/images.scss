@@ -5,3 +5,21 @@
     margin-top: 0;
   }
 }
+
+.view-controls {
+  text-align: right;
+
+  button {
+
+    &.selected {
+      background-color: #e6e6e6;
+      border-color: #adadad;
+    }
+
+    img {
+      width: 24px !important;
+      height: 24px !important;
+      pointer-events: none;
+    }
+  }
+}
