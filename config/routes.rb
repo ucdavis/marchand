@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   post '/cal_standards/:id/edit', to: 'cal_standards#edit'
   post '/nat_standards/:id/edit', to: 'nat_standards#edit'
 
-  resources :images
+  # get '/images/:id/manipulate', to: 'images#manipulate'
+  resources :images do
+    get 'manipulate'
+  end
+
   resources :authors
   resources :topics
   resources :regions

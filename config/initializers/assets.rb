@@ -11,3 +11,5 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w[glyphicons-halflings-regular.eot glyphicons-halflings-regular.svg
 #                                                  glyphicons-halflings-regular.ttf glyphicons-halflings-regular.woff
 #                                                  glyphicons-halflings-regular.woff2]
+
+Rails.application.config.assets.precompile += %w( admin_edit_image.js )

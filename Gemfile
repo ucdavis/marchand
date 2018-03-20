@@ -71,3 +71,6 @@ gem 'mysql2'
 
 # Include Bootstrap support
 gem 'bootstrap-sass', '~> 3.3.7'
+
+# Expose routes to Javascript
+gem 'js-routes'

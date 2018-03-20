@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'admin_edit_image' %>
+
 <%= form_for @image do |f| %>
   <!-- Image & Image Title -->
   <div class="panel panel-default">
@@ -33,12 +35,19 @@
           </div>
         </div>
 
-        <div class="col-xs-6 flex-center">
-          <div class="image-thumbnail">
+        <div class="col-xs-6">
+          <div class="image-thumbnail col-xs-12">
             <%= link_to image_tag(@image.preview, class: "preview"), @image.original, target: '_blank' %>
             <%= f.file_field :original, class: "hidden upload-image-btn" %>
             <%= f.label :original, "Upload Image", class: "btn btn-default upload-image-btn" %>
           </div>
+          <div id="image-edit-controls" class="col-xs-12">
+            <button class="btn btn-default" title="Rotate left" data-edit-control="rotate_left" data-image-id="<%= @image.id %>"><%= image_tag 'ic_rotate_left_black_24dp_2x.png', class: 'image-edit-control' %></button>
+            <button class="btn btn-default" title="Rotate right" data-edit-control="rotate_right" data-image-id="<%= @image.id %>"><%= image_tag 'ic_rotate_right_black_24dp_2x.png', class: 'image-edit-control' %></button>
+            <button class="btn btn-default" title="Flip horizontally" data-edit-control="flip_horizontal" data-image-id="<%= @image.id %>"><%= image_tag 'ic_swap_horiz_black_24dp_2x.png', class: 'image-edit-control' %></button>
+            <button class="btn btn-default" title="Flip vertically" data-edit-control="flip_vertical" data-image-id="<%= @image.id %>"><%= image_tag 'ic_swap_vert_black_24dp_2x.png', class: 'image-edit-control' %></button>
+          </div>
+          <div id="image-edit-controls-text" class="col-xs-12" style="visibility: hidden;">Please wait, image edit in progress ...</div>
         </div>
       </div>
     </div>

@@ -57,7 +57,6 @@
   }
 
   .image-thumbnail {
-    width: 75%;
     text-align: center;
     background-color: #FCFCFC;
     border: 1px solid #EAE8E8;
@@ -68,6 +67,21 @@
     img {
       width: 100%;
     }
+  }
+
+  #image-edit-controls {
+    text-align: center;
+
+    .image-edit-control {
+      width: 24px;
+      height: 24px;
+      pointer-events: none;
+    }
+  }
+
+  #image-edit-controls-text {
+    text-align: center;
+    font-weight: bold;
   }
 
   .glyphicon.glyphicon-remove {

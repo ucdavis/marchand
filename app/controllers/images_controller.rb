@@ -2,7 +2,7 @@ class ImagesController < GalleryController
   include ImagesHelper
   require 's3_helper'
 
-  before_action :set_image, only: [:edit, :update, :destroy, :manipulate]
+  before_action :set_image, only: [:edit, :update, :destroy]
 
   RESULTS_PER_PAGE = 20
   FEATURED_IMAGE_LIMIT = 24
@@ -94,28 +94,64 @@ class ImagesController < GalleryController
   def edit; end
 
   def manipulate
-    # Back up original image first
+    @image = Image.find(params[:image_id])
 
     # Download and manipulate the image
     require 'open-uri'
 
-    urlimage = open(Image.first.original)
-    image = Magick::ImageList.new
-    image.from_blob(urlimage.read)
+    urlimage = open(@image.original)
+    rmk_image = Magick::ImageList.new
+    rmk_image.from_blob(urlimage.read)
 
-    # vertical flip
-    # image.flip!
+    # Generate and add both thumbnails to S3
+    old_original = @image.original
+    old_thumbnail = @image.thumbnail
+    old_preview = @image.preview
 
-    # horizontal flip ("flop")
-    # image.flop!
+    file_ext = @image.original.split('.').last
 
-    # clockwise
-    # image.rotate!(90)
+    # Perform manipulation
+    case params['edit_mode']
+    when 'rotate_left'
+      # counter-clockwise
+      rmk_image.rotate!(-90)
+    when 'rotate_right'
+      # clockwise
+      rmk_image.rotate!(90)
+    when 'flip_horizontal'
+      # horizontal flip ("flop")
+      rmk_image.flop!
+    when 'flip_vertical'
+      # vertical flip
+      rmk_image.flip!
+    else
+      Rails.logger.error 'Manipulate edit_mode not understood: ' + params['edit_mode']
+    end
 
-    # counter-clockwise
-    # image.rotate!(-90)
+    original_obj = S3Helper.upload_image_from_rmk_image(@image.id, file_ext, rmk_image)
+    @image.original = original_obj[:url]
+    @image.original_width = original_obj[:width]
+    @image.original_height = original_obj[:height]
 
-    send_data image.to_blob, type: 'image/jpeg', disposition: 'inline'
+    preview_obj = S3Helper.upload_image_from_rmk_image(@image.id, file_ext, rmk_image, :preview)
+    @image.preview = preview_obj[:url]
+    @image.preview_width = preview_obj[:width]
+    @image.preview_height = preview_obj[:height]
+
+    thumbnail_obj = S3Helper.upload_image_from_rmk_image(@image.id, file_ext, rmk_image, :thumbnail)
+    @image.thumbnail = thumbnail_obj[:url]
+    @image.thumbnail_width = thumbnail_obj[:width]
+    @image.thumbnail_height = thumbnail_obj[:height]
+
+    @image.save!
+
+    # Remove old images from S3 only if we updated the keys. If we just uploaded using
+    # the same keys, the images were replaced, and we don't need to worry about this.
+    S3Helper.remove_image(old_original.split('/').last) unless old_original = @image.original
+    S3Helper.remove_image(old_thumbnail.split('/').last) unless old_thumbnail = @image.thumbnail
+    S3Helper.remove_image(old_preview.split('/').last) unless old_preview = @image.preview
+
+    # send_data image.to_blob, type: 'image/jpeg', disposition: 'inline'
   end
 
   # PUT /images/:id
