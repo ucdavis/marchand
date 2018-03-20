@@ -8,15 +8,20 @@ class ImagesController < GalleryController
   FEATURED_IMAGE_LIMIT = 24
 
   def featured
-    @cards = []
-    Topic.where(featured: true).each do |topic|
-      @cards << {
-        image: Image.joins(:topics)
-                    .where(public: 1, featured: 1, topics: { id: topic.id })
-                    .order('RAND()')
-                    .first,
-        topic: topic
-      }
+    cache_key = Image.maximum(:updated_at).try(:utc).try(:to_s, :number).to_s
+
+    @cards = Rails.cache.fetch("#{cache_key}/featured", expires_in: 72.hours) do
+      cards = []
+      Topic.where(featured: true).each do |topic|
+        cards << {
+          image: Image.joins(:topics)
+                      .where(public: 1, featured: 1, topics: { id: topic.id })
+                      .order('RAND()')
+                      .first,
+          topic: topic
+        }
+      end
+      cards
     end
   end
 
