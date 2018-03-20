@@ -21,10 +21,15 @@ $(document).ready () ->
       # Unfortunately S3 updates aren't always available right away, so it sometimes
       # appears as though the image wasn't manipulated when we really just need to wait
       # a few seconds. Here's a quick hack until we fix our design ...
-      the_timer = setTimeout( () =>
+      setTimeout( () =>
         $img[0].src = img_src
-        clearTimeout(the_timer)
-      , 5000)
+      , 3500)
+      setTimeout( () =>
+        $img[0].src = img_src
+      , 7000)
+      setTimeout( () =>
+        $img[0].src = img_src
+      , 10500)
     ).fail( () =>
       $('#image-edit-controls-text').css('color', '#f00').html('An error occurred. Please try again or contact IT.')
     )
