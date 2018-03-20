@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170722005252) do
+ActiveRecord::Schema.define(version: 20180320223515) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "url"
@@ -58,23 +58,25 @@ ActiveRecord::Schema.define(version: 20170722005252) do
   end
 
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string  "thumbnail",        limit: 128,   default: "",    null: false
-    t.string  "title",                          default: "",    null: false
-    t.text    "card",             limit: 65535
-    t.text    "citation",         limit: 65535
-    t.integer "collection_id",                  default: 0,     null: false
-    t.integer "public",                         default: 0,     null: false
-    t.integer "featured",                       default: 0,     null: false
-    t.text    "notes",            limit: 65535
-    t.text    "original",         limit: 65535
-    t.string  "preview"
-    t.integer "preview_width"
-    t.integer "preview_height"
-    t.integer "thumbnail_width"
-    t.integer "thumbnail_height"
-    t.integer "original_width"
-    t.integer "original_height"
-    t.boolean "missing",                        default: false
+    t.string   "thumbnail",        limit: 128,   default: "",    null: false
+    t.string   "title",                          default: "",    null: false
+    t.text     "card",             limit: 65535
+    t.text     "citation",         limit: 65535
+    t.integer  "collection_id",                  default: 0,     null: false
+    t.integer  "public",                         default: 0,     null: false
+    t.integer  "featured",                       default: 0,     null: false
+    t.text     "notes",            limit: 65535
+    t.text     "original",         limit: 65535
+    t.string   "preview"
+    t.integer  "preview_width"
+    t.integer  "preview_height"
+    t.integer  "thumbnail_width"
+    t.integer  "thumbnail_height"
+    t.integer  "original_width"
+    t.integer  "original_height"
+    t.boolean  "missing",                        default: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.index ["title"], name: "idx_images_searchable", using: :btree
   end
 
@@ -136,6 +138,12 @@ ActiveRecord::Schema.define(version: 20170722005252) do
     t.string  "title",      limit: 50, default: "",   null: false
     t.string  "collection", limit: 2,  default: "US", null: false
     t.integer "featured",              default: 0,    null: false
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "loginid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
