@@ -31,7 +31,7 @@
 
     <div class="row flex-row-wrap view-mode-grid" style="display: none;">
       <% @images.each do |image| %>
-        <% cache "#{image.updated_at.try(:utc).try(:to_s, :number).to_s}-grid" do %>
+        <% cache "#{image.id}-#{image.updated_at.try(:utc).try(:to_s, :number).to_s}-grid" do %>
           <div class="col-xs-3 image-card"
               type="button"
               data-toggle="modal"
@@ -59,7 +59,7 @@
 
     <div class="view-mode-list" style="display: none;">
       <% @images.each do |image| %>
-        <% cache "#{image.updated_at.try(:utc).try(:to_s, :number).to_s}-list" do %>
+        <% cache "#{image.id}-#{image.updated_at.try(:utc).try(:to_s, :number).to_s}-list" do %>
           <div class="row" style="margin-bottom: 2.5em; border-bottom: 1px solid #ddd;">
             <div class="col-xs-3 image-card"
                 type="button"
