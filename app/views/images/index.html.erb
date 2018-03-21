@@ -18,8 +18,8 @@
 
     <div class="row">
       <div class="col-xs-12 view-controls">
-        <button class="btn btn-default selected" title="Grid view"><%= image_tag 'ic_view_module_black_24dp_2x.png' %></button>
-        <button class="btn btn-default" title="List view"><%= image_tag 'ic_view_list_black_24dp_2x.png' %></button>
+        <button class="btn btn-default selected" title="Grid view" data-view-mode="grid"><%= image_tag 'ic_view_module_black_24dp_2x.png' %></button>
+        <button class="btn btn-default" title="List view" data-view-mode="list"><%= image_tag 'ic_view_list_black_24dp_2x.png' %></button>
       </div>
     </div>
 
@@ -29,10 +29,9 @@
     </div>
     <% end %>
 
-    <div class="row flex-row-wrap">
-
+    <div class="row flex-row-wrap view-mode-grid" style="display: none;">
       <% @images.each do |image| %>
-        <% cache image do %>
+        <% cache "#{image.updated_at.try(:utc).try(:to_s, :number).to_s}-grid" do %>
           <div class="col-xs-3 image-card"
               type="button"
               data-toggle="modal"
@@ -51,15 +50,52 @@
               data-nat-standards="<%= image.nat_standards.map { |n| n.title } %>"
               data-citation="<%= image.citation %>"
               data-id="<%= image.id %>">
-
             <img src="<%= image.thumbnail %>" />
-
             <h5 class="text-center title"><%= image.title %></h5>
           </div> <!-- .image-card -->
         <% end %>
       <% end %>
+    </div> <!-- .row .flex-row-wrap -->
 
-    </div>
+    <div class="view-mode-list" style="display: none;">
+      <% @images.each do |image| %>
+        <% cache "#{image.updated_at.try(:utc).try(:to_s, :number).to_s}-list" do %>
+          <div class="row" style="margin-bottom: 2.5em; border-bottom: 1px solid #ddd;">
+            <div class="col-xs-3 image-card"
+                type="button"
+                data-toggle="modal"
+                data-target="#<%= image.orientation %>-modal"
+                data-view="<%= image.orientation %>"
+                data-authors="<%= image.authors.map { |a| a.name } %>"
+                data-src-original="<%= image.original %>"
+                data-src-preview="<%= image.preview %>"
+                data-src-preview-width="<%= image.preview_width %>"
+                data-src-preview-height="<%= image.preview_height %>"
+                data-collection="<%= image.collection.present? ? image.collection.name : " " %>"
+                data-card="<%= image.card %>"
+                data-topics="<%= image.topics.map { |t| t.title } %>"
+                data-regions="<%= image.regions.map { |r| r.title } %>"
+                data-cal-standards="<%= image.cal_standards.map { |c| c.title } %>"
+                data-nat-standards="<%= image.nat_standards.map { |n| n.title } %>"
+                data-citation="<%= image.citation %>"
+                data-id="<%= image.id %>">
+              <img src="<%= image.thumbnail %>" />
+            </div> <!-- .image-card -->
+            <div class="col-xs-9">
+              <h4><%= image.title %></h4>
+              <span style="font-size: 0.8em;">Image ID: <%= image.id %></span>
+              <% if image.collection.present? %>
+                <h5 style="font-style: italic;">Collection: <%= image.collection.name %></h5>
+              <% end %>
+              <h5 style="margin-top: 5px;">Topic(s): <%= image.topics.map { |t| t.title }.join(', ') %></h5>
+              <h5 style="margin-top: 5px;">Region(s): <%= image.regions.map { |t| t.title }.join(', ') %></h5>
+              <h5 style="margin-top: 5px;">CA Standard(s): <%= image.cal_standards.map { |t| t.title }.join(', ') %></h5>
+              <h5 style="margin-top: 5px; margin-bottom: 2em;">National Standard(s): <%= image.nat_standards.map { |t| t.title }.join(', ') %></h5>
+            </div>
+          </div> <!-- .row -->
+        <% end %>
+      <% end %>
+    </div> <!-- .view-mode-list -->
 
   <% end %>
 </div>

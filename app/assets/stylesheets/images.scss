@@ -23,3 +23,21 @@
     }
   }
 }
+
+.view-mode-list {
+  margin-top: 2em;
+
+  .image-card {
+    margin-top: 0;
+
+    img {
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+  }
+
+  h4, h5 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

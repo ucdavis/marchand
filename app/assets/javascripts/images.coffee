@@ -201,9 +201,24 @@ setModalImageDetails = (el) ->
     if natStandard.length > 0
       $(".nat-standards", $("##{view}-modal .list-section")).append("<li>#{natStandard}</li>")
 
-$(document).ready () ->
-  #setupModalEvents()
+setViewModeVisibility = (view_mode) ->
+  # Adjust image visibility and toolbar selection
+  if view_mode == "list"
+    $(".view-controls>button[data-view-mode=list]").addClass('selected')
+    $(".view-controls>button[data-view-mode=grid]").removeClass('selected')
 
+    $(".view-mode-list").show()
+    $(".view-mode-grid").hide()
+  else if view_mode == "grid"
+    $(".view-controls>button[data-view-mode=list]").removeClass('selected')
+    $(".view-controls>button[data-view-mode=grid]").addClass('selected')
+
+    $(".view-mode-list").hide()
+    $(".view-mode-grid").show()
+
+
+
+$(document).ready () ->
   $('.upload-image-btn').on 'change', (e) ->
       previewImage(this)
     
@@ -214,8 +229,7 @@ $(document).ready () ->
     addTag(this, text, targetId)
 
   # Fill modal content
-  $(".image-card").on "click", (e) ->
-    window.modalImage = this
+  $(".image-card[data-toggle=modal]").on "click", (e) ->
     setModalImageDetails(this)
 
   # Add filter search
@@ -254,6 +268,21 @@ $(document).ready () ->
     setNewImageValues($("form[name=new-image]"))
     this.submit()
 
+  # Handle switching between view modes
   $(".view-controls>button").on "click", (e) =>
-    debugger
+    # Nothing to do if current view was selected
+    return false if $(e.target).hasClass('selected')
+
+    view_mode = $(e.target).data('view-mode')
+
+    # Save view mode
+    localStorage.setItem("view_mode", view_mode)
+
+    setViewModeVisibility(view_mode)
+
     false
+  
+  # Ensure proper view mode is set
+  view_mode = localStorage.getItem("view_mode");
+  view_mode = 'grid' if view_mode == null
+  setViewModeVisibility(view_mode)
