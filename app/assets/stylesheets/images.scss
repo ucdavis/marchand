@@ -41,3 +41,33 @@
     margin-bottom: 0;
   }
 }
+
+@media print {
+  // Remove nav, sidebar, and view-controls in print view
+  .search-sidebar, nav, .view-controls {
+    display: none;
+  }
+
+  // Left-align main content as sidebar is gone in print view
+  .content-margin {
+    margin-left: 0;
+  }
+
+  // Print view is always "view-mode list"
+  .view-mode-grid {
+    display: none !important;
+  }
+  .view-mode-list {
+    display: block !important;
+  }
+
+  // Avoid breaking up the card rows in print view
+  .view-mode-list .row {
+    page-break-inside: avoid;
+
+    // Ensure hidden metadata (card text and citation) are shown in print view
+    h5 {
+      display: block !important;
+    }
+  }
+}

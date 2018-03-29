@@ -269,7 +269,7 @@ $(document).ready () ->
     this.submit()
 
   # Handle switching between view modes
-  $(".view-controls>button").on "click", (e) =>
+  $(".view-controls>button[data-view-mode]").on "click", (e) =>
     # Nothing to do if current view was selected
     return false if $(e.target).hasClass('selected')
 
