@@ -44,7 +44,7 @@
 
 @media print {
   // Remove nav, sidebar, and view-controls in print view
-  .search-sidebar, nav, .view-controls {
+  .search-sidebar, nav, .view-controls, .apple_pagination {
     display: none;
   }
 
