@@ -67,7 +67,7 @@ gem 'rubycas-client', git: 'https://github.com/cthielen/rubycas-client.git'
 gem 'rmagick'
 
 # Used in development and production
-gem 'mysql2'
+gem 'mysql2', '< 0.5'
 
 # Include Bootstrap support
 gem 'bootstrap-sass', '~> 3.3.7'
