@@ -1,21 +1,21 @@
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
-
+ruby '~> 2.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1'
+gem 'rails', '~> 5.2.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+# See https://github.com/rails/execjs#readme for more supported runtimes
+# gem 'mini_racer', platforms: :ruby
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
 group :development do
@@ -43,11 +43,19 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
+group :test do
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara', '>= 2.15', '< 4.0'
+  gem 'selenium-webdriver'
+  # Easy installation and use of chromedriver to run system tests with Chrome
+  gem 'chromedriver-helper'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Easy pagination
-gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate', '~> 3.1.6'
 
 # Elastic Search
 gem 'elasticsearch-model'
@@ -56,19 +64,19 @@ gem 'elasticsearch-rails'
 gem 'faraday_middleware-aws-signers-v4'
 
 # For managing data in S3 bucket
-gem 'aws-sdk', '~> 2.10'
+gem 'aws-sdk', '~> 2.10.134'
 
 # CAS authentication
 # Use AR Session Store as required by rubycas-client
 # gem 'activerecord-session_store', git: 'https://github.com/rails/activerecord-session_store'
-gem 'activerecord-session_store', '1.1.0'
+gem 'activerecord-session_store', '1.1.1'
 gem 'rubycas-client', git: 'https://github.com/cthielen/rubycas-client.git'
 
 # For thumbnail support
 gem 'rmagick'
 
 # Used in development and production
-gem 'mysql2', '< 0.5'
+gem 'mysql2' #, '< 0.5'
 
 # Include Bootstrap support
 gem 'bootstrap-sass', '~> 3.3.7'
