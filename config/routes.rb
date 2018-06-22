@@ -23,4 +23,7 @@ Rails.application.routes.draw do
   resources :regions
   resources :cal_standards
   resources :nat_standards
+
+  # Leave this route at the end to capture 404s
+  match '*path' => 'errors#error_404', via: :all
 end
