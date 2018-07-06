@@ -26,4 +26,6 @@ Rails.application.routes.draw do
 
   # Leave this route at the end to capture 404s
   match '*path' => 'errors#error_404', via: :all
+  # The above rule doesn't match the root, so add it
+  match '/' => 'errors#error_404', via: :all
 end
