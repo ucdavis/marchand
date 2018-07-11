@@ -25,6 +25,12 @@ class ImagesController < GalleryController
     end
   end
 
+  # 'show' is not used but our routes use 'resources :images', so we must define it
+  # to avoid possible routing exceptions from bad requests
+  def show
+    render plain: 'No such path', status: 404
+  end
+
   def index
     if params[:bestof].present? && params[:bestof]
       @bestof = Topic.find_by_id(params[:topic_id]).title
