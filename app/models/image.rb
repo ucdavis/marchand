@@ -2,6 +2,9 @@ class Image < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+  # Elasticsearch index name
+  index_name 'marchand-images'
+
   after_update -> { __elasticsearch__.index_document }
 
   has_many :topic_assignments, dependent: :destroy
