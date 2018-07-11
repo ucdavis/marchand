@@ -263,10 +263,10 @@ class ImagesController < GalleryController
       { query_string: { query: q } }
     ]
 
-    params_region = params[:region].split(',') if params[:region].present?
-    params_topic = params[:topic].split(',') if params[:topic].present?
-    params_collection = params[:collection].split(',') if params[:collection].present?
-    params_calstandard = params[:calstandard].split(',') if params[:calstandard].present?
+    params_region = params[:region].split(',').select { |i| i == i.to_i.to_s } if params[:region].present?
+    params_topic = params[:topic].split(',').select { |i| i == i.to_i.to_s } if params[:topic].present?
+    params_collection = params[:collection].split(',').select { |i| i == i.to_i.to_s } if params[:collection].present?
+    params_calstandard = params[:calstandard].split(',').select { |i| i == i.to_i.to_s } if params[:calstandard].present?
 
     # rubocop:disable Metrics/LineLength
     query << { query_string: as_query_string('region_assignments.region_id', params_region) } if params[:region].present?
