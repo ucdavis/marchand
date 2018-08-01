@@ -12,12 +12,13 @@ module S3Helper
   def self.establish_connection
     # Configure AWS
     Aws.config.update(
-      region: ENV['AWS_S3_REGION'],
-      credentials: Aws::Credentials.new(ENV['ELASTICSEARCH_AWS_ACCESS_KEY'], ENV['ELASTICSEARCH_AWS_SECRET_KEY'])
+      region: Rails.application.secrets[:aws_s3_region],
+      credentials: Aws::Credentials.new(Rails.application.secrets[:aws_access_key],
+                                        Rails.application.secrets[:aws_secret_key])
     )
 
     # Setup S3
-    @s3client = Aws::S3::Client.new(region: ENV['AWS_S3_REGION'])
+    @s3client = Aws::S3::Client.new(region: Rails.application.secrets[:aws_s3_region])
     @s3resrc = Aws::S3::Resource.new(client: @s3client)
   end
 
@@ -74,13 +75,13 @@ module S3Helper
   def self.get_object(key)
     establish_connection unless connected?
 
-    @s3client.get_object(bucket: ENV['AWS_S3_BUCKET'], key: key)
+    @s3client.get_object(bucket: Rails.application.secrets[:aws_s3_bucket], key: key)
   end
 
   def self.upload_rmagick_image(key, rmk_image)
     establish_connection unless connected?
 
-    obj = @s3resrc.bucket(ENV['AWS_S3_BUCKET'])
+    obj = @s3resrc.bucket(Rails.application.secrets[:aws_s3_bucket])
     obj = obj.object(key)
     obj.put(body: rmk_image.to_blob, acl: 'public-read')
 
@@ -90,6 +91,6 @@ module S3Helper
   def self.remove_image(key)
     establish_connection unless connected?
 
-    @s3client.delete_object(bucket: ENV['AWS_S3_BUCKET'], key: key)
+    @s3client.delete_object(bucket: Rails.application.secrets[:aws_s3_bucket], key: key)
   end
 end
