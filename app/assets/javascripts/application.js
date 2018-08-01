@@ -29,7 +29,6 @@ $(document).ready(function(){
         anchorTop = anchor.offset().top;
         testyes = node.find('.btn-group-up');
 
-        console.log('scroll', docTop, anchorTop);
         if(docTop > anchorTop+300){
           if(!fixed) {
             testyes.addClass('dropup');

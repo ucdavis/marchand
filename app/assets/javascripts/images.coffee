@@ -134,7 +134,6 @@ searchFilter = (menu, target) ->
 
   $('li', searchArea).each (index, item) ->
     text = if target == "input" then $(target, item).val() else $(target,item).html()
-    console.log text
     if ( text.toLowerCase().indexOf(filter) > -1 )
       $(item).css("display", "")
     else
