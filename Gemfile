@@ -58,9 +58,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'will_paginate', '~> 3.1.6'
 
 # Elastic Search
-gem 'elasticsearch-model'
-gem 'elasticsearch-persistence', require: 'elasticsearch/persistence/model'
-gem 'elasticsearch-rails'
+gem 'elasticsearch-model', '~> 5.0'
+gem 'elasticsearch-persistence', '~> 5.0'
+gem 'elasticsearch-rails', '~> 5.0'
 gem 'faraday_middleware-aws-signers-v4'
 
 # For managing data in S3 bucket
