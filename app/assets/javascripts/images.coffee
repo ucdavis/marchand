@@ -95,7 +95,7 @@ buildFilterUrl = (form) ->
 toggleTag = (checkbox) ->
   targetId = $(checkbox).data("target-id")
   text = $("span", $(checkbox).parent()).html()
-  
+
   if $(checkbox).is(":checked")
     addTag(checkbox, text, targetId)
   else
@@ -168,14 +168,13 @@ setModalImageDetails = (el) ->
   # So we clear it first to avoid having the wrong picutre in a modal
   $("img", $("##{view}-modal .modal-header")).attr("src", "")
   $("img", $("##{view}-modal .modal-header")).attr("src", imgSrcPreview)
-  $("img", $("##{view}-modal .modal-header")).css("width", imgSrcPreviewWidth)
 
   $(".title", $("##{view}-modal .image-title")).html(imgTitle)
   $(".collection", $("##{view}-modal .image-title")).html(imgCollection)
 
   if imgAuthors.length > 0
     $(".authors", $("##{view}-modal .image-title")).html("Uploaded by #{imgAuthors.join(", ")}")
-  
+
   $(".image_id", $("##{view}-modal .list-section")).html(imgId)
   $(".card", $("##{view}-modal .list-section")).html(imgCard)
   $(".citation", $("##{view}-modal .list-section")).html(imgCitation)
@@ -220,7 +219,7 @@ setViewModeVisibility = (view_mode) ->
 $(document).ready () ->
   $('.upload-image-btn').on 'change', (e) ->
       previewImage(this)
-    
+
   # Persist filters / tags from previous search
   $("input:checked").each (i, item) ->
     targetId = $(this).data("target-id")
@@ -280,7 +279,7 @@ $(document).ready () ->
     setViewModeVisibility(view_mode)
 
     false
-  
+
   # Ensure proper view mode is set
   view_mode = localStorage.getItem("view_mode");
   view_mode = 'grid' if view_mode == null

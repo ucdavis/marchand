@@ -24,8 +24,9 @@ Rails.application.routes.draw do
   resources :cal_standards
   resources :nat_standards
 
-  # Leave this route at the end to capture 404s
-  match '*path' => 'errors#error_404', via: :all
-  # The above rule doesn't match the root, so add it
+  get '*all', to: 'application#mount', constraints: lambda { |req|
+    req.path.exclude? 'rails/active_storage'
+  }
+  # # The above rule doesn't match the root, so add it
   match '/' => 'errors#error_404', via: :all
 end
