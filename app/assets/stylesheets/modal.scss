@@ -76,11 +76,11 @@
   .modal-body {
     margin-left: 20px;
     margin-right: 20px;
-    
+
     .image-title {
       margin: 5px 0px 10px 0px;
     }
-    
+
     .description {
       padding-bottom: 5px;
       border-bottom: 1px solid #e5e5e5;
@@ -104,6 +104,9 @@
     min-width: 30%;
     background-color: black;
     width: 100%;
+    display: flex;
+    align-items: center;
+
     padding: 0px !important;
 
     .button-group {
@@ -178,9 +181,6 @@
 
     .image-info {
       padding-right:35px !important;
-      overflow-y: scroll;
-      overflow-x: hidden;
-      height: 535px;
 
       .image-title {
         margin: 5px 0px 0px 0px;

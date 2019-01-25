@@ -7,6 +7,8 @@ ruby '~> 2.5'
 gem 'rails', '~> 5.2.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+# Use MySQL as the database for Active Record
+gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -61,10 +63,6 @@ gem 'will_paginate', '~> 3.1.6'
 gem 'elasticsearch-model'
 gem 'elasticsearch-persistence', require: 'elasticsearch/persistence/model'
 gem 'elasticsearch-rails'
-gem 'faraday_middleware-aws-signers-v4'
-
-# For managing data in S3 bucket
-gem 'aws-sdk', '~> 2.10.134'
 
 # CAS authentication
 # Use AR Session Store as required by rubycas-client
@@ -73,7 +71,7 @@ gem 'activerecord-session_store', '1.1.1'
 gem 'rubycas-client', git: 'https://github.com/cthielen/rubycas-client.git'
 
 # For thumbnail support
-gem 'rmagick'
+gem "mini_magick"
 
 # Used in development and production
 gem 'mysql2' #, '< 0.5'
@@ -83,3 +81,10 @@ gem 'bootstrap-sass', '~> 3.3.7'
 
 # Expose routes to Javascript
 gem 'js-routes'
+
+# To enable variants on Active Storage
+gem 'image_processing', '~> 1.2'
+
+# gem 'aws-sdk-core', '~> 2.4', '>= 2.4.4'
+# For S3 Active Storage support
+ gem "aws-sdk-s3", require: false

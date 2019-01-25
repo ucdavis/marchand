@@ -10,138 +10,159 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180320223515) do
+ActiveRecord::Schema.define(version: 2019_01_04_215940) do
 
-  create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "url"
-    t.integer  "lesson_id"
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "attachments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "url"
+    t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
+  create_table "authors", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "cal_standards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "grade_id",                  default: 0,  null: false
-    t.string  "standard_id", limit: 50,    default: "", null: false
-    t.text    "description", limit: 65535,              null: false
+  create_table "cal_standards", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "grade_id", default: 0, null: false
+    t.string "standard_id", limit: 50, default: "", null: false
+    t.text "description", null: false
   end
 
-  create_table "collections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name",            default: "", null: false
+  create_table "collections", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", default: "", null: false
     t.string "code", limit: 50, default: "", null: false
   end
 
-  create_table "data_cal_standards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "image_id"
-    t.integer  "cal_standard_id"
+  create_table "data_cal_standards", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "image_id"
+    t.integer "cal_standard_id"
   end
 
-  create_table "data_nat_standards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "image_id"
-    t.integer  "nat_standard_id"
+  create_table "data_nat_standards", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "image_id"
+    t.integer "nat_standard_id"
   end
 
-  create_table "image_authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "image_id"
-    t.integer  "author_id"
+  create_table "image_authors", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "image_id"
+    t.integer "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "thumbnail",        limit: 128,   default: "",    null: false
-    t.string   "title",                          default: "",    null: false
-    t.text     "card",             limit: 65535
-    t.text     "citation",         limit: 65535
-    t.integer  "collection_id",                  default: 0,     null: false
-    t.integer  "public",                         default: 0,     null: false
-    t.integer  "featured",                       default: 0,     null: false
-    t.text     "notes",            limit: 65535
-    t.text     "original",         limit: 65535
-    t.string   "preview"
-    t.integer  "preview_width"
-    t.integer  "preview_height"
-    t.integer  "thumbnail_width"
-    t.integer  "thumbnail_height"
-    t.integer  "original_width"
-    t.integer  "original_height"
-    t.boolean  "missing",                        default: false
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
-    t.index ["title"], name: "idx_images_searchable", using: :btree
+  create_table "images", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "thumbnail_old", limit: 128, default: "", null: false
+    t.string "title", default: "", null: false
+    t.text "card"
+    t.text "citation"
+    t.integer "collection_id", default: 0, null: false
+    t.integer "public", default: 0, null: false
+    t.integer "featured", default: 0, null: false
+    t.text "notes"
+    t.text "original_old"
+    t.string "preview_old"
+    t.integer "preview_width"
+    t.integer "preview_height"
+    t.integer "thumbnail_width"
+    t.integer "thumbnail_height"
+    t.integer "original_width"
+    t.integer "original_height"
+    t.boolean "missing", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "idx_images_searchable"
   end
 
-  create_table "keyword_assignments", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "keyword_assignments", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "sid", default: 0, null: false
     t.integer "kid", default: 0, null: false
   end
 
-  create_table "keywords", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "keywords", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", limit: 64, default: "", null: false
-    t.index ["title"], name: "idx_keywords_title", unique: true, using: :btree
+    t.index ["title"], name: "idx_keywords_title", unique: true
   end
 
-  create_table "lesson_authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "author_id"
-    t.integer  "lesson_id"
+  create_table "lesson_authors", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "author_id"
+    t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "lesson_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "lesson_id"
-    t.integer  "image_id"
+  create_table "lesson_images", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "lesson_id"
+    t.integer "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "lessons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "grade"
-    t.string   "title"
-    t.string   "background"
+  create_table "lessons", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "grade"
+    t.string "title"
+    t.string "background"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "pdf"
+    t.string "pdf"
   end
 
-  create_table "nat_standards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "era",                    default: 0, null: false
-    t.integer "us_world",               default: 0, null: false
-    t.text    "title",    limit: 65535,             null: false
+  create_table "nat_standards", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "era", default: 0, null: false
+    t.integer "us_world", default: 0, null: false
+    t.text "title", null: false
   end
 
-  create_table "region_assignments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "image_id",  default: 0, null: false
+  create_table "region_assignments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "image_id", default: 0, null: false
     t.integer "region_id", default: 0, null: false
   end
 
-  create_table "regions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "regions", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", limit: 64, default: "", null: false
   end
 
-  create_table "topic_assignments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "topic_assignments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "image_id", default: 0, null: false
     t.integer "topic_id", default: 0, null: false
   end
 
-  create_table "topics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string  "code",       limit: 3,  default: "",   null: false
-    t.string  "title",      limit: 50, default: "",   null: false
-    t.string  "collection", limit: 2,  default: "US", null: false
-    t.integer "featured",              default: 0,    null: false
+  create_table "topics", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code", limit: 3, default: "", null: false
+    t.string "title", limit: 50, default: "", null: false
+    t.string "collection", limit: 2, default: "US", null: false
+    t.integer "featured", default: 0, null: false
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "loginid"
+  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "loginid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

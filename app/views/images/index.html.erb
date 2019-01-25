@@ -30,19 +30,22 @@
     </div>
     <% end %>
 
+    <!-- Grid view -->
     <div class="row flex-row-wrap view-mode-grid" style="display: none;">
       <% @images.each do |image| %>
         <% cache "#{image.id}-#{image.updated_at.try(:utc).try(:to_s, :number).to_s}-grid" do %>
           <div class="col-xs-3 image-card"
               type="button"
               data-toggle="modal"
-              data-target="#<%= image.orientation %>-modal"
-              data-view="<%= image.orientation %>"
+              data-target="<% if image.original.attached? %>#<%= image.orientation %>-modal<% end %>"
+              data-view="<% if image.original.attached? %><%= image.orientation %><% end %>"
               data-authors="<%= image.authors.map { |a| a.name } %>"
-              data-src-original="<%= image.original %>"
-              data-src-preview="<%= image.preview %>"
-              data-src-preview-width="<%= image.preview_width %>"
-              data-src-preview-height="<%= image.preview_height %>"
+              data-src-original="<% if image.original.attached? %>
+                                  <%= rails_blob_path(image.original, disposition: "attachment") %>
+                                 <% end %>"
+              data-src-preview="<% if image.original.attached? %>
+                                  <%= Rails.application.routes.url_helpers.rails_representation_url(image.preview, only_path: true) %>
+                                 <% end %>"
               data-collection="<%= image.collection.present? ? image.collection.name : " " %>"
               data-card="<%= image.card %>"
               data-topics="<%= image.topics.map { |t| t.title } %>"
@@ -51,13 +54,18 @@
               data-nat-standards="<%= image.nat_standards.map { |n| n.title } %>"
               data-citation="<%= image.citation %>"
               data-id="<%= image.id %>">
-            <img src="<%= image.thumbnail %>" />
-            <h5 class="text-center title"><%= image.title %></h5>
+
+            <% if image.original.attached? %>
+              <%= image_tag(image.thumbnail) %>
+              <h5 class="text-center title"><%= image.title %></h5>
+            <% end %>
+
           </div> <!-- .image-card -->
         <% end %>
       <% end %>
     </div> <!-- .row .flex-row-wrap -->
 
+<!-- List view -->
     <div class="view-mode-list" style="display: none;">
       <% @images.each do |image| %>
         <% cache "#{image.id}-#{image.updated_at.try(:utc).try(:to_s, :number).to_s}-list" do %>
@@ -65,13 +73,15 @@
             <div class="col-xs-3 image-card"
                 type="button"
                 data-toggle="modal"
-                data-target="#<%= image.orientation %>-modal"
-                data-view="<%= image.orientation %>"
+                data-target="<% if image.original.attached? %>#<%= image.orientation %>-modal<% end %>"
+                data-view="<% if image.original.attached? %><%= image.orientation %><% end %>"
                 data-authors="<%= image.authors.map { |a| a.name } %>"
-                data-src-original="<%= image.original %>"
-                data-src-preview="<%= image.preview %>"
-                data-src-preview-width="<%= image.preview_width %>"
-                data-src-preview-height="<%= image.preview_height %>"
+                data-src-original="<% if image.original.attached? %>
+                                    <%= rails_blob_path(image.original, disposition: "attachment") %>
+                                   <% end %>"
+                data-src-preview="<% if image.original.attached? %>
+                                    <%= Rails.application.routes.url_helpers.rails_representation_url(image.preview, only_path: true) %>
+                                   <% end %>"
                 data-collection="<%= image.collection.present? ? image.collection.name : " " %>"
                 data-card="<%= image.card %>"
                 data-topics="<%= image.topics.map { |t| t.title } %>"
@@ -80,7 +90,11 @@
                 data-nat-standards="<%= image.nat_standards.map { |n| n.title } %>"
                 data-citation="<%= image.citation %>"
                 data-id="<%= image.id %>">
-              <img src="<%= image.thumbnail %>" />
+
+                <% if image.original.attached? %>
+                  <%= image_tag(image.thumbnail) %>
+                <% end %>
+
             </div> <!-- .image-card -->
             <div class="col-xs-9" style="margin-bottom: 2em;">
               <h4><%= image.title %></h4>
