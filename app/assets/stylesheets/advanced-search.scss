@@ -1,7 +1,12 @@
 .search-section {
-  padding: 35px;
-  background-color: #F4F4F4;
-  border-bottom: 1px solid #EAE8E8;
+  padding: 25px;
+  background-color: #e6e6e6;
+}
+
+.search-section p {
+  font-family: 'Arial';
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .search-section input {
@@ -12,8 +17,13 @@
   border-radius: 3px;
 }
 
+.search-section input[type="submit"] {
+  border: none;
+  outline: none;
+}
+
 .keyword-search {
-  width: 40%;
+  width: 100%;
   margin: 0 auto;
 
   span {
@@ -122,7 +132,6 @@
 
 .advanced-search {
   display: block;
-  text-align: center;
   padding: 10px;
   cursor: pointer;
   color: #494949;

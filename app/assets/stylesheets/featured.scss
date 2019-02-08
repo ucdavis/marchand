@@ -1,33 +1,56 @@
 .input-group-addon {
-	font-size: 13px !important;
-	border-left: 1px solid #ccc;
+  font-size: 13px !important;
+  border-left: 1px solid #ccc;
 }
 
-.marchand-profile {
-  width: 90% !important;
-  min-width: 193px;
+.box {
+  padding-top: 40px;
+  padding-left: 20px;
 }
 
-.marchand-description-container {
-  margin: 0px auto 0px auto;
-  background-color: #FCFCFC;
-  border: 1px solid #EAE8E8;
-  padding: 10px 10px 10px 10px;
-  border-radius: 5px;
+.box .content {
+  padding-top: 90px;
+  padding-left: 170px;
 }
 
-.marchand-description-content {
-  display: flex;
-  justify-content: normal;
-  padding: 5px 0px 5px 0px;
+.box .content p {
+  color: #005580;
 }
 
-.marchand-description-content h3 {
-  font-weight: bold;
-  margin-bottom: 25px !important;
-  margin-top: 0.25em;
+.box .content p a:link {
+  text-decoration: none;
 }
 
-.marchand-description-content p {
-  line-height: 2.0;
+.box .content p a:hover {
+  color: #0059b3;
+}
+
+.carousel-caption {
+  position: absolute;
+  left: auto;
+  right: auto;
+  width: 100%;
+  background-color: #000000;
+  opacity: 0.8;
+  bottom: 30px;
+  right:0;
+  padding-top: 0px;
+  padding-bottom: 10px;
+  font-family: Times;
+}
+
+.carousel-caption h2 {
+  font-size: 40px;
+}
+
+.carousel-indicators {
+  bottom: -5px;
+}
+
+.item {
+  text-align:center;
+}
+
+.carousel-inner img {
+  display:inline-block  !important;
 }

@@ -79,6 +79,8 @@ gem "mini_magick"
 # Include Bootstrap support
 gem 'bootstrap-sass', '~> 3.3.7'
 
+gem 'font-awesome-sass', '~> 5.4.1'
+
 # Expose routes to Javascript
 gem 'js-routes'
 

@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-7 pull-right">
+    <div class="navbar">
+      <ul class="nav navbar-nav">
+        <% if session[:cas_user].present? %>
+          <% if admin? %>
+          <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">Admin<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                  <li><a data-toggle="dropdown" class="dropdown-toggle" href="<%= new_image_url %>" class="admin-nav-link">Add New Image</a></li>
+                  <li><a data-toggle="dropdown" class="dropdown-toggle" href="#">Add New Lesson</a></li> <%# TODO: add lesson link %>
+                  <li><a data-toggle="dropdown" class="dropdown-toggle" href="/admin" class="admin-nav-link">Manage Metadata</a></li>
+              </ul>
+          </li>
+          <% end %>
+        <% end %>
+          <li><a href="<%= root_url %>">Image Collections</a></li>
+          <li><a href="<%= images_url %>">Browse All Images</a></li>
+          <li><a href="#">Primary Source Sets</a></li> <%# TODO: add primary source sets %>
+      </ul>
+    </div>
+  </div>
+</div>
