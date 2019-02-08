@@ -61,6 +61,10 @@ class Image < ActiveRecord::Base
     return self.original.variant(combine_options: { resize: "275>", extent: "275x190", gravity: "center" }).processed
   end
 
+  def carousel
+    return self.original.variant(combine_options: { resize: "810x400>", extent: "810x400", gravity: "center" }).processed
+  end
+
   def as_indexed_json(*)
     as_json(
       include: {

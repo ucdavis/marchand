@@ -1,0 +1,38 @@
+.input-group-addon {
+  font-size: 13px !important;
+  border-left: 1px solid #ccc;
+}
+
+.marchand-profile {
+  width: 90% !important;
+  min-width: 193px;
+}
+
+.marchand-description-container {
+  margin: 0px auto 240px auto;
+  background-color: #f2f2f2;
+  border: 1px solid #EAE8E8;
+  padding: 20px 20px 20px 20px;
+  border-radius: 5px;
+}
+
+.marchand-description-content {
+  display: flex;
+  justify-content: normal;
+  padding: 5px 0px 5px 0px;
+}
+
+.marchand-description-content h3 {
+  font-weight: bold;
+  margin-bottom: 25px !important;
+  margin-top: 0.25em;
+  font-family: Times;
+  font-size: 40px;
+}
+
+.marchand-description-content p { line-height: 2.0; }
+
+.marchand-about-page {
+  padding-top: 50px;
+  padding-bottom: 100px;
+}

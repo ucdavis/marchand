@@ -3,13 +3,10 @@
 <div class="container image-card-group content-margin">
 
   <% if @images.nil? %>
-
     <div class="row">
       <h5 class="col-xs-12">No Images</h5>
     </div>
-
   <% else %>
-
     <div class="collection-title">
       <% if @bestof %>
         <h3>Featured Collection: <%= @bestof %></h3>
@@ -23,12 +20,6 @@
         <button class="btn btn-default" title="Print" onClick="window.print();"><%= image_tag 'ic_print_black_24dp_2x.png' %></button>
       </div>
     </div>
-
-    <% if @num_pages > 1 %>
-    <div class="apple_pagination">
-      <%= will_paginate @images, params: params %>
-    </div>
-    <% end %>
 
     <!-- Grid view -->
     <div class="row flex-row-wrap view-mode-grid" style="display: none;">
@@ -65,7 +56,7 @@
       <% end %>
     </div> <!-- .row .flex-row-wrap -->
 
-<!-- List view -->
+    <!-- List view -->
     <div class="view-mode-list" style="display: none;">
       <% @images.each do |image| %>
         <% cache "#{image.id}-#{image.updated_at.try(:utc).try(:to_s, :number).to_s}-list" do %>
@@ -114,8 +105,15 @@
         <% end %>
       <% end %>
     </div> <!-- .view-mode-list -->
-
   <% end %>
+
+  <!-- pagination -->
+  <% if @num_pages > 1 %>
+  <div class="apple_pagination">
+    <%= will_paginate @images, params: params %>
+  </div>
+  <% end %>
+
 </div>
 
 <%= render 'vertical_modal' %>
