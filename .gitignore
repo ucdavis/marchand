@@ -35,3 +35,8 @@ marchandslides.bak/*
 
 # .DS_Store
 .DS_Store
+
+yarn.lock
+node_modules
+public/assets
+
