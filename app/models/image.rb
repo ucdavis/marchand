@@ -3,7 +3,7 @@ class Image < ActiveRecord::Base
   include Elasticsearch::Model::Callbacks
 
   # Elasticsearch index name
-  index_name 'marchand-images'
+  index_name ENV['ELASTICSEARCH_IMAGES_INDEX'] || 'marchand-images'
 
   after_update -> { __elasticsearch__.index_document }
 
