@@ -90,11 +90,30 @@ h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
   line-height: unset;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   font: 14px/20px 'Arimo', sans-serif;
   color: #494949;
   width: 100%;
   float: unset !important;
+}
+
+.page-content {
+  min-height: 100%;
+  margin-bottom: -120px;
+}
+
+.page-content::after {
+  content: "";
+  display: block;
+}
+
+footer, .page-content::after {
+  height: 120px;
 }
 
 textarea {
