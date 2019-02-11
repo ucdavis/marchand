@@ -60,9 +60,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'will_paginate', '~> 3.1.6'
 
 # Elastic Search
-gem 'elasticsearch-model'
-gem 'elasticsearch-persistence', require: 'elasticsearch/persistence/model'
-gem 'elasticsearch-rails'
+gem 'elasticsearch-model', '~> 5.0'
+gem 'elasticsearch-persistence', '~> 5.0'
+gem 'elasticsearch-rails', '~> 5.0'
 
 # CAS authentication
 # Use AR Session Store as required by rubycas-client
