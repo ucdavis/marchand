@@ -14,11 +14,9 @@
                     </div>
                     <div class="col-xs-12">
                         <h5>Lesson PDF</h5>
-                        <%= f.file_field :pdf, class: "hidden" %>
-                        <%= f.label :pdf do %>
-                        <span class="btn btn-default">Upload PDF</span>
-                        <span class="pdf-path"><%= @lesson.pdf.present? ? @lesson.pdf : "No file" %></span>
-                        <% end %>
+                          <div id="file_upload">
+                            <%= f.file_field :pdf %>
+                          </div>
                     </div>
                 </div>
             </div>
@@ -31,20 +29,15 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="row">
-                    <div class="col-xs-12">
-                        <%= render "images/filter", :f => f, :klass => Author, :member => :lesson_authors %>
-                    </div>
                     <div class="col-xs-12 card-text">
                         <h5>Lesson Background</h5>
                         <%= f.text_area :background, class: "form-control" %>
                     </div>
+
                     <div class="col-xs-12 card-text">
                         <h5>Lesson Images</h5>
-                        <!-- TODO -->
-                    </div>
-                    <div class="col-xs-12 card-text">
-                        <h5>Lesson Attachments</h5>
-                        <!-- TODO -->
+                          <%= f.collection_select(:image_ids, Image.all, :id, :title, {:include_blank => true},
+                            {:selected => @lesson.image_ids, :multiple => true} )%>
                     </div>
                 </div>
             </div>
@@ -52,5 +45,19 @@
     </div>
 </div>
 
-<%= f.submit @prompt, class: "btn btn-success col-md-3"%>
-<% end # lesson form %>
+<% if @lesson.id %>
+  <div class='col-md-12' style='text-align: center; margin-bottom: 5em;'>
+    <%= link_to 'Delete Lesson', url_for(action: :destroy, id: @lesson.id),
+                          method: :delete,
+                          data: { confirm: 'Are you sure?' },
+                          class: 'btn btn-lg btn-danger',
+                          style: 'margin-right: 8em;' %>
+    <%= f.submit 'Update Lesson', :class => 'btn-lg btn btn-primary', style: 'width: 33%;' %>
+  </div>
+<% else %>
+  <div class='col-md-12' style='text-align: center; margin-bottom: 5em;'>
+    <%= f.submit 'Add New Lesson', class: 'btn-lg btn btn-primary', style: 'width: 66%;' %>
+  </div>
+<% end %>
+
+<% end %>

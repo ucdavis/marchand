@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   get '/about', to: 'images#about'
 
+  resources :lessons
   resources :authors
   resources :topics
   resources :regions

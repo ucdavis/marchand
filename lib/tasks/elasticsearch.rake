@@ -19,4 +19,11 @@ namespace :es do
       )
     end
   end
+
+  desc "Reindex Lesson model"
+    task :reindex_lessons => :environment do
+      Lesson.__elasticsearch__.create_index! :force => true
+
+      Lesson.__elasticsearch__.import
+    end
 end
