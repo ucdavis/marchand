@@ -20,12 +20,18 @@
                 Found <b><%= @num_results %></b> result(s)
               </div>
             <% end %>
-            <% if @num_results <= 20 %>
-            <style>
-              #footer {
-                margin-top: 600px;
-              }
-            </style>
+            <% if @num_results == 0 %>
+              <style>
+                #footer {
+                  margin-top: 400px;
+                }
+              </style>
+            <% elsif @num_results <= 8 %>
+              <style>
+                #footer {
+                  margin-top: 300px;
+                }
+              </style>
             <% end %>
           </div>
 
