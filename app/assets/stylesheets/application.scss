@@ -104,16 +104,11 @@ body {
 
 .page-content {
   min-height: 100%;
-  margin-bottom: -120px;
 }
 
 .page-content::after {
   content: "";
   display: block;
-}
-
-footer, .page-content::after {
-  height: 120px;
 }
 
 textarea {
