@@ -22,11 +22,25 @@
               </div>
             <% end %>
             <% if @num_results == 0 %>
+<<<<<<< HEAD
             <style>
               #footer {
                 margin-top: 500px;
               }
             </style>
+=======
+              <style>
+                #footer {
+                  margin-top: 400px;
+                }
+              </style>
+            <% elsif @num_results <= 8 %>
+              <style>
+                #footer {
+                  margin-top: 300px;
+                }
+              </style>
+>>>>>>> Fix footer spacing based on results returned
             <% end %>
           </div>
 
