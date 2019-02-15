@@ -21,10 +21,10 @@
                 Found <b><%= @num_results %></b> result(s)
               </div>
             <% end %>
-            <% if @num_results == 0 %>
+            <% if @num_results <= 20 %>
             <style>
               #footer {
-                margin-top: 500px;
+                margin-top: 600px;
               }
             </style>
             <% end %>
