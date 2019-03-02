@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     get 'manipulate'
   end
 
+  get '/about', to: 'images#about'
+
   resources :authors
   resources :topics
   resources :regions

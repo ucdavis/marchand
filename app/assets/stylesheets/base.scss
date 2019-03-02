@@ -3,6 +3,7 @@ body {
   color: #494949;
   float: left;
   width: 100%;
+  padding-bottom: 20px;
 }
 
 .year-selector-section {
@@ -87,10 +88,6 @@ body {
 
 /* ---- search and advanced search section -----*/
 
-.caret {
-  color: black;
-}
-
 input[type=search] {
   width: 40%;
   margin: 0 auto;
@@ -108,11 +105,6 @@ input[type=search] {
   line-height: 1.42857143;
   color: #333;
   white-space: nowrap;
-}
-
-.dropdown-menu li:last-child {
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 .dropdown-list {
@@ -177,7 +169,7 @@ input[type=search] {
     width: auto;
     margin: 0px auto 0px auto;
     padding-bottom: 35px;
-    
+
     .col-xs-3 {
         margin-top: 25px;
     }

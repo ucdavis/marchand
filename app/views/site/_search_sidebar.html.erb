@@ -21,6 +21,13 @@
                 Found <b><%= @num_results %></b> result(s)
               </div>
             <% end %>
+            <% if @num_results <= 20 %>
+            <style>
+              #footer {
+                margin-top: 600px;
+              }
+            </style>
+            <% end %>
           </div>
 
           <div class="divider"></div>
@@ -33,20 +40,20 @@
 
             <div class="btn-group">
               <h5 style="margin-top: 0;"><b><%= title %></b></h5>
-              
+
               <div id="<%= klass.name %>" class="filter-field customized-search-group"></div>
 
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
               </button>
-              
+
               <div class="dropdown-menu" data-type="menu">
                 <div class="select2-search">
                   <span class="glyphicon glyphicon-search input-search-icon"></span>
                   <input class="dropdown-search" type="text" data-type="search-box">
                 </div>
-                
+
                 <ul class="dropdown-list" data-type="list" data-target="span">
                   <% filter.each do |item| %>
                     <% checked = params[klass.name.downcase].include?(item.id.to_s) ? "checked" : "" if params[klass.name.downcase].present?%>

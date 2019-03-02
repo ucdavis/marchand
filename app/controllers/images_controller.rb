@@ -30,6 +30,10 @@ class ImagesController < GalleryController
     render plain: 'No such path', status: 404
   end
 
+  # display author About Me page
+  def about
+  end
+
   def index
     if params[:bestof].present? && params[:bestof]
       @bestof = Topic.find_by_id(params[:topic_id]).title

@@ -61,7 +61,7 @@ gem 'will_paginate', '~> 3.1.6'
 
 # Elastic Search
 gem 'elasticsearch-model'
-gem 'elasticsearch-persistence'
+gem 'elasticsearch-persistence', require: 'elasticsearch/persistence/model'
 gem 'elasticsearch-rails'
 
 # CAS authentication
@@ -73,8 +73,13 @@ gem 'rubycas-client', git: 'https://github.com/cthielen/rubycas-client.git'
 # For thumbnail support
 gem "mini_magick"
 
+# Used in development and production
+gem 'mysql2' #, '< 0.5'
+
 # Include Bootstrap support
 gem 'bootstrap-sass', '~> 3.3.7'
+
+gem 'font-awesome-sass', '~> 5.4.1'
 
 # Expose routes to Javascript
 gem 'js-routes'
