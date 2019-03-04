@@ -11,7 +11,7 @@
 # end
 
 config = {
-  host: "http://localhost:9200/",
+  host: Rails.application.secrets[:elasticsearch_url],
   transport_options: {
     request: { timeout: 5 }
   }
