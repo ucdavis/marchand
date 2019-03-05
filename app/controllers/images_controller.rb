@@ -65,7 +65,6 @@ class ImagesController < GalleryController
 
     respond_to do |format|
       if @image.save
-        @image.save!
         format.html { redirect_to edit_image_path @image }
         format.json { head :no_content }
       else
