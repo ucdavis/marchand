@@ -1,10 +1,13 @@
 class LessonsController < ApplicationController
-  before_action :set_image, only: [:show, :edit, :update, :destroy]
+  before_action :set_lesson, only: [:show, :edit, :update, :destroy]
+
+  RESULTS_PER_PAGE = 20
 
   # GET /lessons
   # GET /lessons.json
   def index
-    @lessons = Lesson.all
+    @lessons = Lesson.paginate(page: params[:page], per_page: RESULTS_PER_PAGE)
+    @num_pages = @lessons.total_pages
   end
 
   def show
@@ -27,13 +30,11 @@ class LessonsController < ApplicationController
 
     respond_to do |format|
       if @lesson.save
-        format.html {
-          flash[:success] = "Paper was successfully created."
-          redirect_to @lesson
-        }
-        format.json { render :show, status: :created, location: @lesson }
+        @lesson.save!
+        format.html { redirect_to edit_lesson_path @lesson }
+        format.json { head :no_content }
       else
-        format.html { render :new }
+        format.html { render action: :edit }
         format.json { render json: @lesson.errors, status: :unprocessable_entity }
       end
     end
@@ -42,7 +43,11 @@ class LessonsController < ApplicationController
   def update
   end
 
+  def set_lesson
+    @lesson = Lesson.find(params[:id])
+  end
+
   def lesson_params
-    params.require(:lesson).permit(:title, :grade, :pdf, :background, :search, { author_ids: [] })
+    params.require(:lesson).permit(:title, :grade, :pdf, :background, :search, image_ids: [])
   end
 end

@@ -1,0 +1,45 @@
+<!-- List view -->
+<% cache "#{image.id}-#{image.updated_at.try(:utc).try(:to_s, :number).to_s}-list" do %>
+  <div class="row" style="margin-bottom: 2.5em; border-bottom: 1px solid #ddd;">
+    <div class="col-xs-3 image-card"
+        type="button"
+        data-toggle="modal"
+        data-target="<% if image.original.attached? %>#<%= image.orientation %>-modal<% end %>"
+        data-view="<% if image.original.attached? %><%= image.orientation %><% end %>"
+        data-authors="<%= image.authors.map { |a| a.name } %>"
+        data-src-original="<% if image.original.attached? %>
+                            <%= rails_blob_path(image.original, disposition: "attachment") %>
+                           <% end %>"
+        data-src-preview="<% if image.original.attached? %>
+                            <%= Rails.application.routes.url_helpers.rails_representation_url(image.preview, only_path: true) %>
+                           <% end %>"
+        data-collection="<%= image.collection.present? ? image.collection.name : " " %>"
+        data-card="<%= image.card %>"
+        data-topics="<%= image.topics.map { |t| t.title } %>"
+        data-regions="<%= image.regions.map { |r| r.title } %>"
+        data-cal-standards="<%= image.cal_standards.map { |c| c.title } %>"
+        data-nat-standards="<%= image.nat_standards.map { |n| n.title } %>"
+        data-citation="<%= image.citation %>"
+        data-id="<%= image.id %>">
+
+        <% if image.original.attached? %>
+          <%= image_tag(image.thumbnail) %>
+        <% end %>
+
+    </div> <!-- .image-card -->
+    <div class="col-xs-9" style="margin-bottom: 2em;">
+      <h4><%= image.title %></h4>
+      <span style="font-size: 0.8em;">Image ID: <%= image.id %></span>
+      <% if image.collection.present? %>
+        <h5 style="font-style: italic;"><b>Collection:</b> <%= image.collection.name %></h5>
+      <% end %>
+      <h5 style="margin-top: 5px;"><b>Topic(s):</b> <%= image.topics.map { |t| t.title }.join(', ') %></h5>
+      <h5 style="margin-top: 5px;"><b>Region(s):</b> <%= image.regions.map { |t| t.title }.join(', ') %></h5>
+      <h5 style="margin-top: 5px;"><b>CA Standard(s):</b> <%= image.cal_standards.map { |t| t.title }.join(', ') %></h5>
+      <h5 style="margin-top: 5px;"><b>National Standard(s):</b> <%= image.nat_standards.map { |t| t.title }.join(', ') %></h5>
+      <!-- Card text and citation will be displayed only in print CSS -->
+      <h5 style="margin-top: 5px; display: none;"><b>Card Text:</b> <%= image.card %></h5>
+      <h5 style="margin-top: 5px; display: none;"><b>Citation:</b> <%= image.citation %></h5>
+    </div>
+  </div> <!-- .row -->
+<% end %>

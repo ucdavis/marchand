@@ -1,0 +1,30 @@
+<!-- Grid view -->
+<% cache "#{image.id}-#{image.updated_at.try(:utc).try(:to_s, :number).to_s}-grid" do %>
+  <div class="col-xs-3 image-card"
+      type="button"
+      data-toggle="modal"
+      data-target="<% if image.original.attached? %>#<%= image.orientation %>-modal<% end %>"
+      data-view="<% if image.original.attached? %><%= image.orientation %><% end %>"
+      data-authors="<%= image.authors.map { |a| a.name } %>"
+      data-src-original="<% if image.original.attached? %>
+                          <%= rails_blob_path(image.original, disposition: "attachment") %>
+                         <% end %>"
+      data-src-preview="<% if image.original.attached? %>
+                          <%= Rails.application.routes.url_helpers.rails_representation_url(image.preview, only_path: true) %>
+                         <% end %>"
+      data-collection="<%= image.collection.present? ? image.collection.name : " " %>"
+      data-card="<%= image.card %>"
+      data-topics="<%= image.topics.map { |t| t.title } %>"
+      data-regions="<%= image.regions.map { |r| r.title } %>"
+      data-cal-standards="<%= image.cal_standards.map { |c| c.title } %>"
+      data-nat-standards="<%= image.nat_standards.map { |n| n.title } %>"
+      data-citation="<%= image.citation %>"
+      data-id="<%= image.id %>">
+
+    <% if image.original.attached? %>
+      <%= image_tag(image.thumbnail) %>
+      <h5 class="text-center title"><%= image.title %></h5>
+    <% end %>
+
+  </div> <!-- .image-card -->
+<% end %>

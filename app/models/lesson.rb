@@ -33,11 +33,6 @@ class Lesson < ApplicationRecord
   end
 
   def as_indexed_json(_)
-    as_json(
-      include: {
-        lesson_authors: { only: :author_id },
-        lesson_images: { only: :image_id }
-      }
-    )
+    as_json(only: [:title, :background])
   end
 end
