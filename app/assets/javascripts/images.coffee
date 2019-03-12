@@ -214,9 +214,18 @@ setViewModeVisibility = (view_mode) ->
     $(".view-mode-list").hide()
     $(".view-mode-grid").show()
 
+setModalImageDetails = (el) ->
+  imageId = $(el).data('id')
+  imageTitle = $(el).data('title')
 
+  $("input[name=image_id]", $("#requestImageModal")).val(imageId)
+  $("#modal_image_title", $("#requestImageModal")).html(imageTitle)
 
 $(document).ready () ->
+  # Fill email modal content
+  $(".request-image[data-toggle=modal]").on "click", (e) ->
+    setModalImageDetails(this)
+
   $('.upload-image-btn').on 'change', (e) ->
       previewImage(this)
 

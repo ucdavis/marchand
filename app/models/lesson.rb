@@ -19,6 +19,8 @@ class Lesson < ApplicationRecord
 
   has_many :attachments, dependent: :destroy
 
+  validates_presence_of :title
+
   # @param query - text to search for
   # @param filter - array of hashes in the form of ElasticSearch's filter parameter for queryDSL
   def self.search(query, filter)

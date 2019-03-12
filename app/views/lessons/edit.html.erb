@@ -1,4 +1,12 @@
 <div class="container edit-lesson">
-    <h3 class="center page-title text-left">Edit Lesson</h3>
+    <h3 class="page-title" style="text-align: center;">Edit Lesson</h3>
+    <% if @lesson.errors.any? %>
+      <h4 style="color: red;">There were errors saving the lesson. See below.</h4>
+      <ul>
+        <% @lesson.errors.full_messages.each do |error_message| %>
+          <li><%= error_message %></li>
+        <% end %>
+      </ul>
+    <% end %>
     <%= render 'form' %>
 </div>

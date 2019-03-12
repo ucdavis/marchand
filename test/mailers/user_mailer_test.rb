@@ -8,4 +8,12 @@ class UserMailerTest < ActionMailer::TestCase
     assert_equal ["from@example.com"], mail.from
     assert_match "Hi", mail.body.encoded
   end
+
+  test "image_request" do
+    mail = UserMailer.image_request
+    assert_equal "Image request", mail.subject
+    assert_equal ["to@example.org"], mail.to
+    assert_equal ["from@example.com"], mail.from
+    assert_match "Hi", mail.body.encoded
+  end
 end

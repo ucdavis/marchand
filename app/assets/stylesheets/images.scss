@@ -42,6 +42,12 @@
   }
 }
 
+#image-modal-btn {
+  text-align: center;
+  vertical-align: middle;
+  padding: 20px 0 20px 0;
+}
+
 @media print {
   // Remove nav, sidebar, and view-controls in print view
   .search-sidebar, nav, .view-controls, .apple_pagination {

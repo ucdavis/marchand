@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   get '/about', to: 'images#about'
   get 'send_lesson_mail', to: 'lessons#send_lesson_mail', as: :send_lesson_mail
+  get 'send_image_mail', to: 'images#send_image_mail', as: :send_image_mail
 
   resources :lessons
   resources :authors

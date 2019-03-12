@@ -150,6 +150,15 @@ end
     end
   end
 
+  def send_image_mail
+    @image = Image.find(params[:image_id])
+    @customer_email = params[:email]
+
+    UserMailer.image_request(@image, @customer_email).deliver
+
+    redirect_to images_path, notice: 'Image request submitted successfully.'
+  end
+
   private
 
   # rubocop:disable Style/BracesAroundHashParameters

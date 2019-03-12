@@ -8,6 +8,6 @@ setModalLessonDetails = (el) ->
   $("#modal_lesson_title", $("#requestLessonModal")).html(lessonTitle)
 
 $(document).ready () ->
-  # Fill modal content
+  # Fill email modal content
   $(".request-lesson[data-toggle=modal]").on "click", (e) ->
     setModalLessonDetails(this)

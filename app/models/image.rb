@@ -86,10 +86,10 @@ class Image < ActiveRecord::Base
 
   private
   def original_type
-    if original.attached? == false
-      errors.add(:image, 'must be attached')
-    elsif original.byte_size > 25.megabytes
-      errors.add(:image, 'size must be less than 25 MB')
+    if original.attached?
+      if original.byte_size > 25.megabytes
+        errors.add(:image, 'size must be less than 25 MB')
+      end
     end
   end
 end
