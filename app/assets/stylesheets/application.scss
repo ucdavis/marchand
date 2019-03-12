@@ -253,6 +253,7 @@ textarea {
 .marchand-logo {
   width: 255px !important;
   margin-top: 8px;
+  margin-left: 0px;
   margin-bottom: 8px;
 }
 
@@ -268,4 +269,11 @@ textarea {
 
 .disable-click {
   pointer-events: none;
+}
+
+img.history-project-logo {
+  width: 280px !important;
+  height: 50px !important;
+  margin-top: 16px;
+  margin-bottom: 8px;
 }
