@@ -4,7 +4,6 @@
   <div class="row">
     <div class="col-md-12 panel panel-default lesson-header">
       <h5 class="col-md-3"><strong>Grade</strong></h5>
-      <h5 class="col-md-3"><strong>Grade</strong></h5>
       <h5 class="col-md-5"><strong>Title</strong></h5>
       <h5 class="col-md-2"><strong>Actions</strong></h5>
     </div>
@@ -27,9 +26,16 @@
                 <i class="glyphicon glyphicon-file" title="View online"></i>
               <% end %>
               <% else %>
-                <i class="glyphicon glyphicon-envelope" title="Request documents"></i>
+                <!-- Button trigger modal -->
+                <button type="button"
+                        class="btn btn-primary request-lesson"
+                        data-toggle="modal"
+                        data-target="#requestLessonModal"
+                        data-id="<%= lesson.id %>"
+                        data-title="<%= lesson.title %>">
+                        <i class="glyphicon glyphicon-envelope"></i> Request lesson
+                </button>
             <% end %>
-
             <% if admin? %>
             <a href="lessons/<%= lesson.id %>/edit"><i class="glyphicon glyphicon-pencil" title="Edit"></i></a>
               <%= link_to url_for(controller: :lessons, action: :destroy, id: lesson.id), method: :delete, data: { confirm: "Are you sure?"} do %>
@@ -63,5 +69,6 @@
   <% end %>
 </div>
 
+<%= render 'lessons/show_modal' %>
 <%= render 'images/vertical_modal' %>
 <%= render 'images/horizontal_modal' %>

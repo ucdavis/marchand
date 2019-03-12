@@ -58,7 +58,6 @@ ul.inline {
 
 .container {
   margin-top: 10px;
-  margin-bottom: 60px;
 }
 
 .tooltip {
@@ -270,4 +269,8 @@ textarea {
 
 .disable-click {
   pointer-events: none;
+}
+
+.alert-success {
+  color: green;
 }

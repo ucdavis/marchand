@@ -13,3 +13,4 @@
 
 //= require admin
 //= require images
+//= require lessons

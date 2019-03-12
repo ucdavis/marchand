@@ -26,6 +26,19 @@
   <div class="page-content">
     <div class="container-fluid">
       <%= render 'shared/header' %>
+
+      <% if notice %>
+      <div class="container">
+        <% flash.each do |key, value| %>
+            <p class="alert alert-success"><%= notice %>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </p>
+        <% end %>
+      </div>
+      <% end %>
+
       <%= yield %>
     </div>
   </div>

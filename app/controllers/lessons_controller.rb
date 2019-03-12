@@ -43,6 +43,15 @@ class LessonsController < ApplicationController
   def update
   end
 
+  def send_lesson_mail
+    @lesson = Lesson.find(params[:lesson_id])
+    @customer_email = params[:email]
+
+    UserMailer.lesson_request(@lesson, @customer_email).deliver
+
+    redirect_to lessons_path, notice: 'Lesson request submitted successfully.'
+  end
+
   def set_lesson
     @lesson = Lesson.find(params[:id])
   end

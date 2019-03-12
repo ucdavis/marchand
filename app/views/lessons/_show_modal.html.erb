@@ -1,0 +1,24 @@
+<!-- Modal -->
+<div class="modal fade" id="requestLessonModal" tabindex="-1" role="dialog" aria-labelledby="requestLessonModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <b><h5 class="modal-title" id="exampleModalLabel">To request the lesson document for the title <b><span id="modal_lesson_title"></span></b>, please enter your email address: </h5>
+      </div>
+      <%= form_tag( send_lesson_mail_path(1), { :method => 'get' } ) do %>
+        <div class="modal-body">
+          <div id="modalText"></div>
+            <%= text_field_tag :email, nil, placeholder: 'Email', :size => 50 %>
+            <input type="hidden" name="lesson_id">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
