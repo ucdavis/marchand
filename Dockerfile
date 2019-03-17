@@ -12,6 +12,8 @@ RUN bundle install
 
 COPY . /myapp
 
+# Workaround for https://github.com/rails/rails/pull/35607
+RUN mkdir /myapp/tmp
 RUN rake assets:precompile
 
 ENV PORT 3000
