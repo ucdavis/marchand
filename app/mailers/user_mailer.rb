@@ -8,8 +8,7 @@ class UserMailer < ApplicationMailer
       @lesson = lesson
       @customer_email = customer_email
 
-      # TODO: change to: historyproject@ucdavis.edu
-      mail to: "",
+      mail to: "historyproject@ucdavis.edu",
         subject: "New Lesson Request from Marchand"
     end
 
@@ -17,8 +16,7 @@ class UserMailer < ApplicationMailer
       @image = image
       @customer_email = customer_email
 
-      # TODO: change to: historyproject@ucdavis.edu
-      mail to: "",
+      mail to: "historyproject@ucdavis.edu",
         subject: "New Image Request from Marchand"
     end
 end

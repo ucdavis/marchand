@@ -3,12 +3,55 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
-      /* Email styles need to be inline */
+      .outer-table {
+        background-color: #f6f6f6;
+        width: 100%;
+        font-family: sans-serif;
+        font-size: 15px;
+      }
+      .outer-box {
+        Margin: 0 auto;
+        max-width: 600px;
+        padding: 25px 0px 20px 0px;
+      }
+      .inner-box {
+        border-collapse: separate;
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+        background: #fff;
+        border-radius: 3px;
+        width: 100%;
+        padding: 25px;
+      }
+      #header-text {
+        margin: 0;
+        Margin-bottom: 30px;
+      }
+      #url-button {
+        border-radius: 5px;
+        font-weight: bold;
+        padding: 12px 25px;
+        text-decoration: none;
+        background-color: #3498db;
+        color: #ffffff;
+      }
+      .box-footer {
+        font-size: 12px;
+        opacity: 85%;
+        Margin-bottom: 15px;
+        padding-top: 40px;
+      }
+      .footer-table {
+        padding-top: 10px;
+        width: 100%;
+        text-align: center;
+        color: #999999;
+        font-size: 12px;
+      }
     </style>
   </head>
 
   <body>
     <%= yield %>
-    <p>Thank you, </p>
   </body>
 </html>

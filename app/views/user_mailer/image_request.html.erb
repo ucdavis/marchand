@@ -1,10 +1,32 @@
-<p>
-  A image request was posted from Marchand for the topic :
-  <em><%= @image.title %></em>
-  by the customer <%= @customer_email %>
-</p>
-
-<p>
-  To reply to this request, please visit the
-  <%= link_to "image page", edit_image_url(@image) %>.
-</p>
+<table class="outer-table">
+  <tr>
+    <td class="container">
+      <div class="outer-box">
+        <table class="inner-box">
+          <tr>
+            <td>
+              <p id="header-text">
+                An image request was submitted by the customer <%= @customer_email %> for your topic,
+                <em><%= @image.title %></em>
+              </p>
+              <a href="<%= edit_image_url(@image) %>" id="url-button">Update Image</a>
+              <p class="box-footer">
+                If the above button does not work, copy and paste the URL below into your browser:
+                <%= edit_image_url(@image) %>
+              </p>
+            </td>
+          </tr>
+        </table>
+          <table class="footer-table">
+            <tr>
+              <td>
+                <span class="footer-table">
+                  Marchand Archive, UC Davis History Project
+                </span>
+              </td>
+            </tr>
+          </table>
+      </div>
+    </td>
+  </tr>
+<table>

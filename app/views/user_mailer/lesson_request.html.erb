@@ -1,10 +1,32 @@
-<p>
-  A lesson request was posted from Marchand for the topic :
-  <em><%= @lesson.title %></em>
-  by the customer <%= @customer_email %>
-</p>
-
-<p>
-  To reply to this request, please visit the
-  <%= link_to "lesson page", edit_lesson_url(@lesson) %>.
-</p>
+<table class="outer-table">
+  <tr>
+    <td class="container">
+      <div class="outer-box">
+        <table class="inner-box">
+          <tr>
+            <td>
+              <p id="header-text">
+                A lesson request was submitted by the customer <%= @customer_email %> for your topic,
+                <em><%= @lesson.title %></em>
+              </p>
+              <a href="<%= edit_lesson_url(@lesson) %>" id="url-button">Update Lesson</a>
+              <p class="box-footer">
+                If the above button does not work, copy and paste the URL below into your browser:
+                <%= edit_lesson_url(@lesson) %>
+              </p>
+            </td>
+          </tr>
+        </table>
+          <table class="footer-table">
+            <tr>
+              <td>
+                <span class="footer-table">
+                  Marchand Archive, UC Davis History Project
+                </span>
+              </td>
+            </tr>
+          </table>
+      </div>
+    </td>
+  </tr>
+<table>
