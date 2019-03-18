@@ -130,6 +130,11 @@ GEM
     execjs (2.7.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.13.1)
+      faraday (>= 0.7.4, < 1.0)
+    faraday_middleware-aws-sigv4 (0.2.4)
+      aws-sigv4 (~> 1.0)
+      faraday (>= 0.9)
     ffi (1.10.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -265,6 +270,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-session_store (= 1.1.1)
   aws-sdk-s3
+  aws-sigv4 (~> 1.1)
   bootstrap-sass (~> 3.3.7)
   byebug
   capybara (>= 2.15, < 4.0)
@@ -273,6 +279,8 @@ DEPENDENCIES
   elasticsearch-model
   elasticsearch-persistence
   elasticsearch-rails
+  faraday_middleware
+  faraday_middleware-aws-sigv4
   image_processing (~> 1.2)
   jbuilder (~> 2.5)
   jquery-rails

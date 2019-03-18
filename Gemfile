@@ -63,6 +63,9 @@ gem 'will_paginate', '~> 3.1.6'
 gem 'elasticsearch-model'
 gem 'elasticsearch-persistence'
 gem 'elasticsearch-rails'
+gem 'faraday_middleware'
+gem 'faraday_middleware-aws-sigv4'
+gem 'aws-sigv4', '~> 1.1'
 
 # CAS authentication
 # Use AR Session Store as required by rubycas-client
@@ -82,6 +85,5 @@ gem 'js-routes'
 # To enable variants on Active Storage
 gem 'image_processing', '~> 1.2'
 
-# gem 'aws-sdk-core', '~> 2.4', '>= 2.4.4'
 # For S3 Active Storage support
- gem "aws-sdk-s3", require: false
+gem 'aws-sdk-s3', require: false

@@ -2,6 +2,9 @@ class Image < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+  # Specify Elasticsearch document type
+  document_type 'image'
+
   # Elasticsearch index name
   index_name ENV['ELASTICSEARCH_IMAGES_INDEX'] || 'marchand-images'
 
