@@ -1,6 +1,8 @@
 require 'faraday_middleware'
 require 'faraday_middleware/aws_sigv4'
 
+# TODO: Reconfigure to use elasticsearch.yml. See https://github.com/elastic/elasticsearch-ruby/tree/master/elasticsearch-transport
+# TODO: Will https://github.com/toland/patron improve performance?
 # Configure for Amazon ES
 Elasticsearch::Model.client = Elasticsearch::Client.new url: Rails.application.secrets[:elasticsearch_url] do |f|
   f.request :aws_sigv4,
