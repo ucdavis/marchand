@@ -108,12 +108,13 @@ class ImagesController < GalleryController
     end
 
     if new_image
-      new_path = File.open(new_image.service.send(:path_for, new_image.key))
+      require 'open-uri'
+      new_path = open(new_image.service_url) # rubocop:disable Security/Open
       @image.original.attach(io: new_path, filename: filename, content_type: ext)
 
       @image.save!
 
-      render json: {url: rails_blob_url(@image.original) }
+      render json: { url: rails_blob_url(@image.original) }
     else
       Rails.logger.error 'Unexpected error while processing image edit'
     end
