@@ -1,3 +1,32 @@
+.lesson-show-page {
+  padding-top: 70px;
+  padding-bottom: 200px;
+}
+
+.lesson-info-header {
+  padding-bottom: 65px;
+}
+
 .lesson-header {
   background-color: #f2f2f2;
+}
+
+.lesson-info > h5 {
+  font-weight: 600;
+}
+
+.lesson-content:hover {
+  background: #f2f2f2;
+}
+
+.link-to-lesson-content:hover {
+  color: #494949;
+}
+
+.lesson-info {
+  padding-top: 100px;
+}
+
+.image-card-group {
+  padding-bottom: 200px;
 }

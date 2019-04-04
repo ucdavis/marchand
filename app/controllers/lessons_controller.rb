@@ -11,7 +11,7 @@ class LessonsController < ApplicationController
   end
 
   def show
-    render plain: 'No such path', status: 404
+    @lesson = Lesson.find(params[:id])
   end
 
   # GET /lessons/new

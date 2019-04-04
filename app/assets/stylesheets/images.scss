@@ -71,3 +71,144 @@
     }
   }
 }
+
+.link-to-image-content:hover {
+  color: #494949;
+  text-decoration: none;
+}
+
+.horizontal-orientation,.vertical-orientation {
+  h3 {
+    line-height: 1.1 !important;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none !important;
+    padding-left: 0px !important;
+  }
+}
+
+.horizontal-content,.vertical-content {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #fcfcfc;
+}
+
+.horizontal-orientation,.vertical-orientation {
+  padding-top: 50px;
+  padding-bottom: 200px;
+}
+
+.horizontal-orientation {
+  width: 600px;
+  margin: 30px auto;
+
+  .horizontal-header {
+    padding: 0px !important;
+
+    .button-group {
+      margin-left: 20px;
+      margin-right: 20px;
+
+      a {
+        margin: 10px 0px 10px 5px !important;
+
+        i {
+          margin-right:5px;
+        }
+
+        .glyphicon {
+          top: 2px !important;
+        }
+      }
+    }
+
+    .image-placeholder {
+      img {
+        width: 100% !important;
+      }
+    }
+  }
+
+  .horizontal-body {
+    margin-left: 20px;
+    margin-right: 20px;
+
+    .image-title {
+      margin: 5px 0px 10px 0px;
+    }
+
+    .description {
+      padding-bottom: 5px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .list-section {
+      margin-top: 15px;
+      margin-bottom: 15px;
+
+      h5 {
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.vertical-orientation {
+  width: 950px;
+  margin: 30px auto;
+
+  .vertical-header {
+    border: unset;
+    min-width: 30%;
+    background-color: black;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    padding: 0px !important;
+
+    .image-placeholder {
+      max-height: 600px;
+
+      img {
+        width: 100% !important;
+      }
+    }
+  }
+
+  .vertical-body {
+    padding: 0px 0px 15px 15px !important;
+    margin: 35px 0px 0px 35px !important;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    .image-info {
+      padding-right: 35px !important;
+
+      .image-title {
+        margin: 5px 0px 0px 0px;
+      }
+
+      .description {
+        padding-bottom: 5px;
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .list-section {
+        margin-top: 15px;
+        margin-bottom: 15px;
+
+        h5 {
+          font-weight: 600;
+        }
+
+        &.description {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
