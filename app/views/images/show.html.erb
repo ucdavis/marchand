@@ -1,0 +1,5 @@
+<% if @image.orientation == 'portrait' %>
+  <%= render 'vertical-orientation', :image => @image %>
+<% else %>
+  <%= render 'horizontal-orientation', :image => @image %>
+<% end %>

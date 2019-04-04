@@ -1,0 +1,63 @@
+<div class="horizontal-orientation">
+    <div class="horizontal-content">
+
+      <div class="horizontal-header">
+        <div class="image-placeholder">
+          <%= image_tag(url_for(@image.preview)) %>
+        </div>
+      </div>
+
+      <div class="horizontal-body">
+        <div class="image-title">
+          <h3><%= @image.title %></h3>
+          <h5><em>From <%= @image.collection.name %> collection</em></h5>
+        </div>
+        <div class="button-group">
+          <%= link_to @image.original, download: '', class: "btn btn-default" do %>
+            <span><i class="glyphicon glyphicon-save"></i></span>Download
+          <% end %>
+          <% if admin? %>
+            <%= link_to edit_image_path(@image), class: "btn btn-default" do %>
+              <span><i class="glyphicon glyphicon-cog"></i></span>Edit
+            <% end %>
+          <% end %>
+        </div>
+        <div class="list-section image-id">
+          <h5>Image ID: <span style="font-weight: normal;"><%= @image.id %></span></h5>
+        </div>
+        <div class="list-section description">
+          <h5>Description</h5>
+          <p><%= @image.card %></p>
+        </div>
+        <div class="list-section">
+          <h5>Topic(s)</h5>
+          <% @image.topics.sort.each do |t| %>
+            <ul><%= t.title %></ul>
+          <% end %>
+        </div>
+        <div class="list-section">
+          <h5>Region(s)</h5>
+          <% @image.regions.sort.each do |r| %>
+            <ul><%= r.title %></ul>
+          <% end %>
+        </div>
+        <div class="list-section">
+          <h5>California Standard</h5>
+          <% @image.cal_standards.sort.each do |c| %>
+            <ul><%= c.title %></ul>
+          <% end %>
+        </div>
+        <div class="list-section">
+          <h5>National Standard</h5>
+          <% @image.nat_standards.sort.each do |n| %>
+            <ul><%= n.title %></ul>
+          <% end %>
+        </div>
+        <div class="list-section">
+          <h5>Citation</h5>
+          <p><%= @image.citation %></p>
+        </div>
+      </div>
+
+    </div><!-- /.horizontal-content -->
+</div><!-- /.horizontal -->
