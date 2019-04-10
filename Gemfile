@@ -61,7 +61,7 @@ gem 'will_paginate', '~> 3.1.6'
 
 # Elastic Search
 gem 'elasticsearch-model'
-gem 'elasticsearch-persistence', require: 'elasticsearch/persistence/model'
+gem 'elasticsearch-persistence'
 gem 'elasticsearch-rails'
 gem 'faraday_middleware'
 gem 'faraday_middleware-aws-sigv4'
