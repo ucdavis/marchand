@@ -6,7 +6,7 @@ class Image < ActiveRecord::Base
   document_type 'image'
 
   # Elasticsearch index name
-  index_name ENV['ELASTICSEARCH_IMAGES_INDEX'] || 'marchand-images'
+  index_name 'marchand-images'
 
   after_update -> { __elasticsearch__.index_document }
 
@@ -62,6 +62,10 @@ class Image < ActiveRecord::Base
 
   def thumbnail
     original.variant(combine_options: { resize: '275>', extent: '275x190', gravity: 'center' })
+  end
+
+  def carousel
+    return self.original.variant(combine_options: { resize: "810x400>", extent: "810x400", gravity: "center" }).processed
   end
 
   def carousel

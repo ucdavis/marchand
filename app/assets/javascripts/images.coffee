@@ -162,7 +162,7 @@ setModalImageDetails = (el) ->
   $('#download-image', $("##{view}-modal")).attr('href', imgSrcOriginal)
 
   # Edit Button
-  $(".btn-edit", $("##{view}-modal .modal-header")).attr("href", "/images/#{imgId}/edit")
+  $(".btn-edit", $("##{view}-modal")).attr("href", "/images/#{imgId}/edit")
 
   # Firefox chooses to only swap the images once the picture is fully loaded
   # So we clear it first to avoid having the wrong picutre in a modal
