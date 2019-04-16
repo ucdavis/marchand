@@ -1,4 +1,4 @@
-<%= form_for @lesson do |f| %>
+<%= form_for @lesson, html: {id: :lesson_form101 } do |f| %>
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="row">
@@ -36,8 +36,21 @@
 
                     <div class="col-xs-12 card-text">
                         <h5>Lesson Images</h5>
-                          <%= f.collection_select(:image_ids, Image.all, :id, :title, {:include_blank => true},
-                            {:selected => @lesson.image_ids, :multiple => true} )%>
+
+                        <% @lesson.images.each do |image| %>
+                          <div class="appended_input_fields">
+                            <input id="business_loc" multiple="multiple" name="lesson[image_ids][]" value='<%= image.id %>'>
+                            <a href="#" class="remove_field">Remove</a>
+                        </div>
+                        <% end %>
+
+                      <div class="append_input_fields"></div>
+
+                      <div class="input_fields_wrap">
+                        <h5 style="display: inline;"></h5><input type="text" placeholder="Image Id" size="40" value="" id="image_id"/>
+                          c<input type="button" value="Add" onClick="javascript:add_document(document.getElementById('image_id').value);" class="add_image_button" /><br />
+                        <div id="image-find-controls-text" class="col-xs-12" style="visibility: hidden;"></div>
+                      </div>
                     </div>
                 </div>
             </div>

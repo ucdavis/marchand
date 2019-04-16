@@ -1,3 +1,25 @@
 .lesson-header {
   background-color: #f2f2f2;
 }
+
+::placeholder {
+  color: rgb(175, 175, 175);
+}
+
+.appended_input_fields input {
+  width: 270px;
+  height: 25px;
+  border-radius: 5px;
+  border: 1px solid rgb(175, 175, 175);
+}
+
+.appended_input_fields {
+  margin-bottom: 5px;
+}
+
+.append_input_fields input {
+  width: 270px;
+  height: 25px;
+  border-radius: 5px;
+  border: 1px solid rgb(175, 175, 175);
+}
