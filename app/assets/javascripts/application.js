@@ -14,29 +14,27 @@
 //= require images
 
 $(document).ready(function () {
-  var wrapper = $(".append_input_fields");
+  var append = $(".append-input-fields");
 
-  $(wrapper).on("click", ".remove_field", function(e){
+  $(append).on("click", ".remove_field", function(e) {
     e.preventDefault();
     $(this).parent('div').remove();
   })
 
-  wrapper = $(".appended_input_fields");
+  var wrapper = $(".appended-input-fields");
 
-  $(wrapper).on("click", ".remove_field", function(e){
+  $(wrapper).on("click", ".remove_field", function(e) {
     e.preventDefault();
     $(this).parent('div').remove();
   })
 });
 
-function add_document(image_id) {
-  console.log(image_id);
-
-  $('#image-find-controls-text').css('visibility', 'visible');
+function add_image(image_id) {
+  $('#image-find-controls-text').css('visibility', 'hidden');
 
   $.get( Routes.image_path(image_id), () =>
-     $('.append_input_fields').append('<div><input id="business_loc" multiple="multiple" name="lesson[image_ids][]" size="40" value="'+ image_id +'"><a href="#" class="remove_field"> Remove</a></div>')
+     $('.append-input-fields').append('<div><input id="added-input-field" multiple="multiple" name="lesson[image_ids][]" size="40" style="margin-right: 15px;" value="'+ image_id +'"><a href="#" class="remove_field">Remove</a></div>')
   ).fail( () =>
-    $('#image-find-controls-text').css('color', '#f00').html('Invalid image id. Please try again.')
+    $('#image-find-controls-text').css('color', '#f00').html('Invalid image id. Please try again.').css('visibility', 'visible')
   )
 }

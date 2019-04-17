@@ -27,11 +27,7 @@ class ImagesController < GalleryController
   # 'show' is not used but our routes use 'resources :images', so we must define it
   # to avoid possible routing exceptions from bad requests
   def show
-    # render plain: 'No such path', status: 404
-
     @image = Image.find(params[:id])
-    # render json: @image
-
   end
 
   # display author About Me page
