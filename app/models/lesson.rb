@@ -2,6 +2,9 @@ class Lesson < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+  # Specify Elasticsearch document type
+  document_type 'lesson'
+
   after_update -> { __elasticsearch__.index_document }
 
   has_many :lesson_authors, dependent: :destroy

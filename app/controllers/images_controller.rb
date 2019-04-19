@@ -69,7 +69,6 @@ class ImagesController < GalleryController
 
     respond_to do |format|
       if @image.save
-        @image.save!
         format.html { redirect_to edit_image_path @image }
         format.json { head :no_content }
       else
@@ -112,15 +111,18 @@ class ImagesController < GalleryController
         Rails.logger.error 'Manipulate edit_mode not understood: ' + params['edit_mode']
     end
 
-    if (new_image)
-      new_path = File.open(new_image.service.send(:path_for, new_image.key))
+    if new_image
+      require 'open-uri'
+      new_path = open(new_image.service_url) # rubocop:disable Security/Open
       @image.original.attach(io: new_path, filename: filename, content_type: ext)
 
       @image.save!
+
+      render json: { url: rails_blob_url(@image.original) }
     else
-      Rails.logger.error 'image_save not working!'
+      Rails.logger.error 'Unexpected error while processing image edit'
     end
-end
+  end
 
   # PUT /images/:id
   # PATCH /images/:id

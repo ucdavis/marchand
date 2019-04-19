@@ -5,7 +5,7 @@
 config/secrets.yml
 config/local_env.yml
 web.env
-.rbenv-vars
+.rbenv-vars*
 .env
 
 # Ignore images

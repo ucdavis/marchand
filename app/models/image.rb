@@ -2,6 +2,9 @@ class Image < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+  # Specify Elasticsearch document type
+  document_type 'image'
+
   # Elasticsearch index name
   index_name ENV['ELASTICSEARCH_IMAGES_INDEX'] || 'marchand-images'
 
@@ -46,23 +49,23 @@ class Image < ActiveRecord::Base
   def preview
     orientation = self.orientation
 
-    if orientation == "portrait"
-      self.original.variant(combine_options: { resize: "x600" }) do |cols, rows, passed_img|
-        return passed_img.variant(combine_options: { extent: "#{cols}x#{rows}", gravity: "center" }).processed
+    if orientation == 'portrait'
+      original.variant(combine_options: { resize: 'x600' }) do |cols, rows, passed_img|
+        return passed_img.variant(combine_options: { extent: "#{cols}x#{rows}", gravity: "center" })
       end
     else
-      self.original.variant(combine_options: { resize: "500>" }) do |cols, rows, passed_img|
-        return passed_img.variant(combine_options: { extent: "#{cols}x#{rows}", gravity: "center" }).processed
+      original.variant(combine_options: { resize: '500>' }) do |cols, rows, passed_img|
+        return passed_img.variant(combine_options: { extent: "#{cols}x#{rows}", gravity: "center" })
       end
     end
   end
 
   def thumbnail
-    return self.original.variant(combine_options: { resize: "275>", extent: "275x190", gravity: "center" }).processed
+    original.variant(combine_options: { resize: '275>', extent: '275x190', gravity: 'center' })
   end
 
   def carousel
-    return self.original.variant(combine_options: { resize: "810x400>", extent: "810x400", gravity: "center" }).processed
+    original.variant(combine_options: { resize: "810x400>", extent: "810x400", gravity: "center" })
   end
 
   def as_indexed_json(*)
