@@ -13,7 +13,7 @@
 
           <div class="col-xs-12">
             <h5>Title</h5>
-            <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+            <%= f.text_field :title, class: "form-control", placeholder: "Title", autocomplete: 'off' %>
           </div>
 
           <div class="col-xs-12" style="margin-bottom: 2em;">
@@ -66,11 +66,11 @@
           <div class="row">
             <div class="col-xs-12 card-text">
               <h5>Card Text</h5>
-              <%= f.text_area :card, class: "form-control" %>
+              <%= f.text_area :card, class: "form-control", autocomplete: 'off' %>
             </div>
             <div class="col-xs-12">
               <h5>Card Citation</h5>
-              <%= f.text_area :citation, class: "form-control" %>
+              <%= f.text_area :citation, class: "form-control", autocomplete: 'off' %>
             </div>
           </div>
         </div>

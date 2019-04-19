@@ -1,32 +1,32 @@
 <div class="row">
   <div class="container-fluid">
     <nav class="navbar col-lg-7 col-md-10 col-xs-12 pull-right">
-      <button type="button"class="navbar-toggle"data-toggle="collapse" data-target="#example-navbar-collapse">
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
-       </button>
-       <div class="collapse navbar-collapse pull-left" id="example-navbar-collapse">
-         <ul class="nav navbar-nav">
-            <ul class="nav navbar-nav">
-              <% if session[:cas_user].present? %>
-                <% if admin? %>
+      <button type="button"class="navbar-toggle"data-toggle="collapse" data-target="#navbar-collapse">
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+      </button>
+      <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav">
+            <% if session[:cas_user].present? %>
+              <% if admin? %>
                 <li class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Admin<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a data-toggle="dropdown" class="dropdown-toggle" href="<%= new_image_url %>" class="admin-nav-link">Add New Image</a></li>
-                        <li><a data-toggle="dropdown" class="dropdown-toggle" href="#">Add New Lesson</a></li> <%# TODO: add lesson link %>
-                        <li><a data-toggle="dropdown" class="dropdown-toggle" href="/admin" class="admin-nav-link">Manage Metadata</a></li>
-                    </ul>
+                  <a data-toggle="dropdown" class="dropdown-toggle" href="#">Admin<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a data-toggle="dropdown" class="dropdown-toggle" href="<%= new_image_url %>" class="admin-nav-link">Add New Image</a></li>
+                    <li><a data-toggle="dropdown" class="dropdown-toggle" href="#">Add New Lesson</a></li> <%# TODO: add lesson link %>
+                    <li><a data-toggle="dropdown" class="dropdown-toggle" href="/admin" class="admin-nav-link">Manage Metadata</a></li>
+                  </ul>
                 </li>
-                <% end %>
               <% end %>
-                <li><a href="<%= root_url %>">Image Collections</a></li>
-                <li><a href="<%= images_url %>">Browse All Images</a></li>
-                <li><a href="#">Primary Source Sets</a></li> <%# TODO: add primary source sets %>
-            </ul>
-         </ul>
-       </div>
-   </nav>
+            <% end %>
+            <li><a href="<%= root_url %>">Image Collections</a></li>
+            <li><a href="<%= images_url %>">Browse All Images</a></li>
+            <!-- <li><a href="#">Primary Source Sets</a></li> <%# TODO: add primary source sets %> -->
+          </ul>
+        </ul>
+      </div>
+    </nav>
   </div>
 </div>

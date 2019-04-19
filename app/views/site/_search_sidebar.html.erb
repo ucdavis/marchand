@@ -8,7 +8,6 @@
       <div class="filter-panel-content">
         <form name="filter" method="GET" data-target="<%= target_page %>">
           <div class="filter-panel-title">
-
             <div class="input-group" style="margin:15px 0px 25px 0px;">
               <input type="text" name="q" class="form-control" placeholder="Search terms or ID" value="<%= params[:q].present? ? params[:q] : "" %>">
               <div class="input-group-btn">
@@ -20,19 +19,6 @@
               <div class="results-info">
                 Found <b><%= @num_results %></b> result(s)
               </div>
-            <% end %>
-            <% if @num_results == 0 %>
-              <style>
-                #footer {
-                  margin-top: 400px;
-                }
-              </style>
-            <% elsif @num_results <= 8 %>
-              <style>
-                #footer {
-                  margin-top: 300px;
-                }
-              </style>
             <% end %>
           </div>
 
