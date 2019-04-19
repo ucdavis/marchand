@@ -23,48 +23,14 @@
 </head>
 
 <body>
-  <header>
-    <nav>
-
-      <div class="container-fluid">
-
-        <div class="row top-header">
-          <ul class="pull-right inline">
-            <% if session[:cas_user].present? %>
-              <% if admin? %>
-                <li><a href="<%= new_image_url %>" class="admin-nav-link">Add New Image</a></li>
-                <li><a href="/admin" class="admin-nav-link">Manage Metadata</a></li>
-              <% end %>
-              <li><a href="/logout" class="admin-nav-link">CAS Logout</a></li>
-            <% else %>
-              <li><a href="/login" class="admin-nav-link">CAS Login</a></li>
-            <% end %>
-          </ul>
-        </div>
-
-        <div class="row nav-pages">
-
-          <div class="col-md-3">
-            <a href="<%= root_url %>"><%= image_tag("marchand-logo.svg", :class => "center-block marchand-logo") %></a>
-          </div>
-
-          <div class="col-md-9">
-            <ul class="nav">
-              <li><a href="<%= root_url %>">Featured Collections</a></li>
-              <li><a href="<%= images_url %>">All Images</a></li>
-
-            </ul>
-            <ul class="nav navbar-right">
-              <li><a href="http://historyproject.ucdavis.edu">Back to History Project</a></li>
-            </ul>
-          </div>
-
-        </div>
-
-      </div>
-
-    </nav>
-  </header>
-  <%= yield %>
+  <div class="page-content">
+    <div class="container-fluid">
+      <%= render 'shared/header' %>
+      <%= yield %>
+    </div>
+  </div>
+  <footer>
+    <div class="container-fluid"><%= render 'shared/footer' %></div>
+  </footer>
 </body>
 </html>

@@ -1,38 +1,92 @@
-<div class="search-section">
-  <form name="filter">
-    <div class="input-group keyword-search">
-      <input name="q" class="form-control" placeholder="Search" type="text" value="<%= params[:q] %>">
-      <span class="input-group-addon">
-        <button type="submit">
-          <span class="glyphicon glyphicon-search"></span>
-        </button>
-      </span>
+<div class="row">
+  <!-- ADVANCED SEARCH -->
+  <div class="col-md-5">
+    <div class="search-section">
+      <p>
+        The Marchand Image Archive contains more than 15,000 images with maps, Aztec codices, early American, advertising posters and more.
+      </p>
+      <form name="filter">
+        <div class="input-group keyword-search">
+          <input name="q" class="form-control" placeholder="Search" type="text" value="<%= params[:q] %>">
+          <span class="input-group-addon">
+            <button type="submit">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+        </div>
+        <%= render 'advanced_search' %>
+      </form>
     </div>
-    <%= render 'advanced_search' %>
-  </form>
-</div>
 
-<div class="container marchand-description-container">
-  <div class="row marchand-description-content">
-    <div class="col-md-3">
-      <%= image_tag("Marchand.gif", :class => "center-block marchand-profile") %>
+    <!-- Roland Marchand IMAGE -->
+    <div class="box">
+      <div class="imgBx">
+        <img src="https://historyproject.ucdavis.edu/images-and-files/marchand.png" alt="UC Davis White Logo Small LA" class="image-inline" title="Roland Marchand" align="left" />
+      </div>
+      <div class="content">
+        Roland Marchand <br />
+        <i>Historian</i><br />
+        <p><%= link_to about_url do %>
+          <b>Read more about the collection </b><i class="fa fa-angle-double-right"></i>
+        <% end %></p>
+      </div>
     </div>
-    <div class="col-md-9">
-      <div>
-        <h3>Marchand Archive</h3>
-        <p>
-          The Marchand Archive is a collection of more than 15,000 images and a growing number of document-based lesson plans. This site brings together the original <b><i>Adventures in Roland Marchand’s File Cabinent (1999)</i></b> and the <b><i>Marchand Image Collection (2001)</i></b>. In 2007, with funding from the National Endowment for the Humanities, we expanded the image collection with contributions from UC Davis History Department faculty. Many of these images, digitized from slides, are not available elsewhere. The expanding collection of lesson plans developed by teacher leaders, graduate students, and staff, encourage students to apply their analytical skills to a set of primary sources from which they can deduce and explain events from the past.
-        </p>
-        <p>
-          In July 2017, with support from the UC Davis Division of Social Sciences, we launched this updated platform to make using the collection much easier. Please share with us how you are using the collection and contact us if you have any difficulties finding materials you have used in the past.
-        </p>
+  </div>
+
+  <div class="col-md-7">
+    <!-- CAROUSEL -->
+    <div>
+      <div id="featuredCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#featuredCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#featuredCarousel" data-slide-to="1"></li>
+          <li data-target="#featuredCarousel" data-slide-to="2"></li>
+          <li data-target="#featuredCarousel" data-slide-to="3"></li>
+          <li data-target="#featuredCarousel" data-slide-to="4"></li>
+          <li data-target="#featuredCarousel" data-slide-to="5"></li>
+          <li data-target="#featuredCarousel" data-slide-to="6"></li>
+          <li data-target="#featuredCarousel" data-slide-to="7"></li>
+          <li data-target="#featuredCarousel" data-slide-to="8"></li>
+          <li data-target="#featuredCarousel" data-slide-to="9"></li>
+          <li data-target="#featuredCarousel" data-slide-to="10"></li>
+          <li data-target="#featuredCarousel" data-slide-to="11"></li>
+          <li data-target="#featuredCarousel" data-slide-to="12"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <% @cards.each_with_index do |card, i| %>
+
+            <div class="item <%= 'active' if i == 0 %> carouselImg">
+              <%= link_to images_url(:bestof => true, :topic_id => card[:topic].id) do %>
+              <%= image_tag(card[:image].carousel, class: 'tales') %>
+              <div class="carousel-caption">
+                <h3>Featured Collection:</h3>
+                <h2><strong><%= card[:topic].title.upcase %></strong></h2>
+              </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#featuredCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#featuredCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
     </div>
   </div>
 </div>
 
+<!-- FEATURED COLLECTION -->
 <div class="container image-card-group">
-  <h3 class="page-title text-center">Featured Collections</h3>
+  <h2 class="page-title text-center">Featured Collections</h2>
   <div class="flex-row-wrap featured">
     <% @cards.each do |card| %>
     <div class="image-card">
@@ -42,16 +96,5 @@
       </h5>
     </div>
     <% end %>
-  </div>
-</div>
-
-<div class="container marchand-description-container" style="margin-bottom: 4em;">
-  <div class="row marchand-description-content">
-    <div class="col-md-12">
-      <h3>About Roland</h3>
-      <p>
-        Roland Marchand, an internationally acclaimed scholar and author of <i>Advertising the American Dream</i> and <i>Creating the Corporate Soul</i>, co-founded the History Project at UC Davis to improve history education, kindergarten through university. Materials from his own award-winning teaching provided the basis for the original online collection.
-      </p>
-    </div>
   </div>
 </div>

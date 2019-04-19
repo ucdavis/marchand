@@ -1,0 +1,21 @@
+#header .container-fluid .row { background-color: #002855; }
+
+.breadcrumb {
+  background-color: transparent;
+  margin-bottom: 0px !important;
+}
+
+.breadcrumb li { color: #999999; }
+
+.breadcrumb li a {
+  text-decoration: none;
+  border-bottom: 1.5px solid #a6a6a6;
+}
+
+.breadcrumb li:last-child a { border-bottom: none; }
+
+.breadcrumb li:not(:last-child) a:hover { border-bottom: 1.5px solid #003066; }
+
+.breadcrumb > li + li.pull-right:before { content: none; }
+
+.breadcrumb > li + li.pull-right { border-bottom: none; }

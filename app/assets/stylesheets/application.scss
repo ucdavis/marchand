@@ -18,6 +18,13 @@
 @import "slider-overwrite.scss";
 @import "topic.scss";
 
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "footer.scss";
+@import "header.scss";
+@import "nav.scss";
+@import "about.scss";
+
 * {
   box-sizing: border-box;
 }
@@ -83,11 +90,25 @@ h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
   line-height: unset;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   font: 14px/20px 'Arimo', sans-serif;
   color: #494949;
   width: 100%;
   float: unset !important;
+}
+
+.page-content {
+  min-height: 100%;
+}
+
+.page-content::after {
+  content: "";
+  display: block;
 }
 
 textarea {
@@ -172,10 +193,6 @@ textarea {
   cursor: pointer;
 }
 
-.dropdown-menu li:last-child {
-  padding: 0px !important;
-}
-
 .toggle {
   width: 45px !important;
   height: 25px !important;
@@ -236,6 +253,7 @@ textarea {
 .marchand-logo {
   width: 255px !important;
   margin-top: 8px;
+  margin-left: 0px;
   margin-bottom: 8px;
 }
 
@@ -251,4 +269,11 @@ textarea {
 
 .disable-click {
   pointer-events: none;
+}
+
+img.history-project-logo {
+  width: 245px !important;
+  height: 40px !important;
+  margin-top: 20px;
+  margin-bottom: 8px;
 }
