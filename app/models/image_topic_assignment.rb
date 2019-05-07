@@ -1,4 +1,4 @@
-class TopicAssignment < ActiveRecord::Base
+class ImageTopicAssignment < ActiveRecord::Base
   include EsConcern
   validates_presence_of :topic_id
 

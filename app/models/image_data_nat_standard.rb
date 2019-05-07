@@ -1,4 +1,4 @@
-class DataNatStandard < ApplicationRecord
+class ImageDataNatStandard < ApplicationRecord
   include EsConcern
 
   validates_presence_of :image

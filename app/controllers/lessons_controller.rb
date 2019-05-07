@@ -1,4 +1,4 @@
-class LessonsController < ApplicationController
+class LessonsController < GalleryController
   before_action :set_lesson, only: [:show, :edit, :update, :destroy]
 
   RESULTS_PER_PAGE = 20
@@ -48,6 +48,8 @@ class LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:title, :grade, :pdf, :background, :search, image_ids: [])
+    params.require(:lesson).permit(:id, :title, :grade, :pdf, :background, :search,
+                                  { image_ids: [] }, { topic_ids: [] }, { region_ids: [] }, { cal_standard_ids: [] },
+                                  { nat_standard_ids: [] }, { author_ids: [] })
   end
 end

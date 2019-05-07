@@ -9,17 +9,17 @@ class Image < ActiveRecord::Base
 
   has_one_attached :original
 
-  has_many :topic_assignments, dependent: :destroy
-  has_many :topics, through: :topic_assignments
+  has_many :image_topic_assignments, dependent: :destroy
+  has_many :topics, through: :image_topic_assignments
 
-  has_many :region_assignments, dependent: :destroy
-  has_many :regions, through: :region_assignments
+  has_many :image_region_assignments, dependent: :destroy
+  has_many :regions, through: :image_region_assignments
 
-  has_many :data_cal_standards, dependent: :destroy
-  has_many :cal_standards, through: :data_cal_standards
+  has_many :image_data_cal_standards, dependent: :destroy
+  has_many :cal_standards, through: :image_data_cal_standards
 
-  has_many :data_nat_standards, dependent: :destroy
-  has_many :nat_standards, through: :data_nat_standards
+  has_many :image_data_nat_standards, dependent: :destroy
+  has_many :nat_standards, through: :image_data_nat_standards
 
   has_many :image_authors, dependent: :destroy
   has_many :authors, through: :image_authors
@@ -68,10 +68,10 @@ class Image < ActiveRecord::Base
   def as_indexed_json(*)
     as_json(
       include: {
-        topic_assignments: { only: :topic_id },
-        region_assignments: { only: :region_id },
-        data_cal_standards: { only: :cal_standard_id },
-        data_nat_standards: { only: :nat_standard_id },
+        image_topic_assignments: { only: :topic_id },
+        image_region_assignments: { only: :region_id },
+        image_data_cal_standards: { only: :cal_standard_id },
+        image_data_nat_standards: { only: :nat_standard_id },
         image_authors: { only: :author_id }
       }
     )

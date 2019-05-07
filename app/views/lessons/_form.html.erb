@@ -45,6 +45,24 @@
     </div>
 </div>
 
+<!-- Topic / Standard / Collection -->
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row" style="padding-bottom: 25px;">
+          <%= render "shared/multi_dropdown", f: f, klass: Topic, member: :topic_assignments, collection: Topic.order(:title).all %>
+          <%= render "shared/multi_dropdown", f: f, klass: Region, member: :region_assignments, collection: Region.order(:title).all %>
+        </div>
+        <div class="row">
+          <%= render "shared/multi_dropdown", f: f, klass: CalStandard, member: :data_cal_standards, collection: CalStandard.order(:grade_id).order(:standard_id).all %>
+          <%= render "shared/multi_dropdown", f: f, klass: NatStandard, member: :data_nat_standards, collection: NatStandard.order(:us_world).order(:era).all %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <% if @lesson.id %>
   <div class='col-md-12' style='text-align: center; margin-bottom: 5em;'>
     <%= link_to 'Delete Lesson', url_for(action: :destroy, id: @lesson.id),

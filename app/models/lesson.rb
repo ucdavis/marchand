@@ -9,6 +9,18 @@ class Lesson < ApplicationRecord
 
   has_one_attached :pdf
 
+  has_many :lesson_topic_assignments, dependent: :destroy
+  has_many :topics, through: :lesson_topic_assignments
+
+  has_many :lesson_region_assignments, dependent: :destroy
+  has_many :regions, through: :lesson_region_assignments
+
+  has_many :lesson_data_cal_standards, dependent: :destroy
+  has_many :cal_standards, through: :lesson_data_cal_standards
+
+  has_many :lesson_data_nat_standards, dependent: :destroy
+  has_many :nat_standards, through: :lesson_data_nat_standards
+
   has_many :lesson_authors, dependent: :destroy
   has_many :authors, through: :lesson_authors
 
