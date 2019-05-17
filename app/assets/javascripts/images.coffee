@@ -44,7 +44,7 @@ setNewImageValues = (form) ->
 
 # Builds the URL based on filter parameters (e.g. advanced search form)
 buildFilterUrl = (form) ->
-  page = '/images'
+  page = '/lessons'
 
   query = "q=#{$("input[name=q][type=text]").val()}"
 

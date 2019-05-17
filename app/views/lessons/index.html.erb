@@ -40,10 +40,23 @@
         </div>
       </div>
 
+
+
+
+
+
+
+
       <div id="lesson-<%= lesson.id %>" class="collapse lesson-info col-xs-12" aria-expanded="false">
         <h5>Lesson ID: <span style="font-weight: normal;"><%= lesson.id %></span></h5>
         <h5>Background</h5>
         <p><%= lesson.background %></p>
+
+        <h5>Topic(s)</h5>
+        <p><%= lesson.topics.map { |t| t.title } %></p>
+
+
+
         <h5 class="image-title">Image(s)</h5>
         <div class="image-card-group">
         <% lesson.images.each do |image| %>

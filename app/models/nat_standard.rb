@@ -3,7 +3,7 @@ class NatStandard < ActiveRecord::Base
   validates_presence_of :us_world
   validates_presence_of :title
 
-  has_many :data_nat_standards
+  has_many :image_data_nat_standards
   has_many :lesson_data_nat_standards
 
   def label

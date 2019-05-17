@@ -1,5 +1,5 @@
 class CalStandard < ActiveRecord::Base
-  has_many :data_cal_standards
+  has_many :image_data_cal_standards
   has_many :lesson_data_cal_standards
   NAME = 'California Standard'.freeze
 

@@ -27,7 +27,7 @@ class Lesson < ApplicationRecord
   has_many :lesson_images, dependent: :destroy
   has_many :images, through: :lesson_images
 
-  accepts_nested_attributes_for :images
+  # accepts_nested_attributes_for :images
 
   has_many :attachments, dependent: :destroy
 
@@ -41,10 +41,20 @@ class Lesson < ApplicationRecord
     }
 
     q[:bool][:filter] = filter.split(',') unless filter.empty?
+
+    puts "######################### INSIDE 'search' response from elastic search #{__elasticsearch__.search(query: q)}"
     __elasticsearch__.search(query: q)
   end
 
-  def as_indexed_json(_)
-    as_json(only: [:title, :background])
+  def as_indexed_json(*)
+    as_json(
+      include: {
+        lesson_topic_assignments: { only: :topic_id },
+        lesson_region_assignments: { only: :region_id },
+        lesson_data_cal_standards: { only: :cal_standard_id },
+        lesson_data_nat_standards: { only: :nat_standard_id },
+        lesson_authors: { only: :author_id }
+      }
+    )
   end
 end
