@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_07_201730) do
+ActiveRecord::Schema.define(version: 2019_05_24_185430) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -55,6 +55,20 @@ ActiveRecord::Schema.define(version: 2019_05_07_201730) do
   create_table "collections", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "code", limit: 50, default: "", null: false
+  end
+
+  create_table "data_cal_standards", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "image_id"
+    t.integer "cal_standard_id"
+  end
+
+  create_table "data_nat_standards", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "image_id"
+    t.integer "nat_standard_id"
   end
 
   create_table "image_authors", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -169,7 +183,6 @@ ActiveRecord::Schema.define(version: 2019_05_07_201730) do
     t.string "background"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "pdf"
   end
 
   create_table "nat_standards", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -178,8 +191,18 @@ ActiveRecord::Schema.define(version: 2019_05_07_201730) do
     t.text "title", null: false
   end
 
+  create_table "region_assignments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "image_id", default: 0, null: false
+    t.integer "region_id", default: 0, null: false
+  end
+
   create_table "regions", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", limit: 64, default: "", null: false
+  end
+
+  create_table "topic_assignments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "image_id", default: 0, null: false
+    t.integer "topic_id", default: 0, null: false
   end
 
   create_table "topics", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
