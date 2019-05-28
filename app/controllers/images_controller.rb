@@ -201,10 +201,10 @@ end
     params_calstandard = params[:calstandard].split(',').select { |i| i == i.to_i.to_s } if params[:calstandard].present?
 
     # rubocop:disable Metrics/LineLength
-    query << { query_string: as_query_string('region_assignments.region_id', params_region) } if params[:region].present?
-    query << { query_string: as_query_string('topic_assignments.topic_id', params_topic) } if params[:topic].present?
+    query << { query_string: as_query_string('image_region_assignments.region_id', params_region) } if params[:region].present?
+    query << { query_string: as_query_string('image_topic_assignments.topic_id', params_topic) } if params[:topic].present?
     query << { query_string: as_query_string('collection_id', params_collection) } if params[:collection].present?
-    query << { query_string: as_query_string('data_cal_standards.cal_standard_id', params_calstandard) } if params[:calstandard].present?
+    query << { query_string: as_query_string('image_data_cal_standards.cal_standard_id', params_calstandard) } if params[:calstandard].present?
     # rubocop:enable Metrics/LineLength
 
     # Text search dates if only one is given
