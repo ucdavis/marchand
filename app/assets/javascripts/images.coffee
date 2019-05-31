@@ -43,8 +43,8 @@ setNewImageValues = (form) ->
   $('[name="image[region_ids][]"]', form).val(regions)
 
 # Builds the URL based on filter parameters (e.g. advanced search form)
-buildFilterUrl = (form) ->
-  page = '/images'
+buildFilterUrl = (form, target) ->
+  page = target
 
   query = "q=#{$("input[name=q][type=text]").val()}"
 
@@ -60,6 +60,7 @@ buildFilterUrl = (form) ->
   collections = []
   topics = []
   calStandards = []
+  natStandards = []
 
   $("input[type=checkbox]", form).each (i, item) ->
     if !item.checked
@@ -81,13 +82,17 @@ buildFilterUrl = (form) ->
       when 'calstandard'
         calStandards.push value
         break
+      when 'natstandard'
+        natStandards.push value
+        break
 
   regions = "region=" + regions.join ","
   collections  = "collection=" + collections.join ","
   topics = "topic=" + topics.join ","
   calStandards = "calstandard=" + calStandards.join ","
+  natStandards = "natstandard=" + natStandards.join ","
 
-  return "#{page}?#{regions}&#{collections}&#{topics}&#{calStandards}&#{start_year}&#{end_year}&#{query}"
+  return "#{page}?#{regions}&#{collections}&#{topics}&#{calStandards}&#{natStandards}&#{start_year}&#{end_year}&#{query}"
 
 
 # Adds / Remove the tag in the tag area
@@ -259,7 +264,8 @@ $(document).ready () ->
   # Manually build url on submit
   $("form[name=filter]").on "submit", (e) ->
     e.preventDefault()
-    window.location.href = buildFilterUrl(this)
+    target = $(this).data("target")
+    window.location.href = buildFilterUrl(this, target)
 
   # Create new card with filter as initial params
   $("form[name=new-image]").on "click", () ->

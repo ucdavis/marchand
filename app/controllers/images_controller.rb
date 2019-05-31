@@ -36,7 +36,6 @@ class ImagesController < GalleryController
 
   def index
     if params[:bestof].present? && params[:bestof]
-      puts "######################### Overall Image index display"
       @bestof = Topic.find_by_id(params[:topic_id]).title
 
       @images = Image.joins(:topics)
@@ -46,23 +45,16 @@ class ImagesController < GalleryController
       @num_results = @images.total_entries
       @num_pages = @images.total_pages
     elsif params[:q].present? && (params[:q].to_f.to_s == params[:q].to_s) || (params[:q].to_i.to_s == params[:q].to_s)
-      puts "######################### q is present => perform search!"
-
       @images = Image.where(id: params[:q].to_i)
       @num_results = @images.count
       @num_pages = (@images.count / RESULTS_PER_PAGE).to_f.ceil
     else
-      puts "######################### Perform search!"
       @query, filter = es_query_from_params(params)
 
       @images = Image.search(@query, filter)
                       .paginate(page: params[:page], per_page: RESULTS_PER_PAGE).records
       @num_results = @images.total_entries
       @num_pages = @images.total_pages
-
-      puts "######################### Inside 'index' images = #{@lessons}"
-      puts "######################### Inside 'index' num_results = #{@num_results}"
-      puts "######################### Inside 'index' num_pages = #{@num_pages}"
     end
   end
 
@@ -193,18 +185,18 @@ end
       { query_string: { query: q } }
     ]
 
-    puts "######################### Images search"
-
     params_region = params[:region].split(',').select { |i| i == i.to_i.to_s } if params[:region].present?
     params_topic = params[:topic].split(',').select { |i| i == i.to_i.to_s } if params[:topic].present?
     params_collection = params[:collection].split(',').select { |i| i == i.to_i.to_s } if params[:collection].present?
     params_calstandard = params[:calstandard].split(',').select { |i| i == i.to_i.to_s } if params[:calstandard].present?
+    params_natstandard = params[:natstandard].split(',').select { |i| i == i.to_i.to_s } if params[:natstandard].present?
 
     # rubocop:disable Metrics/LineLength
     query << { query_string: as_query_string('image_region_assignments.region_id', params_region) } if params[:region].present?
     query << { query_string: as_query_string('image_topic_assignments.topic_id', params_topic) } if params[:topic].present?
     query << { query_string: as_query_string('collection_id', params_collection) } if params[:collection].present?
     query << { query_string: as_query_string('image_data_cal_standards.cal_standard_id', params_calstandard) } if params[:calstandard].present?
+    query << { query_string: as_query_string('image_data_nat_standards.nat_standard_id', params_natstandard) } if params[:natstandard].present?
     # rubocop:enable Metrics/LineLength
 
     # Text search dates if only one is given
@@ -235,8 +227,6 @@ end
         }
       }
     end
-
-    puts "######################### query = #{query} && filter = #{filter}"
 
     return query, filter # rubocop:disable Style/RedundantReturn
   end

@@ -73,6 +73,13 @@
     width: 50%;
     font-style: normal;
   }
+
+  .image-lesson-toggle.active {
+    color: white;
+    background-color: #286090;
+    border-color: #204d74;
+  }
+
   .divider {
     border-bottom: 1px solid #EAE8E8;
     margin-left: -15px !important;

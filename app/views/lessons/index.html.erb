@@ -4,7 +4,6 @@
   <div class="row">
     <div class="col-md-12 panel panel-default lesson-header">
       <h5 class="col-md-3"><strong>Grade</strong></h5>
-      <h5 class="col-md-3"><strong>Grade</strong></h5>
       <h5 class="col-md-5"><strong>Title</strong></h5>
       <h5 class="col-md-2"><strong>Actions</strong></h5>
     </div>
@@ -40,22 +39,22 @@
         </div>
       </div>
 
-
-
-
-
-
-
-
       <div id="lesson-<%= lesson.id %>" class="collapse lesson-info col-xs-12" aria-expanded="false">
         <h5>Lesson ID: <span style="font-weight: normal;"><%= lesson.id %></span></h5>
         <h5>Background</h5>
         <p><%= lesson.background %></p>
 
-        <h5>Topic(s)</h5>
+        <h5><b>Topic(s):</b></h5>
         <p><%= lesson.topics.map { |t| t.title } %></p>
 
+        <h5><b>Region(s):</b></h5>
+        <p><%= lesson.regions.map { |r| r.title } %></p>
 
+        <h5><b>CA Standard(s):</b></h5>
+        <p><%= lesson.cal_standards.map { |c| c.title } %></p>
+
+        <h5><b>National Standard(s):</b></h5>
+        <p><%= lesson.nat_standards.map { |n| n.title } %></p>
 
         <h5 class="image-title">Image(s)</h5>
         <div class="image-card-group">

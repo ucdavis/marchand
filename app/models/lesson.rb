@@ -33,16 +33,13 @@ class Lesson < ApplicationRecord
 
   # @param query - text to search for
   # @param filter - array of hashes in the form of ElasticSearch's filter parameter for queryDSL
-  def self.search(query, filter)
+  def self.search(query)
     q = {
       bool: {
         must: query
       }
     }
 
-    q[:bool][:filter] = filter.split(',') unless filter.empty?
-
-    puts "######################### INSIDE 'search' response from elastic search #{__elasticsearch__.search(query: q)}"
     __elasticsearch__.search(query: q)
   end
 

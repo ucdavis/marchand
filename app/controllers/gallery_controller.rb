@@ -7,12 +7,14 @@ class GalleryController < ApplicationController
     @regions = Region.select(:id, :title).distinct
     @collections = Collection.select(:id, 'name as title').distinct
     @topics = Topic.select(:id, :title).distinct
-    @ca_standards = CalStandard.select(:id, :grade_id, :standard_id, :description).order(:grade_id, :standard_id)
+    @cal_standards = CalStandard.select(:id, :grade_id, :standard_id, :description).order(:grade_id, :standard_id)
+    @nat_standards = NatStandard.select(:id, :era, :us_world, :title).order(:era, :us_world)
 
     @filters = []
     @filters << @regions
     @filters << @collections
     @filters << @topics
-    @filters << @ca_standards
+    @filters << @cal_standards
+    @filters << @nat_standards
   end
 end

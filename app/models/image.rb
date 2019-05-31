@@ -40,7 +40,6 @@ class Image < ActiveRecord::Base
 
     q[:bool][:filter] = filter.split(',') unless filter.empty?
 
-    puts "######################### INSIDE 'search' response from elastic search #{__elasticsearch__.search(query: q)}"
     __elasticsearch__.search(query: q)
   end
 
