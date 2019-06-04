@@ -222,6 +222,13 @@ setViewModeVisibility = (view_mode) ->
 
 
 $(document).ready () ->
+  $('.btn-group a').on "click", (e) ->
+    activeButton = $($(this)[0]).addClass('active')
+
+    console.log("activeButton: ", activeButton)
+    target = $(activeButton).data("target")
+    $(activeButton).siblings().removeClass('active')
+
   $('.upload-image-btn').on 'change', (e) ->
       previewImage(this)
 
@@ -264,7 +271,8 @@ $(document).ready () ->
   # Manually build url on submit
   $("form[name=filter]").on "submit", (e) ->
     e.preventDefault()
-    target = $(this).data("target")
+    button = $(this).find('.image-lesson-toggle.active')[0]
+    target = $(button).data("target")
     window.location.href = buildFilterUrl(this, target)
 
   # Create new card with filter as initial params

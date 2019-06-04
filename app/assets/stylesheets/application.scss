@@ -271,3 +271,24 @@ textarea {
 .disable-click {
   pointer-events: none;
 }
+
+.image-lesson-toggle {
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #555;
+  width: 50%;
+  font-style: normal;
+  padding: 6px 40px 6px 40px;
+}
+
+.image-lesson-toggle.active {
+  color: white;
+  background-color: #286090;
+  border-color: #204d74;
+}
+
+.image-lesson-toggle:hover {
+  color: black;
+  background-color: #d4d4d4;
+  border-color: #8c8c8c;
+}

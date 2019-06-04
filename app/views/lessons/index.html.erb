@@ -39,26 +39,28 @@
         </div>
       </div>
 
-      <div id="lesson-<%= lesson.id %>" class="collapse lesson-info col-xs-12" aria-expanded="false">
-        <h5>Lesson ID: <span style="font-weight: normal;"><%= lesson.id %></span></h5>
+      <div id="lesson-<%= lesson.id %>" class="lesson-info collapse col-xs-12" aria-expanded="false">
+        <h5>Lesson ID: <span class="lesson_id" style="font-weight: normal;"><%= lesson.id %></span></h5>
+        <h5>Grade: <span style="font-weight: normal;"><%= lesson.grade %></span></h5>
+
         <h5>Background</h5>
         <p><%= lesson.background %></p>
 
-        <h5><b>Topic(s):</b></h5>
-        <p><%= lesson.topics.map { |t| t.title } %></p>
+        <h5>Topic(s)</h5>
+        <ul><%= lesson.topics.map { |t| "<li>#{t.title}</li>" }.join("").html_safe %></ul>
 
-        <h5><b>Region(s):</b></h5>
-        <p><%= lesson.regions.map { |r| r.title } %></p>
+        <h5>Region(s)</h5>
+        <ul><%= lesson.regions.map { |r| "<li>#{r.title}</li>" }.join("").html_safe %></ul>
 
-        <h5><b>CA Standard(s):</b></h5>
-        <p><%= lesson.cal_standards.map { |c| c.title } %></p>
+        <h5>California Standard</h5>
+        <ul><%= lesson.cal_standards.map { |c| "<li>#{c.title}</li>" }.join("").html_safe %></ul>
 
-        <h5><b>National Standard(s):</b></h5>
-        <p><%= lesson.nat_standards.map { |n| n.title } %></p>
+        <h5>National Standard</h5>
+        <ul><%= lesson.nat_standards.map { |n| "<li>#{n.title}</li>" }.join("").html_safe %></ul>
 
         <h5 class="image-title">Image(s)</h5>
         <div class="image-card-group">
-        <% lesson.images.each do |image| %>
+          <% lesson.images.each do |image| %>
             <%= render 'images/grid_view', :image => image %>
           <% end %>
         </div>

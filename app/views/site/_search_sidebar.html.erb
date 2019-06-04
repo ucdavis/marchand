@@ -6,7 +6,7 @@
     <div class="sticky-anchor"></div>
     <div class="filter-panel col-xs-3 sticky-content">
       <div class="filter-panel-content">
-        <form name="filter" method="GET" data-target="<%= target_page %>">
+        <form name="filter" method="GET">
           <div class="filter-panel-title">
             <div class="input-group" style="margin:15px 0px 25px 0px;">
               <input type="text" name="q" class="form-control" placeholder="Search terms or ID" value="<%= params[:q].present? ? params[:q] : "" %>">
@@ -25,15 +25,16 @@
           <div class="divider"></div>
 
           <div class="btn-group" style="margin: 10px 0px 10px 0px;">
-             <a class="btn btn-primary image-lesson-toggle <%= "active" if page == "images" %>" href="<%= images_url %>">Images</a>
-             <a class="btn btn-primary image-lesson-toggle <%= "active" if page == "lessons" %>" href="<%= lessons_url %>">Lessons</a>
+             <a class="btn btn-primary image-lesson-toggle <%= "active" if page == "images" %>" data-target="images">Images</a>
+             <a class="btn btn-primary image-lesson-toggle <%= "active" if page == "lessons" %>" data-target="lessons">Lessons</a>
           </div>
 
           <% @filters.each do |filter| %>
             <% next if filter.empty? %>
-            <% # Checks to see if we override a class's `name` method %>
+            <%# Checks to see if we override a class's `name` method  %>
             <% klass = filter.first.class %>
             <% title = defined?(klass.readable_class_name) ? klass.readable_class_name : klass.name %>
+
 
             <div class="btn-group">
               <h5 style="margin-top: 0;"><b><%= title %></b></h5>
