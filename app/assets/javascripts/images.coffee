@@ -164,6 +164,8 @@ setModalImageDetails = (el) ->
   # Edit Button
   $(".btn-edit", $("##{view}-modal .modal-header")).attr("href", "/images/#{imgId}/edit")
 
+  $('#shareable-link', $("##{view}-modal")).val($(location).attr('host') + "/images/#{imgId}")
+
   # Firefox chooses to only swap the images once the picture is fully loaded
   # So we clear it first to avoid having the wrong picutre in a modal
   $("img", $("##{view}-modal .modal-header")).attr("src", "")
@@ -219,6 +221,11 @@ setViewModeVisibility = (view_mode) ->
 $(document).ready () ->
   $('.upload-image-btn').on 'change', (e) ->
       previewImage(this)
+
+  $('#copy-link').on 'click', (e) ->
+    copyText = document.getElementById("shareable-link")
+    copyText.select()
+    document.execCommand("copy")
 
   # Persist filters / tags from previous search
   $("input:checked").each (i, item) ->
