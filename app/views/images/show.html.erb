@@ -1,0 +1,71 @@
+<div class="<%= @image.orientation == "portrait" ? "show-card-portrait" : "show-card-landscape" %>">
+  <div class="show-card-content">
+    <div class="show-card-header">
+      <div>
+        <img src="<%= Rails.application.routes.url_helpers.rails_representation_url(@image.preview, only_path: true) %>" alt="" />
+      </div>
+      <div class="button-group" style="position: absolute; bottom: 0;">
+      </div>
+    </div>
+    
+      <div class="show-card-body">
+        <div class="image-info">
+          <div class="image-title">
+            <h3 class="title"><%= @image.title %></h3>
+            <% if @image.collection.present? %>
+              <h5><em class="collection">From <%= @image.collection.name %> collection</em></h5>
+            <% end %>
+            <h5><em class="authors"></em></h5>
+          </div>
+          <div class="list-section">
+            <a href='<%= rails_blob_path(@image.original, disposition: "attachment") %>' download target='_blank' id="download-image" class="btn btn-default" role="button"><span><i class="glyphicon glyphicon-save"></i></span>Download</a>
+          </div>
+          <div class="list-section image-id">
+            <h5>Image ID: <span class="image_id" style="font-weight: normal;"><%= @image.id %></span></h5>
+          </div>
+          <div class="list-section description">
+            <h5>Description</h5>
+            <p><%= @image.card %></p>
+          </div>
+          <div class="list-section">
+            <h5>Topic(s)</h5>
+            <ul>
+              <% @image.topics.each do |t| %>
+                <li><%= t.title %></li>
+              <% end %>
+            </ul>
+          </div>
+          <div>
+            <h5>Region(s)</h5>
+            <ul>
+              <% @image.regions.each do |r| %>
+              <li><%= r.title %></li>
+              <% end %>
+            </ul>
+          </div>
+          <div>
+            <h5>California Standard</h5>
+            <ul>
+            <% @image.cal_standards.each do |cs| %>
+              <li><%= cs.title %></li>
+              <% end %>
+              </ul>
+          </div>
+          <div>
+            <h5>National Standard</h5>
+            <ul>
+            <% @image.nat_standards.each do |ns| %>
+              <li><%= ns.title %></li>
+              <% end %>
+            </ul>
+          </div>
+          <div>
+            <h5>Citation</h5>
+            <p><%= @image.citation %></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

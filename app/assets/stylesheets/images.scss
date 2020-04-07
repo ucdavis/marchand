@@ -42,6 +42,65 @@
   }
 }
 
+.show-card-portrait,.show-card-landscape{
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  h5 {
+    font-weight: 600;
+  }
+
+  .description {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  
+  .show-card-content {
+    margin: 2em auto;
+    background-color: #fff;
+    border: 1px solid #999;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    background-clip: padding-box;
+    outline: 0;
+}
+  .show-card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-color: black;
+  }
+
+  .show-card-body {
+    padding: 15px;
+  }
+}
+
+.show-card-portrait {
+  width: 950px;
+  margin: 2em auto;
+
+  .show-card-content {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.show-card-landscape {
+  width: 600px;
+  margin: 2em auto;
+
+  .show-card-header {
+    padding: 0px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+}
+
 @media print {
   // Remove nav, sidebar, and view-controls in print view
   .search-sidebar, nav, .view-controls, .apple_pagination {
