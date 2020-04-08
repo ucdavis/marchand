@@ -167,8 +167,8 @@ setModalImageDetails = (el) ->
   # Copy Link Button
   $('.shareable-link').val($(location).attr('host') + "/images/#{imgId}")
 
-  $('.copy-btn'). on 'click', (e) ->
-    copyField = $('.shareable-link')
+  $('.copy-btn').on 'click', (e) ->
+    copyField = $('.shareable-link', $("##{view}-modal"))
     copyField.select()
     document.execCommand("copy")
 
