@@ -4,12 +4,12 @@ require 'faraday_middleware/aws_sigv4'
 # TODO: Reconfigure to use elasticsearch.yml. See https://github.com/elastic/elasticsearch-ruby/tree/master/elasticsearch-transport
 # TODO: Will https://github.com/toland/patron improve performance?
 # Configure for Amazon ES
-Elasticsearch::Model.client = Elasticsearch::Client.new url: Rails.application.secrets[:elasticsearch_url] do |f|
+Elasticsearch::Model.client = Elasticsearch::Client.new url: Rails.application.secrets[:elasticsearch_url] || ENV['ELASTICSEARCH_URL'] do |f|
   f.request :aws_sigv4,
-            access_key_id: Rails.application.secrets[:aws_access_key],
-            secret_access_key: Rails.application.secrets[:aws_secret_key],
+            access_key_id: Rails.application.secrets[:aws_access_key] || ENV['AWS_ACCESS_KEY'],
+            secret_access_key: Rails.application.secrets[:aws_secret_key] || ENV['AWS_SECRET_KEY'],
             service: 'es',
-            region: Rails.application.secrets[:elasticsearch_aws_region]
+            region: Rails.application.secrets[:elasticsearch_aws_region] || ENV['ELASTICSEARCH_AWS_REGION']
   f.response :logger
   f.adapter Faraday.default_adapter
 end
