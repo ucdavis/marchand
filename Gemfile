@@ -77,7 +77,7 @@ gem 'rubycas-client', git: 'https://github.com/cthielen/rubycas-client.git'
 gem "mini_magick"
 
 # Include Bootstrap support
-gem 'bootstrap-sass', '~> 3.3.7'
+gem 'bootstrap-sass', '~> 3.4.1'
 
 # Expose routes to Javascript
 gem 'js-routes'
