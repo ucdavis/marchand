@@ -10,7 +10,7 @@ gem 'sqlite3'
 # Use MySQL as the database for Active Record
 gem 'mysql2'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -77,7 +77,7 @@ gem 'rubycas-client', git: 'https://github.com/cthielen/rubycas-client.git'
 gem "mini_magick"
 
 # Include Bootstrap support
-gem 'bootstrap-sass', '~> 3.3.7'
+gem 'bootstrap-sass', '~> 3.4.1'
 
 # Expose routes to Javascript
 gem 'js-routes'
