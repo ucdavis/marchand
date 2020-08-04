@@ -4,11 +4,14 @@ Rails.application.routes.draw do
   get '/admin', to: 'site#admin'
   post '/admin', to: 'site#admin'
 
+  get '/fcadmin', to: 'site#fcadmin'
+
   get '/login', to: 'site#login'
   get '/logout', to: 'site#logout'
 
   post '/authors/:id/edit', to: 'authors#edit'
   post '/topics/:id/edit', to: 'topics#edit'
+  post '/featuredcollections/:id/edit', to: 'featured_collections#edit'
   post '/regions/:id/edit', to: 'regions#edit'
   post '/cal_standards/:id/edit', to: 'cal_standards#edit'
   post '/nat_standards/:id/edit', to: 'nat_standards#edit'
@@ -20,6 +23,7 @@ Rails.application.routes.draw do
 
   resources :authors
   resources :topics
+  resources :featured_collections
   resources :regions
   resources :cal_standards
   resources :nat_standards

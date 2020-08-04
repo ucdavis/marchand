@@ -33,6 +33,7 @@
             <% if session[:cas_user].present? %>
               <% if admin? %>
                 <li><a href="<%= new_image_url %>" class="admin-nav-link">Add New Image</a></li>
+                <li><a href="/fcadmin" class="admin-nav-link">Manage Featured Collections</a></li>
                 <li><a href="/admin" class="admin-nav-link">Manage Metadata</a></li>
               <% end %>
               <li><a href="/logout" class="admin-nav-link">CAS Logout</a></li>

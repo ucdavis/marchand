@@ -14,6 +14,12 @@ class SiteController < ApplicationController
     @nat_standard = NatStandard.new
   end
 
+  def fcadmin
+    redirect_to root_url unless admin?
+
+    @featured_collection = FeaturedCollection.new
+  end
+
   def login
     redirect_to '/'
   end
