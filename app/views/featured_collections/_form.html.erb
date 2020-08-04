@@ -1,0 +1,14 @@
+<div class="container author">
+    <h3 class="center page-title text-left">Edit Featured Collection</h3>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-xs-12">
+                <%= form_for @featured_collection, html: { class: "form-group row" } do |f| %>
+                <div class="col-xs-10"><%= f.text_field :title, class: "form-control" %></div>
+
+                <%= f.submit @prompt, class: "btn btn-success" %>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>

@@ -38,12 +38,8 @@
             <div class="col-xs-12 filter-row">
               <span class="col-xs-11 topic-title"><%= collection.title %></span>
               <div class="col-xs-1 actions">
-                <% if false %>
-
                 <%= link_to url_for(controller: :featured_collections, action: :edit, id: collection.id), method: :edit do %>
                   <i class="glyphicon glyphicon-pencil" title="Edit"></i>
-                <% end %>
-
                 <% end %>
 
                 <%= link_to url_for(controller: :featured_collections, action: :destroy, id: collection.id), method: :delete, data: { confirm: "Are you sure?"} do %>

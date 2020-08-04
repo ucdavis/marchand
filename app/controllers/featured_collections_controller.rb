@@ -9,17 +9,17 @@ class FeaturedCollectionsController < ApplicationController
     @prompt = 'Update'
   end
 
-  # def update
-  #   respond_to do |format|
-  #     if @topic.update(topic_params)
-  #       format.html { redirect_to admin_path, notice: "Succesfully updated '#{@topic.title}'" }
-  #       format.json { head :no_content }
-  #     else
-  #       format.html { redirect_to admin_path, error: "Failed to update '#{@topic.title}'" }
-  #       format.json { render json: @topic.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def update
+    respond_to do |format|
+      if @featured_collection.update(featured_collection_params)
+        format.html { redirect_to fcadmin_path, notice: "Succesfully updated '#{@featured_collection.title}'" }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to fcadmin_path, error: "Failed to update '#{@featured_collection.title}'" }
+        format.json { render json: @featured_collection.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   def destroy
     respond_to do |format|
