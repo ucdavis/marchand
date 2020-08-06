@@ -15,6 +15,9 @@ class Image < ActiveRecord::Base
   has_many :topic_assignments, dependent: :destroy
   has_many :topics, through: :topic_assignments
 
+  has_many :featured_collections_images, dependent: :destroy
+  has_many :featured_collections, through: :featured_collections_images
+
   has_many :region_assignments, dependent: :destroy
   has_many :regions, through: :region_assignments
 

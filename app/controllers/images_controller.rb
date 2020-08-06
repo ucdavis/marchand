@@ -153,7 +153,7 @@ class ImagesController < GalleryController
     params.require(:image).permit(:id, :title, :collection_id, :public, :card, :citation, :featured,
                                   :original, :missing,
                                   { topic_ids: [] }, { region_ids: [] }, { cal_standard_ids: [] },
-                                  { nat_standard_ids: [] }, { author_ids: [] })
+                                  { nat_standard_ids: [] }, { author_ids: [] }, { featured_collection_ids: [] })
   end
   # rubocop:enable Style/BracesAroundHashParameters
 
