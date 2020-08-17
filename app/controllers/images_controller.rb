@@ -185,12 +185,14 @@ class ImagesController < GalleryController
     params_topic = params[:topic].split(',').select { |i| i == i.to_i.to_s } if params[:topic].present?
     params_collection = params[:collection].split(',').select { |i| i == i.to_i.to_s } if params[:collection].present?
     params_calstandard = params[:calstandard].split(',').select { |i| i == i.to_i.to_s } if params[:calstandard].present?
+    params_featuredcollection = params[:featuredcollection].split(',').select { |i| i == i.to_i.to_s } if params[:featuredcollection].present?
 
     # rubocop:disable Metrics/LineLength
     query << { query_string: as_query_string('region_assignments.region_id', params_region) } if params[:region].present?
     query << { query_string: as_query_string('topic_assignments.topic_id', params_topic) } if params[:topic].present?
     query << { query_string: as_query_string('collection_id', params_collection) } if params[:collection].present?
     query << { query_string: as_query_string('data_cal_standards.cal_standard_id', params_calstandard) } if params[:calstandard].present?
+    query << { query_string: as_query_string('featured_collections_images.featured_collection_id', params_featuredcollection) } if params[:featuredcollection].present?
     # rubocop:enable Metrics/LineLength
 
     # Text search dates if only one is given

@@ -74,7 +74,8 @@ class Image < ActiveRecord::Base
         region_assignments: { only: :region_id },
         data_cal_standards: { only: :cal_standard_id },
         data_nat_standards: { only: :nat_standard_id },
-        image_authors: { only: :author_id }
+        image_authors: { only: :author_id },
+        featured_collections_images: { only: :featured_collection_id }
       }
     )
   end
