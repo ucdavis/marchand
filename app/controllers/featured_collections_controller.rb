@@ -1,6 +1,24 @@
 class FeaturedCollectionsController < ApplicationController
   before_action :set_featured_collection, only: [:update, :edit, :destroy]
 
+  def index
+    cache_key = Image.maximum(:updated_at).try(:utc).try(:to_s, :number).to_s
+
+    @cards = Rails.cache.fetch("#{cache_key}/featured_collections", expires_in: 72.hours) do
+      cards = []
+      FeaturedCollection.where.not(id: nil).each do |featured_collection|
+        cards << {
+          image: Image.joins(:featured_collections_images)
+                      .where(public: 1, 'featured_collections_images.featured_collection_id': featured_collection.id)
+                      .order('RAND()')
+                      .first,
+          featured_collection: featured_collection
+        }
+      end
+      cards
+    end
+  end
+
   def new
     @prompt = 'Create'
   end

@@ -9,6 +9,20 @@ class ImagesController < GalleryController
   def featured
     cache_key = Image.maximum(:updated_at).try(:utc).try(:to_s, :number).to_s
 
+    @featuredcards = Rails.cache.fetch("#{cache_key}/featured_collections", expires_in: 72.hours) do
+      featuredcards = []
+      FeaturedCollection.where.not(id: nil).each do |featured_collection|
+        featuredcards << {
+          image: Image.joins(:featured_collections_images)
+                      .where(public: 1, 'featured_collections_images.featured_collection_id': featured_collection.id)
+                      .order('RAND()')
+                      .first,
+          featured_collection: featured_collection
+        }
+      end
+      featuredcards
+    end
+
     @cards = Rails.cache.fetch("#{cache_key}/featured", expires_in: 72.hours) do
       cards = []
       Topic.where(featured: true).each do |topic|
@@ -29,6 +43,10 @@ class ImagesController < GalleryController
   end
 
   def index
+    if params[:featuredcollection].present?
+      @featured_collection_title = FeaturedCollection.find_by_id(params[:featuredcollection]).title
+    end
+    
     if params[:bestof].present? && params[:bestof]
       @bestof = Topic.find_by_id(params[:topic_id]).title
 

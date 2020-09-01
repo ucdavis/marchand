@@ -1,0 +1,15 @@
+<div class="container image-card-group">
+  <h3 class="page-title text-center">Featured Collections</h3>
+  <div class="flex-row-wrap featured">
+    <% @cards.each do |card| %>
+      <% if defined?card[:image].thumbnail %>
+        <div class="image-card">
+          <%= link_to image_tag(card[:image].thumbnail), images_url(:featuredcollection => card[:featured_collection].id) %>
+          <h5 class="text-center">
+            <%= card[:featured_collection].title %>
+          </h5>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
