@@ -31,37 +31,51 @@
   </div>
 </div>
 
-<% if false %>
-<div class="container image-card-group">
-  <h3 class="page-title text-center">Featured Collections</h3>
-  <div class="flex-row-wrap featured">
-    <% @featuredcards.each do |featuredcard| %>
-      <% if defined?featuredcard[:image].thumbnail %>
-        <div class="image-card">
-          <%= link_to image_tag(featuredcard[:image].thumbnail), images_url(:featuredcollection => featuredcard[:featured_collection].id) %>
-          <h5 class="text-center">
-            <%= featuredcard[:featured_collection].title %>
-          </h5>
-        </div>
+<% if admin? %>
+  <div class="container image-card-group">
+    <h3 class="page-title text-center">Featured Collections</h3>
+    <div class="flex-row-wrap featured">
+      <% @featuredcards.each do |featuredcard| %>
+        <% if defined?featuredcard[:image].thumbnail %>
+          <div class="image-card">
+            <%= link_to image_tag(featuredcard[:image].thumbnail), images_url(:featuredcollection => featuredcard[:featured_collection].id) %>
+            <h5 class="text-center">
+              <%= featuredcard[:featured_collection].title %>
+            </h5>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-</div>
-<% end %>
-
-<div class="container image-card-group">
-  <h3 class="page-title text-center">Topics</h3>
-  <div class="flex-row-wrap featured">
-    <% @cards.each do |card| %>
-    <div class="image-card">
-      <%= link_to image_tag(card[:image].thumbnail), images_url(:bestof => true, :topic_id => card[:topic].id) %>
-      <h5 class="text-center">
-        <%= card[:topic].title %>
-      </h5>
     </div>
-    <% end %>
   </div>
-</div>
+
+  <div class="container image-card-group">
+    <h3 class="page-title text-center">Topics</h3>
+    <div class="flex-row-wrap featured">
+      <% @cards.each do |card| %>
+      <div class="image-card">
+        <%= link_to image_tag(card[:image].thumbnail), images_url(:bestof => true, :topic_id => card[:topic].id) %>
+        <h5 class="text-center">
+          <%= card[:topic].title %>
+        </h5>
+      </div>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="container image-card-group">
+    <h3 class="page-title text-center">Featured Collections</h3>
+    <div class="flex-row-wrap featured">
+      <% @cards.each do |card| %>
+      <div class="image-card">
+        <%= link_to image_tag(card[:image].thumbnail), images_url(:bestof => true, :topic_id => card[:topic].id) %>
+        <h5 class="text-center">
+          <%= card[:topic].title %>
+        </h5>
+      </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
 <div class="container marchand-description-container" style="margin-bottom: 4em;">
   <div class="row marchand-description-content">
