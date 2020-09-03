@@ -32,21 +32,23 @@
 </div>
 
 <% if admin? %>
-  <div class="container image-card-group">
-    <h3 class="page-title text-center">Featured Collections</h3>
-    <div class="flex-row-wrap featured">
-      <% @featuredcards.each do |featuredcard| %>
-        <% if defined?featuredcard[:image].thumbnail %>
-          <div class="image-card">
-            <%= link_to image_tag(featuredcard[:image].thumbnail), images_url(:featuredcollection => featuredcard[:featured_collection].id) %>
-            <h5 class="text-center">
-              <%= featuredcard[:featured_collection].title %>
-            </h5>
-          </div>
+  <% if @featuredcards.length > 0 %>
+    <div class="container image-card-group">
+      <h3 class="page-title text-center">Featured Collections</h3>
+      <div class="flex-row-wrap featured">
+        <% @featuredcards.each do |featuredcard| %>
+          <% if defined?featuredcard[:image].thumbnail %>
+            <div class="image-card">
+              <%= link_to image_tag(featuredcard[:image].thumbnail), images_url(:featuredcollection => featuredcard[:featured_collection].id) %>
+              <h5 class="text-center">
+                <%= featuredcard[:featured_collection].title %>
+              </h5>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <div class="container image-card-group">
     <h3 class="page-title text-center">Topics</h3>
