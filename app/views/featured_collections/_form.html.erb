@@ -3,10 +3,32 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="col-xs-12">
-                <%= form_for @featured_collection, html: { class: "form-group row" } do |f| %>
-                <div class="col-xs-10"><%= f.text_field :title, class: "form-control" %></div>
+              <%= form_for @featured_collection, html: { class: "form-group row" } do |f| %>
+              <div class="col-xs-12" style="margin-bottom: 2rem">
+                <h5>Shareable Link:</h5>
+                <strong>
+                  <a href="/images?featuredcollection=<%= @featured_collection.id %>">https://marchand.dss.ucdavis.edu/images?featuredcollection=<%= @featured_collection.id %></a>
+                </strong>
+              </div>
 
+              <div class="col-xs-12" style="margin-bottom: 2rem">
+                <h5>Title</h5>
+                <div><%= f.text_field :title, class: "form-control" %></div>
+              </div>
+
+              <div class="col-xs-12" style="margin-bottom: 2rem">
+                <h5>Description</h5>
+                <div><%= f.text_area :description, class: "form-control", autocomplete: 'off' %></div>
+              </div>
+
+              <div class="col-xs-12" style="margin-bottom: 2rem">
+                <%= f.check_box :public %>
+                <%= label_tag :image_public, "Show on Home Page" %>
+              </div>
+
+              <div class="col-xs-12">
                 <%= f.submit @prompt, class: "btn btn-success" %>
+              </div>
             </div>
         </div>
         <% end %>

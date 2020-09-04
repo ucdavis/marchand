@@ -11,7 +11,7 @@ class ImagesController < GalleryController
 
     @featuredcards = Rails.cache.fetch("#{cache_key}/featured_collections", expires_in: 72.hours) do
       featuredcards = []
-      FeaturedCollection.where.not(id: nil).each do |featured_collection|
+      FeaturedCollection.where.not(id: nil, public: 0).each do |featured_collection|
         featuredcards << {
           image: Image.joins(:featured_collections_images)
                       .where(public: 1, 'featured_collections_images.featured_collection_id': featured_collection.id)
@@ -44,9 +44,9 @@ class ImagesController < GalleryController
 
   def index
     if params[:featuredcollection].present?
-      @featured_collection_title = FeaturedCollection.find_by_id(params[:featuredcollection]).title
+      @featured_collection = FeaturedCollection.find_by_id(params[:featuredcollection])
     end
-    
+
     if params[:bestof].present? && params[:bestof]
       @bestof = Topic.find_by_id(params[:topic_id]).title
 

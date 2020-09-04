@@ -11,13 +11,19 @@
   <% else %>
 
     <div class="collection-title">
-      <% if @featured_collection_title %>
-        <h3>Featured Collection: <%= @featured_collection_title %></h3>
+      <% if @featured_collection %>
+        <h3>Featured Collection: <%= @featured_collection.title %></h3>
       <% end %>
       <% if @bestof %>
         <h3>Topic: <%= @bestof %></h3>
       <% end %>
     </div>
+
+    <%if defined?@featured_collection.description %>
+      <pre class="featured-collection-description">
+        <%= @featured_collection.description %>
+      </pre>
+    <% end %>
 
     <div class="row">
       <div class="col-xs-12 view-controls">

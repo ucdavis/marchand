@@ -6,6 +6,24 @@
   }
 }
 
+.featured-collection-description {
+  margin: 20px;
+  padding: 15px;
+  background-color: #FCFCFC;
+  border: 1px solid #EAE8E8;
+  border-radius: 5px;
+
+  font: 14px/20px 'Arimo', sans-serif;
+  color: #494949;
+
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
 .view-controls {
   text-align: right;
 

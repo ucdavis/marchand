@@ -72,6 +72,6 @@ class FeaturedCollectionsController < ApplicationController
   end
 
   def featured_collection_params
-    params.require(:featured_collection).permit(:id, :title)
+    params.require(:featured_collection).permit(:id, :title, :public, :description)
   end
 end
