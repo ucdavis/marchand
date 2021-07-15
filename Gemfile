@@ -80,7 +80,7 @@ gem "mini_magick"
 gem 'bootstrap-sass', '~> 3.4.1'
 
 # Expose routes to Javascript
-gem 'js-routes'
+gem 'js-routes', '~> 1.4.9'
 
 # To enable variants on Active Storage
 gem 'image_processing', '~> 1.2'
