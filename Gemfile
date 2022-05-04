@@ -83,7 +83,7 @@ gem 'bootstrap-sass', '~> 3.4.1'
 gem 'js-routes'
 
 # To enable variants on Active Storage
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 
 # For S3 Active Storage support
 gem 'aws-sdk-s3', require: false
