@@ -1,6 +1,6 @@
 GIT
-  remote: https://github.com/cthielen/rubycas-client.git
-  revision: e0d1c916661ddaba6cc987ce267568ef44353248
+  remote: https://github.com/jaroldwong/rubycas-client.git
+  revision: 055386dc775be943dd369dd989ef6cb7e692500d
   specs:
     rubycas-client (2.3.10.rc1)
       activesupport
