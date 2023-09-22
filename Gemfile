@@ -68,7 +68,10 @@ gem 'faraday_middleware-aws-sigv4'
 gem 'aws-sigv4', '~> 1.1'
 
 # CAS authentication
-gem 'rubycas-client'
+# Use AR Session Store as required by rubycas-client
+# gem 'activerecord-session_store', git: 'https://github.com/rails/activerecord-session_store'
+gem 'activerecord-session_store', '~> 2.0'
+gem 'rubycas-client', git: 'https://github.com/ucdavis-lsit/rubycas-client.git'
 
 # For thumbnail support
 gem "mini_magick"
