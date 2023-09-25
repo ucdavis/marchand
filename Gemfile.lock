@@ -1,10 +1,3 @@
-GIT
-  remote: https://github.com/ucdavis-lsit/rubycas-client.git
-  revision: 055386dc775be943dd369dd989ef6cb7e692500d
-  specs:
-    rubycas-client (2.3.10.rc1)
-      activesupport
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -40,12 +33,6 @@ GEM
       activemodel (= 5.2.8.1)
       activesupport (= 5.2.8.1)
       arel (>= 9.0)
-    activerecord-session_store (2.0.0)
-      actionpack (>= 5.2.4.1)
-      activerecord (>= 5.2.4.1)
-      multi_json (~> 1.11, >= 1.11.2)
-      rack (>= 2.0.8, < 3)
-      railties (>= 5.2.4.1)
     activestorage (5.2.8.1)
       actionpack (= 5.2.8.1)
       activerecord (= 5.2.8.1)
@@ -228,6 +215,8 @@ GEM
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     ruby_dep (1.5.0)
+    rubycas-client (2.3.10.rc1)
+      activesupport
     rubyzip (2.3.0)
     sass (3.7.3)
       sass-listen (~> 4.0.0)
@@ -282,7 +271,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-session_store (~> 2.0)
   aws-sdk-s3
   aws-sigv4 (~> 1.1)
   bootstrap-sass (~> 3.4.1)
@@ -304,7 +292,7 @@ DEPENDENCIES
   mysql2
   puma (~> 5.6)
   rails (~> 5.2.0)
-  rubycas-client!
+  rubycas-client
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
