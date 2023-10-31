@@ -2,17 +2,17 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_04_160829) do
+ActiveRecord::Schema.define(version: 2023_10_31_214557) do
 
-  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "active_storage_attachments", charset: "latin1", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_09_04_160829) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "active_storage_blobs", charset: "latin1", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -30,48 +30,55 @@ ActiveRecord::Schema.define(version: 2020_09_04_160829) do
     t.bigint "byte_size", null: false
     t.string "checksum", null: false
     t.datetime "created_at", null: false
+    t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "attachments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "active_storage_variant_records", charset: "utf8", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "attachments", id: :integer, charset: "utf8", force: :cascade do |t|
     t.string "url"
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "authors", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "authors", id: :integer, charset: "utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "cal_standards", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "cal_standards", id: :integer, charset: "utf8", force: :cascade do |t|
     t.integer "grade_id", default: 0, null: false
     t.string "standard_id", limit: 50, default: "", null: false
     t.text "description", null: false
   end
 
-  create_table "collections", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "collections", id: :integer, charset: "utf8", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "code", limit: 50, default: "", null: false
   end
 
-  create_table "data_cal_standards", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "data_cal_standards", id: :integer, charset: "utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "image_id"
     t.integer "cal_standard_id"
   end
 
-  create_table "data_nat_standards", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "data_nat_standards", id: :integer, charset: "utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "image_id"
     t.integer "nat_standard_id"
   end
 
-  create_table "featured_collections", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "featured_collections", charset: "latin1", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -79,21 +86,21 @@ ActiveRecord::Schema.define(version: 2020_09_04_160829) do
     t.text "description"
   end
 
-  create_table "featured_collections_images", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "featured_collections_images", charset: "latin1", force: :cascade do |t|
     t.integer "featured_collection_id"
     t.integer "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "image_authors", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "image_authors", id: :integer, charset: "utf8", force: :cascade do |t|
     t.integer "image_id"
     t.integer "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "images", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "images", id: :integer, charset: "utf8", force: :cascade do |t|
     t.string "thumbnail_old", limit: 128, default: "", null: false
     t.string "title", default: "", null: false
     t.text "card"
@@ -116,31 +123,31 @@ ActiveRecord::Schema.define(version: 2020_09_04_160829) do
     t.index ["title"], name: "idx_images_searchable"
   end
 
-  create_table "keyword_assignments", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "keyword_assignments", id: false, charset: "utf8", force: :cascade do |t|
     t.integer "sid", default: 0, null: false
     t.integer "kid", default: 0, null: false
   end
 
-  create_table "keywords", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "keywords", id: :integer, charset: "utf8", force: :cascade do |t|
     t.string "title", limit: 64, default: "", null: false
     t.index ["title"], name: "idx_keywords_title", unique: true
   end
 
-  create_table "lesson_authors", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "lesson_authors", id: :integer, charset: "utf8", force: :cascade do |t|
     t.integer "author_id"
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "lesson_images", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "lesson_images", id: :integer, charset: "utf8", force: :cascade do |t|
     t.integer "lesson_id"
     t.integer "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "lessons", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "lessons", id: :integer, charset: "utf8", force: :cascade do |t|
     t.string "grade"
     t.string "title"
     t.string "background"
@@ -149,37 +156,38 @@ ActiveRecord::Schema.define(version: 2020_09_04_160829) do
     t.string "pdf"
   end
 
-  create_table "nat_standards", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "nat_standards", id: :integer, charset: "utf8", force: :cascade do |t|
     t.integer "era", default: 0, null: false
     t.integer "us_world", default: 0, null: false
     t.text "title", null: false
   end
 
-  create_table "region_assignments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "region_assignments", id: :integer, charset: "utf8", force: :cascade do |t|
     t.integer "image_id", default: 0, null: false
     t.integer "region_id", default: 0, null: false
   end
 
-  create_table "regions", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "regions", id: :integer, charset: "utf8", force: :cascade do |t|
     t.string "title", limit: 64, default: "", null: false
   end
 
-  create_table "topic_assignments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "topic_assignments", id: :integer, charset: "utf8", force: :cascade do |t|
     t.integer "image_id", default: 0, null: false
     t.integer "topic_id", default: 0, null: false
   end
 
-  create_table "topics", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "topics", id: :integer, charset: "utf8", force: :cascade do |t|
     t.string "code", limit: 3, default: "", null: false
     t.string "title", limit: 50, default: "", null: false
     t.string "collection", limit: 2, default: "US", null: false
     t.integer "featured", default: 0, null: false
   end
 
-  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "users", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "loginid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
 end
