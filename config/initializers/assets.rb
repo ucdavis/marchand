@@ -9,9 +9,8 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 # Precompile additional assets.
-# application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-# Rails.application.config.assets.precompile += %w[glyphicons-halflings-regular.eot glyphicons-halflings-regular.svg
-#                                                  glyphicons-halflings-regular.ttf glyphicons-halflings-regular.woff
-#                                                  glyphicons-halflings-regular.woff2]
+# application.js, application.css, and all non-JS/CSS in the app/assets
+# folder are already added.
+# Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
 Rails.application.config.assets.precompile += %w( admin_edit_image.js )
