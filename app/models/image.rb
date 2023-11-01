@@ -53,18 +53,18 @@ class Image < ActiveRecord::Base
     orientation = self.orientation
 
     if orientation == 'portrait'
-      original.variant(combine_options: { resize: 'x600' }) do |cols, rows, passed_img|
-        return passed_img.variant(combine_options: { extent: "#{cols}x#{rows}", gravity: "center" })
+      original.variant({ resize: 'x600' }) do |cols, rows, passed_img|
+        return passed_img.variant({ extent: "#{cols}x#{rows}", gravity: "center" })
       end
     else
-      original.variant(combine_options: { resize: '500>' }) do |cols, rows, passed_img|
-        return passed_img.variant(combine_options: { extent: "#{cols}x#{rows}", gravity: "center" })
+      original.variant({ resize: '500>' }) do |cols, rows, passed_img|
+        return passed_img.variant({ extent: "#{cols}x#{rows}", gravity: "center" })
       end
     end
   end
 
   def thumbnail
-    original.variant(combine_options: { resize: '275>', extent: '275x190', gravity: 'center' })
+    original.variant({ resize: '275>', extent: '275x190', gravity: 'center' })
   end
 
   def as_indexed_json(*)
