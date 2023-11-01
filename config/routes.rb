@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   resources :cal_standards
   resources :nat_standards
 
-  get '*all', to: 'application#mount', constraints: lambda { |req|
+  get '*path', to: redirect('/'), constraints: lambda { |req|
     req.path.exclude? 'rails/active_storage'
   }
   # # The above rule doesn't match the root, so add it
