@@ -45,3 +45,5 @@ marchandslides.bak/*
 yarn.lock
 node_modules
 public/assets
+
+*.env

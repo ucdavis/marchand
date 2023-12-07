@@ -12,6 +12,7 @@ RUN gem install bundler
 RUN bundle install
 
 COPY . /myapp
+RUN curl https://truststore.pki.rds.amazonaws.com/us-west-2/us-west-2-bundle.pem -o us-west-2-bundle.pem -s
 
 # Workaround for https://github.com/rails/rails/pull/35607
 RUN mkdir /myapp/tmp

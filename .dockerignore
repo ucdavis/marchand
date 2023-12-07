@@ -2,4 +2,4 @@ log
 tmp
 .rbenv-vars
 storage
-
+*.env
