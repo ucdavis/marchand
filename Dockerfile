@@ -14,11 +14,13 @@ RUN bundle install
 COPY . /myapp
 RUN curl https://truststore.pki.rds.amazonaws.com/us-west-2/us-west-2-bundle.pem -o us-west-2-bundle.pem -s
 
+# CAS settings
+ENV CAS_URL=$CAS_URL
 # Workaround for https://github.com/rails/rails/pull/35607
 RUN mkdir /myapp/tmp
 RUN rake assets:precompile
 
-ENV PORT 3000
+ENV PORT=3000
 
 # create directory needed for puma pid file
 RUN mkdir -p tmp/pids
