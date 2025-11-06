@@ -69,7 +69,7 @@ gem 'faraday_middleware-aws-sigv4'
 gem 'aws-sigv4', '~> 1.1'
 
 # CAS authentication
-gem 'rubycas-client'
+gem 'rack-cas'
 
 # For thumbnail support
 gem "mini_magick"

@@ -1,6 +1,3 @@
-require 'casclient'
-require 'casclient/frameworks/rails/filter'
-
 class SiteController < ApplicationController
   before_action :authenticate, only: [:login]
 
@@ -20,15 +17,20 @@ class SiteController < ApplicationController
     @featured_collection = FeaturedCollection.new
   end
 
-  def authenticate
-    CASClient::Frameworks::Rails::Filter.filter(self)
-  end
-
   def login
+    unless cas_login.present?
+      head :unauthorized
+      return
+    end
+
     redirect_to '/'
   end
 
-  def logout
-    CASClient::Frameworks::Rails::Filter.logout(self)
+  private
+
+  def authenticate
+    return if cas_login.present?
+
+    head :unauthorized
   end
 end

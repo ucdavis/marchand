@@ -30,7 +30,7 @@
 
         <div class="row top-header">
           <ul class="pull-right inline">
-            <% if session[:cas_user].present? %>
+            <% if cas_login.present? %>
               <% if admin? %>
                 <li><a href="<%= new_image_url %>" class="admin-nav-link">Add New Image</a></li>
                 <li><a href="/fcadmin" class="admin-nav-link">Manage Featured Collections</a></li>
