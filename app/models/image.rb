@@ -44,7 +44,7 @@ class Image < ActiveRecord::Base
       }
     }
 
-    q[:bool][:filter] = filter.split(',') unless filter.empty?
+    q[:bool][:filter] = filter unless filter.empty?
 
     __elasticsearch__.search(query: q)
   end
