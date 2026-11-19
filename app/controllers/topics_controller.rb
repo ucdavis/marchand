@@ -1,4 +1,5 @@
 class TopicsController < ApplicationController
+  before_action :require_admin
   before_action :set_topic, only: [:update, :edit, :destroy]
 
   def new

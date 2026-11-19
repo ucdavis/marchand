@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
   def bad_request
     render plain: 'Bad request', status: 400
   end
+
+  def require_admin
+    redirect_to root_url unless admin?
+  end
 end

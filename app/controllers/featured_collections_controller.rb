@@ -1,4 +1,5 @@
 class FeaturedCollectionsController < ApplicationController
+  before_action :require_admin, except: :index
   before_action :set_featured_collection, only: [:update, :edit, :destroy]
 
   def index

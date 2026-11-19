@@ -1,4 +1,5 @@
 class CalStandardsController < ApplicationController
+  before_action :require_admin
   before_action :set_cal_standard, only: [:update, :edit, :destroy]
 
   def new

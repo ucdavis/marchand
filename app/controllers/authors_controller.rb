@@ -1,4 +1,5 @@
 class AuthorsController < ApplicationController
+  before_action :require_admin
   before_action :set_author, only: %i[edit update destroy]
 
   def new

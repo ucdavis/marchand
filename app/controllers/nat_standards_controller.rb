@@ -1,4 +1,5 @@
 class NatStandardsController < ApplicationController
+  before_action :require_admin
   before_action :set_nat_standard, only: [:update, :edit, :destroy]
 
   def new

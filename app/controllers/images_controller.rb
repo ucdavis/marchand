@@ -1,6 +1,7 @@
 class ImagesController < GalleryController
   include ImagesHelper
 
+  before_action :require_admin, except: %i[featured index show]
   before_action :set_image, only: [:edit, :update, :destroy]
 
   RESULTS_PER_PAGE = 20

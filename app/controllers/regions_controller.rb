@@ -1,4 +1,5 @@
 class RegionsController < ApplicationController
+  before_action :require_admin
   before_action :set_region, only: [:edit, :update, :destroy]
 
   def new
