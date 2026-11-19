@@ -1,8 +1,17 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '~> 3.1'
+ruby '~> 3.4'
 gem 'rexml' # no longer bundled with Ruby 3.0+
+
+# No longer default gems in Ruby 3.4; Rails 6.1 requires them but doesn't declare them
+gem 'base64'
+gem 'bigdecimal'
+gem 'drb'
+gem 'mutex_m'
+
+# concurrent-ruby 1.3.5+ breaks Rails < 7.1 (uninitialized constant Logger)
+gem 'concurrent-ruby', '< 1.3.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1'

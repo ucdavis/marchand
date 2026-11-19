@@ -1,5 +1,3 @@
-require 'csv'
-
 module ApplicationHelper
   # WHITELIST = %w[cthielen guilden kkipp22 sbgreer jeremy safutrel].freeze
 
