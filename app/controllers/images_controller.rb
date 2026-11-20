@@ -126,7 +126,7 @@ class ImagesController < GalleryController
 
     if new_image
       require 'open-uri'
-      new_path = open(new_image.service_url) # rubocop:disable Security/Open
+      new_path = URI.open(new_image.url) # rubocop:disable Security/Open
       @image.original.attach(io: new_path, filename: filename, content_type: ext)
 
       @image.save!
